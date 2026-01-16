@@ -3,9 +3,9 @@ import type { TemplateConfig } from "./configType";
 const templateConfig: TemplateConfig = {
   name: "Travel Stories",
   seo: {
-    title: "Travel Stories - Trip Planner | Plan, Organize & Remember Adventures",
+    title: "Travel Stories - Trip Planner for iPhone | Plan, Organize & Remember Adventures",
     description:
-      "Travel Stories is your all-in-one travel companion for planning, organising, and remembering every adventure. Create itineraries, track expenses, manage packing lists, and more.",
+      "Travel Stories is a free iPhone app for planning, organising, and remembering every adventure. Create itineraries, track expenses, manage packing lists, and access everything offline. Download on the App Store.",
   },
   // Draws grid behind main container
   backgroundGrid: false,
@@ -55,9 +55,9 @@ const templateConfig: TemplateConfig = {
   },
   home: {
     seo: {
-      title: "Travel Stories - Trip Planner | Plan, Organize & Remember Adventures",
+      title: "Travel Stories - Trip Planner for iPhone | Plan, Organize & Remember Adventures",
       description:
-        "Travel Stories is your all-in-one travel companion for planning, organising, and remembering every adventure. Create itineraries, track expenses, manage packing lists, and more.",
+        "Travel Stories is a free iPhone app for planning, organising, and remembering every adventure. Create itineraries, track expenses, manage packing lists, and access everything offline. Download on the App Store.",
     },
     testimonials: {
       id: "testimonials",
