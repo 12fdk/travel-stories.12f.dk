@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://travel-stories.12f.dk/sitemap-index.xml

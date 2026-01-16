@@ -3,8 +3,11 @@ import "swiper/css";
 import "@styles/styles.scss";
 import type { TemplateConfig } from "utils/configType";
 
-const { backgroundGrid, seo, logo, theme, forceTheme } =
+const { backgroundGrid, seo, logo, theme, forceTheme, appStoreLink, name } =
   Astro.props as TemplateConfig;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const ogImage = logo.startsWith("http") ? logo : new URL("/og-image.png", Astro.site).href;
 ---
 
 <!doctype html>
@@ -14,26 +17,115 @@ const { backgroundGrid, seo, logo, theme, forceTheme } =
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    {logo.startsWith("http") && <link rel="apple-touch-icon" href={logo} />}
     <meta name="generator" content={Astro.generator} />
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href={canonicalURL} />
 
     <!-- Primary Meta Tags -->
     <title>{seo.title}</title>
     <meta name="title" content={seo.title} />
     <meta name="description" content={seo.description} />
+    <meta name="keywords" content="travel planner, trip planner, itinerary app, travel app, vacation planner, travel organizer, packing list, budget tracking, travel diary, iOS travel app" />
+    <meta name="author" content="Robert Jensen" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Apple App Store Smart Banner -->
+    <meta name="apple-itunes-app" content="app-id=6756801168" />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
-    <meta property="og:url" content={Astro.url} />
+    <meta property="og:url" content={canonicalURL} />
     <meta property="og:title" content={seo.title} />
     <meta property="og:description" content={seo.description} />
-    <meta property="og:image" content={new URL(logo, Astro.url)} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:site_name" content={name} />
+    <meta property="og:locale" content="en_US" />
 
     <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content={Astro.url} />
-    <meta property="twitter:title" content={seo.title} />
-    <meta property="twitter:description" content={seo.description} />
-    <meta property="twitter:image" content={new URL(logo, Astro.url)} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={canonicalURL} />
+    <meta name="twitter:title" content={seo.title} />
+    <meta name="twitter:description" content={seo.description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <!-- Structured Data - Software Application -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Travel Stories - Trip Planner",
+      "operatingSystem": "iOS",
+      "applicationCategory": "TravelApplication",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "5",
+        "ratingCount": "1"
+      },
+      "description": seo.description,
+      "url": canonicalURL.href,
+      "downloadUrl": appStoreLink,
+      "screenshot": new URL("/screenshots/trips-list.png", Astro.site).href,
+      "author": {
+        "@type": "Person",
+        "name": "Robert Jensen"
+      }
+    })} />
+
+    <!-- Structured Data - FAQ -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Is Travel Stories free to use?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, it's free! We also offer a Premium Lifetime upgrade with more advanced features."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does the app work offline?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Absolutely! Travel Stories is designed to work offline so you can access your itineraries, bookings, packing lists, and travel diary even in remote destinations without internet access."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What devices are supported?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Travel Stories is currently available for iPhone and requires iOS 17.0 or later."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I track my travel expenses?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Simply add expenses as you go during your trip. Travel Stories provides visual breakdowns by category so you can see exactly where your money is going and stay within your budget."
+          }
+        }
+      ]
+    })} />
+
+    <!-- Structured Data - Website -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": name,
+      "url": Astro.site?.href
+    })} />
 
     <script is:inline define:vars={{ forceTheme }}>
       function getPreferredColorScheme() {
