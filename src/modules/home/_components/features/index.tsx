@@ -14,9 +14,9 @@ function Features() {
   return (
     <section id={features.id} className="max-w-screen-lg mx-auto px-4 py-12">
       <div className="mb-12 max-w-none flex flex-col items-center prose prose-lg text-center">
-        <h1 className="mb-3">
+        <h2 className="mb-3">
           <AnimatedText text={features.title} />
-        </h1>
+        </h2>
         <motion.div
           className="h-2 bg-gradient-to-r from-primary to-secondary rounded-full overflow-hidden [--w:200px] md:[--w:350px]"
           whileInView={{ width: "var(--w)" }}
@@ -25,9 +25,9 @@ function Features() {
         {features.subtitle && (
           <motion.p
             initial={{ y: "100%", opacity: 0 }}
-            whileInView={{ y: "0%", opacity: 0.7 }}
+            whileInView={{ y: "0%", opacity: 1 }}
             viewport={{ once: true }}
-            className="text-md max-w-lg"
+            className="text-md max-w-lg text-base-content/80"
           >
             {features.subtitle}
           </motion.p>
@@ -71,9 +71,9 @@ function Features() {
               </figure>
             </div>
             <div className="w-full pt-0 px-0 card-body items-center text-center transition-transform max-w-none group-hover:scale-95">
-              <h2 className="card-title text-2xl font-bold">{feat.title}</h2>
+              <h3 className="card-title text-2xl font-bold">{feat.title}</h3>
               <div className="h-0.5 w-full bg-primary/10" />
-              <p className="opacity-[.7]">{feat.subtitle}</p>
+              <p className="text-base-content/80">{feat.subtitle}</p>
             </div>
           </motion.div>
         ))}

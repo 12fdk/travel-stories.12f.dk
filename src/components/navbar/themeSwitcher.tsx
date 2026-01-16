@@ -45,6 +45,7 @@ function ThemeSwitcher() {
         type="checkbox"
         autoComplete="off"
         checked={isDarkMode}
+        aria-label="Toggle dark mode"
         className="toggle toggle-sm"
         onChange={(event) => {
           const newMode = event.currentTarget.checked ? darkTheme : lightTheme;

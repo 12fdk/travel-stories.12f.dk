@@ -24,14 +24,14 @@ function Pricing() {
       className="overflow-hidden max-w-screen-lg mx-auto px-4 py-12"
     >
       <div className="mb-12 max-w-none flex flex-col items-center prose prose-lg text-center">
-        <h1 className="mb-0">
+        <h2 className="mb-0">
           <AnimatedText text={pricing.title} />
-        </h1>
+        </h2>
         <motion.p
           initial={{ y: "100%", opacity: 0 }}
-          whileInView={{ y: "0%", opacity: 0.7 }}
+          whileInView={{ y: "0%", opacity: 1 }}
           viewport={{ once: true }}
-          className="text-xl max-w-lg"
+          className="text-xl max-w-lg text-base-content/80"
         >
           {pricing.subtitle}
         </motion.p>
@@ -79,7 +79,7 @@ function Pricing() {
                     />
                   </div>
                   <div className="mt-8 flex-1 font-bold">
-                    <h4 className="text-xl my-1">{plan.title}</h4>
+                    <h3 className="text-xl my-1">{plan.title}</h3>
                     <p className="my-1">{plan.price}</p>
                   </div>
                 </div>

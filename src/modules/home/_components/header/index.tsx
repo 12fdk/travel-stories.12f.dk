@@ -34,14 +34,14 @@ function Header() {
                     className="flex items-center self-center h-8 md:h-12"
                   >
                     <img src={withBase("/misc/wreath-left.webp")} className="h-full" />
-                    <p className="text-xs text-gray-500 whitespace-pre text-center">
+                    <p className="text-xs text-gray-600 whitespace-pre text-center">
                       {reward}
                     </p>
                     <img src={withBase("/misc/wreath-right.webp")} className="h-full" />
                   </motion.div>
                 ))}
               </div>
-              <motion.h2
+              <motion.h1
                 initial={{ opacity: 0, rotateZ: -10 }}
                 animate={{ opacity: 1, rotateZ: 0 }}
                 className="mt-0 mb-4 text-4xl md:text-6xl"
@@ -76,12 +76,12 @@ function Header() {
                 ) : (
                   header.headline
                 )}
-              </motion.h2>
+              </motion.h1>
               <motion.p
                 initial={{ opacity: 0, x: -50 }}
-                animate={{ opacity: 0.7, x: 0 }}
+                animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.5, ease: "easeInOut" }}
-                className="whitespace-pre-wrap text-left m-0 my-1 max-w-md md:text-lg md:max-w-lg"
+                className="whitespace-pre-wrap text-left m-0 my-1 max-w-md md:text-lg md:max-w-lg text-base-content/80"
               >
                 {header.subtitle}
               </motion.p>

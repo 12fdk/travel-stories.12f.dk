@@ -21,15 +21,15 @@ function HowItWorks() {
       className="overflow-hidden max-w-screen-lg mx-auto px-4 py-12"
     >
       <div className="mb-12 max-w-none flex flex-col items-center prose prose-lg text-center">
-        <h1 className="mb-3">
+        <h2 className="mb-3">
           <AnimatedText text={howItWorks.title} />
-        </h1>
+        </h2>
         {howItWorks.subtitle && (
           <motion.p
             initial={{ y: "100%", opacity: 0 }}
-            whileInView={{ y: "0%", opacity: 0.7 }}
+            whileInView={{ y: "0%", opacity: 1 }}
             viewport={{ once: true }}
-            className="text-md max-w-lg"
+            className="text-md max-w-lg text-base-content/80"
           >
             {howItWorks.subtitle}
           </motion.p>
@@ -94,8 +94,8 @@ function HowItWorks() {
                 {index < 10 && 0}
                 {index + 1}
               </div>
-              <h4 className="mt-0 text-2xl font-bold">{step.title}</h4>
-              <p className="mx-auto max-w-sm opacity-[.7]">{step.subtitle}</p>
+              <h3 className="mt-0 text-2xl font-bold">{step.title}</h3>
+              <p className="mx-auto max-w-sm text-base-content/80">{step.subtitle}</p>
             </motion.div>
             <motion.div
               variants={{
