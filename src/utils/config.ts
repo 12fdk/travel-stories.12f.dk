@@ -48,9 +48,9 @@ const templateConfig: TemplateConfig = {
     subtitle:
       "Your all-in-one travel companion for planning, organising, and remembering every adventure. Available on the App Store.",
     screenshots: [
-      "/screenshots/trips-list.png",
-      "/screenshots/trip-detail.png",
-      "/screenshots/itinerary.png",
+      "/screenshots/trips-list.webp",
+      "/screenshots/trip-detail.webp",
+      "/screenshots/itinerary.webp",
     ],
   },
   home: {
@@ -191,9 +191,9 @@ const templateConfig: TemplateConfig = {
       subtitle:
         "Travel Stories is your all-in-one travel companion for planning, organising, and remembering every adventure. Create itineraries, track expenses, and capture memories.",
       screenshots: [
-        "/screenshots/packing-list.png",
-        "/screenshots/itinerary.png",
-        "/screenshots/trips-list.png",
+        "/screenshots/packing-list.webp",
+        "/screenshots/itinerary.webp",
+        "/screenshots/trips-list.webp",
       ],
       rewards: [],
       usersDescription: "Join travelers planning their adventures",

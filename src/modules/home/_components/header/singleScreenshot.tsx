@@ -37,10 +37,12 @@ function SingleScreenshot({ scrollYProgress, index, totalCount, src }: Props) {
       src={withBase(src)}
       alt={`App screenshot ${index + 1}`}
       style={{ translateX: x, translateY: y, scale: 1 }}
-      className="absolute overflow-hidden w-full h-full object-cover object-top"
+      className="absolute overflow-hidden w-full h-full object-cover object-top iphone-screenshot"
       width={240}
       height={520}
       loading={index === 0 ? "eager" : "lazy"}
+      decoding={index === 0 ? "sync" : "async"}
+      fetchPriority={index === 0 ? "high" : "low"}
     />
   );
 }

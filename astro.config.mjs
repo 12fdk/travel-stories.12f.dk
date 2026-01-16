@@ -15,6 +15,26 @@ export default defineConfig({
         },
       },
     },
+    build: {
+      // Improve code splitting for better caching
+      rollupOptions: {
+        output: {
+          manualChunks: {
+            'framer-motion': ['framer-motion'],
+            'swiper': ['swiper'],
+          },
+        },
+      },
+    },
+  },
+  image: {
+    // Enable image optimization with sharp
+    service: {
+      entrypoint: 'astro/assets/services/sharp',
+      config: {
+        limitInputPixels: false,
+      },
+    },
   },
   integrations: [react(), tailwind(), sitemap()],
 });
