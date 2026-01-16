@@ -20,6 +20,12 @@ const ogImage = logo.startsWith("http") ? logo : new URL("/og-image.png", Astro.
     {logo.startsWith("http") && <link rel="apple-touch-icon" href={logo} />}
     <meta name="generator" content={Astro.generator} />
 
+    <!-- Preconnect to external resources -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://umami.robert-jensen.dk" />
+    <link rel="dns-prefetch" href="https://apps.apple.com" />
+
     <!-- Canonical URL -->
     <link rel="canonical" href={canonicalURL} />
 

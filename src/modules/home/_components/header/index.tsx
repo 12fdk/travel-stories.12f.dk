@@ -33,11 +33,11 @@ function Header() {
                     animate={{ opacity: 1, scale: 1 }}
                     className="flex items-center self-center h-8 md:h-12"
                   >
-                    <img src={withBase("/misc/wreath-left.webp")} className="h-full" />
+                    <img src={withBase("/misc/wreath-left.webp")} className="h-full" alt="" width={24} height={24} />
                     <p className="text-xs text-gray-600 whitespace-pre text-center">
                       {reward}
                     </p>
-                    <img src={withBase("/misc/wreath-right.webp")} className="h-full" />
+                    <img src={withBase("/misc/wreath-right.webp")} className="h-full" alt="" width={24} height={24} />
                   </motion.div>
                 ))}
               </div>
@@ -98,6 +98,8 @@ function Header() {
                         className="h-14"
                         alt="google play logo"
                         src={withBase("/stores/google-play.svg")}
+                        width={168}
+                        height={56}
                       />
                     </a>
                   </li>
@@ -109,6 +111,8 @@ function Header() {
                         className="h-14"
                         alt="app store logo"
                         src={withBase("/stores/app-store.svg")}
+                        width={168}
+                        height={56}
                       />
                     </a>
                   </li>
@@ -129,6 +133,9 @@ function Header() {
                           <img
                             src={withBase(`/avatars/${index + 1}.webp`)}
                             alt={`app user ${index + 1}`}
+                            width={32}
+                            height={32}
+                            loading="lazy"
                           />
                         </div>
                       </motion.li>

@@ -35,9 +35,12 @@ function SingleScreenshot({ scrollYProgress, index, totalCount, src }: Props) {
   return (
     <motion.img
       src={withBase(src)}
-      alt={`screenshot ${index}`}
+      alt={`App screenshot ${index + 1}`}
       style={{ translateX: x, translateY: y, scale: 1 }}
       className="absolute overflow-hidden w-full h-full object-cover object-top"
+      width={240}
+      height={520}
+      loading={index === 0 ? "eager" : "lazy"}
     />
   );
 }
