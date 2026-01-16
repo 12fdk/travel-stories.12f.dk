@@ -1,7 +1,9 @@
 {
   "permissions": {
     "allow": [
-      "Bash(npx degit:*)"
+      "Bash(npx degit:*)",
+      "Skill(agent-browser)",
+      "Skill(agent-browser:*)"
     ]
   }
 }
