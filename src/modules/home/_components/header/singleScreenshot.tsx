@@ -1,5 +1,6 @@
 import { motion, transform, useTransform } from "framer-motion";
 import type { MotionValue } from "framer-motion";
+import { withBase } from "../../../../utils/basePath";
 
 interface Props {
   index: number;
@@ -33,7 +34,7 @@ function SingleScreenshot({ scrollYProgress, index, totalCount, src }: Props) {
   });
   return (
     <motion.img
-      src={src}
+      src={withBase(src)}
       alt={`screenshot ${index}`}
       style={{ translateX: x, translateY: y, scale: 1 }}
       className="absolute overflow-hidden w-full h-full object-cover object-top"

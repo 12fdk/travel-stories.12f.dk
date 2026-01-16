@@ -1,6 +1,7 @@
 import { motion, useScroll } from "framer-motion";
 import { useContext, useRef } from "react";
 import { ConfigContext } from "../../../../utils/configContext";
+import { withBase } from "../../../../utils/basePath";
 import SingleScreenshot from "./singleScreenshot";
 import SVGWave from "./svg/wave";
 import SVGBlob from "./svg/blob";
@@ -32,11 +33,11 @@ function Header() {
                     animate={{ opacity: 1, scale: 1 }}
                     className="flex items-center self-center h-8 md:h-12"
                   >
-                    <img src="/misc/wreath-left.webp" className="h-full" />
+                    <img src={withBase("/misc/wreath-left.webp")} className="h-full" />
                     <p className="text-xs text-gray-500 whitespace-pre text-center">
                       {reward}
                     </p>
-                    <img src="/misc/wreath-right.webp" className="h-full" />
+                    <img src={withBase("/misc/wreath-right.webp")} className="h-full" />
                   </motion.div>
                 ))}
               </div>
@@ -96,7 +97,7 @@ function Header() {
                       <img
                         className="h-14"
                         alt="google play logo"
-                        src="/stores/google-play.svg"
+                        src={withBase("/stores/google-play.svg")}
                       />
                     </a>
                   </li>
@@ -107,7 +108,7 @@ function Header() {
                       <img
                         className="h-14"
                         alt="app store logo"
-                        src="/stores/app-store.svg"
+                        src={withBase("/stores/app-store.svg")}
                       />
                     </a>
                   </li>
@@ -126,7 +127,7 @@ function Header() {
                       >
                         <div className="w-8">
                           <img
-                            src={`/avatars/${index + 1}.webp`}
+                            src={withBase(`/avatars/${index + 1}.webp`)}
                             alt={`app user ${index + 1}`}
                           />
                         </div>

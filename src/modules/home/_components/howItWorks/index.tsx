@@ -3,6 +3,7 @@ import clsx from "clsx";
 import { motion } from "framer-motion";
 import { useContext } from "react";
 import { ConfigContext } from "../../../../utils/configContext";
+import { withBase } from "../../../../utils/basePath";
 import SwirlArrowBottomLeft from "./svg/swirlArrowBottomLeft";
 import SwirlArrowBottomRight from "./svg/swirlArrowBottomRight";
 import SwirlArrowBottom from "./svg/swirlArrowBottom";
@@ -105,7 +106,7 @@ function HowItWorks() {
             >
               <img
                 className="rounded-3xl lg:w-[75%]"
-                src={step.image}
+                src={withBase(step.image)}
                 alt={`step ${index}`}
               />
             </motion.div>

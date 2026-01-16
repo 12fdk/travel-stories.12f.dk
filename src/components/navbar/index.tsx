@@ -4,6 +4,7 @@ import clsx from "clsx";
 import { easeIn, motion, useScroll, useTransform } from "framer-motion";
 import { useContext, useState } from "react";
 import { ConfigContext } from "../../utils/configContext";
+import { withBase } from "../../utils/basePath";
 import ThemeSwitcher from "./themeSwitcher";
 
 function Navbar() {
@@ -54,7 +55,7 @@ function Navbar() {
         />
         <div className="navbar-start">
           <a href="/" className="flex items-center">
-            <img className="h-12 rounded-[22%]" src={logo} alt="logo" />
+            <img className="h-12 rounded-[22%]" src={withBase(logo)} alt="logo" />
             <span className="font-bold mx-1 md:text-lg">{name}</span>
           </a>
         </div>
@@ -114,14 +115,14 @@ function Navbar() {
           {googlePlayLink && (
             <li className="mb-2">
               <a href={googlePlayLink} target="_blank">
-                <img className="h-12" src="/stores/google-play.svg" />
+                <img className="h-12" src={withBase("/stores/google-play.svg")} />
               </a>
             </li>
           )}
           {appStoreLink && (
             <li className="mb-2">
               <a href={appStoreLink} target="_blank">
-                <img className="h-12" src="/stores/app-store.svg" />
+                <img className="h-12" src={withBase("/stores/app-store.svg")} />
               </a>
             </li>
           )}

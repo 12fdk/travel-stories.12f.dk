@@ -2,6 +2,7 @@ import AnimatedText from "../../../../components/animatedText";
 import { motion } from "framer-motion";
 import { useContext } from "react";
 import { ConfigContext } from "../../../../utils/configContext";
+import { withBase } from "../../../../utils/basePath";
 
 function Partners() {
   const {
@@ -25,7 +26,7 @@ function Partners() {
           {partners.logos.map((logo, index) => (
             <motion.img
               key={index}
-              src={logo}
+              src={withBase(logo)}
               alt="partner logo"
               variants={{
                 hidden: { y: "-80%", opacity: 0 },

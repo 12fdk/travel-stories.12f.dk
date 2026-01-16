@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { ConfigContext } from "../../utils/configContext";
+import { withBase } from "../../utils/basePath";
 import Spill from "./svgs/spill";
 import IphoneFrame from "../../components/iphoneFrame";
 import { motion } from "framer-motion";
@@ -65,7 +66,7 @@ function AppBanner() {
                     <img
                       className="h-14"
                       alt="google play logo"
-                      src="/stores/google-play.svg"
+                      src={withBase("/stores/google-play.svg")}
                     />
                   </a>
                 </li>
@@ -76,7 +77,7 @@ function AppBanner() {
                     <img
                       className="h-14"
                       alt="app store logo"
-                      src="/stores/app-store.svg"
+                      src={withBase("/stores/app-store.svg")}
                     />
                   </a>
                 </li>
@@ -117,7 +118,7 @@ function AppBanner() {
                   index === 2 && "absolute origin-bottom-right hidden xl:block"
                 )}
               >
-                <IphoneFrame src={src} />
+                <IphoneFrame src={withBase(src)} />
               </motion.div>
             ))}
           </motion.div>
