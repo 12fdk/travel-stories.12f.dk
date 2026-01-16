@@ -1,5 +1,4 @@
 ---
-import "swiper/css";
 import "@styles/styles.scss";
 import type { TemplateConfig } from "utils/configType";
 
@@ -24,8 +23,9 @@ const ogImage = logo.startsWith("http") ? logo : new URL("/og-image.png", Astro.
     <link rel="preload" href="/fonts/Inter-Regular.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="/fonts/Inter-Bold.woff2" as="font" type="font/woff2" crossorigin />
 
-    <!-- Preload critical above-fold image (first screenshot) -->
-    <link rel="preload" href="/screenshots/packing-list.webp" as="image" type="image/webp" />
+    <!-- Preload critical above-fold image (first screenshot) - responsive -->
+    <link rel="preload" href="/screenshots/packing-list-mobile.webp" as="image" type="image/webp" media="(max-width: 768px)" />
+    <link rel="preload" href="/screenshots/packing-list.webp" as="image" type="image/webp" media="(min-width: 769px)" />
 
     <!-- Preconnect to external resources -->
     <link rel="preconnect" href="https://umami.robert-jensen.dk" />

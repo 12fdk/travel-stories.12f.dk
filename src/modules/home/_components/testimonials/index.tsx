@@ -1,4 +1,5 @@
 import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
 
 import AnimatedText from "../../../../components/animatedText";
 import { motion } from "framer-motion";

@@ -32,9 +32,15 @@ function SingleScreenshot({ scrollYProgress, index, totalCount, src }: Props) {
     }
     return 0;
   });
+
+  // Create mobile version path by adding -mobile suffix before extension
+  const mobileSrc = src.replace(/\.webp$/, '-mobile.webp');
+
   return (
     <motion.img
       src={withBase(src)}
+      srcSet={`${withBase(mobileSrc)} 480w, ${withBase(src)} 1206w`}
+      sizes="(max-width: 768px) 480px, 1206px"
       alt={`App screenshot ${index + 1}`}
       style={{ translateX: x, translateY: y, scale: 1 }}
       className="absolute overflow-hidden w-full h-full object-cover object-top iphone-screenshot"
