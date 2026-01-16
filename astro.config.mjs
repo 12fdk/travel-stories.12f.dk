@@ -4,8 +4,8 @@ import tailwind from "@astrojs/tailwind";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://12fdk.github.io",
-  base: "/travel-stories.12f.dk",
+  site: "https://travel-stories.12f.dk",
+  base: "/",
   vite: {
     css: {
       preprocessorOptions: {
