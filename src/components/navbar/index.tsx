@@ -81,7 +81,7 @@ function Navbar() {
             ))}
           </ul>
           {topNavbar.cta && appStoreLink && (
-            <a href={appStoreLink} target="_blank" rel="noopener noreferrer" className="ml-3 btn btn-primary py-4 !text-white">
+            <a href={appStoreLink} target="_blank" rel="noopener noreferrer" className="ml-3 btn py-4 bg-[#0066CC] hover:bg-[#0055AA] text-white border-none">
               {topNavbar.cta}
             </a>
           )}
