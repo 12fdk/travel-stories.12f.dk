@@ -98,7 +98,7 @@ function Pricing() {
                   <div className="w-full">
                     <a
                       href="/app"
-                      className="btn btn-primary btn-square no-animation rounded-none w-full text-lg h-auto py-4"
+                      className="btn btn-primary btn-square no-animation rounded-none w-full text-lg h-auto py-4 !text-white"
                     >
                       {pricing.actionText}
                     </a>

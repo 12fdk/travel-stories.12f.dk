@@ -42,7 +42,7 @@ function ThemeSelector() {
       <div className="drawer-content">
         <label
           htmlFor="theme-drawer"
-          className="fixed z-[1] right-0 top-1/2 btn btn-primary drawer-button flex"
+          className="fixed z-[1] right-0 top-1/2 btn btn-primary drawer-button flex !text-white"
         >
           <Cog8Tooth className="w-4" />
           <span>Themes</span>
