@@ -8,6 +8,10 @@ const BASE_PATH = import.meta.env.BASE_URL || "";
  */
 export function withBase(path: string): string {
   if (!path) return BASE_PATH;
+  // Don't modify external URLs (http:// or https://)
+  if (path.startsWith("http://") || path.startsWith("https://")) {
+    return path;
+  }
   // Remove trailing slash from base and ensure path starts with /
   const base = BASE_PATH.endsWith("/") ? BASE_PATH.slice(0, -1) : BASE_PATH;
   const normalizedPath = path.startsWith("/") ? path : `/${path}`;
