@@ -50,7 +50,7 @@ function AppBanner() {
               initial={{ opacity: 0, y: "100%" }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5 }}
-              className="text-primary-content/70 whitespace-pre-wrap text-left m-0 mt-1 md:text-lg"
+              className="text-primary-content/90 whitespace-pre-wrap text-left m-0 mt-1 md:text-lg"
             >
               {appBanner.subtitle}
             </motion.p>
@@ -65,8 +65,10 @@ function AppBanner() {
                   <a href={googlePlayLink}>
                     <img
                       className="h-14"
-                      alt="google play logo"
+                      alt="Download on Google Play"
                       src={withBase("/stores/google-play.svg")}
+                      width={168}
+                      height={56}
                     />
                   </a>
                 </li>
@@ -76,8 +78,10 @@ function AppBanner() {
                   <a href={appStoreLink}>
                     <img
                       className="h-14"
-                      alt="app store logo"
+                      alt="Download on App Store"
                       src={withBase("/stores/app-store.svg")}
+                      width={168}
+                      height={56}
                     />
                   </a>
                 </li>

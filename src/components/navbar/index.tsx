@@ -55,7 +55,7 @@ function Navbar() {
         />
         <div className="navbar-start">
           <a href="/" className="flex items-center">
-            <img className="h-12 rounded-[22%]" src={withBase(logo)} alt="logo" />
+            <img className="h-12 rounded-[22%]" src={withBase(logo)} alt={`${name} logo`} width={48} height={48} />
             <span className="font-bold mx-1 md:text-lg">{name}</span>
           </a>
         </div>
@@ -68,7 +68,7 @@ function Navbar() {
         </div>
         <div className="navbar-end hidden font-semibold md:flex">
           <ul className="flex gap-4 px-1 items-center">
-            {showThemeSwitch && <ThemeSwitcher />}
+            {showThemeSwitch && <li><ThemeSwitcher /></li>}
             {topNavbar.links.map(({ title, href }, index) => (
               <li key={index}>
                 <a
@@ -81,7 +81,7 @@ function Navbar() {
             ))}
           </ul>
           {topNavbar.cta && appStoreLink && (
-            <a href={appStoreLink} target="_blank" className="ml-3 btn btn-primary btn-outline py-4">
+            <a href={appStoreLink} target="_blank" rel="noopener noreferrer" className="ml-3 btn btn-primary btn-outline py-4">
               {topNavbar.cta}
             </a>
           )}
@@ -114,15 +114,15 @@ function Navbar() {
         >
           {googlePlayLink && (
             <li className="mb-2">
-              <a href={googlePlayLink} target="_blank">
-                <img className="h-12" src={withBase("/stores/google-play.svg")} />
+              <a href={googlePlayLink} target="_blank" rel="noopener noreferrer">
+                <img className="h-12" src={withBase("/stores/google-play.svg")} alt="Download on Google Play" width={144} height={48} />
               </a>
             </li>
           )}
           {appStoreLink && (
             <li className="mb-2">
-              <a href={appStoreLink} target="_blank">
-                <img className="h-12" src={withBase("/stores/app-store.svg")} />
+              <a href={appStoreLink} target="_blank" rel="noopener noreferrer">
+                <img className="h-12" src={withBase("/stores/app-store.svg")} alt="Download on App Store" width={144} height={48} />
               </a>
             </li>
           )}
