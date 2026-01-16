@@ -22,7 +22,7 @@ function Testimonials() {
           initial={{ y: "100%", opacity: 0 }}
           whileInView={{ y: "0%", opacity: 1 }}
           viewport={{ once: true }}
-          className="text-xl max-w-lg text-base-content/80"
+          className="text-xl max-w-lg text-base-content"
         >
           {testimonials.subtitle}
         </motion.p>

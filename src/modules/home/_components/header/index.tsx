@@ -34,7 +34,7 @@ function Header() {
                     className="flex items-center self-center h-8 md:h-12"
                   >
                     <img src={withBase("/misc/wreath-left.webp")} className="h-full" alt="" width={24} height={24} />
-                    <p className="text-xs text-gray-600 whitespace-pre text-center">
+                    <p className="text-xs text-base-content whitespace-pre text-center">
                       {reward}
                     </p>
                     <img src={withBase("/misc/wreath-right.webp")} className="h-full" alt="" width={24} height={24} />
@@ -81,7 +81,7 @@ function Header() {
                 initial={{ opacity: 0, x: -50 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.5, ease: "easeInOut" }}
-                className="whitespace-pre-wrap text-left m-0 my-1 max-w-md md:text-lg md:max-w-lg text-base-content/80"
+                className="whitespace-pre-wrap text-left m-0 my-1 max-w-md md:text-lg md:max-w-lg text-base-content"
               >
                 {header.subtitle}
               </motion.p>

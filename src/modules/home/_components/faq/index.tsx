@@ -63,7 +63,7 @@ function Faq() {
                   }
                 )}
               >
-                <p className="overflow-hidden mx-4 text-base-content/80">{qa.answer}</p>
+                <p className="overflow-hidden mx-4 text-base-content">{qa.answer}</p>
               </div>
             </motion.div>
           ))}

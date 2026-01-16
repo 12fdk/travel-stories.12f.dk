@@ -27,7 +27,7 @@ function Features() {
             initial={{ y: "100%", opacity: 0 }}
             whileInView={{ y: "0%", opacity: 1 }}
             viewport={{ once: true }}
-            className="text-md max-w-lg text-base-content/80"
+            className="text-md max-w-lg text-base-content"
           >
             {features.subtitle}
           </motion.p>
@@ -76,7 +76,7 @@ function Features() {
             <div className="w-full pt-0 px-0 card-body items-center text-center transition-transform max-w-none group-hover:scale-95">
               <h3 className="card-title text-2xl font-bold">{feat.title}</h3>
               <div className="h-0.5 w-full bg-primary/10" />
-              <p className="text-base-content/80">{feat.subtitle}</p>
+              <p className="text-base-content">{feat.subtitle}</p>
             </div>
           </motion.div>
         ))}

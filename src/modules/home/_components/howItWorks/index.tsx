@@ -29,7 +29,7 @@ function HowItWorks() {
             initial={{ y: "100%", opacity: 0 }}
             whileInView={{ y: "0%", opacity: 1 }}
             viewport={{ once: true }}
-            className="text-md max-w-lg text-base-content/80"
+            className="text-md max-w-lg text-base-content"
           >
             {howItWorks.subtitle}
           </motion.p>
@@ -95,7 +95,7 @@ function HowItWorks() {
                 {index + 1}
               </div>
               <h3 className="mt-0 text-2xl font-bold">{step.title}</h3>
-              <p className="mx-auto max-w-sm text-base-content/80">{step.subtitle}</p>
+              <p className="mx-auto max-w-sm text-base-content">{step.subtitle}</p>
             </motion.div>
             <motion.div
               variants={{
