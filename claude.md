@@ -101,12 +101,20 @@ Main configuration in `src/utils/config.ts` - customize:
 - Always run all local tests using Docker
 - Use agent-browser to test the website after making changes
 
-## Tasks / Roadmap
+## Task Management
 
-- [ ] Set up base template
-- [ ] Configure Docker development environment
-- [ ] Implement App Store data fetching
-- [ ] Customize theme and branding
-- [ ] Add app screenshots to hero section
-- [ ] Configure GitHub Pages deployment
-- [ ] Set up GitHub Actions for automatic builds
+- All tasks should be tracked as GitHub issues
+- View issues: `gh issue list` or https://github.com/12fdk/travel-stories.12f.dk/issues
+
+### Workflow for Issues
+
+1. Pick an issue to work on
+2. Create a feature branch: `git checkout -b feature/<issue-number>-<short-description>`
+3. Work on the feature, committing changes to the branch
+4. When complete, merge back to main:
+   ```bash
+   git checkout main
+   git merge feature/<branch-name>
+   git push
+   ```
+5. Close the issue (or reference it in commit with `Fixes #<issue-number>`)

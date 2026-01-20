@@ -3,7 +3,9 @@
     "allow": [
       "Bash(npx degit:*)",
       "Skill(agent-browser)",
-      "Skill(agent-browser:*)"
+      "Skill(agent-browser:*)",
+      "Bash(gh issue create:*)",
+      "Bash(gh issue close:*)"
     ]
   }
 }
