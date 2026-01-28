@@ -95,31 +95,31 @@ const templateConfig: TemplateConfig = {
           title: "Create Your Trip",
           subtitle:
             "Set your destination, travel dates, and budget to get started with your adventure planning.",
-          image: "/stock/01.webp",
+          image: "/images/how-it-works/01-create-trip.webp",
         },
         {
           title: "Build Your Itinerary",
           subtitle:
             "Add activities day-by-day with interactive maps to visualize your journey and never miss a moment.",
-          image: "/stock/02.webp",
+          image: "/images/how-it-works/02-build-itinerary.webp",
         },
         {
           title: "Organize Everything",
           subtitle:
             "Manage bookings for flights, hotels, and car rentals. Use smart packing lists and set departure reminders.",
-          image: "/stock/03.webp",
+          image: "/images/how-it-works/03-organize.webp",
         },
         {
           title: "Track Your Budget",
           subtitle:
             "Monitor expenses with visual breakdowns to stay on track and make the most of your travel budget.",
-          image: "/stock/04.webp",
+          image: "/images/how-it-works/04-track-budget.webp",
         },
         {
           title: "Capture Memories",
           subtitle:
             "Take photos and create a digital travel diary to remember every adventure, even offline.",
-          image: "/stock/05.webp",
+          image: "/images/how-it-works/05-capture-memories.webp",
         },
       ],
     },
