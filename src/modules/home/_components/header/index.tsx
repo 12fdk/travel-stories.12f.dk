@@ -118,6 +118,23 @@ function Header() {
                   </li>
                 )}
               </motion.ul>
+              {appStoreLink && (
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.8 }}
+                  className="flex items-center gap-1.5 mt-2"
+                >
+                  <div className="flex text-yellow-400" aria-label="5 out of 5 stars">
+                    {[...Array(5)].map((_, i) => (
+                      <svg key={i} className="w-4 h-4 fill-current" viewBox="0 0 20 20">
+                        <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
+                      </svg>
+                    ))}
+                  </div>
+                  <span className="text-sm font-medium text-base-content">5.0 on the App Store</span>
+                </motion.div>
+              )}
               {header.usersDescription && (
                 <div className="not-prose flex items-center gap-2 my-1">
                   <ul className="avatar-group -space-x-4">
