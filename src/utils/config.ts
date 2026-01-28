@@ -32,7 +32,7 @@ const templateConfig: TemplateConfig = {
     ],
   },
   topNavbar: {
-    cta: "Get the app",
+    cta: "Start Free",
     disableWidthAnimation: false,
     hideAppStore: false,
     hideGooglePlay: true,
@@ -196,7 +196,7 @@ const templateConfig: TemplateConfig = {
         "/screenshots/trips-list.webp",
       ],
       rewards: [],
-      usersDescription: "Join travelers planning their adventures",
+      usersDescription: "",
       headlineMark: [2, 3],
     },
   },
