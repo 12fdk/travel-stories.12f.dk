@@ -86,22 +86,6 @@ const howToSteps = (home?.howItWorks?.steps ?? []).map((step, index) => ({
   "url": `${canonicalURL.href}#how-it-works`,
 }));
 
-// Reviews include a publisher reference so each one is attributed to the
-// first-party host — Google's review guidelines reward this.
-const reviewEntities = (home?.testimonials?.cards ?? []).map((t) => ({
-  "@type": "Review",
-  "author": { "@type": "Person", "name": t.name },
-  "publisher": publisherRef,
-  "itemReviewed": { "@id": appId },
-  "reviewBody": t.comment,
-  "reviewRating": {
-    "@type": "Rating",
-    "ratingValue": "5",
-    "bestRating": "5",
-    "worstRating": "1",
-  },
-}));
-
 const isHome = Astro.url.pathname === "/" || Astro.url.pathname === "";
 ---
 
@@ -119,9 +103,9 @@ const isHome = Astro.url.pathname === "/" || Astro.url.pathname === "";
     <link rel="preload" href="/fonts/Inter-Regular.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="/fonts/Inter-Bold.woff2" as="font" type="font/woff2" crossorigin />
 
-    <!-- Preload critical above-fold image (first screenshot) - responsive -->
-    <link rel="preload" href="/screenshots/packing-list-mobile.webp" as="image" type="image/webp" media="(max-width: 768px)" />
-    <link rel="preload" href="/screenshots/packing-list.webp" as="image" type="image/webp" media="(min-width: 769px)" />
+    <!-- Preload the first hero screenshot (same asset used at all viewports
+         inside the fixed-width iPhone frame). -->
+    <link rel="preload" href="/screenshots/packing-list.webp" as="image" type="image/webp" fetchpriority="high" />
 
     <!-- Preconnect to external resources -->
     <link rel="preconnect" href="https://umami.robert-jensen.dk" />
@@ -180,7 +164,6 @@ const isHome = Astro.url.pathname === "/" || Astro.url.pathname === "";
       "name": "Travel Stories - Trip Planner",
       "alternateName": "Travel Stories",
       "operatingSystem": `iOS ${minimumOs}+`,
-      "availableOnDevice": "iPhone",
       "applicationCategory": "TravelApplication",
       "applicationSubCategory": "Trip Planner",
       "softwareVersion": appVersion,
@@ -296,18 +279,11 @@ const isHome = Astro.url.pathname === "/" || Astro.url.pathname === "";
       })} />
     ) : null}
 
-    {isHome && reviewEntities.length > 0 && (
-      <script type="application/ld+json" set:html={JSON.stringify({
-        "@context": "https://schema.org",
-        "@type": "Product",
-        "name": "Travel Stories - Trip Planner",
-        "description": seo.description,
-        "image": ogImage,
-        "brand": { "@type": "Brand", "name": "Travel Stories" },
-        "mainEntityOfPage": { "@id": appId },
-        "review": reviewEntities,
-      })} />
-    )}
+    {/* Intentionally NOT emitting Product/Review JSON-LD for the testimonials.
+        Google's review-snippet guidelines treat first-party reviews about one's
+        own product as self-serving and disallow them. Testimonials remain as UI
+        only. The real aggregate rating lives on MobileApplication, sourced from
+        the live App Store API. */}
 
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
