@@ -17,8 +17,8 @@ interface Props {
 function Home({ config }: Props) {
   return (
     <ConfigContext.Provider value={config}>
-      <main>
-        <Navbar />
+      <Navbar />
+      <main id="main">
         <Header />
         <Partners />
         <Features />
@@ -26,8 +26,8 @@ function Home({ config }: Props) {
         <Testimonials />
         <Faq />
         <AppBanner />
-        <Footer />
       </main>
+      <Footer />
     </ConfigContext.Provider>
   );
 }

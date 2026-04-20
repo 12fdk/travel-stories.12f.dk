@@ -8,7 +8,7 @@ function Partners() {
   const {
     home: { partners },
   } = useContext(ConfigContext)!;
-  if (!partners) return null;
+  if (!partners || !partners.logos?.length) return null;
 
   return (
     <section id={partners.id} className="relative p-4">

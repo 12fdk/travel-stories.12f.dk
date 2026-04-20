@@ -1,5 +1,7 @@
 ---
 import "@styles/styles.scss";
+import fs from "node:fs";
+import path from "node:path";
 import type { TemplateConfig } from "utils/configType";
 
 const { backgroundGrid, seo, logo, theme, forceTheme, appStoreLink, name, appStore, home } =
@@ -24,9 +26,83 @@ const featureList = home?.features?.cards?.map((c) => c.title) ?? [
   "Offline Access",
 ];
 
-const screenshotUrls = (home?.header?.screenshots ?? ["/screenshots/trips-list.webp"]).map(
+// Discover every main iPhone screenshot at build time (skip -mobile variants
+// and numbered placeholder files), so the MobileApplication schema carries
+// a complete screenshot list for Google / Apple Intelligence / App carousels.
+const screenshotsDir = path.join(process.cwd(), "public", "screenshots");
+let discoveredScreenshots: string[] = [];
+try {
+  discoveredScreenshots = fs
+    .readdirSync(screenshotsDir)
+    .filter((f) => f.endsWith(".webp"))
+    .filter((f) => !f.includes("-mobile"))
+    .filter((f) => !/^\d+\.webp$/.test(f))
+    .sort();
+} catch {
+  discoveredScreenshots = [];
+}
+const heroScreenshots = home?.header?.screenshots ?? ["/screenshots/trips-list.webp"];
+const screenshotFileSet = new Set<string>([
+  ...heroScreenshots,
+  ...discoveredScreenshots.map((f) => `/screenshots/${f}`),
+]);
+const screenshotUrls = Array.from(screenshotFileSet).map(
   (s) => new URL(s, Astro.site).href,
 );
+
+// Entity graph @ids — let crawlers unify repeated references to the same thing.
+const siteId = `${Astro.site?.href ?? ""}#website`;
+const orgId = "https://www.12f.dk/#organization";
+const authorId = "https://www.12f.dk/#robert";
+const appId = `${Astro.site?.href ?? ""}#app`;
+
+const orgSameAs = [
+  "https://www.facebook.com/profile.php?id=61574251436717",
+  "https://www.instagram.com/travel_stories_app/",
+  appStoreLink,
+].filter((u): u is string => Boolean(u));
+
+// Publisher reference reused across Reviews / WebSite / App so the knowledge graph
+// collapses to a single Organization node.
+const publisherRef = { "@id": orgId };
+
+// FAQ schema is generated from config to stay in sync with what the user sees
+const faqEntities = (home?.faq?.qa ?? []).map((item) => ({
+  "@type": "Question",
+  "name": item.question,
+  "acceptedAnswer": {
+    "@type": "Answer",
+    "text": item.answer,
+  },
+}));
+
+// HowTo schema for the "How it works" steps — high-value signal for AI/search
+const howToSteps = (home?.howItWorks?.steps ?? []).map((step, index) => ({
+  "@type": "HowToStep",
+  "position": index + 1,
+  "name": step.title,
+  "text": step.subtitle,
+  ...(step.image ? { "image": new URL(step.image, Astro.site).href } : {}),
+  "url": `${canonicalURL.href}#how-it-works`,
+}));
+
+// Reviews include a publisher reference so each one is attributed to the
+// first-party host — Google's review guidelines reward this.
+const reviewEntities = (home?.testimonials?.cards ?? []).map((t) => ({
+  "@type": "Review",
+  "author": { "@type": "Person", "name": t.name },
+  "publisher": publisherRef,
+  "itemReviewed": { "@id": appId },
+  "reviewBody": t.comment,
+  "reviewRating": {
+    "@type": "Rating",
+    "ratingValue": "5",
+    "bestRating": "5",
+    "worstRating": "1",
+  },
+}));
+
+const isHome = Astro.url.pathname === "/" || Astro.url.pathname === "";
 ---
 
 <!doctype html>
@@ -62,6 +138,10 @@ const screenshotUrls = (home?.header?.screenshots ?? ["/screenshots/trips-list.w
     <meta name="author" content="Robert Jensen" />
     <meta name="publisher" content="12f.dk" />
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+    <meta name="theme-color" content="#007AFF" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0A84FF" media="(prefers-color-scheme: dark)" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="format-detection" content="telephone=no" />
 
     <!-- Hints for AI/LLM crawlers -->
     <link rel="alternate" type="text/markdown" title="LLM-friendly summary" href="/llms.txt" />
@@ -96,9 +176,11 @@ const screenshotUrls = (home?.header?.screenshots ?? ["/screenshots/trips-list.w
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
       "@type": "MobileApplication",
+      "@id": appId,
       "name": "Travel Stories - Trip Planner",
       "alternateName": "Travel Stories",
       "operatingSystem": `iOS ${minimumOs}+`,
+      "availableOnDevice": "iPhone",
       "applicationCategory": "TravelApplication",
       "applicationSubCategory": "Trip Planner",
       "softwareVersion": appVersion,
@@ -106,12 +188,15 @@ const screenshotUrls = (home?.header?.screenshots ?? ["/screenshots/trips-list.w
       ...(lastUpdated ? { "dateModified": lastUpdated } : {}),
       "inLanguage": "en",
       "featureList": featureList,
+      "sameAs": [appStoreLink].filter(Boolean),
       "offers": {
         "@type": "Offer",
         "price": appPrice,
         "priceCurrency": "USD",
         "availability": "https://schema.org/InStock",
-        "url": appStoreLink
+        "url": appStoreLink,
+        "eligibleRegion": { "@type": "Place", "name": "Worldwide" },
+        "seller": { "@id": orgId }
       },
       "aggregateRating": {
         "@type": "AggregateRating",
@@ -126,94 +211,169 @@ const screenshotUrls = (home?.header?.screenshots ?? ["/screenshots/trips-list.w
       "installUrl": appStoreLink,
       "screenshot": screenshotUrls,
       "image": ogImage,
-      "author": {
-        "@type": "Person",
-        "name": "Robert Jensen",
-        "email": "robert@12f.dk",
-        "url": "https://www.12f.dk"
-      },
-      "publisher": {
-        "@type": "Organization",
-        "name": "12f.dk",
-        "url": "https://www.12f.dk",
-        "logo": ogImage
-      }
+      "author": { "@id": authorId },
+      "publisher": publisherRef
+    })} />
+
+    <!-- Structured Data - Author (Person) -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "@id": authorId,
+      "name": "Robert Jensen",
+      "email": "robert@12f.dk",
+      "url": "https://www.12f.dk",
+      "jobTitle": "Founder & Developer",
+      "worksFor": publisherRef
     })} />
 
     <!-- Structured Data - Organization -->
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
       "@type": "Organization",
+      "@id": orgId,
       "name": "12f.dk",
       "url": "https://www.12f.dk",
-      "logo": ogImage,
-      "founder": {
-        "@type": "Person",
-        "name": "Robert Jensen"
+      "logo": {
+        "@type": "ImageObject",
+        "url": ogImage,
+        "caption": "12f.dk logo"
       },
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "email": "robert@12f.dk",
-        "contactType": "customer support",
-        "availableLanguage": ["English"]
-      }
-    })} />
-
-    <!-- Structured Data - FAQ -->
-    <script type="application/ld+json" set:html={JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "mainEntity": [
+      "image": ogImage,
+      "sameAs": orgSameAs,
+      "founder": { "@id": authorId },
+      "contactPoint": [
         {
-          "@type": "Question",
-          "name": "Is Travel Stories free to use?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes, it's free! We also offer a Premium Lifetime upgrade with more advanced features."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Does the app work offline?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Absolutely! Travel Stories is designed to work offline so you can access your itineraries, bookings, packing lists, and travel diary even in remote destinations without internet access."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What devices are supported?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Travel Stories is currently available for iPhone and requires iOS 17.0 or later."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "How do I track my travel expenses?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Simply add expenses as you go during your trip. Travel Stories provides visual breakdowns by category so you can see exactly where your money is going and stay within your budget."
-          }
+          "@type": "ContactPoint",
+          "email": "robert@12f.dk",
+          "contactType": "customer support",
+          "availableLanguage": ["English"],
+          "url": Astro.site?.href,
+          "areaServed": "Worldwide"
         }
       ]
+    })} />
+
+    {isHome && faqEntities.length > 0 && (
+      <script type="application/ld+json" set:html={JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": faqEntities,
+        "speakable": {
+          "@type": "SpeakableSpecification",
+          "cssSelector": [".faq-item summary", ".faq-item summary + div"]
+        }
+      })} />
+    )}
+
+    {isHome && howToSteps.length > 0 && (
+      <script type="application/ld+json" set:html={JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "HowTo",
+        "name": "How to plan a trip with Travel Stories",
+        "description": "Plan, organise, and remember your next adventure in five simple steps using the Travel Stories iPhone app.",
+        "totalTime": "PT10M",
+        "tool": [{ "@type": "HowToTool", "name": "Travel Stories iPhone app" }],
+        "step": howToSteps,
+        "image": ogImage,
+        "supply": [],
+      })} />
+    )}
+
+    {isHome && home?.features?.cards?.length ? (
+      <script type="application/ld+json" set:html={JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        "name": home.features.title,
+        "itemListOrder": "https://schema.org/ItemListOrderAscending",
+        "numberOfItems": home.features.cards.length,
+        "itemListElement": home.features.cards.map((c, i) => ({
+          "@type": "ListItem",
+          "position": i + 1,
+          "name": c.title,
+          "description": c.subtitle,
+        })),
+      })} />
+    ) : null}
+
+    {isHome && reviewEntities.length > 0 && (
+      <script type="application/ld+json" set:html={JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "Product",
+        "name": "Travel Stories - Trip Planner",
+        "description": seo.description,
+        "image": ogImage,
+        "brand": { "@type": "Brand", "name": "Travel Stories" },
+        "mainEntityOfPage": { "@id": appId },
+        "review": reviewEntities,
+      })} />
+    )}
+
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "@id": `${Astro.site?.href}#breadcrumb`,
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": Astro.site?.href,
+        },
+        ...(isHome
+          ? []
+          : [{
+              "@type": "ListItem",
+              "position": 2,
+              "name": seo.title.split("|")[0].trim(),
+              "item": canonicalURL.href,
+            }]),
+      ],
     })} />
 
     <!-- Structured Data - Website -->
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
       "@type": "WebSite",
+      "@id": siteId,
       "name": name,
       "alternateName": "Travel Stories - Trip Planner",
       "url": Astro.site?.href,
       "description": seo.description,
       "inLanguage": "en",
-      "publisher": {
-        "@type": "Organization",
-        "name": "12f.dk",
-        "url": "https://www.12f.dk"
-      }
+      "publisher": publisherRef,
+      ...(isHome ? { "mainEntity": { "@id": appId } } : {})
     })} />
+
+    {/* WebPage with speakable — lets voice assistants (Google Assistant,
+        Alexa via schema.org) read the hero headline, feature list, and FAQ
+        out loud. */}
+    {isHome && (
+      <script type="application/ld+json" set:html={JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "@id": `${canonicalURL.href}#webpage`,
+        "url": canonicalURL.href,
+        "name": seo.title,
+        "description": seo.description,
+        "inLanguage": "en",
+        "isPartOf": { "@id": siteId },
+        "about": { "@id": appId },
+        "primaryImageOfPage": {
+          "@type": "ImageObject",
+          "url": ogImage
+        },
+        "speakable": {
+          "@type": "SpeakableSpecification",
+          "cssSelector": [
+            "#hero-headline",
+            "#features-heading + div + ul",
+            ".faq-item"
+          ]
+        },
+        "breadcrumb": { "@id": `${Astro.site?.href}#breadcrumb` }
+      })} />
+    )}
 
     <script is:inline define:vars={{ forceTheme }}>
       function getPreferredColorScheme() {
@@ -233,6 +393,7 @@ const screenshotUrls = (home?.header?.screenshots ?? ["/screenshots/trips-list.w
     <script defer src="https://umami.robert-jensen.dk/script.js" data-website-id="48716c88-8707-4174-aef6-cff0c0aef35b"></script>
   </head>
   <body class="relative">
+    <a href="#main" class="skip-link">Skip to main content</a>
     {backgroundGrid && <div class="backgroundGrid" />}
     <slot />
   </body>

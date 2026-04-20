@@ -14,6 +14,7 @@ function AppBanner() {
   return (
     <motion.section
       id={appBanner.id}
+      aria-labelledby="app-banner-heading"
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.4 }}
@@ -39,8 +40,10 @@ function AppBanner() {
         <div className="p-4 bg-primary text-primary-content rounded-t-[var(--rounded-box)] flex flex-col items-center md:flex-row">
           <div className="flex-1 flex flex-col items-center justify-center min-h-full">
             <motion.h2
+              id="app-banner-heading"
               initial={{ opacity: 0, y: "-100%" }}
-              animate={{ opacity: 1, y: 0 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
               transition={{ delay: 0.3 }}
               className="mt-0 mb-4 text-4xl md:text-6xl"
             >
@@ -62,10 +65,17 @@ function AppBanner() {
             >
               {googlePlayLink && (
                 <li className="m-0 p-0">
-                  <a href={googlePlayLink}>
+                  <a
+                    href={googlePlayLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    data-umami-event="footer-banner-google-play-click"
+                    aria-label="Download Travel Stories on Google Play"
+                    className="inline-block transition-transform duration-200 hover:-translate-y-0.5 active:translate-y-0"
+                  >
                     <img
                       className="h-14"
-                      alt="Download on Google Play"
+                      alt="Get it on Google Play"
                       src={withBase("/stores/google-play.svg")}
                       width={168}
                       height={56}
@@ -75,10 +85,17 @@ function AppBanner() {
               )}
               {appStoreLink && (
                 <li className="m-0 p-0">
-                  <a href={appStoreLink}>
+                  <a
+                    href={appStoreLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    data-umami-event="footer-banner-app-store-click"
+                    aria-label="Download Travel Stories on the Apple App Store"
+                    className="inline-block transition-transform duration-200 hover:-translate-y-0.5 active:translate-y-0"
+                  >
                     <img
                       className="h-14"
-                      alt="Download on App Store"
+                      alt="Download on the App Store"
                       src={withBase("/stores/app-store.svg")}
                       width={168}
                       height={56}

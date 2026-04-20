@@ -1,7 +1,5 @@
 import AnimatedText from "../../../../components/animatedText";
-import clsx from "clsx";
-import { motion } from "framer-motion";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { ConfigContext } from "../../../../utils/configContext";
 import NeonHexagon from "./svgs/neonHexagon";
 
@@ -9,65 +7,48 @@ function Faq() {
   const {
     home: { faq },
   } = useContext(ConfigContext)!;
-  const [activeIndex, setActiveIndex] = useState<number>();
 
   if (!faq) return null;
 
   return (
-    <section id={faq.id} className="max-w-screen-lg mx-auto px-4 mb-12">
+    <section id={faq.id} aria-labelledby="faq-heading" className="max-w-screen-lg mx-auto px-4 mb-12">
       <div className="flex flex-col md:flex-row">
         <div className="relative flex-1 flex items-center">
           <NeonHexagon />
           <div className="h-full w-full flex items-center justify-center">
-            <h2 className="text-center font-bold text-3xl flex flex-col items-center mb-8 md:mb-0 md:text-left">
+            <h2
+              id="faq-heading"
+              className="text-center font-bold text-3xl flex flex-col items-center mb-8 md:mb-0 md:text-left"
+            >
               <AnimatedText text={faq.title} initial={{ y: "0%" }} />
             </h2>
           </div>
         </div>
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.4 }}
-          className="flex-1"
-        >
+        <ol role="list" className="flex-1 list-none p-0 m-0">
           {faq.qa.map((qa, index) => (
-            <motion.div
-              key={index}
-              variants={{
-                hidden: { opacity: 0 },
-                visible: { opacity: 1 },
-              }}
-              transition={{ delay: 0.25 + index * 0.25 }}
-              className={clsx(
-                "border-2 border-primary/30 my-2 collapse collapse-arrow",
-                {
-                  "collapse-open": activeIndex === index,
-                }
-              )}
-            >
-              <button
-                onClick={() =>
-                  setActiveIndex((current) =>
-                    current === index ? undefined : index
-                  )
-                }
-                className="text-start collapse-title text-lg font-medium"
+            <li key={index} role="listitem" className="m-0 p-0">
+              <details
+                className="faq-item group border-2 border-primary/20 hover:border-primary/40 focus-within:border-primary/60 rounded-2xl my-2 transition-colors duration-200"
+                style={{ animationDelay: `${index * 80}ms` }}
               >
-                {qa.question}
-              </button>
-              <div
-                className={clsx(
-                  "grid grid-rows-[0fr] duration-300 transition-[grid-template-rows,padding]",
-                  {
-                    "grid-rows-[1fr] pb-4": activeIndex === index,
-                  }
-                )}
-              >
-                <p className="overflow-hidden mx-4 text-base-content">{qa.answer}</p>
-              </div>
-            </motion.div>
+                <summary className="flex items-center justify-between gap-4 cursor-pointer list-none px-5 py-4 text-lg font-medium select-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60 rounded-2xl">
+                  <span>{qa.question}</span>
+                  <svg
+                    aria-hidden="true"
+                    viewBox="0 0 20 20"
+                    className="shrink-0 w-5 h-5 text-primary transition-transform duration-300 group-open:rotate-45"
+                    fill="currentColor"
+                  >
+                    <path d="M10 3a1 1 0 0 1 1 1v5h5a1 1 0 1 1 0 2h-5v5a1 1 0 1 1-2 0v-5H4a1 1 0 1 1 0-2h5V4a1 1 0 0 1 1-1z" />
+                  </svg>
+                </summary>
+                <div className="px-5 pb-4 pt-0 text-base-content/90 leading-relaxed">
+                  {qa.answer}
+                </div>
+              </details>
+            </li>
           ))}
-        </motion.div>
+        </ol>
       </div>
     </section>
   );
