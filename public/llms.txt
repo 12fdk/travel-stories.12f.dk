@@ -1,0 +1,52 @@
+# Travel Stories - Trip Planner
+
+> Travel Stories is a free iPhone app for planning, organising, and remembering every adventure. It combines day-by-day itineraries with interactive maps, budget tracking, smart packing lists, booking storage, a photo travel diary, and full offline access.
+
+Travel Stories is published by Robert Jensen (12f.dk) and distributed exclusively on the Apple App Store. The app is free with an optional Premium Lifetime upgrade (19 DKK / ~$3 USD) that unlocks additional features. It requires iOS 17.0 or later and runs on iPhone. The public landing page is a static Astro site hosted at travel-stories.12f.dk.
+
+## Key facts
+
+- **Name:** Travel Stories - Trip Planner
+- **Platform:** iOS 17.0+ (iPhone)
+- **Price:** Free (Premium Lifetime upgrade: 19 DKK / ~$3 USD)
+- **Category:** Travel
+- **Developer:** Robert Jensen (12f.dk), based in Denmark
+- **App Store ID:** 6756801168
+- **Bundle ID:** 12f.travel-stories
+- **App Store URL:** https://apps.apple.com/app/id6756801168
+- **Contact:** robert@12f.dk
+- **Privacy policy:** https://www.12f.dk/travel-stories/privacy-policy/
+
+## What Travel Stories does
+
+Travel Stories is an all-in-one travel companion app. Users create a trip by setting destination, dates, and budget, then build day-by-day itineraries with activities and attractions plotted on interactive maps. The app stores flight, hotel, and car-rental bookings, provides smart packing lists with 100+ suggested items, tracks expenses with visual category breakdowns, sends departure reminders, and lets users capture photos in a digital travel diary. All data is accessible offline, which is its distinguishing feature for travelers heading to remote destinations with no connectivity.
+
+## Primary features
+
+- **Day-by-day itineraries** with interactive maps to plan and visualise the journey.
+- **Budget tracking** with visual expense breakdowns by category to stay within budget.
+- **Smart packing lists** with 100+ suggested items, customisable per trip type.
+- **Booking management** for flights, hotels, and car rentals, with departure reminders.
+- **Offline access** to all itineraries, bookings, lists, and diary entries.
+- **Travel diary** for photos and memories of each trip.
+
+## Who it is for
+
+Travelers who plan trips themselves and want one app to hold the itinerary, bookings, budget, packing list, and memories — particularly iPhone users heading to destinations with limited or no internet, and people who overspend or forget items on trips.
+
+## Common questions
+
+- **Is it free?** Yes. There is an optional Premium Lifetime upgrade with additional features (19 DKK one-time).
+- **Does it work offline?** Yes. Itineraries, bookings, packing lists, and the travel diary are all available without internet.
+- **What devices?** iPhone, iOS 17.0 or later. No Android or iPad-specific version yet.
+- **Can I share an itinerary with others?** Not yet — planned.
+- **How is budget tracked?** Expenses are added manually during the trip and grouped by category for a visual breakdown.
+
+## Links
+
+- [App Store listing](https://apps.apple.com/dk/app/travel-stories-trip-planner/id6756801168)
+- [Landing page](https://travel-stories.12f.dk)
+- [Features](https://travel-stories.12f.dk/#features)
+- [How it works](https://travel-stories.12f.dk/#how-it-works)
+- [FAQ](https://travel-stories.12f.dk/#faq)
+- [Privacy policy](https://www.12f.dk/travel-stories/privacy-policy/)

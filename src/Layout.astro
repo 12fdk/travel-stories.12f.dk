@@ -2,11 +2,31 @@
 import "@styles/styles.scss";
 import type { TemplateConfig } from "utils/configType";
 
-const { backgroundGrid, seo, logo, theme, forceTheme, appStoreLink, name } =
+const { backgroundGrid, seo, logo, theme, forceTheme, appStoreLink, name, appStore, home } =
   Astro.props as TemplateConfig;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const ogImage = logo.startsWith("http") ? logo : new URL("/og-image.png", Astro.site).href;
+
+// Live rating/version from App Store lookup, with sensible fallbacks
+const ratingValue = appStore?.rating && appStore.rating > 0 ? appStore.rating : 5;
+const ratingCount = appStore?.ratingCount && appStore.ratingCount > 0 ? appStore.ratingCount : 1;
+const appVersion = appStore?.version ?? "1.0.0";
+const appPrice = appStore?.price && appStore.price !== "Free" ? appStore.price : "0";
+const minimumOs = appStore?.minimumOsVersion ?? "17.0";
+const lastUpdated = appStore?.lastUpdated ?? "";
+
+// Pull a short feature list from the home config for richer schema
+const featureList = home?.features?.cards?.map((c) => c.title) ?? [
+  "Day-by-Day Itineraries",
+  "Budget Tracking",
+  "Smart Packing Lists",
+  "Offline Access",
+];
+
+const screenshotUrls = (home?.header?.screenshots ?? ["/screenshots/trips-list.webp"]).map(
+  (s) => new URL(s, Astro.site).href,
+);
 ---
 
 <!doctype html>
@@ -40,7 +60,12 @@ const ogImage = logo.startsWith("http") ? logo : new URL("/og-image.png", Astro.
     <meta name="description" content={seo.description} />
     <meta name="keywords" content="travel planner, trip planner, itinerary app, travel app, vacation planner, travel organizer, packing list, budget tracking, travel diary, iOS travel app, iPhone travel app, Apple travel planner, best travel app iPhone, trip planning app iOS, travel journal app, holiday planner app, road trip planner, travel expense tracker, offline travel app, free travel planner app" />
     <meta name="author" content="Robert Jensen" />
-    <meta name="robots" content="index, follow" />
+    <meta name="publisher" content="12f.dk" />
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+
+    <!-- Hints for AI/LLM crawlers -->
+    <link rel="alternate" type="text/markdown" title="LLM-friendly summary" href="/llms.txt" />
+    <meta name="ai-content-declaration" content="human-authored" />
 
     <!-- Apple App Store Smart Banner -->
     <meta name="apple-itunes-app" content="app-id=6756801168" />
@@ -67,30 +92,70 @@ const ogImage = logo.startsWith("http") ? logo : new URL("/og-image.png", Astro.
     <meta name="twitter:description" content={seo.description} />
     <meta name="twitter:image" content={ogImage} />
 
-    <!-- Structured Data - Software Application -->
+    <!-- Structured Data - Mobile Application -->
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
+      "@type": "MobileApplication",
       "name": "Travel Stories - Trip Planner",
-      "operatingSystem": "iOS",
+      "alternateName": "Travel Stories",
+      "operatingSystem": `iOS ${minimumOs}+`,
       "applicationCategory": "TravelApplication",
+      "applicationSubCategory": "Trip Planner",
+      "softwareVersion": appVersion,
+      "datePublished": "2026-01",
+      ...(lastUpdated ? { "dateModified": lastUpdated } : {}),
+      "inLanguage": "en",
+      "featureList": featureList,
       "offers": {
         "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "USD"
+        "price": appPrice,
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock",
+        "url": appStoreLink
       },
       "aggregateRating": {
         "@type": "AggregateRating",
-        "ratingValue": "5",
-        "ratingCount": "1"
+        "ratingValue": String(ratingValue),
+        "ratingCount": String(ratingCount),
+        "bestRating": "5",
+        "worstRating": "1"
       },
       "description": seo.description,
       "url": canonicalURL.href,
       "downloadUrl": appStoreLink,
-      "screenshot": new URL("/screenshots/trips-list.webp", Astro.site).href,
+      "installUrl": appStoreLink,
+      "screenshot": screenshotUrls,
+      "image": ogImage,
       "author": {
         "@type": "Person",
+        "name": "Robert Jensen",
+        "email": "robert@12f.dk",
+        "url": "https://www.12f.dk"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "12f.dk",
+        "url": "https://www.12f.dk",
+        "logo": ogImage
+      }
+    })} />
+
+    <!-- Structured Data - Organization -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "12f.dk",
+      "url": "https://www.12f.dk",
+      "logo": ogImage,
+      "founder": {
+        "@type": "Person",
         "name": "Robert Jensen"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "email": "robert@12f.dk",
+        "contactType": "customer support",
+        "availableLanguage": ["English"]
       }
     })} />
 
@@ -139,7 +204,15 @@ const ogImage = logo.startsWith("http") ? logo : new URL("/og-image.png", Astro.
       "@context": "https://schema.org",
       "@type": "WebSite",
       "name": name,
-      "url": Astro.site?.href
+      "alternateName": "Travel Stories - Trip Planner",
+      "url": Astro.site?.href,
+      "description": seo.description,
+      "inLanguage": "en",
+      "publisher": {
+        "@type": "Organization",
+        "name": "12f.dk",
+        "url": "https://www.12f.dk"
+      }
     })} />
 
     <script is:inline define:vars={{ forceTheme }}>
