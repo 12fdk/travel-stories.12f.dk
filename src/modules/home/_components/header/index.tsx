@@ -20,7 +20,11 @@ function Header() {
   });
 
   return (
-    <section id={header.id} className="relative pb-8 md:pb-4">
+    <section
+      id={header.id}
+      aria-labelledby="hero-headline"
+      className="relative pb-8 md:pb-4"
+    >
       <div className="max-w-screen-lg mx-auto py-4 px-4 md:py-16">
         <div className="flex flex-col md:flex-row">
           <div className="flex flex-1 items-center md:items-start md:h-[300vh]">
@@ -42,6 +46,7 @@ function Header() {
                 ))}
               </div>
               <motion.h1
+                id="hero-headline"
                 initial={{ opacity: 0, rotateZ: -10 }}
                 animate={{ opacity: 1, rotateZ: 0 }}
                 className="mt-0 mb-4 text-4xl md:text-6xl"
@@ -93,10 +98,17 @@ function Header() {
               >
                 {googlePlayLink && (
                   <li className="m-0 p-0">
-                    <a href={googlePlayLink}>
+                    <a
+                      href={googlePlayLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      data-umami-event="hero-google-play-click"
+                      aria-label="Download Travel Stories on Google Play"
+                      className="inline-block transition-transform duration-200 hover:-translate-y-0.5 active:translate-y-0"
+                    >
                       <img
                         className="h-14"
-                        alt="google play logo"
+                        alt="Get it on Google Play"
                         src={withBase("/stores/google-play.svg")}
                         width={168}
                         height={56}
@@ -106,10 +118,17 @@ function Header() {
                 )}
                 {appStoreLink && (
                   <li className="m-0 p-0">
-                    <a href={appStoreLink}>
+                    <a
+                      href={appStoreLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      data-umami-event="hero-app-store-click"
+                      aria-label="Download Travel Stories on the Apple App Store"
+                      className="inline-block transition-transform duration-200 hover:-translate-y-0.5 active:translate-y-0"
+                    >
                       <img
                         className="h-14"
-                        alt="app store logo"
+                        alt="Download on the App Store"
                         src={withBase("/stores/app-store.svg")}
                         width={168}
                         height={56}

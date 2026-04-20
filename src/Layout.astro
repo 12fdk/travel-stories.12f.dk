@@ -27,6 +27,41 @@ const featureList = home?.features?.cards?.map((c) => c.title) ?? [
 const screenshotUrls = (home?.header?.screenshots ?? ["/screenshots/trips-list.webp"]).map(
   (s) => new URL(s, Astro.site).href,
 );
+
+// FAQ schema is generated from config to stay in sync with what the user sees
+const faqEntities = (home?.faq?.qa ?? []).map((item) => ({
+  "@type": "Question",
+  "name": item.question,
+  "acceptedAnswer": {
+    "@type": "Answer",
+    "text": item.answer,
+  },
+}));
+
+// HowTo schema for the "How it works" steps — high-value signal for AI/search
+const howToSteps = (home?.howItWorks?.steps ?? []).map((step, index) => ({
+  "@type": "HowToStep",
+  "position": index + 1,
+  "name": step.title,
+  "text": step.subtitle,
+  ...(step.image ? { "image": new URL(step.image, Astro.site).href } : {}),
+  "url": `${canonicalURL.href}#how-it-works`,
+}));
+
+// Individual Review schema from testimonials for richer social proof
+const reviewEntities = (home?.testimonials?.cards ?? []).map((t) => ({
+  "@type": "Review",
+  "author": { "@type": "Person", "name": t.name },
+  "reviewBody": t.comment,
+  "reviewRating": {
+    "@type": "Rating",
+    "ratingValue": "5",
+    "bestRating": "5",
+    "worstRating": "1",
+  },
+}));
+
+const isHome = Astro.url.pathname === "/" || Astro.url.pathname === "";
 ---
 
 <!doctype html>
@@ -62,6 +97,10 @@ const screenshotUrls = (home?.header?.screenshots ?? ["/screenshots/trips-list.w
     <meta name="author" content="Robert Jensen" />
     <meta name="publisher" content="12f.dk" />
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+    <meta name="theme-color" content="#007AFF" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0A84FF" media="(prefers-color-scheme: dark)" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="format-detection" content="telephone=no" />
 
     <!-- Hints for AI/LLM crawlers -->
     <link rel="alternate" type="text/markdown" title="LLM-friendly summary" href="/llms.txt" />
@@ -159,44 +198,82 @@ const screenshotUrls = (home?.header?.screenshots ?? ["/screenshots/trips-list.w
       }
     })} />
 
-    <!-- Structured Data - FAQ -->
+    {isHome && faqEntities.length > 0 && (
+      <script type="application/ld+json" set:html={JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": faqEntities,
+      })} />
+    )}
+
+    {isHome && howToSteps.length > 0 && (
+      <script type="application/ld+json" set:html={JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "HowTo",
+        "name": "How to plan a trip with Travel Stories",
+        "description": "Plan, organise, and remember your next adventure in five simple steps using the Travel Stories iPhone app.",
+        "totalTime": "PT10M",
+        "tool": [{ "@type": "HowToTool", "name": "Travel Stories iPhone app" }],
+        "step": howToSteps,
+        "image": ogImage,
+        "supply": [],
+      })} />
+    )}
+
+    {isHome && home?.features?.cards?.length ? (
+      <script type="application/ld+json" set:html={JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        "name": home.features.title,
+        "itemListOrder": "https://schema.org/ItemListOrderAscending",
+        "numberOfItems": home.features.cards.length,
+        "itemListElement": home.features.cards.map((c, i) => ({
+          "@type": "ListItem",
+          "position": i + 1,
+          "name": c.title,
+          "description": c.subtitle,
+        })),
+      })} />
+    ) : null}
+
+    {isHome && reviewEntities.length > 0 && (
+      <script type="application/ld+json" set:html={JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "Product",
+        "name": "Travel Stories - Trip Planner",
+        "description": seo.description,
+        "image": ogImage,
+        "brand": { "@type": "Brand", "name": "Travel Stories" },
+        "review": reviewEntities,
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": String(ratingValue),
+          "ratingCount": String(ratingCount),
+          "bestRating": "5",
+          "worstRating": "1",
+        },
+      })} />
+    )}
+
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "mainEntity": [
+      "@type": "BreadcrumbList",
+      "itemListElement": [
         {
-          "@type": "Question",
-          "name": "Is Travel Stories free to use?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes, it's free! We also offer a Premium Lifetime upgrade with more advanced features."
-          }
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": Astro.site?.href,
         },
-        {
-          "@type": "Question",
-          "name": "Does the app work offline?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Absolutely! Travel Stories is designed to work offline so you can access your itineraries, bookings, packing lists, and travel diary even in remote destinations without internet access."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What devices are supported?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Travel Stories is currently available for iPhone and requires iOS 17.0 or later."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "How do I track my travel expenses?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Simply add expenses as you go during your trip. Travel Stories provides visual breakdowns by category so you can see exactly where your money is going and stay within your budget."
-          }
-        }
-      ]
+        ...(isHome
+          ? []
+          : [{
+              "@type": "ListItem",
+              "position": 2,
+              "name": seo.title.split("|")[0].trim(),
+              "item": canonicalURL.href,
+            }]),
+      ],
     })} />
 
     <!-- Structured Data - Website -->
@@ -233,6 +310,7 @@ const screenshotUrls = (home?.header?.screenshots ?? ["/screenshots/trips-list.w
     <script defer src="https://umami.robert-jensen.dk/script.js" data-website-id="48716c88-8707-4174-aef6-cff0c0aef35b"></script>
   </head>
   <body class="relative">
+    <a href="#main" class="skip-link">Skip to main content</a>
     {backgroundGrid && <div class="backgroundGrid" />}
     <slot />
   </body>

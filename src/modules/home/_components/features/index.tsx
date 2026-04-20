@@ -12,9 +12,13 @@ function Features() {
   if (!features) return null;
 
   return (
-    <section id={features.id} className="max-w-screen-lg mx-auto px-4 py-12">
+    <section
+      id={features.id}
+      aria-labelledby="features-heading"
+      className="max-w-screen-lg mx-auto px-4 py-12"
+    >
       <div className="mb-12 max-w-none flex flex-col items-center prose prose-lg text-center">
-        <h2 className="mb-3">
+        <h2 id="features-heading" className="mb-3">
           <AnimatedText text={features.title} />
         </h2>
         <motion.div
@@ -33,14 +37,14 @@ function Features() {
           </motion.p>
         )}
       </div>
-      <motion.div
+      <motion.ul
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
-        className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-6"
+        className="list-none p-0 m-0 grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-6"
       >
         {features.cards.map((feat, index) => (
-          <motion.div
+          <motion.li
             key={index}
             variants={{
               hidden: { x: "-100%", opacity: 0 },
@@ -48,7 +52,7 @@ function Features() {
             }}
             transition={{ delay: 0.25 + index * 0.25 }}
             className={clsx(
-              "shadow-md border-primary/10 border-2 card relative overflow-hidden group px-12",
+              "shadow-md border-primary/10 border-2 card relative overflow-hidden group px-12 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:border-primary/30",
               {
                 "col-span-2":
                   index === features!.cards.length - 1 &&
@@ -78,9 +82,9 @@ function Features() {
               <div className="h-0.5 w-full bg-primary/10" />
               <p className="text-base-content">{feat.subtitle}</p>
             </div>
-          </motion.div>
+          </motion.li>
         ))}
-      </motion.div>
+      </motion.ul>
     </section>
   );
 }

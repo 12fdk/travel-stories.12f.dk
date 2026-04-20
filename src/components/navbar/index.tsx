@@ -29,8 +29,11 @@ function Navbar() {
     ease: easeIn,
   });
 
+  const closeMobileNav = () => setIsMobileNavVisible(false);
+
   return (
     <motion.nav
+      aria-label="Primary"
       className="opacity-0 max-w-screen-lg mx-auto sticky top-0 z-50"
       animate={{ opacity: 1 }}
     >
@@ -81,8 +84,19 @@ function Navbar() {
             ))}
           </ul>
           {topNavbar.cta && appStoreLink && (
-            <a href={appStoreLink} target="_blank" rel="noopener noreferrer" className="ml-3 btn py-4 bg-[#0066CC] hover:bg-[#0055AA] text-white border-none">
+            <a
+              href={appStoreLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              data-umami-event="navbar-cta-click"
+              aria-label={`${topNavbar.cta} — opens App Store in a new tab`}
+              className="ml-3 btn py-4 bg-primary hover:brightness-110 active:scale-95 transition-all text-primary-content border-none shadow-md shadow-primary/30"
+            >
               {topNavbar.cta}
+              <svg aria-hidden="true" viewBox="0 0 20 20" className="w-4 h-4 ml-1 fill-current opacity-90">
+                <path d="M11 3a1 1 0 1 0 0 2h2.586l-6.293 6.293a1 1 0 1 0 1.414 1.414L15 6.414V9a1 1 0 1 0 2 0V4a1 1 0 0 0-1-1h-5z"/>
+                <path d="M5 5a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2v-3a1 1 0 1 0-2 0v3H5V7h3a1 1 0 0 0 0-2H5z"/>
+              </svg>
             </a>
           )}
         </div>
@@ -97,6 +111,7 @@ function Navbar() {
             key={index}
             className="btn btn-ghost w-full"
             href={href}
+            onClick={closeMobileNav}
             variants={{
               show: { x: 0 },
               hidden: { x: "-100%" },

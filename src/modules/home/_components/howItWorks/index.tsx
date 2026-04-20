@@ -18,10 +18,11 @@ function HowItWorks() {
   return (
     <section
       id={howItWorks.id}
+      aria-labelledby="how-it-works-heading"
       className="overflow-hidden max-w-screen-lg mx-auto px-4 py-12"
     >
       <div className="mb-12 max-w-none flex flex-col items-center prose prose-lg text-center">
-        <h2 className="mb-3">
+        <h2 id="how-it-works-heading" className="mb-3">
           <AnimatedText text={howItWorks.title} />
         </h2>
         {howItWorks.subtitle && (
@@ -35,9 +36,9 @@ function HowItWorks() {
           </motion.p>
         )}
       </div>
-      <div className="flex flex-col gap-52">
+      <ol className="list-none p-0 m-0 flex flex-col gap-52" role="list">
         {howItWorks.steps.map((step, index) => (
-          <motion.div
+          <motion.li
             key={index}
             initial="hidden"
             whileInView="visible"
@@ -105,17 +106,17 @@ function HowItWorks() {
               className="flex-1 flex justify-center"
             >
               <img
-                className="rounded-3xl lg:w-[75%]"
+                className="rounded-3xl lg:w-[75%] shadow-lg transition-transform duration-500 hover:scale-[1.02]"
                 src={withBase(step.image)}
-                alt={step.title}
+                alt={`Step ${index + 1}: ${step.title}`}
                 loading="lazy"
                 width={400}
                 height={300}
               />
             </motion.div>
-          </motion.div>
+          </motion.li>
         ))}
-      </div>
+      </ol>
     </section>
   );
 }
