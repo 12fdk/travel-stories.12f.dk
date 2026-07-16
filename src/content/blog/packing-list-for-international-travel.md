@@ -3,6 +3,8 @@ title: "Packing List for International Travel: The Complete Checklist"
 description: "A copy-paste packing list for international travel: documents, carry-on essentials, the 5-4-3-2-1 clothing formula, tech, meds, and what to leave home."
 lede: "A good packing list for international travel covers five things: documents, carry-on essentials, clothing, toiletries and medications, and tech. This guide gives you the complete copy-paste list, a simple clothing formula so you never overpack, and add-ons for beach, city, cold-weather, and business trips."
 keyword: "packing list for international travel"
+cover: "/blog/packing-list-for-international-travel.webp"
+coverAlt: "Traveler organizing luggage and bookings before an international trip"
 publishDate: 2026-06-24
 author: Robert Jensen
 tags: ["packing", "checklists", "travel prep"]

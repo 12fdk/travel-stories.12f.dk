@@ -3,6 +3,8 @@ title: "How to Budget for a Trip: A Simple Travel Budget That Works"
 description: "Build a travel budget in six categories, split it with a simple rule of thumb, add a 10-15% buffer, and track spending as you go. Worked example included."
 lede: "To budget for a trip, split your total into six categories — transport, accommodation, food, activities, local transit, and a buffer — estimate each one before you leave, and track actual spending against those numbers while you travel. A simple travel budget with a 10-15% buffer beats a single vague number every time, because it shows you exactly where the money is going and where you can adjust."
 keyword: "travel budget"
+cover: "/blog/how-to-budget-for-a-trip.webp"
+coverAlt: "Traveler reviewing trip spending on their phone"
 publishDate: 2026-06-17
 author: Robert Jensen
 tags: ["budgeting", "trip planning"]

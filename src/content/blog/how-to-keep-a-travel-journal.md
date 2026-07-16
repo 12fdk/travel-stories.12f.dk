@@ -3,6 +3,8 @@ title: "How to Keep a Travel Journal You'll Actually Maintain"
 description: "A realistic travel journal method: 5 minutes a day, one line plus a photo, prompts that beat 'dear diary', and how to turn a trip into a story you revisit."
 lede: "The way to keep a travel journal you'll actually maintain is to make it small: one line per day, one photo with a caption, written in the five minutes before bed. Memories of a trip fade within days, so the trick isn't discipline — it's a method cheap enough that you never skip it."
 keyword: "travel journal"
+cover: "/blog/how-to-keep-a-travel-journal.webp"
+coverAlt: "Traveler capturing a travel memory on their phone"
 publishDate: 2026-07-01
 author: Robert Jensen
 tags: ["travel journal", "memories", "habits"]

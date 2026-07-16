@@ -3,6 +3,8 @@ title: "Best Trip Planner Apps for iPhone: An Honest Comparison"
 description: "An honest look at TripIt, Wanderlog, Google Maps lists, Notion, and Travel Stories — who each trip planner app is really best for, from the maker of one."
 lede: "The best trip planner app depends on how you travel: TripIt is the strongest pick for frequent business travelers, Wanderlog for groups planning together, and Travel Stories for travelers who want offline planning plus memories without a subscription or account. Full disclosure up front: Travel Stories is our app — so below we tell you plainly when a competitor is the better choice."
 keyword: "best trip planner apps"
+cover: "/blog/best-trip-planner-apps.webp"
+coverAlt: "Travel Stories trip list screen on an iPhone against a blue-green gradient"
 publishDate: 2026-07-14
 author: Robert Jensen
 tags: ["apps", "trip planning", "comparison"]
