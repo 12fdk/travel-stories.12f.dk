@@ -12,6 +12,7 @@ function Header() {
     googlePlayLink,
     appStoreLink,
     appStore,
+    ui,
     home: { header },
   } = useContext(ConfigContext)!;
 
@@ -171,11 +172,14 @@ function Header() {
                       <span className="hidden xs:inline">•</span>
                     </>
                   )}
-                  <span>Free download</span>
-                  <span>•</span>
-                  <span>Works offline</span>
-                  <span>•</span>
-                  <span>No account needed</span>
+                  {(ui?.trustRow ?? ["Free download", "Works offline", "No account needed"]).map(
+                    (item, i, arr) => (
+                      <span key={item} className="contents">
+                        <span>{item}</span>
+                        {i < arr.length - 1 && <span>•</span>}
+                      </span>
+                    ),
+                  )}
                 </motion.div>
               )}
               <ItineraryRail />

@@ -8,6 +8,7 @@ function Pricing() {
   const config = useContext(ConfigContext)!;
   const {
     appStoreLink,
+    ui,
     home: { pricing },
   } = config;
   if (!pricing) return null;
@@ -102,8 +103,8 @@ function Pricing() {
         ))}
       </motion.div>
       <p className="text-center text-sm text-base-content/60 mt-6">
-        Prices shown in USD; your App Store storefront sets the exact local
-        price. No subscription — Premium is a single purchase, yours forever.
+        {ui?.pricingFootnote ??
+          "Prices shown in USD; your App Store storefront sets the exact local price. No subscription — Premium is a single purchase, yours forever."}
       </p>
     </section>
   );

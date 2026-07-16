@@ -4,7 +4,7 @@ import { ConfigContext } from "../../utils/configContext";
 
 /** Phone-only: the download action follows you down the page, quietly. */
 function StickyDownload() {
-  const { appStoreLink } = useContext(ConfigContext)!;
+  const { appStoreLink, ui } = useContext(ConfigContext)!;
   const { scrollY } = useScroll();
 
   const opacity = useTransform(scrollY, [400, 520], [0, 1]);
@@ -24,8 +24,8 @@ function StickyDownload() {
         data-umami-event="sticky-download-click"
         className="btn btn-primary w-full text-base font-semibold normal-case !text-white"
       >
-        Download free
-        <span className="text-xs opacity-70">iOS 17+</span>
+        {ui?.downloadFree ?? "Download free"}
+        <span className="text-xs opacity-70">{ui?.stickyNote ?? "iOS 17+"}</span>
       </a>
     </motion.div>
   );

@@ -21,7 +21,7 @@ function AppleGlyph({ className }: { className?: string }) {
  * download touchpoint for visitors who are already convinced mid-scroll.
  */
 function SectionCta({ text, trackingId }: Props) {
-  const { appStoreLink } = useContext(ConfigContext)!;
+  const { appStoreLink, ui } = useContext(ConfigContext)!;
 
   if (!appStoreLink) return null;
 
@@ -44,7 +44,7 @@ function SectionCta({ text, trackingId }: Props) {
           className="btn btn-primary gap-2 !text-white"
         >
           <AppleGlyph className="h-5 w-5" />
-          Download free
+          {ui?.downloadFree ?? "Download free"}
         </a>
       </motion.div>
     </div>

@@ -3,9 +3,25 @@ import "@styles/styles.scss";
 import fs from "node:fs";
 import path from "node:path";
 import type { TemplateConfig } from "utils/configType";
+import { getLocale, DEFAULT_LOCALE } from "./i18n/locales";
 
-const { backgroundGrid, seo, logo, theme, forceTheme, appStoreLink, name, appStore, home, noindex } =
+const { backgroundGrid, seo, logo, theme, forceTheme, appStoreLink, name, appStore, home, noindex, locale, localeAlternates } =
   Astro.props as TemplateConfig & { noindex?: boolean };
+
+// Locale metadata (attached by src/i18n/getConfig.ts on localized homepages).
+const localeCode = locale ?? DEFAULT_LOCALE;
+const htmlLang = getLocale(localeCode)?.hreflang ?? "en";
+// og:locale wants ll_CC; map the ones we ship, fall back to the language tag.
+const OG_LOCALES: Record<string, string> = {
+  en: "en_US", da: "da_DK", nb: "nb_NO", sv: "sv_SE", nl: "nl_NL", de: "de_DE",
+  fr: "fr_FR", es: "es_ES", it: "it_IT", pt: "pt_BR", ko: "ko_KR", ja: "ja_JP",
+};
+const ogLocale = OG_LOCALES[localeCode] ?? htmlLang;
+const ogLocaleAlternates = localeAlternates?.length
+  ? Object.entries(OG_LOCALES)
+      .filter(([code]) => code !== localeCode)
+      .map(([, og]) => og)
+  : [];
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 // Always the generated 1200x630 card (src/pages/og-image.png.ts) — never the
@@ -138,7 +154,7 @@ const webSiteNode = {
   "alternateName": "Travel Stories - Trip Planner",
   "url": Astro.site?.href,
   "description": seo.description,
-  "inLanguage": "en",
+  "inLanguage": htmlLang,
   "publisher": publisherRef,
   ...(isHome ? { "mainEntity": { "@id": appId } } : {}),
 };
@@ -166,7 +182,7 @@ const webPageNode = {
   "url": canonicalURL.href,
   "name": seo.title,
   "description": seo.description,
-  "inLanguage": "en",
+  "inLanguage": htmlLang,
   "isPartOf": { "@id": siteId },
   "primaryImageOfPage": { "@type": "ImageObject", "url": ogImage },
   "breadcrumb": { "@id": breadcrumbId },
@@ -285,7 +301,7 @@ const graph = [
 ---
 
 <!doctype html>
-<html lang="en" data-theme={theme}>
+<html lang={htmlLang} data-theme={theme}>
   <head>
     <!-- Global Metadata -->
     <meta charset="utf-8" />
@@ -308,6 +324,11 @@ const graph = [
 
     <!-- Canonical URL -->
     <link rel="canonical" href={canonicalURL} />
+
+    <!-- hreflang alternates (localized homepage surface only, #22) -->
+    {localeAlternates?.map((alt) => (
+      <link rel="alternate" hreflang={alt.hreflang} href={alt.href} />
+    ))}
     <link rel="alternate" type="application/rss+xml" title={`${name} Blog RSS`} href={new URL("/rss.xml", Astro.site).href} />
 
     <!-- Primary Meta Tags -->
@@ -343,7 +364,10 @@ const graph = [
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:site_name" content={name} />
-    <meta property="og:locale" content="en_US" />
+    <meta property="og:locale" content={ogLocale} />
+    {ogLocaleAlternates.map((alt) => (
+      <meta property="og:locale:alternate" content={alt} />
+    ))}
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />

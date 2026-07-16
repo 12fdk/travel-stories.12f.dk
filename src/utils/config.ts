@@ -19,6 +19,23 @@ const templateConfig: TemplateConfig = {
   // path routed every international visitor through the Danish store.
   appStoreLink: "https://apps.apple.com/app/id6756801168",
   googlePlayLink: "",
+  // Component-level strings that localize with the homepage (#22).
+  ui: {
+    trustRow: ["Free download", "Works offline", "No account needed"],
+    ctaAfterUseCases: "Ready to plan your next adventure?",
+    ctaAfterComparison: "Leave the spreadsheet at home this time.",
+    downloadFree: "Download free",
+    stickyNote: "iOS 17+",
+    sampleTrip: { label: "Sample trip", budgetLabel: "Budget", of: "of", day: "Day" },
+    fromTheBlog: {
+      title: "From the blog",
+      heading: "Guides for better trips",
+      allPosts: "All posts",
+      minutes: "min",
+    },
+    pricingFootnote:
+      "Prices shown in USD; your App Store storefront sets the exact local price. No subscription — Premium is a single purchase, yours forever.",
+  },
   footer: {
     legalLinks: {
       termsAndConditions: true,
