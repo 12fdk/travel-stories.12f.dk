@@ -6,6 +6,7 @@ keyword: "travel checklist"
 cover: "/blog/travel-checklist-before-leaving.webp"
 coverAlt: "Traveler preparing for departure with phone in hand"
 publishDate: 2026-07-08
+updatedDate: 2026-07-16
 author: Robert Jensen
 tags: ["checklists", "travel prep", "travel tips"]
 tldr:
@@ -24,7 +25,7 @@ faq:
     answer: "Arrange care for pets and plants, pause or redirect deliveries, empty the fridge of anything that expires, take out all the trash, and run and empty the dishwasher. On the day you leave, do one slow walkthrough: windows locked, appliances off, thermostat set, doors locked. Leaving a key and your itinerary with someone you trust covers the emergencies you can't predict."
   - question: "Should I use a paper or digital travel checklist?"
     answer: "Digital wins for one reason: it's with you the whole time, including at the airport when you want to double-check something. The key is that it works offline, since departure day is full of signal dead zones. Reuse the same checklist for every trip and it keeps improving, because you add whatever you forgot last time."
-relatedSlugs: ["packing-list-for-international-travel", "how-to-plan-a-trip-step-by-step", "how-to-budget-for-a-trip"]
+relatedSlugs: ["packing-list-for-international-travel", "post-trip-checklist", "how-to-plan-a-trip-step-by-step"]
 draft: false
 ---
 
