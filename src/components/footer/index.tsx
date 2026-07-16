@@ -25,8 +25,8 @@ function Footer() {
             <motion.a
               key={index}
               variants={{
-                hidden: { opacity: 0, x: "-100%" },
-                visible: { opacity: 1, x: 0 },
+                hidden: { opacity: 0, y: 12 },
+                visible: { opacity: 1, y: 0 },
               }}
               transition={{ delay: index * 0.25 }}
               className="text-xl font-bold block uppercase whitespace-nowrap link no-underline text-primary hover:text-primary/50 md:text-4xl"
@@ -41,8 +41,8 @@ function Footer() {
             {socials?.facebook && (
               <motion.a
                 variants={{
-                  hidden: { opacity: 0, x: "-100%" },
-                  visible: { opacity: 1, x: 0 },
+                  hidden: { opacity: 0, y: 12 },
+                  visible: { opacity: 1, y: 0 },
                 }}
                 transition={{ delay: 0.25 }}
                 className="w-8 h-8 hover:text-primary/50"
@@ -55,8 +55,8 @@ function Footer() {
             {socials?.instagram && (
               <motion.a
                 variants={{
-                  hidden: { opacity: 0, x: "-100%" },
-                  visible: { opacity: 1, x: 0 },
+                  hidden: { opacity: 0, y: 12 },
+                  visible: { opacity: 1, y: 0 },
                 }}
                 transition={{ delay: 0.5 }}
                 className="w-8 h-8 hover:text-primary/50"
@@ -69,8 +69,8 @@ function Footer() {
             {socials?.twitter && (
               <motion.a
                 variants={{
-                  hidden: { opacity: 0, x: "-100%" },
-                  visible: { opacity: 1, x: 0 },
+                  hidden: { opacity: 0, y: 12 },
+                  visible: { opacity: 1, y: 0 },
                 }}
                 transition={{ delay: 0.75 }}
                 className="w-8 h-8 hover:text-primary/50"

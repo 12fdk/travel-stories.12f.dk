@@ -47,10 +47,10 @@ function Features() {
           <motion.li
             key={index}
             variants={{
-              hidden: { x: "-100%", opacity: 0 },
-              visible: { x: 0, opacity: 1 },
+              hidden: { y: 16, opacity: 0 },
+              visible: { y: 0, opacity: 1 },
             }}
-            transition={{ delay: 0.25 + index * 0.25 }}
+            transition={{ duration: 0.5, delay: index * 0.08, ease: [0.16, 1, 0.3, 1] }}
             className={clsx(
               "shadow-md border-primary/10 border-2 card relative overflow-hidden group px-12 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:border-primary/30",
               {
