@@ -1,0 +1,54 @@
+---
+type Variant = "inline" | "callout";
+
+interface Props {
+  variant?: Variant;
+  heading?: string;
+  body?: string;
+  buttonText?: string;
+  trackingId?: string;
+  appStoreLink?: string;
+}
+
+const {
+  variant = "callout",
+  heading = "Plan the trip. Keep the story.",
+  body = "Travel Stories keeps your itinerary, packing list, budget, and memories in one offline iPhone app — free on the App Store, no subscription.",
+  buttonText = "Get Travel Stories — Free",
+  trackingId = "blog-inline-cta",
+  appStoreLink = "https://apps.apple.com/app/id6756801168",
+} = Astro.props;
+---
+
+{
+  variant === "inline" ? (
+    <p class="not-prose my-6">
+      <a
+        href={appStoreLink}
+        target="_blank"
+        rel="noopener"
+        data-umami-event={trackingId}
+        class="link link-primary font-semibold"
+      >
+        {body}
+      </a>
+    </p>
+  ) : (
+    <aside
+      class="not-prose my-10 rounded-2xl border border-base-300 bg-base-200 p-6 sm:p-8"
+      data-cta-id={trackingId}
+    >
+      <h3 class="mb-2 text-xl font-bold text-base-content sm:text-2xl">{heading}</h3>
+      <p class="mb-5 text-base-content/80">{body}</p>
+      <a
+        href={appStoreLink}
+        target="_blank"
+        rel="noopener"
+        data-umami-event={trackingId}
+        class="btn btn-primary"
+      >
+        {buttonText}
+      </a>
+    </aside>
+  )
+}

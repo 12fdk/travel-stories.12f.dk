@@ -29,6 +29,7 @@ const templateConfig: TemplateConfig = {
       { href: "/#features", title: "Features" },
       { href: "/#how-it-works", title: "How it works" },
       { href: "/#faq", title: "FAQ" },
+      { href: "/blog/", title: "Blog" },
     ],
   },
   topNavbar: {
@@ -40,6 +41,7 @@ const templateConfig: TemplateConfig = {
       { href: "/#features", title: "Features" },
       { href: "/#how-it-works", title: "How it works" },
       { href: "/#faq", title: "FAQ" },
+      { href: "/blog/", title: "Blog" },
     ],
   },
   appBanner: {

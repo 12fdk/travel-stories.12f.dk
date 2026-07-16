@@ -3,18 +3,21 @@ import Footer from "../../components/footer";
 import AppBanner from "../../components/appBanner";
 import { ConfigContext } from "../../utils/configContext";
 import type { TemplateConfig } from "../../utils/configType";
+import type { BlogTeaser } from "../../content/blog";
 import Header from "./_components/header";
 import Features from "./_components/features";
 import Partners from "./_components/partners";
 import Faq from "./_components/faq";
 import HowItWorks from "./_components/howItWorks";
 import Testimonials from "./_components/testimonials";
+import FromTheBlog from "./_components/fromTheBlog";
 
 interface Props {
   config: TemplateConfig;
+  posts?: BlogTeaser[];
 }
 
-function Home({ config }: Props) {
+function Home({ config, posts = [] }: Props) {
   return (
     <ConfigContext.Provider value={config}>
       <Navbar />
@@ -24,6 +27,7 @@ function Home({ config }: Props) {
         <Features />
         <HowItWorks />
         <Testimonials />
+        <FromTheBlog posts={posts} />
         <Faq />
         <AppBanner />
       </main>
