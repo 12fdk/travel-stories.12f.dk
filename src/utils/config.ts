@@ -77,6 +77,64 @@ const templateConfig: TemplateConfig = {
       { label: "Requires", value: "iOS 17+" },
       { label: "Made in", value: "Denmark" },
     ],
+    // Secondary features that don't merit a hero card — inline SVG icons,
+    // every claim verified in the app source (#31).
+    capabilities: {
+      id: "capabilities",
+      title: "Everything around the edges",
+      subtitle: "The small things that make the whole trip smoother.",
+      cards: [
+        {
+          icon: "widget",
+          title: "Countdown widget",
+          subtitle: "A Home Screen widget counts down the days to departure.",
+        },
+        {
+          icon: "bell",
+          title: "Smart reminders",
+          subtitle: "Departure alerts 1–30 days ahead, plus task and booking reminders.",
+        },
+        {
+          icon: "calendar",
+          title: "Calendar export",
+          subtitle: "Send your itinerary straight to Apple Calendar with Premium.",
+        },
+        {
+          icon: "share",
+          title: "Save from any app",
+          subtitle: "Share bookings, links, and tips into the right trip from Mail or Safari.",
+        },
+        {
+          icon: "globe",
+          title: "14 languages",
+          subtitle: "From English and German to Japanese, Korean, and Arabic.",
+        },
+        {
+          icon: "coins",
+          title: "Your currency",
+          subtitle: "Track spending in the currency you actually think in.",
+        },
+        {
+          icon: "search",
+          title: "Search everything",
+          subtitle: "Find any booking, expense, or note across all your trips.",
+        },
+        {
+          icon: "archive",
+          title: "Trip archive",
+          subtitle: "Completed trips stay organized and searchable for reference.",
+        },
+      ],
+    },
+    videoDemo: {
+      id: "demo",
+      title: "See it in action",
+      subtitle:
+        "Thirty seconds of the real app — planning, tracking, and remembering a trip.",
+      video: "/videos/app-preview.mp4",
+      poster: "/videos/app-preview-poster.webp",
+      videoAriaLabel: "Travel Stories app demo showing trip planning, budget tracking, and the travel diary",
+    },
     useCases: {
       id: "use-cases",
       title: "Built for every kind of trip",
