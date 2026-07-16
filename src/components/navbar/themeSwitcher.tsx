@@ -21,7 +21,12 @@ function ThemeSwitcher() {
     const theme = localStorage.getItem("theme") ?? getPreferredColorScheme();
     if (!theme) return;
     setMode(theme);
-  }, [darkTheme]);
+    // Re-apply on mount so the preference survives navigation even if the
+    // pre-paint inline script was skipped (e.g. bfcache restores).
+    if (theme === darkTheme || theme === lightTheme) {
+      document.documentElement.setAttribute("data-theme", theme);
+    }
+  }, [darkTheme, lightTheme]);
 
   const isDarkMode = mode === darkTheme;
 

@@ -355,18 +355,18 @@ const isHome = Astro.url.pathname === "/" || Astro.url.pathname === "";
       })} />
     )}
 
-    <script is:inline define:vars={{ forceTheme }}>
+    <script is:inline define:vars={{ forceTheme, theme }}>
+      const darkTheme = `${theme}-dark`;
       function getPreferredColorScheme() {
-        if (!window.matchMedia) {
-          return;
-        }
+        if (!window.matchMedia) return;
         if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-          return "dark";
+          return darkTheme;
         }
       }
-      const theme = localStorage.getItem("theme") ?? getPreferredColorScheme();
-      if (theme === "dark" && !forceTheme)
-        document.documentElement.setAttribute("data-theme", theme);
+      const stored = localStorage.getItem("theme") ?? getPreferredColorScheme();
+      if (stored === darkTheme && !forceTheme) {
+        document.documentElement.setAttribute("data-theme", darkTheme);
+      }
     </script>
 
     <!-- Umami Analytics -->
