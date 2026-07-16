@@ -69,6 +69,100 @@ const templateConfig: TemplateConfig = {
     // reviews to quote — invented reviewers cost more trust than they buy,
     // and fake Review markup risks a structured-data manual action.
     // Partners likewise omitted until there are real press/featured-on logos.
+    // Verifiable facts, not benefits — the trust layer replacing testimonials.
+    facts: [
+      { label: "Price", value: "Free" },
+      { label: "Works offline", value: "Fully" },
+      { label: "Account", value: "None needed" },
+      { label: "Requires", value: "iOS 17+" },
+      { label: "Made in", value: "Denmark" },
+    ],
+    useCases: {
+      id: "use-cases",
+      title: "Built for every kind of trip",
+      subtitle:
+        "From a spontaneous weekend away to a month-long expedition — one app for the whole journey.",
+      cards: [
+        {
+          emoji: "✈️",
+          title: "International vacation",
+          subtitle:
+            "Flights, hotels, documents, and a day-by-day plan — all offline once you land.",
+        },
+        {
+          emoji: "🚗",
+          title: "Road trip",
+          subtitle:
+            "Map the route, plan the stops, and log expenses while someone else drives.",
+        },
+        {
+          emoji: "💼",
+          title: "Business travel",
+          subtitle:
+            "Bookings and confirmation numbers in one place, expenses tracked for the report back home.",
+        },
+        {
+          emoji: "🏖️",
+          title: "Weekend getaway",
+          subtitle:
+            "A quick itinerary and a packing list in minutes — anticipation from the countdown widget.",
+        },
+        {
+          emoji: "🎒",
+          title: "Backpacking",
+          subtitle:
+            "Budget-first travel with visual spending breakdowns, built to work without data.",
+        },
+        {
+          emoji: "👨‍👩‍👧‍👦",
+          title: "Family holiday",
+          subtitle:
+            "Shared tasks before departure, everyone's packing lists, and a diary of the memories.",
+        },
+      ],
+    },
+    comparison: {
+      id: "comparison",
+      title: "Why not just notes and a spreadsheet?",
+      subtitle:
+        "That's how most trips are planned — until something gets lost in the group chat.",
+      columns: {
+        them: "Notes + spreadsheet",
+        us: "Travel Stories",
+      },
+      rows: [
+        {
+          aspect: "Itinerary",
+          them: "A wall of text you scroll through at the airport.",
+          us: "Day-by-day timeline with maps, times, and reminders.",
+        },
+        {
+          aspect: "Bookings",
+          them: "Confirmation numbers buried in your email.",
+          us: "Every flight, hotel, and tour stored with its details.",
+        },
+        {
+          aspect: "Budget",
+          them: "A spreadsheet you stop updating on day two.",
+          us: "Expenses logged in seconds, charted by category.",
+        },
+        {
+          aspect: "Packing",
+          them: "A new list from scratch every single trip.",
+          us: "Smart lists with 100+ suggestions, reused per trip type.",
+        },
+        {
+          aspect: "Offline",
+          them: "Cloud docs that won't open without a connection.",
+          us: "Everything works offline — built for airplane mode.",
+        },
+        {
+          aspect: "Memories",
+          them: "Photos scattered across your camera roll.",
+          us: "A travel diary that ties photos and notes to each day.",
+        },
+      ],
+    },
     howItWorks: {
       id: "how-it-works",
       title: "How it works",

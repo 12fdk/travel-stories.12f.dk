@@ -135,5 +135,33 @@ export type TemplateConfig = {
                 rows: string[];
             }[] | undefined;
         } | undefined;
+        facts?: {
+            label: string;
+            value: string;
+        }[] | undefined;
+        useCases?: {
+            id?: string | undefined;
+            title: string;
+            subtitle?: string | undefined;
+            cards: {
+                emoji: string;
+                title: string;
+                subtitle: string;
+            }[];
+        } | undefined;
+        comparison?: {
+            id?: string | undefined;
+            title: string;
+            subtitle?: string | undefined;
+            columns: {
+                them: string;
+                us: string;
+            };
+            rows: {
+                aspect: string;
+                them: string;
+                us: string;
+            }[];
+        } | undefined;
     };
 }
