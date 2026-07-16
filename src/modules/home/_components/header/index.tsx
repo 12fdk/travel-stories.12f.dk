@@ -5,6 +5,7 @@ import { withBase } from "../../../../utils/basePath";
 import SingleScreenshot from "./singleScreenshot";
 import SVGBlob from "./svg/blob";
 import IphoneFrame from "../../../../components/iphoneFrame";
+import ItineraryRail from "./itineraryRail";
 
 function Header() {
   const {
@@ -177,6 +178,7 @@ function Header() {
                   <span>No account needed</span>
                 </motion.div>
               )}
+              <ItineraryRail />
               {header.usersDescription && (
                 <div className="not-prose flex items-center gap-2 my-1">
                   <ul className="avatar-group -space-x-4">

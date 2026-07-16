@@ -11,7 +11,8 @@ function Footer() {
   } = useContext(ConfigContext)!;
 
   return (
-    <footer className="relative bg-neutral text-neutral-content px-4 pt-0 pb-12">
+    // pb-24 on mobile clears the sticky download bar.
+    <footer className="relative bg-neutral text-neutral-content px-4 pt-0 pb-24 md:pb-12">
       <div className="absolute rounded-t-[50%] -top-12 left-0 bg-neutral w-full h-12" />
       <motion.div
         initial="hidden"

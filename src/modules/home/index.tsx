@@ -2,6 +2,7 @@ import Navbar from "../../components/navbar";
 import Footer from "../../components/footer";
 import AppBanner from "../../components/appBanner";
 import SectionCta from "../../components/sectionCta";
+import StickyDownload from "../../components/stickyDownload";
 import { ConfigContext } from "../../utils/configContext";
 import type { TemplateConfig } from "../../utils/configType";
 import type { BlogTeaser } from "../../content/blog";
@@ -47,6 +48,7 @@ function Home({ config, posts = [] }: Props) {
         <AppBanner />
       </main>
       <Footer />
+      <StickyDownload />
     </ConfigContext.Provider>
   );
 }
