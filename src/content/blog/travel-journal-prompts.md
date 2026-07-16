@@ -4,7 +4,7 @@ description: "50 travel journal prompts split across before, during, and after y
 lede: "The best travel journal prompts are specific questions you can answer in five minutes: what surprised you today, what did that meal actually taste like, who did you talk to. This list gives you 50 of them — 10 for the anticipation before a trip, 25 for the road, and 15 for turning the memories into something you will actually reread."
 keyword: "travel journal prompts"
 cover: "/blog/travel-journal-prompts.webp"
-coverAlt: "Travel Stories event detail screen on an iPhone against a green-blue gradient"
+coverAlt: "Hands writing in a paper travel journal at a cafe table with coffee, a map, and photos"
 publishDate: 2026-07-16
 author: Robert Jensen
 tags: ["travel journal", "memory-keeping"]
