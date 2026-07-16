@@ -10,9 +10,12 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 // square App Store icon, whose dimensions contradict og:image:width/height.
 const ogImage = new URL("/og-image.png", Astro.site).href;
 
-// Live rating/version from App Store lookup, with sensible fallbacks
-const ratingValue = appStore?.rating && appStore.rating > 0 ? appStore.rating : 5;
-const ratingCount = appStore?.ratingCount && appStore.ratingCount > 0 ? appStore.ratingCount : 1;
+// Live rating/version from App Store lookup. AggregateRating markup is only
+// emitted once there are enough real ratings to stand behind — a self-serving
+// 5.0/1 fallback is a structured-data manual-action risk, not social proof.
+const MIN_RATING_COUNT = 5;
+const hasTrustedRating =
+  (appStore?.rating ?? 0) > 0 && (appStore?.ratingCount ?? 0) >= MIN_RATING_COUNT;
 const appVersion = appStore?.version ?? "1.0.0";
 const appPrice = appStore?.price && appStore.price !== "Free" ? appStore.price : "0";
 const minimumOs = appStore?.minimumOsVersion ?? "17.0";
@@ -48,19 +51,6 @@ const howToSteps = (home?.howItWorks?.steps ?? []).map((step, index) => ({
   "text": step.subtitle,
   ...(step.image ? { "image": new URL(step.image, Astro.site).href } : {}),
   "url": `${canonicalURL.href}#how-it-works`,
-}));
-
-// Individual Review schema from testimonials for richer social proof
-const reviewEntities = (home?.testimonials?.cards ?? []).map((t) => ({
-  "@type": "Review",
-  "author": { "@type": "Person", "name": t.name },
-  "reviewBody": t.comment,
-  "reviewRating": {
-    "@type": "Rating",
-    "ratingValue": "5",
-    "bestRating": "5",
-    "worstRating": "1",
-  },
 }));
 
 const isHome = Astro.url.pathname === "/" || Astro.url.pathname === "";
@@ -155,13 +145,17 @@ const isHome = Astro.url.pathname === "/" || Astro.url.pathname === "";
         "availability": "https://schema.org/InStock",
         "url": appStoreLink
       },
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": String(ratingValue),
-        "ratingCount": String(ratingCount),
-        "bestRating": "5",
-        "worstRating": "1"
-      },
+      ...(hasTrustedRating
+        ? {
+            "aggregateRating": {
+              "@type": "AggregateRating",
+              "ratingValue": String(appStore!.rating),
+              "ratingCount": String(appStore!.ratingCount),
+              "bestRating": "5",
+              "worstRating": "1",
+            },
+          }
+        : {}),
       "description": seo.description,
       "url": canonicalURL.href,
       "downloadUrl": appStoreLink,
@@ -238,25 +232,6 @@ const isHome = Astro.url.pathname === "/" || Astro.url.pathname === "";
         })),
       })} />
     ) : null}
-
-    {isHome && reviewEntities.length > 0 && (
-      <script type="application/ld+json" set:html={JSON.stringify({
-        "@context": "https://schema.org",
-        "@type": "Product",
-        "name": "Travel Stories - Trip Planner",
-        "description": seo.description,
-        "image": ogImage,
-        "brand": { "@type": "Brand", "name": "Travel Stories" },
-        "review": reviewEntities,
-        "aggregateRating": {
-          "@type": "AggregateRating",
-          "ratingValue": String(ratingValue),
-          "ratingCount": String(ratingCount),
-          "bestRating": "5",
-          "worstRating": "1",
-        },
-      })} />
-    )}
 
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",

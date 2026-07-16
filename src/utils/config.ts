@@ -15,8 +15,9 @@ const templateConfig: TemplateConfig = {
   forceTheme: false,
   // Shows switch to toggle between dark and light modes
   showThemeSwitch: true,
-  appStoreLink:
-    "https://apps.apple.com/dk/app/travel-stories-trip-planner/id6756801168",
+  // Geo-neutral: Apple redirects to the visitor's own storefront. The /dk/
+  // path routed every international visitor through the Danish store.
+  appStoreLink: "https://apps.apple.com/app/id6756801168",
   googlePlayLink: "",
   footer: {
     legalLinks: {
@@ -61,28 +62,9 @@ const templateConfig: TemplateConfig = {
       description:
         "Travel Stories is a free iPhone app for planning, organising, and remembering every adventure. Create itineraries, track expenses, manage packing lists, and access everything offline. Download on the App Store.",
     },
-    testimonials: {
-      id: "testimonials",
-      title: "What Travelers Say",
-      subtitle: "Hear from adventurers using Travel Stories",
-      cards: [
-        {
-          name: "Sarah M.",
-          comment:
-            "Travel Stories completely transformed how I plan my trips. The day-by-day itinerary feature with interactive maps made navigating Tokyo so easy. I never missed a single activity!",
-        },
-        {
-          name: "Michael K.",
-          comment:
-            "The budget tracking feature is incredible. I used to always overspend on trips, but now I can see exactly where my money goes with the visual expense breakdowns. Saved me hundreds on my last Europe trip.",
-        },
-        {
-          name: "Emma L.",
-          comment:
-            "As someone who always forgets something when packing, the smart packing lists with 100+ suggested items are a lifesaver. The departure reminders also ensure I never miss a booking!",
-        },
-      ],
-    },
+    // Testimonials intentionally omitted until there are real App Store
+    // reviews to quote — invented reviewers cost more trust than they buy,
+    // and fake Review markup risks a structured-data manual action.
     partners: {
       title: "",
       logos: [],
@@ -164,7 +146,7 @@ const templateConfig: TemplateConfig = {
         {
           question: "Is Travel Stories free to use?",
           answer:
-            "Yes, it's free! We also offer a Premium Lifetime upgrade with more advanced features.",
+            "Yes — free to download and use. A one-time Premium upgrade (about $1.99) unlocks more advanced features. No subscription, ever.",
         },
         {
           question: "Does the app work offline?",
