@@ -4,7 +4,7 @@ description: "TripIt Pro costs $49/year, Wanderlog Pro $39.99/year, Travel Stori
 lede: "TripIt is the best app for automatically organising bookings — forward a confirmation email and your itinerary builds itself, with Pro at $49 per year. Wanderlog is the best app for planning a trip with other people on a shared map, with Pro at $39.99 per year. Travel Stories is a simpler iPhone-only planner that covers itinerary, budget, packing, and a travel diary offline with no account, for a one-time $1.99 instead of a subscription."
 keyword: "tripit vs wanderlog"
 cover: "/blog/tripit-vs-wanderlog-vs-travel-stories.webp"
-coverAlt: "Travel Stories budget overview screen on an iPhone against a blue-purple gradient"
+coverAlt: "Flat lay of trip planning: smartphone, camera, notebook, sunglasses, and coffee on a wooden table"
 publishDate: 2026-07-16
 author: Robert Jensen
 tags: ["app comparison", "trip planning"]
