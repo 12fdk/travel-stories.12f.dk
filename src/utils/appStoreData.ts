@@ -26,7 +26,9 @@ interface AppStoreApiResponse {
 }
 
 const APP_ID = "6756801168";
-const COUNTRY = "dk";
+// US storefront: the largest review pool, so the trust-gated rating unlocks
+// as early as possible (see #17). Override with APP_STORE_COUNTRY if needed.
+const COUNTRY = process.env.APP_STORE_COUNTRY ?? "us";
 const API_URL = `https://itunes.apple.com/lookup?id=${APP_ID}&country=${COUNTRY}`;
 
 export async function fetchAppStoreData(): Promise<AppStoreData | null> {
