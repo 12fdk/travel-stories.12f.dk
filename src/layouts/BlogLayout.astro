@@ -151,14 +151,18 @@ const breadcrumbSchema = {
     <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
     {articleSchema && <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />}
 
-    <script is:inline define:vars={{ forceTheme: config.forceTheme }}>
+    <script is:inline define:vars={{ forceTheme: config.forceTheme, theme: config.theme }}>
+      const darkTheme = `${theme}-dark`;
       function getPreferredColorScheme() {
         if (!window.matchMedia) return;
-        if (window.matchMedia("(prefers-color-scheme: dark)").matches) return "dark";
+        if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+          return darkTheme;
+        }
       }
-      const theme = localStorage.getItem("theme") ?? getPreferredColorScheme();
-      if (theme === "dark" && !forceTheme)
-        document.documentElement.setAttribute("data-theme", theme);
+      const stored = localStorage.getItem("theme") ?? getPreferredColorScheme();
+      if (stored === darkTheme && !forceTheme) {
+        document.documentElement.setAttribute("data-theme", darkTheme);
+      }
     </script>
 
     <script defer src="https://umami.robert-jensen.dk/script.js" data-website-id="48716c88-8707-4174-aef6-cff0c0aef35b"></script>
