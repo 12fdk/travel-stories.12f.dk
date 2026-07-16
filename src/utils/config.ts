@@ -21,11 +21,14 @@ const templateConfig: TemplateConfig = {
   googlePlayLink: "",
   footer: {
     legalLinks: {
-      termsAndConditions: false,
-      cookiesPolicy: false,
-      privacyPolicy: false,
+      termsAndConditions: true,
+      cookiesPolicy: true,
+      privacyPolicy: true,
     },
-    socials: {},
+    socials: {
+      facebook: "https://www.facebook.com/profile.php?id=61574251436717",
+      instagram: "https://www.instagram.com/travel_stories_app/",
+    },
     links: [
       { href: "/#features", title: "Features" },
       { href: "/#how-it-works", title: "How it works" },
@@ -65,10 +68,7 @@ const templateConfig: TemplateConfig = {
     // Testimonials intentionally omitted until there are real App Store
     // reviews to quote — invented reviewers cost more trust than they buy,
     // and fake Review markup risks a structured-data manual action.
-    partners: {
-      title: "",
-      logos: [],
-    },
+    // Partners likewise omitted until there are real press/featured-on logos.
     howItWorks: {
       id: "how-it-works",
       title: "How it works",
