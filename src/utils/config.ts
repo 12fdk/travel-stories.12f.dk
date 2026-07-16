@@ -297,7 +297,42 @@ const templateConfig: TemplateConfig = {
         {
           question: "Can I share my itinerary with others?",
           answer:
-            "Not yet, but it's coming!",
+            "Yes — trip sharing and exports are part of the Premium Lifetime upgrade, so you can send your plan to travel companions.",
+        },
+        {
+          question: "Do I need to create an account?",
+          answer:
+            "No. There's no sign-up, no login, and no email required — download the app and start planning immediately.",
+        },
+        {
+          question: "Where is my travel data stored?",
+          answer:
+            "Everything stays on your iPhone. Travel Stories doesn't upload your trips, expenses, or photos to any server — your travel plans are yours alone.",
+        },
+        {
+          question: "Can I export my itinerary to my calendar?",
+          answer:
+            "Yes — with Premium you can export your itinerary directly to Apple Calendar, so departure times, activities, and bookings appear alongside the rest of your schedule.",
+        },
+        {
+          question: "Does it remind me about my trip and bookings?",
+          answer:
+            "Yes. You can set departure reminders (1–30 days before), task due-date alerts, and booking reminders for flights, hotels, and activities. A Home Screen widget counts down to departure day.",
+        },
+        {
+          question: "Can I save bookings and tips from other apps?",
+          answer:
+            "Yes — share flight confirmations, hotel links, restaurant tips, and articles straight from Mail, Safari, or any app into the right trip using the iOS share sheet.",
+        },
+        {
+          question: "What languages does the app support?",
+          answer:
+            "Travel Stories is available in 14 languages, including English, German, French, Spanish, Italian, Dutch, Portuguese, Swedish, Norwegian, Japanese, Korean, Traditional Chinese, Arabic, and Hebrew.",
+        },
+        {
+          question: "Is there an Android version?",
+          answer:
+            "No — Travel Stories is an iPhone app, and we're focused on making the best possible iOS experience. If that changes, it will be announced here first.",
         },
       ],
     },
