@@ -41,6 +41,12 @@ Travelers who plan trips themselves and want one app to hold the itinerary, book
 - **What devices?** iPhone, iOS 17.0 or later. No Android or iPad-specific version yet.
 - **Can I share an itinerary with others?** Yes — trip sharing and exports are included in the one-time Premium Lifetime upgrade.
 - **How is budget tracked?** Expenses are added manually during the trip and grouped by category for a visual breakdown.
+- **Do I need an account?** No — no sign-up, login, or email. Install and start planning.
+- **Where is data stored?** On the device. Trips, expenses, and photos are not uploaded to any server.
+- **Calendar export?** Yes — Premium exports the itinerary directly to Apple Calendar.
+- **Reminders?** Departure reminders (1–30 days ahead), task due-date alerts, booking reminders, and a Home Screen countdown widget.
+- **Save from other apps?** Yes — share bookings, links, and tips into a trip via the iOS share sheet.
+- **Languages?** 14, including English, German, French, Spanish, Italian, Dutch, Portuguese (BR), Swedish, Norwegian, Japanese, Korean, Traditional Chinese, Arabic, and Hebrew.
 
 ## Links
 
