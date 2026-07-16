@@ -99,3 +99,68 @@ export function toAppStoreMetadata(data: AppStoreData): AppStoreMetadata {
     description: data.description,
   };
 }
+
+// ---------------------------------------------------------------------------
+// Real customer reviews (#33). Fetched at build time from Apple's public
+// review RSS feeds across major storefronts. The testimonials section is
+// trust-gated: it renders only when there are enough real, positive written
+// reviews — never invented quotes.
+// ---------------------------------------------------------------------------
+
+export interface AppStoreReview {
+  /** Reviewer's App Store nickname, as published by Apple. */
+  name: string;
+  rating: number;
+  title: string;
+  content: string;
+  /** Uppercase storefront code the review was left in (US, GB, ...). */
+  country: string;
+}
+
+const REVIEW_STOREFRONTS = ["us", "gb", "ca", "au", "de", "dk", "nl", "se", "no"];
+/** Minimum usable written reviews before the section renders at all. */
+export const MIN_REVIEWS_TO_SHOW = 3;
+/** Only quote clearly positive reviews. */
+const MIN_REVIEW_RATING = 4;
+
+export async function fetchAppStoreReviews(): Promise<AppStoreReview[]> {
+  const results = await Promise.allSettled(
+    REVIEW_STOREFRONTS.map(async (country) => {
+      const res = await fetch(
+        `https://itunes.apple.com/${country}/rss/customerreviews/id=${APP_ID}/sortby=mostrecent/json`,
+      );
+      if (!res.ok) return [];
+      const data = await res.json();
+      let entries = data?.feed?.entry ?? [];
+      if (!Array.isArray(entries)) entries = [entries];
+      return entries
+        .filter((e: any) => e?.["im:rating"]?.label && e?.content?.label)
+        .map((e: any): AppStoreReview => ({
+          name: e.author?.name?.label ?? "App Store user",
+          rating: Number(e["im:rating"].label),
+          title: e.title?.label ?? "",
+          content: e.content.label,
+          country: country.toUpperCase(),
+        }));
+    }),
+  );
+
+  const reviews = results
+    .filter(
+      (r): r is PromiseFulfilledResult<AppStoreReview[]> =>
+        r.status === "fulfilled",
+    )
+    .flatMap((r) => r.value)
+    .filter((r) => r.rating >= MIN_REVIEW_RATING)
+    // Keep quotes readable on a card.
+    .filter((r) => r.content.length >= 20 && r.content.length <= 400);
+
+  // De-dupe (same nickname + text can appear under multiple storefronts).
+  const seen = new Set<string>();
+  return reviews.filter((r) => {
+    const key = `${r.name}|${r.content}`;
+    if (seen.has(key)) return false;
+    seen.add(key);
+    return true;
+  });
+}

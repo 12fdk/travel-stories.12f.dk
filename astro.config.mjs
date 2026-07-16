@@ -52,7 +52,6 @@ export default defineConfig({
         output: {
           manualChunks: {
             'framer-motion': ['framer-motion'],
-            'swiper': ['swiper'],
           },
         },
       },

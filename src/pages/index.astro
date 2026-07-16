@@ -3,12 +3,13 @@ import { getCollection } from "astro:content"
 import HomePage from "@modules/home"
 import Layout from "Layout.astro"
 import defaultTemplateConfig from "utils/config"
-import { fetchAppStoreData, fallbackAppStoreData, toAppStoreMetadata } from "utils/appStoreData"
+import { fetchAppStoreData, fetchAppStoreReviews, fallbackAppStoreData, toAppStoreMetadata } from "utils/appStoreData"
 import { readingTime } from "utils/readingTime"
 import type { TemplateConfig } from "utils/configType"
 
-// Fetch App Store data at build time
+// Fetch App Store data + real customer reviews at build time
 const appStoreData = await fetchAppStoreData() ?? fallbackAppStoreData;
+const reviews = await fetchAppStoreReviews();
 
 // The three newest posts, linked from the homepage so the blog cluster has a
 // path in from the site's strongest page.
@@ -38,5 +39,5 @@ const config: TemplateConfig = {
 ---
 
 <Layout {...config}>
-  <HomePage client:load config={config} posts={posts} />
+  <HomePage client:load config={config} posts={posts} reviews={reviews} />
 </Layout>
