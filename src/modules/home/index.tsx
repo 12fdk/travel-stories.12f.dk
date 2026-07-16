@@ -6,6 +6,7 @@ import StickyDownload from "../../components/stickyDownload";
 import { ConfigContext } from "../../utils/configContext";
 import type { TemplateConfig } from "../../utils/configType";
 import type { BlogTeaser } from "../../content/blog";
+import type { AppStoreReview } from "../../utils/appStoreData";
 import Header from "./_components/header";
 import Facts from "./_components/facts";
 import Features from "./_components/features";
@@ -15,16 +16,17 @@ import UseCases from "./_components/useCases";
 import Faq from "./_components/faq";
 import HowItWorks from "./_components/howItWorks";
 import Comparison from "./_components/comparison";
-import Testimonials from "./_components/testimonials";
+import AppStoreReviews from "./_components/appStoreReviews";
 import Pricing from "./_components/pricing";
 import FromTheBlog from "./_components/fromTheBlog";
 
 interface Props {
   config: TemplateConfig;
   posts?: BlogTeaser[];
+  reviews?: AppStoreReview[];
 }
 
-function Home({ config, posts = [] }: Props) {
+function Home({ config, posts = [], reviews = [] }: Props) {
   return (
     <ConfigContext.Provider value={config}>
       <Navbar />
@@ -45,7 +47,7 @@ function Home({ config, posts = [] }: Props) {
           text="Leave the spreadsheet at home this time."
           trackingId="cta-after-comparison"
         />
-        <Testimonials />
+        <AppStoreReviews reviews={reviews} />
         <Pricing />
         <FromTheBlog posts={posts} />
         <Faq />
