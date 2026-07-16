@@ -3,6 +3,7 @@ import type { TemplateConfig } from "../../utils/configType";
 import Navbar from "../navbar";
 import Footer from "../footer";
 import AppBanner from "../appBanner";
+import StickyDownload from "../stickyDownload";
 
 interface Props {
   config: TemplateConfig;
@@ -20,6 +21,7 @@ export function BlogFooter({ config }: Props) {
   return (
     <ConfigContext.Provider value={config}>
       <Footer />
+      <StickyDownload />
     </ConfigContext.Provider>
   );
 }
