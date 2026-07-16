@@ -10,6 +10,7 @@ import Partners from "./_components/partners";
 import Faq from "./_components/faq";
 import HowItWorks from "./_components/howItWorks";
 import Testimonials from "./_components/testimonials";
+import Pricing from "./_components/pricing";
 import FromTheBlog from "./_components/fromTheBlog";
 
 interface Props {
@@ -27,6 +28,7 @@ function Home({ config, posts = [] }: Props) {
         <Features />
         <HowItWorks />
         <Testimonials />
+        <Pricing />
         <FromTheBlog posts={posts} />
         <Faq />
         <AppBanner />

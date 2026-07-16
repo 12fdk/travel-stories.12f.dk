@@ -139,6 +139,43 @@ const templateConfig: TemplateConfig = {
         },
       ],
     },
+    // Honest pricing — mirrors the app's real paywall (1 free trip; one-time
+    // Premium unlocks unlimited trips, spending charts, calendar export,
+    // sharing). Keep in sync with the FAQ answer and llms.txt.
+    pricing: {
+      id: "pricing",
+      title: "Free to start. One small upgrade, ever.",
+      subtitle:
+        "Plan your first trip completely free. Premium is a one-time purchase — not a subscription.",
+      actionText: "Download on the App Store",
+      plans: [
+        {
+          title: "Free",
+          price: "$0",
+          rows: [
+            "1 trip with everything included",
+            "Day-by-day itinerary with maps",
+            "Bookings, tasks & expense tracking",
+            "Smart packing lists (100+ items)",
+            "Travel diary with photos",
+            "Works fully offline — no account",
+          ],
+        },
+        {
+          featured: true,
+          title: "Premium Lifetime",
+          price: "$1.99",
+          rows: [
+            "Everything in Free",
+            "Unlimited trips",
+            "Visual spending charts",
+            "Export itinerary to Apple Calendar",
+            "Trip sharing & exports",
+            "One-time purchase — no subscription",
+          ],
+        },
+      ],
+    },
     faq: {
       id: "faq",
       title: "Frequently Asked Questions",
@@ -146,7 +183,7 @@ const templateConfig: TemplateConfig = {
         {
           question: "Is Travel Stories free to use?",
           answer:
-            "Yes — free to download and use. A one-time Premium upgrade (about $1.99) unlocks more advanced features. No subscription, ever.",
+            "Yes — download free and plan your first trip with every feature included. A one-time Premium Lifetime upgrade (about $1.99 / 19 DKK) unlocks unlimited trips, spending charts, calendar export, and sharing. No subscription, ever.",
         },
         {
           question: "Does the app work offline?",
