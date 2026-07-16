@@ -92,6 +92,196 @@ const howToSteps = (home?.howItWorks?.steps ?? []).map((step, index) => ({
 }));
 
 const isHome = Astro.url.pathname === "/" || Astro.url.pathname === "";
+
+// ---------------------------------------------------------------------------
+// One consolidated JSON-LD @graph per page (event-stories pattern, #24).
+// Every node carries an @id so crawlers unify repeated references instead of
+// seeing eight disconnected scripts.
+// ---------------------------------------------------------------------------
+const breadcrumbId = `${canonicalURL.href}#breadcrumb`;
+
+const orgNode = {
+  "@type": "Organization",
+  "@id": orgId,
+  "name": "12f.dk",
+  "url": "https://www.12f.dk",
+  "logo": { "@type": "ImageObject", "url": ogImage, "caption": "12f.dk logo" },
+  "image": ogImage,
+  "sameAs": orgSameAs,
+  "founder": { "@id": authorId },
+  "contactPoint": [
+    {
+      "@type": "ContactPoint",
+      "email": "robert@12f.dk",
+      "contactType": "customer support",
+      "availableLanguage": ["English"],
+      "url": Astro.site?.href,
+      "areaServed": "Worldwide",
+    },
+  ],
+};
+
+const personNode = {
+  "@type": "Person",
+  "@id": authorId,
+  "name": "Robert Jensen",
+  "email": "robert@12f.dk",
+  "url": "https://www.12f.dk",
+  "jobTitle": "Founder & Developer",
+  "worksFor": publisherRef,
+};
+
+const webSiteNode = {
+  "@type": "WebSite",
+  "@id": siteId,
+  "name": name,
+  "alternateName": "Travel Stories - Trip Planner",
+  "url": Astro.site?.href,
+  "description": seo.description,
+  "inLanguage": "en",
+  "publisher": publisherRef,
+  ...(isHome ? { "mainEntity": { "@id": appId } } : {}),
+};
+
+const breadcrumbNode = {
+  "@type": "BreadcrumbList",
+  "@id": breadcrumbId,
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": Astro.site?.href },
+    ...(isHome
+      ? []
+      : [{
+          "@type": "ListItem",
+          "position": 2,
+          "name": seo.title.split("|")[0].trim(),
+          "item": canonicalURL.href,
+        }]),
+  ],
+};
+
+// WebPage on every page; speakable selectors only where they exist (home).
+const webPageNode = {
+  "@type": "WebPage",
+  "@id": `${canonicalURL.href}#webpage`,
+  "url": canonicalURL.href,
+  "name": seo.title,
+  "description": seo.description,
+  "inLanguage": "en",
+  "isPartOf": { "@id": siteId },
+  "primaryImageOfPage": { "@type": "ImageObject", "url": ogImage },
+  "breadcrumb": { "@id": breadcrumbId },
+  ...(isHome
+    ? {
+        "about": { "@id": appId },
+        "speakable": {
+          "@type": "SpeakableSpecification",
+          "cssSelector": ["#hero-headline", ".faq-item", "[data-speakable]"],
+        },
+      }
+    : {}),
+};
+
+const appNode = {
+  "@type": "MobileApplication",
+  "@id": appId,
+  "name": "Travel Stories - Trip Planner",
+  "alternateName": "Travel Stories",
+  "operatingSystem": `iOS ${minimumOs}+`,
+  "applicationCategory": "TravelApplication",
+  "applicationSubCategory": "Trip Planner",
+  "softwareVersion": appVersion,
+  "datePublished": "2026-01",
+  ...(lastUpdated ? { "dateModified": lastUpdated } : {}),
+  "inLanguage": "en",
+  "featureList": featureList,
+  "sameAs": [appStoreLink].filter(Boolean),
+  "offers": {
+    "@type": "Offer",
+    "price": appPrice,
+    "priceCurrency": "USD",
+    "availability": "https://schema.org/InStock",
+    "url": appStoreLink,
+    "eligibleRegion": { "@type": "Place", "name": "Worldwide" },
+    "seller": { "@id": orgId },
+    "description": "Free to download (1 trip included). Optional one-time Premium Lifetime in-app purchase ($1.99) unlocks unlimited trips, spending charts, calendar export, and sharing. No subscription.",
+  },
+  ...(hasTrustedRating
+    ? {
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": String(appStore!.rating),
+          "ratingCount": String(appStore!.ratingCount),
+          "bestRating": "5",
+          "worstRating": "1",
+        },
+      }
+    : {}),
+  "description": seo.description,
+  "url": canonicalURL.href,
+  "downloadUrl": appStoreLink,
+  "installUrl": appStoreLink,
+  "screenshot": screenshotUrls,
+  "image": ogImage,
+  "author": { "@id": authorId },
+  "publisher": publisherRef,
+};
+
+const faqNode =
+  isHome && faqEntities.length > 0
+    ? {
+        "@type": "FAQPage",
+        "@id": `${canonicalURL.href}#faq`,
+        "mainEntity": faqEntities,
+        "speakable": {
+          "@type": "SpeakableSpecification",
+          "cssSelector": [".faq-item summary", ".faq-item summary + div"],
+        },
+      }
+    : null;
+
+const howToNode =
+  isHome && howToSteps.length > 0
+    ? {
+        "@type": "HowTo",
+        "@id": `${canonicalURL.href}#howto`,
+        "name": "How to plan a trip with Travel Stories",
+        "description": "Plan, organise, and remember your next adventure in five simple steps using the Travel Stories iPhone app.",
+        "totalTime": "PT10M",
+        "tool": [{ "@type": "HowToTool", "name": "Travel Stories iPhone app" }],
+        "step": howToSteps,
+        "image": ogImage,
+        "supply": [],
+      }
+    : null;
+
+const featuresNode =
+  isHome && home?.features?.cards?.length
+    ? {
+        "@type": "ItemList",
+        "@id": `${canonicalURL.href}#features`,
+        "name": home.features.title,
+        "itemListOrder": "https://schema.org/ItemListOrderAscending",
+        "numberOfItems": home.features.cards.length,
+        "itemListElement": home.features.cards.map((c, i) => ({
+          "@type": "ListItem",
+          "position": i + 1,
+          "name": c.title,
+          "description": c.subtitle,
+        })),
+      }
+    : null;
+
+const graph = [
+  orgNode,
+  personNode,
+  webSiteNode,
+  webPageNode,
+  breadcrumbNode,
+  ...(isHome ? [appNode] : []),
+  faqNode,
+  howToNode,
+  featuresNode,
+].filter(Boolean);
 ---
 
 <!doctype html>
@@ -162,199 +352,11 @@ const isHome = Astro.url.pathname === "/" || Astro.url.pathname === "";
     <meta name="twitter:description" content={seo.description} />
     <meta name="twitter:image" content={ogImage} />
 
-    <!-- Structured Data - Mobile Application -->
+    <!-- Structured Data: one consolidated @graph (see frontmatter) -->
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
-      "@type": "MobileApplication",
-      "@id": appId,
-      "name": "Travel Stories - Trip Planner",
-      "alternateName": "Travel Stories",
-      "operatingSystem": `iOS ${minimumOs}+`,
-      "applicationCategory": "TravelApplication",
-      "applicationSubCategory": "Trip Planner",
-      "softwareVersion": appVersion,
-      "datePublished": "2026-01",
-      ...(lastUpdated ? { "dateModified": lastUpdated } : {}),
-      "inLanguage": "en",
-      "featureList": featureList,
-      "sameAs": [appStoreLink].filter(Boolean),
-      "offers": {
-        "@type": "Offer",
-        "price": appPrice,
-        "priceCurrency": "USD",
-        "availability": "https://schema.org/InStock",
-        "url": appStoreLink,
-        "eligibleRegion": { "@type": "Place", "name": "Worldwide" },
-        "seller": { "@id": orgId },
-        "description": "Free to download (1 trip included). Optional one-time Premium Lifetime in-app purchase ($1.99) unlocks unlimited trips, spending charts, calendar export, and sharing. No subscription."
-      },
-      ...(hasTrustedRating
-        ? {
-            "aggregateRating": {
-              "@type": "AggregateRating",
-              "ratingValue": String(appStore!.rating),
-              "ratingCount": String(appStore!.ratingCount),
-              "bestRating": "5",
-              "worstRating": "1",
-            },
-          }
-        : {}),
-      "description": seo.description,
-      "url": canonicalURL.href,
-      "downloadUrl": appStoreLink,
-      "installUrl": appStoreLink,
-      "screenshot": screenshotUrls,
-      "image": ogImage,
-      "author": { "@id": authorId },
-      "publisher": publisherRef
+      "@graph": graph,
     })} />
-
-    <!-- Structured Data - Author (Person) -->
-    <script type="application/ld+json" set:html={JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "@id": authorId,
-      "name": "Robert Jensen",
-      "email": "robert@12f.dk",
-      "url": "https://www.12f.dk",
-      "jobTitle": "Founder & Developer",
-      "worksFor": publisherRef
-    })} />
-
-    <!-- Structured Data - Organization -->
-    <script type="application/ld+json" set:html={JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "@id": orgId,
-      "name": "12f.dk",
-      "url": "https://www.12f.dk",
-      "logo": {
-        "@type": "ImageObject",
-        "url": ogImage,
-        "caption": "12f.dk logo"
-      },
-      "image": ogImage,
-      "sameAs": orgSameAs,
-      "founder": { "@id": authorId },
-      "contactPoint": [
-        {
-          "@type": "ContactPoint",
-          "email": "robert@12f.dk",
-          "contactType": "customer support",
-          "availableLanguage": ["English"],
-          "url": Astro.site?.href,
-          "areaServed": "Worldwide"
-        }
-      ]
-    })} />
-
-    {isHome && faqEntities.length > 0 && (
-      <script type="application/ld+json" set:html={JSON.stringify({
-        "@context": "https://schema.org",
-        "@type": "FAQPage",
-        "mainEntity": faqEntities,
-        "speakable": {
-          "@type": "SpeakableSpecification",
-          "cssSelector": [".faq-item summary", ".faq-item summary + div"]
-        }
-      })} />
-    )}
-
-    {isHome && howToSteps.length > 0 && (
-      <script type="application/ld+json" set:html={JSON.stringify({
-        "@context": "https://schema.org",
-        "@type": "HowTo",
-        "name": "How to plan a trip with Travel Stories",
-        "description": "Plan, organise, and remember your next adventure in five simple steps using the Travel Stories iPhone app.",
-        "totalTime": "PT10M",
-        "tool": [{ "@type": "HowToTool", "name": "Travel Stories iPhone app" }],
-        "step": howToSteps,
-        "image": ogImage,
-        "supply": [],
-      })} />
-    )}
-
-    {isHome && home?.features?.cards?.length ? (
-      <script type="application/ld+json" set:html={JSON.stringify({
-        "@context": "https://schema.org",
-        "@type": "ItemList",
-        "name": home.features.title,
-        "itemListOrder": "https://schema.org/ItemListOrderAscending",
-        "numberOfItems": home.features.cards.length,
-        "itemListElement": home.features.cards.map((c, i) => ({
-          "@type": "ListItem",
-          "position": i + 1,
-          "name": c.title,
-          "description": c.subtitle,
-        })),
-      })} />
-    ) : null}
-
-    <script type="application/ld+json" set:html={JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "BreadcrumbList",
-      "@id": `${Astro.site?.href}#breadcrumb`,
-      "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Home",
-          "item": Astro.site?.href,
-        },
-        ...(isHome
-          ? []
-          : [{
-              "@type": "ListItem",
-              "position": 2,
-              "name": seo.title.split("|")[0].trim(),
-              "item": canonicalURL.href,
-            }]),
-      ],
-    })} />
-
-    <!-- Structured Data - Website -->
-    <script type="application/ld+json" set:html={JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "WebSite",
-      "@id": siteId,
-      "name": name,
-      "alternateName": "Travel Stories - Trip Planner",
-      "url": Astro.site?.href,
-      "description": seo.description,
-      "inLanguage": "en",
-      "publisher": publisherRef,
-      ...(isHome ? { "mainEntity": { "@id": appId } } : {})
-    })} />
-
-    {/* WebPage with speakable — lets voice assistants (Google Assistant,
-        Alexa via schema.org) read the hero headline, feature list, and FAQ
-        out loud. */}
-    {isHome && (
-      <script type="application/ld+json" set:html={JSON.stringify({
-        "@context": "https://schema.org",
-        "@type": "WebPage",
-        "@id": `${canonicalURL.href}#webpage`,
-        "url": canonicalURL.href,
-        "name": seo.title,
-        "description": seo.description,
-        "inLanguage": "en",
-        "isPartOf": { "@id": siteId },
-        "about": { "@id": appId },
-        "primaryImageOfPage": {
-          "@type": "ImageObject",
-          "url": ogImage
-        },
-        "speakable": {
-          "@type": "SpeakableSpecification",
-          "cssSelector": [
-            "#hero-headline",
-            "#features-heading + div + ul",
-            ".faq-item"
-          ]
-        },
-        "breadcrumb": { "@id": `${Astro.site?.href}#breadcrumb` }
-      })} />
-    )}
 
     <script is:inline define:vars={{ forceTheme, theme }}>
       const darkTheme = `${theme}-dark`;
