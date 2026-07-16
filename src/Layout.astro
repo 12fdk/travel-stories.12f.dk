@@ -4,11 +4,13 @@ import fs from "node:fs";
 import path from "node:path";
 import type { TemplateConfig } from "utils/configType";
 
-const { backgroundGrid, seo, logo, theme, forceTheme, appStoreLink, name, appStore, home } =
-  Astro.props as TemplateConfig;
+const { backgroundGrid, seo, logo, theme, forceTheme, appStoreLink, name, appStore, home, noindex } =
+  Astro.props as TemplateConfig & { noindex?: boolean };
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
-const ogImage = logo.startsWith("http") ? logo : new URL("/og-image.png", Astro.site).href;
+// Always the generated 1200x630 card (src/pages/og-image.png.ts) — never the
+// square App Store icon, whose dimensions contradict og:image:width/height.
+const ogImage = new URL("/og-image.png", Astro.site).href;
 
 // Live rating/version from App Store lookup, with sensible fallbacks
 const ratingValue = appStore?.rating && appStore.rating > 0 ? appStore.rating : 5;
@@ -113,6 +115,7 @@ const isHome = Astro.url.pathname === "/" || Astro.url.pathname === "";
 
     <!-- Canonical URL -->
     <link rel="canonical" href={canonicalURL} />
+    <link rel="alternate" type="application/rss+xml" title={`${name} Blog RSS`} href={new URL("/rss.xml", Astro.site).href} />
 
     <!-- Primary Meta Tags -->
     <title>{seo.title}</title>
@@ -121,7 +124,7 @@ const isHome = Astro.url.pathname === "/" || Astro.url.pathname === "";
     <meta name="keywords" content="travel planner, trip planner, itinerary app, travel app, vacation planner, travel organizer, packing list, budget tracking, travel diary, iOS travel app, iPhone travel app, Apple travel planner, best travel app iPhone, trip planning app iOS, travel journal app, holiday planner app, road trip planner, travel expense tracker, offline travel app, free travel planner app" />
     <meta name="author" content="Robert Jensen" />
     <meta name="publisher" content="12f.dk" />
-    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+    <meta name="robots" content={noindex ? "noindex, nofollow" : "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"} />
     <meta name="theme-color" content="#007AFF" media="(prefers-color-scheme: light)" />
     <meta name="theme-color" content="#0A84FF" media="(prefers-color-scheme: dark)" />
     <meta name="color-scheme" content="light dark" />

@@ -1,6 +1,6 @@
 {
-  "name": "mobile-app-template",
-  "version": "0.1.0",
+  "name": "travel-stories.12f.dk",
+  "version": "1.0.0",
   "license": "MIT",
   "scripts": {
     "dev": "astro dev",
@@ -14,6 +14,9 @@
   "dependencies": {
     "@astrojs/check": "^0.9.4",
     "@astrojs/react": "^3.6.2",
+    "@astrojs/rss": "^4.0.18",
+    "@resvg/resvg-js": "^2.6.2",
+    "satori": "^0.26.0",
     "@astrojs/sitemap": "3.2.1",
     "@astrojs/tailwind": "^5.1.2",
     "@heroicons/react": "^2.1.4",
