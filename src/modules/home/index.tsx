@@ -38,13 +38,13 @@ function Home({ config, posts = [], reviews = [] }: Props) {
         <VideoDemo />
         <UseCases />
         <SectionCta
-          text="Ready to plan your next adventure?"
+          text={config.ui?.ctaAfterUseCases ?? "Ready to plan your next adventure?"}
           trackingId="cta-after-use-cases"
         />
         <HowItWorks />
         <Comparison />
         <SectionCta
-          text="Leave the spreadsheet at home this time."
+          text={config.ui?.ctaAfterComparison ?? "Leave the spreadsheet at home this time."}
           trackingId="cta-after-comparison"
         />
         <AppStoreReviews reviews={reviews} />

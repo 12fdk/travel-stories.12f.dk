@@ -6,6 +6,7 @@ import { useContext, useState } from "react";
 import { ConfigContext } from "../../utils/configContext";
 import { withBase } from "../../utils/basePath";
 import ThemeSwitcher from "./themeSwitcher";
+import LanguageSwitcher from "../languageSwitcher";
 
 function Navbar() {
   const {
@@ -15,6 +16,7 @@ function Navbar() {
     topNavbar,
     googlePlayLink,
     appStoreLink,
+    homeHref = "/",
   } = useContext(ConfigContext)!;
 
   const [isMobileNavVisible, setIsMobileNavVisible] = useState(false);
@@ -57,12 +59,13 @@ function Navbar() {
           )}
         />
         <div className="navbar-start">
-          <a href="/" className="flex items-center">
+          <a href={homeHref} className="flex items-center">
             <img className="h-12 rounded-[22%]" src={withBase(logo)} alt={`${name} logo`} width={48} height={48} />
             <span className="font-bold mx-1 md:text-lg">{name}</span>
           </a>
         </div>
         <div className="navbar-end md:hidden">
+          <LanguageSwitcher />
           {showThemeSwitch && <ThemeSwitcher />}
           <MenuToggle
             toggle={() => setIsMobileNavVisible((current) => !current)}
@@ -71,6 +74,7 @@ function Navbar() {
         </div>
         <div className="navbar-end hidden font-semibold md:flex">
           <ul className="flex gap-4 px-1 items-center">
+            <li><LanguageSwitcher /></li>
             {showThemeSwitch && <li><ThemeSwitcher /></li>}
             {topNavbar.links.map(({ title, href }, index) => (
               <li key={index}>

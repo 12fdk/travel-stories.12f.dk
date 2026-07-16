@@ -1,5 +1,7 @@
 import { motion } from "framer-motion";
+import { useContext } from "react";
 import type { BlogTeaser } from "../../../../content/blog";
+import { ConfigContext } from "../../../../utils/configContext";
 
 interface Props {
   posts: BlogTeaser[];
@@ -10,6 +12,7 @@ interface Props {
  * from the site's strongest page.
  */
 function FromTheBlog({ posts }: Props) {
+  const { ui } = useContext(ConfigContext)!;
   if (!posts.length) return null;
 
   return (
@@ -18,10 +21,10 @@ function FromTheBlog({ posts }: Props) {
         <div>
           <p className="m-0 flex items-center gap-3 text-sm font-semibold uppercase tracking-wide text-base-content/50">
             <span className="inline-block h-0.5 w-8 bg-primary" />
-            From the blog
+            {ui?.fromTheBlog.title ?? "From the blog"}
           </p>
           <h2 className="mb-3 mt-5 text-3xl font-extrabold leading-[1.05] md:text-4xl">
-            Guides for better trips
+            {ui?.fromTheBlog.heading ?? "Guides for better trips"}
           </h2>
         </div>
         <a
@@ -29,7 +32,7 @@ function FromTheBlog({ posts }: Props) {
           className="shrink-0 border-b-2 border-primary pb-1 text-sm font-semibold text-base-content transition-colors hover:text-primary"
           data-umami-event="home-blog-all-posts"
         >
-          All posts
+          {ui?.fromTheBlog.allPosts ?? "All posts"}
         </a>
       </div>
 
@@ -52,7 +55,7 @@ function FromTheBlog({ posts }: Props) {
               className="group flex flex-col gap-2 py-6 md:flex-row md:items-baseline md:gap-8"
             >
               <span className="shrink-0 text-sm text-base-content/40 md:w-40">
-                {post.date} · {post.minutes} min
+                {post.date} · {post.minutes} {ui?.fromTheBlog.minutes ?? "min"}
               </span>
               <span className="flex-1">
                 <span className="block text-xl font-bold text-base-content transition-colors group-hover:text-primary md:text-2xl">

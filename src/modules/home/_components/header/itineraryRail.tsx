@@ -1,11 +1,13 @@
 import { motion } from "framer-motion";
+import { useContext } from "react";
+import { ConfigContext } from "../../../../utils/configContext";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 
 const DAYS = [
-  { day: "Day 1", emoji: "✈️", text: "Land in Lisbon · check in" },
-  { day: "Day 2", emoji: "🏛️", text: "Old town · tram 28 · viewpoint" },
-  { day: "Day 3", emoji: "🏖️", text: "Cascais day trip · beach" },
+  { emoji: "✈️", text: "Land in Lisbon · check in" },
+  { emoji: "🏛️", text: "Old town · tram 28 · viewpoint" },
+  { emoji: "🏖️", text: "Cascais day trip · beach" },
 ];
 
 const BUDGET_SPENT = 0.62;
@@ -16,6 +18,13 @@ const BUDGET_SPENT = 0.62;
  * home-stories' BudgetRail / event-stories' RunOfShow.
  */
 function ItineraryRail() {
+  const { ui } = useContext(ConfigContext)!;
+  const labels = ui?.sampleTrip ?? {
+    label: "Sample trip",
+    budgetLabel: "Budget",
+    of: "of",
+    day: "Day",
+  };
   return (
     <motion.aside
       initial={{ opacity: 0, y: 16 }}
@@ -29,20 +38,20 @@ function ItineraryRail() {
           Porto &amp; Lisbon
         </p>
         <p className="m-0 text-[10px] uppercase tracking-widest text-base-content/40">
-          Sample trip
+          {labels.label}
         </p>
       </div>
       <ol className="m-0 mt-3 flex list-none flex-col gap-2 p-0">
-        {DAYS.map(({ day, emoji, text }, index) => (
+        {DAYS.map(({ emoji, text }, index) => (
           <motion.li
-            key={day}
+            key={text}
             initial={{ opacity: 0, x: -8 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 1.2 + index * 0.15, duration: 0.4, ease: [...EASE] }}
             className="flex items-center gap-3 text-sm"
           >
             <span className="w-11 shrink-0 text-[10px] font-semibold uppercase tracking-widest text-primary">
-              {day}
+              {labels.day} {index + 1}
             </span>
             <span aria-hidden="true">{emoji}</span>
             <span className="truncate text-base-content/75">{text}</span>
@@ -51,9 +60,9 @@ function ItineraryRail() {
       </ol>
       <div className="mt-3 border-t border-base-300 pt-3">
         <div className="flex items-baseline justify-between text-xs">
-          <span className="text-base-content/50">Budget</span>
+          <span className="text-base-content/50">{labels.budgetLabel}</span>
           <span className="font-medium text-base-content">
-            €496 <span className="text-base-content/50">of €800</span>
+            €496 <span className="text-base-content/50">{labels.of} €800</span>
           </span>
         </div>
         <div

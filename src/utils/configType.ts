@@ -1,7 +1,27 @@
 import type { AppStoreMetadata } from "./appStoreData";
 
+/**
+ * Strings rendered by components (not section config) that must localize
+ * with the homepage (#22). Defaults live in config.ts; translations override.
+ */
+export interface UiStrings {
+    trustRow: string[];
+    ctaAfterUseCases: string;
+    ctaAfterComparison: string;
+    downloadFree: string;
+    stickyNote: string;
+    sampleTrip: { label: string; budgetLabel: string; of: string; day: string };
+    fromTheBlog: { title: string; heading: string; allPosts: string; minutes: string };
+    pricingFootnote: string;
+}
+
 export type TemplateConfig = {
     appStore?: AppStoreMetadata;
+    /** Locale metadata attached by src/i18n/getConfig.ts. */
+    locale?: string;
+    homeHref?: string;
+    localeAlternates?: { hreflang: string; href: string }[];
+    ui?: UiStrings;
     name: string;
     seo: {
         title: string;

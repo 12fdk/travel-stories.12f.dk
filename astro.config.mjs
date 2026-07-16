@@ -72,6 +72,13 @@ export default defineConfig({
     sitemap({
       changefreq: "weekly",
       priority: 0.7,
+      i18n: {
+        defaultLocale: "en",
+        locales: {
+          en: "en", da: "da", nb: "nb", sv: "sv", nl: "nl", de: "de",
+          fr: "fr", es: "es", it: "it", pt: "pt-BR", ko: "ko", ja: "ja",
+        },
+      },
       // /app is a redirect stub — it doesn't belong in the index.
       filter: (page) => !page.includes("/app/"),
       serialize(item) {
