@@ -117,25 +117,25 @@ const templateConfig: TemplateConfig = {
           title: "Day-by-Day Itineraries",
           subtitle:
             "Create detailed trip plans with interactive maps to visualize your journey. Add activities, attractions, and reservations for each day.",
-          icon: "/icons/itinerary.png",
+          icon: "/icons/itinerary.webp",
         },
         {
           title: "Budget Tracking",
           subtitle:
             "Monitor your travel expenses with visual breakdowns by category. Set budgets and stay on track throughout your trip.",
-          icon: "/icons/budget-tracking.png",
+          icon: "/icons/budget-tracking.webp",
         },
         {
           title: "Smart Packing Lists",
           subtitle:
             "Never forget essentials with 100+ suggested items. Customize lists for each trip type and check off items as you pack.",
-          icon: "/icons/packing-list.png",
+          icon: "/icons/packing-list.webp",
         },
         {
           title: "Offline Access",
           subtitle:
             "Access your itineraries, bookings, and travel diary even without internet. Perfect for remote destinations.",
-          icon: "/icons/offline-access.png",
+          icon: "/icons/offline-access.webp",
         },
       ],
     },
