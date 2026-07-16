@@ -4,18 +4,12 @@ import { motion } from "framer-motion";
 import { useContext } from "react";
 import { ConfigContext } from "../../../../utils/configContext";
 
-const planImages = [
-  "/misc/wallet-front-color.webp",
-  "/misc/money-front-color.webp",
-  "/misc/locker-front-color.webp",
-];
-
-const planBGs = ["bg-primary/80", "bg-secondary/80", "bg-accent/80"];
-
 function Pricing() {
+  const config = useContext(ConfigContext)!;
   const {
+    appStoreLink,
     home: { pricing },
-  } = useContext(ConfigContext)!;
+  } = config;
   if (!pricing) return null;
 
   return (
@@ -27,14 +21,16 @@ function Pricing() {
         <h2 className="mb-0">
           <AnimatedText text={pricing.title} />
         </h2>
-        <motion.p
-          initial={{ y: "100%", opacity: 0 }}
-          whileInView={{ y: "0%", opacity: 1 }}
-          viewport={{ once: true }}
-          className="text-xl max-w-lg text-base-content"
-        >
-          {pricing.subtitle}
-        </motion.p>
+        {pricing.subtitle && (
+          <motion.p
+            initial={{ y: "100%", opacity: 0 }}
+            whileInView={{ y: "0%", opacity: 1 }}
+            viewport={{ once: true }}
+            className="text-xl max-w-lg text-base-content"
+          >
+            {pricing.subtitle}
+          </motion.p>
+        )}
       </div>
       <motion.div
         initial="hidden"
@@ -46,69 +42,69 @@ function Pricing() {
           <motion.div
             key={index}
             transition={{ delay: 0.25 + index * 0.25 }}
-            className="md:w-1/3 flex relative"
+            className="md:w-2/5 flex relative"
             variants={{
-              hidden: { x: "-100%", opacity: 0 },
-              visible: { x: 0, opacity: 1 },
+              hidden: { y: 40, opacity: 0 },
+              visible: { y: 0, opacity: 1 },
             }}
           >
-            {plan.featured && (
-              <div className="absolute top-0 bottom-1 right-1 left-0 bg-secondary -z-10 rounded-[var(--rounded-box)]" />
-            )}
             <div
               className={clsx(
-                "border-2 border-primary/10 flex-1 card p-0 shadow-md bg-base-100 z-10 overflow-hidden",
-                {
-                  "-translate-x-3 -translate-y-3 transition-transform hover:translate-x-0 hover:translate-y-0":
-                    plan.featured,
-                }
+                "flex-1 card p-8 shadow-md bg-base-100 z-10 overflow-hidden border-2",
+                plan.featured ? "border-primary" : "border-primary/10"
               )}
             >
-              <div className="card-body p-0 text-center">
-                <div className="flex relative">
-                  {plan.featured && (
-                    <div className="rounded-none badge badge-info top-0 right-0 absolute">
-                      Best Price
-                    </div>
-                  )}
-                  <div className={clsx("h-32 w-[40%] p-4", planBGs[index])}>
-                    <img
-                      src={planImages[index]}
-                      alt="pricing plan"
-                      className="m-0 h-full w-full object-contain"
-                    />
-                  </div>
-                  <div className="mt-8 flex-1 font-bold">
-                    <h3 className="text-xl my-1">{plan.title}</h3>
-                    <p className="my-1">{plan.price}</p>
-                  </div>
+              {plan.featured && (
+                <div className="badge badge-primary absolute top-4 right-4">
+                  One-time
                 </div>
-                <div className="w-full flex-1 flex flex-col mb-4">
-                  {plan.rows.map((row, index) => (
-                    <div key={index} className="flex relative items-center">
-                      <span className="relative flex h-3 w-3 mx-6">
-                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-75"></span>
-                        <span className="relative inline-flex rounded-full h-3 w-3 bg-sky-500"></span>
-                      </span>
-                      <p className="flex-1 text-left my-2">{row}</p>
-                    </div>
+              )}
+              <div className="card-body p-0">
+                <h3 className="text-xl font-bold my-1">{plan.title}</h3>
+                <p className="text-3xl font-extrabold my-1">{plan.price}</p>
+                <ul className="mt-4 mb-6 space-y-3 list-none p-0">
+                  {plan.rows.map((row, rowIndex) => (
+                    <li key={rowIndex} className="flex items-start gap-3">
+                      <svg
+                        className="w-5 h-5 mt-0.5 shrink-0 text-primary"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="3"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        aria-hidden="true"
+                      >
+                        <path d="M20 6 9 17l-5-5" />
+                      </svg>
+                      <span className="flex-1 text-left">{row}</span>
+                    </li>
                   ))}
-                </div>
+                </ul>
                 {pricing.actionText && (
-                  <div className="w-full">
-                    <a
-                      href="/app"
-                      className="btn btn-primary btn-square no-animation rounded-none w-full text-lg h-auto py-4 !text-white"
-                    >
-                      {pricing.actionText}
-                    </a>
-                  </div>
+                  <a
+                    href={appStoreLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    data-umami-event={`pricing-cta-${plan.featured ? "premium" : "free"}`}
+                    className={clsx(
+                      "btn no-animation w-full text-lg mt-auto",
+                      plan.featured ? "btn-primary !text-white" : "btn-outline"
+                    )}
+                  >
+                    {pricing.actionText}
+                  </a>
                 )}
               </div>
             </div>
           </motion.div>
         ))}
       </motion.div>
+      <p className="text-center text-sm text-base-content/60 mt-6">
+        Prices shown in USD; your App Store storefront sets the exact local
+        price. No subscription — Premium is a single purchase, yours forever.
+      </p>
     </section>
   );
 }

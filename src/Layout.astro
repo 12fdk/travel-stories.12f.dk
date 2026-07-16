@@ -185,7 +185,8 @@ const isHome = Astro.url.pathname === "/" || Astro.url.pathname === "";
         "availability": "https://schema.org/InStock",
         "url": appStoreLink,
         "eligibleRegion": { "@type": "Place", "name": "Worldwide" },
-        "seller": { "@id": orgId }
+        "seller": { "@id": orgId },
+        "description": "Free to download (1 trip included). Optional one-time Premium Lifetime in-app purchase ($1.99) unlocks unlimited trips, spending charts, calendar export, and sharing. No subscription."
       },
       ...(hasTrustedRating
         ? {
