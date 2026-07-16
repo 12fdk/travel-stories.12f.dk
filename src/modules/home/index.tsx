@@ -6,7 +6,6 @@ import type { TemplateConfig } from "../../utils/configType";
 import type { BlogTeaser } from "../../content/blog";
 import Header from "./_components/header";
 import Features from "./_components/features";
-import Partners from "./_components/partners";
 import Faq from "./_components/faq";
 import HowItWorks from "./_components/howItWorks";
 import Testimonials from "./_components/testimonials";
@@ -24,7 +23,6 @@ function Home({ config, posts = [] }: Props) {
       <Navbar />
       <main id="main">
         <Header />
-        <Partners />
         <Features />
         <HowItWorks />
         <Testimonials />

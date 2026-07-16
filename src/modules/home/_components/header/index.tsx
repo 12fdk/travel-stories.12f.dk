@@ -3,7 +3,6 @@ import { useContext, useRef } from "react";
 import { ConfigContext } from "../../../../utils/configContext";
 import { withBase } from "../../../../utils/basePath";
 import SingleScreenshot from "./singleScreenshot";
-import SVGWave from "./svg/wave";
 import SVGBlob from "./svg/blob";
 import IphoneFrame from "../../../../components/iphoneFrame";
 
@@ -12,7 +11,7 @@ function Header() {
     googlePlayLink,
     appStoreLink,
     appStore,
-    home: { header, partners },
+    home: { header },
   } = useContext(ConfigContext)!;
 
   // Only show a star rating that real users produced — never a hardcoded 5.0.
@@ -257,9 +256,6 @@ function Header() {
           </div>
         </div>
       </div>
-      {partners && (
-        <SVGWave className="absolute -bottom-1 left-0 right-0 -z-10" />
-      )}
     </section>
   );
 }

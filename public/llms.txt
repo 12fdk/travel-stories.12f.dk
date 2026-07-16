@@ -39,7 +39,7 @@ Travelers who plan trips themselves and want one app to hold the itinerary, book
 - **Is it free?** Yes — the free plan includes 1 trip with every feature. The optional Premium Lifetime upgrade ($1.99 / 19 DKK one-time, no subscription) unlocks unlimited trips, spending charts, calendar export, and sharing.
 - **Does it work offline?** Yes. Itineraries, bookings, packing lists, and the travel diary are all available without internet.
 - **What devices?** iPhone, iOS 17.0 or later. No Android or iPad-specific version yet.
-- **Can I share an itinerary with others?** Not yet — planned.
+- **Can I share an itinerary with others?** Yes — trip sharing and exports are included in the one-time Premium Lifetime upgrade.
 - **How is budget tracked?** Expenses are added manually during the trip and grouped by category for a visual breakdown.
 
 ## Links
