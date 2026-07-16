@@ -1,5 +1,7 @@
 ---
 import "@styles/styles.scss";
+import fs from "node:fs";
+import path from "node:path";
 import type { TemplateConfig } from "utils/configType";
 
 const { backgroundGrid, seo, logo, theme, forceTheme, appStoreLink, name, appStore, home, noindex } =
@@ -29,9 +31,45 @@ const featureList = home?.features?.cards?.map((c) => c.title) ?? [
   "Offline Access",
 ];
 
-const screenshotUrls = (home?.header?.screenshots ?? ["/screenshots/trips-list.webp"]).map(
+// Discover every main iPhone screenshot at build time (skip -mobile variants
+// and numbered placeholder files), so the MobileApplication schema carries
+// a complete screenshot list for Google / Apple Intelligence / App carousels.
+const screenshotsDir = path.join(process.cwd(), "public", "screenshots");
+let discoveredScreenshots: string[] = [];
+try {
+  discoveredScreenshots = fs
+    .readdirSync(screenshotsDir)
+    .filter((f) => f.endsWith(".webp"))
+    .filter((f) => !f.includes("-mobile"))
+    .filter((f) => !/^\d+\.webp$/.test(f))
+    .sort();
+} catch {
+  discoveredScreenshots = [];
+}
+const heroScreenshots = home?.header?.screenshots ?? ["/screenshots/trips-list.webp"];
+const screenshotFileSet = new Set<string>([
+  ...heroScreenshots,
+  ...discoveredScreenshots.map((f) => `/screenshots/${f}`),
+]);
+const screenshotUrls = Array.from(screenshotFileSet).map(
   (s) => new URL(s, Astro.site).href,
 );
+
+// Entity graph @ids — let crawlers unify repeated references to the same thing.
+const siteId = `${Astro.site?.href ?? ""}#website`;
+const orgId = "https://www.12f.dk/#organization";
+const authorId = "https://www.12f.dk/#robert";
+const appId = `${Astro.site?.href ?? ""}#app`;
+
+const orgSameAs = [
+  "https://www.facebook.com/profile.php?id=61574251436717",
+  "https://www.instagram.com/travel_stories_app/",
+  appStoreLink,
+].filter((u): u is string => Boolean(u));
+
+// Publisher reference reused across Reviews / WebSite / App so the knowledge graph
+// collapses to a single Organization node.
+const publisherRef = { "@id": orgId };
 
 // FAQ schema is generated from config to stay in sync with what the user sees
 const faqEntities = (home?.faq?.qa ?? []).map((item) => ({
@@ -70,9 +108,9 @@ const isHome = Astro.url.pathname === "/" || Astro.url.pathname === "";
     <link rel="preload" href="/fonts/Inter-Regular.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="/fonts/Inter-Bold.woff2" as="font" type="font/woff2" crossorigin />
 
-    <!-- Preload critical above-fold image (first screenshot) - responsive -->
-    <link rel="preload" href="/screenshots/packing-list-mobile.webp" as="image" type="image/webp" media="(max-width: 768px)" />
-    <link rel="preload" href="/screenshots/packing-list.webp" as="image" type="image/webp" media="(min-width: 769px)" />
+    <!-- Preload the first hero screenshot (same asset used at all viewports
+         inside the fixed-width iPhone frame). -->
+    <link rel="preload" href="/screenshots/packing-list.webp" as="image" type="image/webp" fetchpriority="high" />
 
     <!-- Preconnect to external resources -->
     <link rel="preconnect" href="https://umami.robert-jensen.dk" />
@@ -128,6 +166,7 @@ const isHome = Astro.url.pathname === "/" || Astro.url.pathname === "";
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
       "@type": "MobileApplication",
+      "@id": appId,
       "name": "Travel Stories - Trip Planner",
       "alternateName": "Travel Stories",
       "operatingSystem": `iOS ${minimumOs}+`,
@@ -138,12 +177,15 @@ const isHome = Astro.url.pathname === "/" || Astro.url.pathname === "";
       ...(lastUpdated ? { "dateModified": lastUpdated } : {}),
       "inLanguage": "en",
       "featureList": featureList,
+      "sameAs": [appStoreLink].filter(Boolean),
       "offers": {
         "@type": "Offer",
         "price": appPrice,
         "priceCurrency": "USD",
         "availability": "https://schema.org/InStock",
-        "url": appStoreLink
+        "url": appStoreLink,
+        "eligibleRegion": { "@type": "Place", "name": "Worldwide" },
+        "seller": { "@id": orgId }
       },
       ...(hasTrustedRating
         ? {
@@ -162,37 +204,47 @@ const isHome = Astro.url.pathname === "/" || Astro.url.pathname === "";
       "installUrl": appStoreLink,
       "screenshot": screenshotUrls,
       "image": ogImage,
-      "author": {
-        "@type": "Person",
-        "name": "Robert Jensen",
-        "email": "robert@12f.dk",
-        "url": "https://www.12f.dk"
-      },
-      "publisher": {
-        "@type": "Organization",
-        "name": "12f.dk",
-        "url": "https://www.12f.dk",
-        "logo": ogImage
-      }
+      "author": { "@id": authorId },
+      "publisher": publisherRef
+    })} />
+
+    <!-- Structured Data - Author (Person) -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "@id": authorId,
+      "name": "Robert Jensen",
+      "email": "robert@12f.dk",
+      "url": "https://www.12f.dk",
+      "jobTitle": "Founder & Developer",
+      "worksFor": publisherRef
     })} />
 
     <!-- Structured Data - Organization -->
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
       "@type": "Organization",
+      "@id": orgId,
       "name": "12f.dk",
       "url": "https://www.12f.dk",
-      "logo": ogImage,
-      "founder": {
-        "@type": "Person",
-        "name": "Robert Jensen"
+      "logo": {
+        "@type": "ImageObject",
+        "url": ogImage,
+        "caption": "12f.dk logo"
       },
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "email": "robert@12f.dk",
-        "contactType": "customer support",
-        "availableLanguage": ["English"]
-      }
+      "image": ogImage,
+      "sameAs": orgSameAs,
+      "founder": { "@id": authorId },
+      "contactPoint": [
+        {
+          "@type": "ContactPoint",
+          "email": "robert@12f.dk",
+          "contactType": "customer support",
+          "availableLanguage": ["English"],
+          "url": Astro.site?.href,
+          "areaServed": "Worldwide"
+        }
+      ]
     })} />
 
     {isHome && faqEntities.length > 0 && (
@@ -200,6 +252,10 @@ const isHome = Astro.url.pathname === "/" || Astro.url.pathname === "";
         "@context": "https://schema.org",
         "@type": "FAQPage",
         "mainEntity": faqEntities,
+        "speakable": {
+          "@type": "SpeakableSpecification",
+          "cssSelector": [".faq-item summary", ".faq-item summary + div"]
+        }
       })} />
     )}
 
@@ -236,6 +292,7 @@ const isHome = Astro.url.pathname === "/" || Astro.url.pathname === "";
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
       "@type": "BreadcrumbList",
+      "@id": `${Astro.site?.href}#breadcrumb`,
       "itemListElement": [
         {
           "@type": "ListItem",
@@ -258,17 +315,45 @@ const isHome = Astro.url.pathname === "/" || Astro.url.pathname === "";
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
       "@type": "WebSite",
+      "@id": siteId,
       "name": name,
       "alternateName": "Travel Stories - Trip Planner",
       "url": Astro.site?.href,
       "description": seo.description,
       "inLanguage": "en",
-      "publisher": {
-        "@type": "Organization",
-        "name": "12f.dk",
-        "url": "https://www.12f.dk"
-      }
+      "publisher": publisherRef,
+      ...(isHome ? { "mainEntity": { "@id": appId } } : {})
     })} />
+
+    {/* WebPage with speakable — lets voice assistants (Google Assistant,
+        Alexa via schema.org) read the hero headline, feature list, and FAQ
+        out loud. */}
+    {isHome && (
+      <script type="application/ld+json" set:html={JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "@id": `${canonicalURL.href}#webpage`,
+        "url": canonicalURL.href,
+        "name": seo.title,
+        "description": seo.description,
+        "inLanguage": "en",
+        "isPartOf": { "@id": siteId },
+        "about": { "@id": appId },
+        "primaryImageOfPage": {
+          "@type": "ImageObject",
+          "url": ogImage
+        },
+        "speakable": {
+          "@type": "SpeakableSpecification",
+          "cssSelector": [
+            "#hero-headline",
+            "#features-heading + div + ul",
+            ".faq-item"
+          ]
+        },
+        "breadcrumb": { "@id": `${Astro.site?.href}#breadcrumb` }
+      })} />
+    )}
 
     <script is:inline define:vars={{ forceTheme }}>
       function getPreferredColorScheme() {
