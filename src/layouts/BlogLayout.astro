@@ -11,6 +11,8 @@ interface Props {
   ogImage?: string;
   canonicalPath?: string;
   articleSchema?: Record<string, unknown>;
+  /** Extra JSON-LD nodes merged into the page's single @graph (e.g. FAQPage). */
+  extraGraphNodes?: Record<string, unknown>[];
   publishedTime?: string;
   modifiedTime?: string;
   author?: string;
@@ -25,6 +27,7 @@ const {
   ogImage,
   canonicalPath,
   articleSchema,
+  extraGraphNodes = [],
   publishedTime,
   modifiedTime,
   author,
@@ -48,18 +51,27 @@ const resolvedOgImage = ogImage
   : new URL("/og-image.png", Astro.site).href;
 const siteUrl = Astro.site?.href ?? "https://travel-stories.12f.dk";
 
-const websiteSchema = {
-  "@context": "https://schema.org",
+// Same @ids as Layout.astro so the crawler's knowledge graph unifies the
+// blog pages with the homepage entities (#24).
+const orgId = "https://www.12f.dk/#organization";
+const siteId = `${siteUrl}#website`;
+const breadcrumbId = `${canonicalURL.href}#breadcrumb`;
+
+const websiteNode = {
   "@type": "WebSite",
+  "@id": siteId,
   name: config.name,
   url: siteUrl,
   description: config.seo.description,
   inLanguage: "en",
-  publisher: {
-    "@type": "Organization",
-    name: "12f.dk",
-    url: "https://www.12f.dk",
-  },
+  publisher: { "@id": orgId },
+};
+
+const orgNode = {
+  "@type": "Organization",
+  "@id": orgId,
+  name: "12f.dk",
+  url: "https://www.12f.dk",
 };
 
 const breadcrumbItems = [
@@ -84,11 +96,22 @@ if (Astro.url.pathname !== "/blog/" && Astro.url.pathname !== "/blog") {
     item: canonicalURL.href,
   });
 }
-const breadcrumbSchema = {
-  "@context": "https://schema.org",
+const breadcrumbNode = {
   "@type": "BreadcrumbList",
+  "@id": breadcrumbId,
   itemListElement: breadcrumbItems,
 };
+
+// Strip any @context the page passed on the article node — the graph has one.
+const articleNode = articleSchema
+  ? Object.fromEntries(
+      Object.entries(articleSchema).filter(([key]) => key !== "@context"),
+    )
+  : null;
+
+const graph = [orgNode, websiteNode, breadcrumbNode, articleNode, ...extraGraphNodes].filter(
+  Boolean,
+);
 ---
 
 <!doctype html>
@@ -147,9 +170,10 @@ const breadcrumbSchema = {
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={resolvedOgImage} />
 
-    <script type="application/ld+json" set:html={JSON.stringify(websiteSchema)} />
-    <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
-    {articleSchema && <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />}
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@graph": graph,
+    })} />
 
     <script is:inline define:vars={{ forceTheme: config.forceTheme, theme: config.theme }}>
       const darkTheme = `${theme}-dark`;

@@ -11,18 +11,8 @@ interface Props {
 
 const { items, heading = "Frequently asked questions" } = Astro.props;
 
-const schema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: items.map((item) => ({
-    "@type": "Question",
-    name: item.question,
-    acceptedAnswer: {
-      "@type": "Answer",
-      text: item.answer,
-    },
-  })),
-};
+// No JSON-LD here: the page folds an FAQPage node into its single
+// consolidated @graph (see BlogLayout extraGraphNodes, #24).
 ---
 
 {
@@ -41,7 +31,6 @@ const schema = {
           </details>
         ))}
       </div>
-      <script type="application/ld+json" set:html={JSON.stringify(schema)} />
     </section>
   )
 }
