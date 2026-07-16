@@ -9,6 +9,8 @@ import type { BlogTeaser } from "../../content/blog";
 import Header from "./_components/header";
 import Facts from "./_components/facts";
 import Features from "./_components/features";
+import Capabilities from "./_components/capabilities";
+import VideoDemo from "./_components/videoDemo";
 import UseCases from "./_components/useCases";
 import Faq from "./_components/faq";
 import HowItWorks from "./_components/howItWorks";
@@ -30,6 +32,8 @@ function Home({ config, posts = [] }: Props) {
         <Header />
         <Facts />
         <Features />
+        <Capabilities />
+        <VideoDemo />
         <UseCases />
         <SectionCta
           text="Ready to plan your next adventure?"

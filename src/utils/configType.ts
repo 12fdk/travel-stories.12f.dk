@@ -139,6 +139,25 @@ export type TemplateConfig = {
             label: string;
             value: string;
         }[] | undefined;
+        capabilities?: {
+            id?: string | undefined;
+            title: string;
+            subtitle?: string | undefined;
+            cards: {
+                /** Key into the inline SVG icon set in the capabilities component. */
+                icon: string;
+                title: string;
+                subtitle: string;
+            }[];
+        } | undefined;
+        videoDemo?: {
+            id?: string | undefined;
+            title: string;
+            subtitle?: string | undefined;
+            video: string;
+            poster: string;
+            videoAriaLabel?: string | undefined;
+        } | undefined;
         useCases?: {
             id?: string | undefined;
             title: string;
