@@ -44,7 +44,7 @@ Travelers who plan trips themselves and want one app to hold the itinerary, book
 
 ## Links
 
-- [App Store listing](https://apps.apple.com/dk/app/travel-stories-trip-planner/id6756801168)
+- [App Store listing](https://apps.apple.com/app/id6756801168)
 - [Landing page](https://travel-stories.12f.dk)
 - [Features](https://travel-stories.12f.dk/#features)
 - [How it works](https://travel-stories.12f.dk/#how-it-works)
