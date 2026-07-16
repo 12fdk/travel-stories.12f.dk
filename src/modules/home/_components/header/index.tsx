@@ -11,8 +11,13 @@ function Header() {
   const {
     googlePlayLink,
     appStoreLink,
+    appStore,
     home: { header, partners },
   } = useContext(ConfigContext)!;
+
+  // Only show a star rating that real users produced — never a hardcoded 5.0.
+  const hasTrustedRating =
+    (appStore?.rating ?? 0) > 0 && (appStore?.ratingCount ?? 0) >= 5;
 
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
@@ -144,17 +149,30 @@ function Header() {
                   transition={{ delay: 0.8 }}
                   className="flex flex-wrap items-center gap-x-3 gap-y-1 mt-2 text-sm text-base-content/80"
                 >
-                  <div className="flex items-center gap-1.5">
-                    <div className="flex text-yellow-400" aria-label="5 out of 5 stars">
-                      {[...Array(5)].map((_, i) => (
-                        <svg key={i} className="w-4 h-4 fill-current" viewBox="0 0 20 20">
-                          <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
-                        </svg>
-                      ))}
-                    </div>
-                    <span className="font-medium">5.0</span>
-                  </div>
-                  <span className="hidden xs:inline">•</span>
+                  {hasTrustedRating && (
+                    <>
+                      <div className="flex items-center gap-1.5">
+                        <div
+                          className="flex text-yellow-400"
+                          aria-label={`${appStore!.rating.toFixed(1)} out of 5 stars`}
+                        >
+                          {[...Array(5)].map((_, i) => (
+                            <svg
+                              key={i}
+                              className={`w-4 h-4 fill-current ${i < Math.round(appStore!.rating) ? "" : "opacity-25"}`}
+                              viewBox="0 0 20 20"
+                            >
+                              <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
+                            </svg>
+                          ))}
+                        </div>
+                        <span className="font-medium">{appStore!.rating.toFixed(1)}</span>
+                      </div>
+                      <span className="hidden xs:inline">•</span>
+                    </>
+                  )}
+                  <span>Free download</span>
+                  <span>•</span>
                   <span>Works offline</span>
                   <span>•</span>
                   <span>No account needed</span>

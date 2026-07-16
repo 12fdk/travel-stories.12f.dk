@@ -2,13 +2,13 @@
 
 > Travel Stories is a free iPhone app for planning, organising, and remembering every adventure. It combines day-by-day itineraries with interactive maps, budget tracking, smart packing lists, booking storage, a photo travel diary, and full offline access.
 
-Travel Stories is published by Robert Jensen (12f.dk) and distributed exclusively on the Apple App Store. The app is free with an optional Premium Lifetime upgrade (19 DKK / ~$3 USD) that unlocks additional features. It requires iOS 17.0 or later and runs on iPhone. The public landing page is a static Astro site hosted at travel-stories.12f.dk.
+Travel Stories is published by Robert Jensen (12f.dk) and distributed exclusively on the Apple App Store. The app is free with an optional Premium Lifetime upgrade ($1.99 USD / 19 DKK) that unlocks additional features. It requires iOS 17.0 or later and runs on iPhone. The public landing page is a static Astro site hosted at travel-stories.12f.dk.
 
 ## Key facts
 
 - **Name:** Travel Stories - Trip Planner
 - **Platform:** iOS 17.0+ (iPhone)
-- **Price:** Free (Premium Lifetime upgrade: 19 DKK / ~$3 USD)
+- **Price:** Free (Premium Lifetime upgrade: $1.99 USD / 19 DKK)
 - **Category:** Travel
 - **Developer:** Robert Jensen (12f.dk), based in Denmark
 - **App Store ID:** 6756801168
@@ -36,7 +36,7 @@ Travelers who plan trips themselves and want one app to hold the itinerary, book
 
 ## Common questions
 
-- **Is it free?** Yes. There is an optional Premium Lifetime upgrade with additional features (19 DKK one-time).
+- **Is it free?** Yes. There is an optional Premium Lifetime upgrade with additional features ($1.99 / 19 DKK one-time, no subscription).
 - **Does it work offline?** Yes. Itineraries, bookings, packing lists, and the travel diary are all available without internet.
 - **What devices?** iPhone, iOS 17.0 or later. No Android or iPad-specific version yet.
 - **Can I share an itinerary with others?** Not yet — planned.
