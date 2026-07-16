@@ -6,6 +6,7 @@ keyword: "travel journal"
 cover: "/blog/how-to-keep-a-travel-journal.webp"
 coverAlt: "Traveler capturing a travel memory on their phone"
 publishDate: 2026-07-01
+updatedDate: 2026-07-16
 author: Robert Jensen
 tags: ["travel journal", "memories", "habits"]
 tldr:
@@ -24,7 +25,7 @@ faq:
     answer: "Lower the bar instead of skipping. On exhausted nights, write one line or just caption a photo from the day — that still preserves the hook. Anchoring the habit to something you already do, like plugging in your phone at night, works better than relying on motivation."
   - question: "What do I do with a travel journal after the trip ends?"
     answer: "Give it 15 minutes within a week of getting home: pick your ten favorite photos, fill any gap days from memory while you still can, and write a short closing note about what you'd tell someone taking the same trip. That turns raw entries into a story, and stories are what you actually revisit years later."
-relatedSlugs: ["how-to-plan-a-trip-step-by-step", "best-trip-planner-apps", "travel-checklist-before-leaving"]
+relatedSlugs: ["travel-journal-prompts", "how-to-organize-travel-photos", "post-trip-checklist"]
 draft: false
 ---
 

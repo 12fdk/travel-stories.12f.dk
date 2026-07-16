@@ -6,6 +6,7 @@ keyword: "best trip planner apps"
 cover: "/blog/best-trip-planner-apps.webp"
 coverAlt: "Travel Stories trip list screen on an iPhone against a blue-green gradient"
 publishDate: 2026-07-14
+updatedDate: 2026-07-16
 author: Robert Jensen
 tags: ["apps", "trip planning", "comparison"]
 tldr:
@@ -24,7 +25,7 @@ faq:
     answer: "With most trip planner apps, no — TripIt and Wanderlog are built around accounts, since they sync email and enable collaboration. If you would rather not create yet another login, Travel Stories requires no account at all; your data lives on your device."
   - question: "Should I just use a spreadsheet to plan my trip?"
     answer: "A spreadsheet is genuinely fine if you enjoy building it and your trip is simple. You get total flexibility and it costs nothing. The trade-offs are that everything is manual, phone editing is clumsy, and there is no natural home for documents, photos, or day-by-day views. If you find yourself fighting the spreadsheet, that is the sign to switch to a dedicated app."
-relatedSlugs: ["how-to-plan-a-trip-step-by-step", "how-to-keep-a-travel-journal", "how-to-budget-for-a-trip"]
+relatedSlugs: ["tripit-vs-wanderlog-vs-travel-stories", "trip-planner-app-no-subscription", "how-to-plan-a-trip-step-by-step"]
 draft: false
 ---
 
