@@ -20,6 +20,16 @@ interface Props {
   bodyClass?: string;
   hideAppBanner?: boolean;
   /**
+   * Send every App Store link on the page to a different listing — used by the
+   * packing-list pages to route their traffic to the packing Custom Product
+   * Page (travel-stories#222). Applies to the navbar CTA, the sticky download
+   * bar and the app banner alike, because all three read `appStoreLink` from
+   * the same ConfigContext. Without it only the in-page CTA would be routed,
+   * and roughly three quarters of the taps on these pages would still land on
+   * the default listing.
+   */
+  appStoreLinkOverride?: string;
+  /**
    * Trail below Home, for sections that aren't the blog. Omit and the layout
    * builds the blog trail it was originally written for.
    */
@@ -39,6 +49,7 @@ const {
   tags = [],
   bodyClass = "",
   hideAppBanner = false,
+  appStoreLinkOverride,
   breadcrumbTrail,
 } = Astro.props;
 
@@ -49,6 +60,7 @@ const config: TemplateConfig = {
     ? appStoreData.artworkUrl512
     : defaultTemplateConfig.logo,
   appStore: toAppStoreMetadata(appStoreData),
+  ...(appStoreLinkOverride ? { appStoreLink: appStoreLinkOverride } : {}),
 };
 
 const canonicalURL = new URL(canonicalPath ?? Astro.url.pathname, Astro.site);

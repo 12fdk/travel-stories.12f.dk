@@ -54,6 +54,7 @@ const itemListNode = {
   canonicalPath={canonicalPath}
   extraGraphNodes={[itemListNode]}
   hideAppBanner={true}
+  appStoreLinkOverride={defaultTemplateConfig.packingAppStoreLink}
   bodyClass="packing-page"
   breadcrumbTrail={[
     { name: "Packing lists", item: new URL("/packing-list/", Astro.site).href },
@@ -100,7 +101,8 @@ const itemListNode = {
         initialOptions={page.options}
         extras={page.extras}
         heading={page.h1}
-        appStoreLink={defaultTemplateConfig.appStoreLink}
+        appStoreLink={defaultTemplateConfig.packingAppStoreLink ||
+          defaultTemplateConfig.appStoreLink}
         storageKey={`packing-list:${page.slug}`}
       />
     </div>
