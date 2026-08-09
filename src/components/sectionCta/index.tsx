@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { useContext } from "react";
 import { ConfigContext } from "../../utils/configContext";
+import { withCampaign } from "../../utils/appStoreCampaign";
 
 interface Props {
   text: string;
@@ -37,7 +38,7 @@ function SectionCta({ text, trackingId }: Props) {
           {text}
         </p>
         <a
-          href={appStoreLink}
+          href={withCampaign(appStoreLink, "section-cta")}
           target="_blank"
           rel="noopener noreferrer"
           data-umami-event={trackingId}

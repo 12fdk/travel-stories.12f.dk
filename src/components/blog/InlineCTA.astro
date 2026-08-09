@@ -1,4 +1,7 @@
 ---
+import defaultTemplateConfig from "../../utils/config";
+import { withCampaign } from "../../utils/appStoreCampaign";
+
 type Variant = "inline" | "callout";
 
 interface Props {
@@ -16,15 +19,17 @@ const {
   body = "Travel Stories keeps your itinerary, packing list, budget, and memories in one offline iPhone app — free on the App Store, no subscription.",
   buttonText = "Get Travel Stories — Free",
   trackingId = "blog-inline-cta",
-  appStoreLink = "https://apps.apple.com/app/id6756801168",
+  appStoreLink = defaultTemplateConfig.appStoreLink,
 } = Astro.props;
+
+const ctaLink = withCampaign(appStoreLink, "blog");
 ---
 
 {
   variant === "inline" ? (
     <p class="not-prose my-6">
       <a
-        href={appStoreLink}
+        href={ctaLink}
         target="_blank"
         rel="noopener"
         data-umami-event={trackingId}
@@ -41,7 +46,7 @@ const {
       <h3 class="mb-2 text-xl font-bold text-base-content sm:text-2xl">{heading}</h3>
       <p class="mb-5 text-base-content/80">{body}</p>
       <a
-        href={appStoreLink}
+        href={ctaLink}
         target="_blank"
         rel="noopener"
         data-umami-event={trackingId}

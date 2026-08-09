@@ -2,6 +2,7 @@ import { motion, useScroll } from "framer-motion";
 import { useContext, useRef } from "react";
 import { ConfigContext } from "../../../../utils/configContext";
 import { withBase } from "../../../../utils/basePath";
+import { withCampaign } from "../../../../utils/appStoreCampaign";
 import SingleScreenshot from "./singleScreenshot";
 import SVGBlob from "./svg/blob";
 import IphoneFrame from "../../../../components/iphoneFrame";
@@ -125,7 +126,7 @@ function Header() {
                 {appStoreLink && (
                   <li className="m-0 p-0">
                     <a
-                      href={appStoreLink}
+                      href={withCampaign(appStoreLink, "hero")}
                       target="_blank"
                       rel="noopener noreferrer"
                       data-umami-event="hero-app-store-click"

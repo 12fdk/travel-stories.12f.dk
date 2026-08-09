@@ -1,6 +1,7 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useContext } from "react";
 import { ConfigContext } from "../../utils/configContext";
+import { withCampaign } from "../../utils/appStoreCampaign";
 
 /** Phone-only: the download action follows you down the page, quietly. */
 function StickyDownload() {
@@ -18,7 +19,7 @@ function StickyDownload() {
       className="fixed inset-x-0 bottom-0 z-50 border-t border-base-300 bg-base-100/95 p-3 backdrop-blur-md md:hidden print:hidden"
     >
       <a
-        href={appStoreLink}
+        href={withCampaign(appStoreLink, "sticky")}
         target="_blank"
         rel="noopener noreferrer"
         data-umami-event="sticky-download-click"

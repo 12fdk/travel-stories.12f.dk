@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { getMobileOperatingSystem } from "utils/common";
 import type { TemplateConfig } from "utils/configType";
+import { withCampaign } from "utils/appStoreCampaign";
 
 interface Props {
   config: TemplateConfig;
@@ -11,7 +12,8 @@ function AppRedirectionPage({ config }: Props) {
 
   useEffect(() => {
     const platform = getMobileOperatingSystem();
-    if (platform === "ios" && appStoreLink) window.location.href = appStoreLink;
+    if (platform === "ios" && appStoreLink)
+      window.location.href = withCampaign(appStoreLink, "app-redirect");
     else if (platform === "android" && googlePlayLink)
       window.location.href = googlePlayLink;
     else window.location.href = "/";
