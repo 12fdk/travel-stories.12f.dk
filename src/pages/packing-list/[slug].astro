@@ -1,0 +1,135 @@
+---
+import { getCollection } from "astro:content";
+import BlogLayout from "../../layouts/BlogLayout.astro";
+import RelatedLists from "../../modules/packingList/_components/RelatedLists.astro";
+import PackingListGenerator from "../../modules/packingList";
+import defaultTemplateConfig from "../../utils/config";
+import { CURATED_PAGES, type CuratedPage } from "../../data/packingList/pages";
+import { buildPackingList, countItems, describeOptions } from "../../data/packingList";
+
+export async function getStaticPaths() {
+  return CURATED_PAGES.map((page) => ({
+    params: { slug: page.slug },
+    props: { page },
+  }));
+}
+
+const { page } = Astro.props as { page: CuratedPage };
+
+const canonicalPath = `/packing-list/${page.slug}/`;
+const canonicalURL = new URL(canonicalPath, Astro.site);
+
+// The list is generated here, at build time, and rendered into the HTML — the
+// island re-derives the identical one on hydration from the same pure function.
+const sections = buildPackingList(page.options, page.extras);
+const total = countItems(sections);
+
+const posts = await getCollection("blog", ({ data }) => !data.draft);
+const related = page.related
+  .map((slug) => posts.find((post) => post.slug === slug))
+  .filter((post): post is (typeof posts)[number] => Boolean(post));
+
+const itemListNode = {
+  "@type": "ItemList",
+  "@id": `${canonicalURL.href}#list`,
+  name: page.h1,
+  description: page.description,
+  numberOfItems: total,
+  itemListOrder: "https://schema.org/ItemListOrderAscending",
+  itemListElement: sections
+    .flatMap((section) =>
+      section.items.map((item) => ({
+        "@type": "ListItem",
+        name: item.label,
+        ...(item.note ? { description: item.note } : {}),
+      })),
+    )
+    .map((item, index) => ({ ...item, position: index + 1 })),
+};
+---
+
+<BlogLayout
+  title={`${page.title} | Travel Stories`}
+  description={page.description}
+  canonicalPath={canonicalPath}
+  extraGraphNodes={[itemListNode]}
+  hideAppBanner={true}
+  bodyClass="packing-page"
+  breadcrumbTrail={[
+    { name: "Packing lists", item: new URL("/packing-list/", Astro.site).href },
+    { name: page.h1, item: canonicalURL.href },
+  ]}
+>
+  <main id="main" class="mx-auto max-w-screen-lg px-4 py-12 md:py-16">
+    <nav aria-label="Breadcrumb" class="mb-6 text-sm text-base-content/60">
+      <a href="/" class="hover:text-primary">Home</a>
+      <span class="mx-1.5" aria-hidden="true">/</span>
+      <a href="/packing-list/" class="hover:text-primary">Packing lists</a>
+    </nav>
+
+    <header class="mb-10 max-w-3xl">
+      <h1 class="mb-4 text-4xl font-extrabold leading-[1.08] md:text-5xl">
+        {page.h1}
+      </h1>
+      <p class="text-lg leading-relaxed text-base-content/80" data-speakable>
+        {page.lede}
+      </p>
+      <p class="mt-4 text-sm text-base-content/60">
+        {total} items · {describeOptions(page.options)} · tick them off, print,
+        or adjust the list to your trip below
+      </p>
+    </header>
+
+    <section class="mb-12 max-w-3xl" aria-labelledby="advice">
+      <h2 id="advice" class="sr-only">What's different about this trip</h2>
+      <div class="space-y-8">
+        {
+          page.advice.map((block) => (
+            <div>
+              <h3 class="mb-2 text-xl font-bold">{block.heading}</h3>
+              <p class="m-0 leading-relaxed text-base-content/80">{block.body}</p>
+            </div>
+          ))
+        }
+      </div>
+    </section>
+
+    <div class="packing-list-root">
+      <PackingListGenerator
+        client:idle
+        initialOptions={page.options}
+        extras={page.extras}
+        heading={page.h1}
+        appStoreLink={defaultTemplateConfig.appStoreLink}
+        storageKey={`packing-list:${page.slug}`}
+      />
+    </div>
+
+    {
+      related.length > 0 && (
+        <section class="mt-16 max-w-3xl" aria-labelledby="read-more">
+          <h2 id="read-more" class="mb-4 text-2xl font-bold">
+            Read more
+          </h2>
+          <ul class="m-0 list-none space-y-3 p-0">
+            {related.map((post) => (
+              <li class="m-0">
+                <a
+                  href={`/blog/${post.slug}/`}
+                  class="link link-primary font-semibold"
+                >
+                  {post.data.title}
+                </a>
+                <span class="block text-sm text-base-content/65">
+                  {post.data.description}
+                </span>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )
+    }
+
+    <RelatedLists currentSlug={page.slug} heading="Other packing lists" />
+  </main>
+</BlogLayout>

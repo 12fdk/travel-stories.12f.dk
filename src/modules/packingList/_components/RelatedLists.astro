@@ -1,0 +1,37 @@
+---
+import { CURATED_PAGES } from "../../../data/packingList/pages";
+
+interface Props {
+  /** Slug of the page doing the linking, so it doesn't link to itself. */
+  currentSlug?: string;
+  heading?: string;
+  limit?: number;
+}
+
+const { currentSlug, heading = "Ready-made lists", limit } = Astro.props;
+
+const pages = CURATED_PAGES.filter((page) => page.slug !== currentSlug);
+const shown = limit ? pages.slice(0, limit) : pages;
+---
+
+<section aria-labelledby="related-lists" class="mt-16">
+  <h2 id="related-lists" class="mb-2 text-2xl font-bold">{heading}</h2>
+  <p class="mb-6 max-w-2xl text-base-content/70">
+    Each one is a full list with advice specific to that trip — and the
+    generator underneath it, so you can adjust it to yours.
+  </p>
+  <ul class="grid list-none grid-cols-1 gap-3 p-0 sm:grid-cols-2 lg:grid-cols-3">
+    {
+      shown.map((page) => (
+        <li class="m-0">
+          <a
+            href={`/packing-list/${page.slug}/`}
+            class="flex h-full items-center rounded-box border border-base-300 bg-base-100 px-4 py-3 text-sm font-medium leading-snug transition-colors hover:border-primary/40 hover:text-primary"
+          >
+            {page.h1}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</section>

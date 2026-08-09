@@ -86,6 +86,15 @@ export default defineConfig({
           item.priority = 1.0;
           item.changefreq = "weekly";
         }
+        // The packing list tool is the only surface here built to be found by
+        // people who don't know the app exists, so it outranks the blog.
+        if (item.url === `${SITE}/packing-list/`) {
+          item.priority = 0.8;
+          item.changefreq = "monthly";
+        } else if (item.url.startsWith(`${SITE}/packing-list/`)) {
+          item.priority = 0.7;
+          item.changefreq = "monthly";
+        }
         if (
           item.url.includes("privacy-policy") ||
           item.url.includes("terms-and-conditions") ||
