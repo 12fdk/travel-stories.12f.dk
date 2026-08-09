@@ -15,7 +15,7 @@ function StickyDownload() {
   return (
     <motion.div
       style={{ opacity, y }}
-      className="fixed inset-x-0 bottom-0 z-50 border-t border-base-300 bg-base-100/95 p-3 backdrop-blur-md md:hidden"
+      className="fixed inset-x-0 bottom-0 z-50 border-t border-base-300 bg-base-100/95 p-3 backdrop-blur-md md:hidden print:hidden"
     >
       <a
         href={appStoreLink}

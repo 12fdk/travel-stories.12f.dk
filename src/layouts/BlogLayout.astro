@@ -19,6 +19,11 @@ interface Props {
   tags?: string[];
   bodyClass?: string;
   hideAppBanner?: boolean;
+  /**
+   * Trail below Home, for sections that aren't the blog. Omit and the layout
+   * builds the blog trail it was originally written for.
+   */
+  breadcrumbTrail?: { name: string; item: string }[];
 }
 
 const {
@@ -34,6 +39,7 @@ const {
   tags = [],
   bodyClass = "",
   hideAppBanner = false,
+  breadcrumbTrail,
 } = Astro.props;
 
 const appStoreData = (await fetchAppStoreData()) ?? fallbackAppStoreData;
@@ -74,28 +80,21 @@ const orgNode = {
   url: "https://www.12f.dk",
 };
 
-const breadcrumbItems = [
-  {
-    "@type": "ListItem",
-    position: 1,
-    name: "Home",
-    item: siteUrl,
-  },
-  {
-    "@type": "ListItem",
-    position: 2,
-    name: "Blog",
-    item: new URL("/blog/", Astro.site).href,
-  },
+const trail = breadcrumbTrail ?? [
+  { name: "Blog", item: new URL("/blog/", Astro.site).href },
+  ...(Astro.url.pathname === "/blog/" || Astro.url.pathname === "/blog"
+    ? []
+    : [{ name: title, item: canonicalURL.href }]),
 ];
-if (Astro.url.pathname !== "/blog/" && Astro.url.pathname !== "/blog") {
-  breadcrumbItems.push({
+const breadcrumbItems = [
+  { "@type": "ListItem", position: 1, name: "Home", item: siteUrl },
+  ...trail.map((crumb, index) => ({
     "@type": "ListItem",
-    position: 3,
-    name: title,
-    item: canonicalURL.href,
-  });
-}
+    position: index + 2,
+    name: crumb.name,
+    item: crumb.item,
+  })),
+];
 const breadcrumbNode = {
   "@type": "BreadcrumbList",
   "@id": breadcrumbId,

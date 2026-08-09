@@ -19,6 +19,7 @@ import Comparison from "./_components/comparison";
 import AppStoreReviews from "./_components/appStoreReviews";
 import Pricing from "./_components/pricing";
 import FromTheBlog from "./_components/fromTheBlog";
+import PackingTool from "./_components/packingTool";
 
 interface Props {
   config: TemplateConfig;
@@ -49,6 +50,7 @@ function Home({ config, posts = [], reviews = [] }: Props) {
         />
         <AppStoreReviews reviews={reviews} />
         <Pricing />
+        <PackingTool />
         <FromTheBlog posts={posts} />
         <Faq />
         <AppBanner />

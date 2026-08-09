@@ -34,7 +34,7 @@ A complete packing list for international travel has five sections: documents, c
 
 International trips punish forgetfulness more than domestic ones. Forget a charger on a weekend trip and you buy one at a gas station. Forget your passport, prescription meds, or the right power adapter on an international trip and you may not board the plane, or you spend a day of your holiday hunting for a pharmacy that stocks your medication.
 
-This guide is built to be copied. Take the base list, apply one of the destination modifiers at the end, delete what doesn't apply, and you're done. If you want the full pre-departure routine beyond packing — house, money, phone plan — see the [travel checklist before leaving](/blog/travel-checklist-before-leaving/).
+This guide is built to be copied. Take the base list, apply one of the destination modifiers at the end, delete what doesn't apply, and you're done. If you'd rather have that done for you, the [packing list generator](/packing-list/) builds the same list from your trip type, length and climate — free, no sign-up, and printable. If you want the full pre-departure routine beyond packing — house, money, phone plan — see the [travel checklist before leaving](/blog/travel-checklist-before-leaving/).
 
 ## Documents: the section you check twice
 
@@ -124,6 +124,8 @@ Two notes. First, most modern chargers accept 100-240V, so you need an adapter (
 
 Don't write a new list per trip. Keep the base list and add one block.
 
+Each of these has a ready-made version with the base list already merged in: [beach](/packing-list/7-day-beach-trip-packing-list/), [city break](/packing-list/weekend-city-break-packing-list/), [cold weather](/packing-list/week-long-ski-trip-packing-list/), and [business](/packing-list/3-day-business-trip-packing-list/).
+
 **Beach:**
 - 2 swimsuits (one dries while you wear the other)
 - Flip-flops or sandals
@@ -183,3 +185,5 @@ Packing is also only one lane of trip prep. Booking order, budget, and the day-b
 ## Put it into practice
 
 Copy the base list, apply your destination modifier, and cut anything that fails the $10 test — then keep the list somewhere reusable, like the packing checklist in Travel Stories, so your next trip starts from a list that already works.
+
+Or skip the copying: the [packing list generator](/packing-list/) assembles the base list and the right modifiers from your trip type, length and climate, and gives you something you can tick off, print, or send to whoever you're travelling with.

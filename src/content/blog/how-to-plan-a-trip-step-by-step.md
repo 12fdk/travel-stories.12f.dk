@@ -122,7 +122,7 @@ Build the list from the itinerary, not from memory:
 - **Activities** decide the gear: hiking days need different shoes than museum days.
 - **Trip length** decides quantities — and whether you're doing laundry mid-trip.
 
-Write the list down and check items off as they go in the bag. A mental list fails exactly when you're rushed, which is always. For a complete item-by-item breakdown — clothing, toiletries, electronics, documents, and the things people forget most — use the [packing list for international travel](/blog/packing-list-for-international-travel/).
+Write the list down and check items off as they go in the bag. A mental list fails exactly when you're rushed, which is always. For a complete item-by-item breakdown — clothing, toiletries, electronics, documents, and the things people forget most — use the [packing list for international travel](/blog/packing-list-for-international-travel/). To skip the writing entirely, the [packing list generator](/packing-list/) produces a checklist for your trip type, length and climate that you can tick off, print, or download.
 
 ## Step 6: Gather your documents
 

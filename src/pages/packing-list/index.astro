@@ -1,0 +1,164 @@
+---
+import BlogLayout from "../../layouts/BlogLayout.astro";
+import FaqSection from "../../components/blog/FaqSection.astro";
+import RelatedLists from "../../modules/packingList/_components/RelatedLists.astro";
+import PackingListGenerator from "../../modules/packingList";
+import defaultTemplateConfig from "../../utils/config";
+import { buildPackingList, countItems, DEFAULT_OPTIONS } from "../../data/packingList";
+
+const canonicalPath = "/packing-list/";
+const canonicalURL = new URL(canonicalPath, Astro.site);
+
+// Rendered here as well as inside the island, so the ItemList schema and the
+// "N items" claims come from the same generator the visitor is looking at.
+const sections = buildPackingList(DEFAULT_OPTIONS);
+const total = countItems(sections);
+
+const itemListNode = {
+  "@type": "ItemList",
+  "@id": `${canonicalURL.href}#list`,
+  name: "Packing list generator",
+  description:
+    "A categorised travel packing checklist generated from trip type, duration, climate, and whether you're travelling carry-on only or with children.",
+  numberOfItems: total,
+  itemListOrder: "https://schema.org/ItemListOrderAscending",
+  itemListElement: sections.flatMap((section) =>
+    section.items.map((item) => ({
+      "@type": "ListItem",
+      name: item.label,
+      ...(item.note ? { description: item.note } : {}),
+    })),
+  ).map((item, index) => ({ ...item, position: index + 1 })),
+};
+
+const faq = [
+  {
+    question: "Do I need to sign up to use the packing list generator?",
+    answer:
+      "No. There is no account, no email address, and no app install required. Pick your trip type, duration and climate, and the list appears immediately — you can print it, copy it, or download it as a text file straight away.",
+  },
+  {
+    question: "How many clothes should I pack per day?",
+    answer:
+      "Fewer than one outfit per day. The generator uses roughly 0.7 tops per day up to a cap of seven, one bottom per two days up to four, and underwear and socks for each day plus one spare. Past about eight days it stops adding clothes and adds a laundry stop instead, because packing two weeks of outfits is heavier than washing once.",
+  },
+  {
+    question: "What should never go in checked luggage?",
+    answer:
+      "Passport and documents, all medication, electronics and chargers, valuables, and one full change of clothes. Those are the things you cannot quickly replace at your destination, and a delayed bag typically takes 24 to 48 hours to catch up with you.",
+  },
+  {
+    question: "Can I share the list I have configured?",
+    answer:
+      "Yes. Your choices are stored in the page's web address, so copying the URL from your browser and sending it to someone opens exactly the same list for them. The items you tick off are saved in your own browser only, and are not part of the shared link.",
+  },
+  {
+    question: "How much sunscreen should I take?",
+    answer:
+      "A full-body application for one adult is about 30 to 35ml. Applied twice a day for a week, that is roughly 500ml per person — around five standard travel bottles. Running out mid-trip is one of the most common packing miscalculations.",
+  },
+];
+
+const faqNode = {
+  "@type": "FAQPage",
+  "@id": `${canonicalURL.href}#faq`,
+  mainEntity: faq.map((item) => ({
+    "@type": "Question",
+    name: item.question,
+    acceptedAnswer: { "@type": "Answer", text: item.answer },
+  })),
+};
+
+const webAppNode = {
+  "@type": "WebApplication",
+  "@id": `${canonicalURL.href}#tool`,
+  name: "Packing List Generator",
+  url: canonicalURL.href,
+  applicationCategory: "TravelApplication",
+  browserRequirements: "Requires JavaScript for the interactive options.",
+  operatingSystem: "Any",
+  offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+  isPartOf: { "@id": `${Astro.site?.href ?? ""}#website` },
+};
+---
+
+<BlogLayout
+  title="Packing List Generator — Build a Custom Travel Checklist | Travel Stories"
+  description="Free packing list generator. Choose your trip type, length and climate and get a categorised checklist you can tick off, print, copy or download. No sign-up, no install."
+  canonicalPath={canonicalPath}
+  extraGraphNodes={[webAppNode, itemListNode, faqNode]}
+  hideAppBanner={true}
+  bodyClass="packing-page"
+  breadcrumbTrail={[{ name: "Packing lists", item: canonicalURL.href }]}
+>
+  <main id="main" class="mx-auto max-w-screen-lg px-4 py-12 md:py-16">
+    <nav aria-label="Breadcrumb" class="mb-6 text-sm text-base-content/60">
+      <a href="/" class="hover:text-primary">Home</a>
+      <span class="mx-1.5" aria-hidden="true">/</span>
+      <span>Packing lists</span>
+    </nav>
+
+    <header class="mb-10 max-w-3xl">
+      <p class="m-0 flex items-center gap-3 text-sm font-semibold uppercase tracking-wide text-base-content/50">
+        <span class="inline-block h-0.5 w-8 bg-primary"></span>
+        Free tool
+      </p>
+      <h1 class="mb-4 mt-5 text-4xl font-extrabold leading-[1.05] md:text-5xl">
+        Packing list generator
+      </h1>
+      <p class="text-lg leading-relaxed text-base-content/75" data-speakable>
+        Choose the kind of trip, how long you're going, and what the weather
+        will do. You get a categorised checklist you can tick off, print, copy,
+        or download — no account, no email address, no install.
+      </p>
+    </header>
+
+    <div class="packing-list-root">
+      <PackingListGenerator
+        client:idle
+        initialOptions={DEFAULT_OPTIONS}
+        appStoreLink={defaultTemplateConfig.appStoreLink}
+        storageKey="packing-list:hub"
+      />
+    </div>
+
+    <section class="mt-16 max-w-3xl" aria-labelledby="how-it-works">
+      <h2 id="how-it-works" class="mb-4 text-2xl font-bold">
+        How the list is put together
+      </h2>
+      <div class="space-y-4 text-base-content/80">
+        <p class="m-0">
+          Every list starts from the same base: the documents, medication, tech
+          and clothing that no trip works without. On top of that go three sets
+          of modifiers — one for the kind of trip, one for the climate, and one
+          for the length — plus whatever the carry-on, checked bag and children
+          toggles imply.
+        </p>
+        <p class="m-0">
+          Quantities scale with duration rather than being fixed, and they stop
+          scaling at about a week. Beyond that the list adds a laundry stop
+          instead of more clothes, because the counts already cover a fortnight
+          with one wash and carrying fourteen outfits is the more expensive way
+          to solve it.
+        </p>
+        <p class="m-0">
+          Notes explain why an item is there. That's deliberate: a checklist you
+          can argue with is one you'll actually cut things from, and cutting is
+          the part of packing that most people find hardest.
+        </p>
+        <p class="m-0">
+          If you'd rather read the reasoning at length than tick a list, the{" "}
+          <a href="/blog/packing-list-for-international-travel/" class="link link-primary">
+            complete guide to packing for international travel
+          </a>{" "}
+          covers the clothing formula, what to leave at home, and the
+          pre-departure routine in full.
+        </p>
+      </div>
+    </section>
+
+    <RelatedLists heading="Ready-made lists" />
+
+    <FaqSection items={faq} />
+  </main>
+</BlogLayout>

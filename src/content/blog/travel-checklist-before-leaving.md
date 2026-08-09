@@ -117,7 +117,7 @@ The middle wave: money, tech, and the home logistics that can't be done too earl
 **Packing**
 
 - Do laundry so everything on the packing list is actually clean and available
-- Finalize the packing list — the item-by-item version is in the [packing list for international travel](/blog/packing-list-for-international-travel/)
+- Finalize the packing list — the item-by-item version is in the [packing list for international travel](/blog/packing-list-for-international-travel/), or build one for your exact trip with the [packing list generator](/packing-list/)
 
 This is also the week to move your checklist off scraps of paper. Travel Stories keeps your checklist, packing list, documents, and itinerary together in one offline app — [free on the App Store](https://apps.apple.com/app/id6756801168) — so ticking items off this week is the same app you'll open at the airport.
 
