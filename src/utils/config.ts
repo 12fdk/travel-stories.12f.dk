@@ -49,6 +49,7 @@ const templateConfig: TemplateConfig = {
     links: [
       { href: "/#features", title: "Features" },
       { href: "/#how-it-works", title: "How it works" },
+      { href: "/packing-list/", title: "Packing list", enOnly: true },
       { href: "/#faq", title: "FAQ" },
       { href: "/blog/", title: "Blog" },
     ],
@@ -61,6 +62,7 @@ const templateConfig: TemplateConfig = {
     links: [
       { href: "/#features", title: "Features" },
       { href: "/#how-it-works", title: "How it works" },
+      { href: "/packing-list/", title: "Packing list", enOnly: true },
       { href: "/#faq", title: "FAQ" },
       { href: "/blog/", title: "Blog" },
     ],

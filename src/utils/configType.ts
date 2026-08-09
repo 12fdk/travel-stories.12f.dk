@@ -59,6 +59,8 @@ export type TemplateConfig = {
         links: {
             title: string;
             href: string;
+            /** Dropped on localized homepages — see applyTranslation (#57). */
+            enOnly?: boolean | undefined;
         }[];
         legalLinks: {
             termsAndConditions: boolean;
@@ -77,6 +79,8 @@ export type TemplateConfig = {
         links: {
             title: string;
             href: string;
+            /** Dropped on localized homepages — see applyTranslation (#57). */
+            enOnly?: boolean | undefined;
         }[];
         hideGooglePlay?: boolean | undefined;
         hideAppStore?: boolean | undefined;

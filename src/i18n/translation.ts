@@ -53,9 +53,13 @@ export function applyTranslation(
   // "/#anchor" links must stay on the localized homepage, not jump to "/".
   const localizeHref = (href: string) =>
     href.startsWith("/#") ? `${homeHref}${href.slice(1)}` : href;
+  // English-only links (the packing list tool, #57) are dropped before the
+  // positional zip below — otherwise they'd shift every t.nav.links index and
+  // hand each remaining item its neighbour's translation.
+  const navLinks = base.topNavbar.links.filter((link) => !link.enOnly);
   // Footer nav shares the navbar's titles — translate by href lookup.
   const navTitleByHref = new Map(
-    base.topNavbar.links.map((link, i) => [link.href, t.nav.links[i]]),
+    navLinks.map((link, i) => [link.href, t.nav.links[i]]),
   );
   return {
     ...base,
@@ -67,7 +71,7 @@ export function applyTranslation(
     topNavbar: {
       ...base.topNavbar,
       cta: t.nav.cta,
-      links: base.topNavbar.links.map((link, i) => ({
+      links: navLinks.map((link, i) => ({
         ...link,
         href: localizeHref(link.href),
         title: t.nav.links[i] ?? link.title,
@@ -75,7 +79,7 @@ export function applyTranslation(
     },
     footer: {
       ...base.footer,
-      links: base.footer.links.map((link) => ({
+      links: base.footer.links.filter((link) => !link.enOnly).map((link) => ({
         ...link,
         href: localizeHref(link.href),
         title: navTitleByHref.get(link.href) ?? link.title,
