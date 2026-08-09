@@ -18,6 +18,16 @@ const templateConfig: TemplateConfig = {
   // Geo-neutral: Apple redirects to the visitor's own storefront. The /dk/
   // path routed every international visitor through the Danish store.
   appStoreLink: "https://apps.apple.com/app/id6756801168",
+  // Custom Product Page for packing-list traffic (travel-stories#222). Visitors
+  // arriving on "carry-on only packing list" style queries land on a listing
+  // that leads with the packing checklist and luggage suggestions, instead of
+  // the default page's Trips List / Trip Detail / Widget.
+  //
+  // Apple serves the standard product page for an unknown or not-yet-approved
+  // ppid, so this is safe to ship before review clears. Blank it out to send
+  // packing traffic back to the default listing.
+  packingAppStoreLink:
+    "https://apps.apple.com/app/id6756801168?ppid=7b469e5b-98cd-4ca4-9a82-ff91dbf22712",
   googlePlayLink: "",
   // Component-level strings that localize with the homepage (#22).
   ui: {
