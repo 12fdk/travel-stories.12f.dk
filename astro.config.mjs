@@ -4,8 +4,32 @@ import path from "node:path";
 import react from "@astrojs/react";
 import tailwind from "@astrojs/tailwind";
 import sitemap from "@astrojs/sitemap";
+import { withCampaign } from "./src/utils/appStoreCampaign";
 
 const SITE = "https://travel-stories.12f.dk";
+
+/**
+ * Attribute App Store links written inline in post bodies (#52).
+ *
+ * There are 22 of them across the blog and they are authored as ordinary
+ * markdown, so rewriting them here keeps the provider token in exactly one
+ * place instead of pasting it into every post. Hand-rolled walk rather than
+ * unist-util-visit, which isn't a direct dependency.
+ */
+function rehypeAppStoreCampaign() {
+  return (tree) => {
+    const walk = (node) => {
+      if (node.type === "element" && node.tagName === "a") {
+        const href = node.properties?.href;
+        if (typeof href === "string" && href.startsWith("https://apps.apple.com/")) {
+          node.properties.href = withCampaign(href, "blog-body");
+        }
+      }
+      for (const child of node.children ?? []) walk(child);
+    };
+    walk(tree);
+  };
+}
 const BLOG_DIR = "src/content/blog";
 
 /**
@@ -65,6 +89,9 @@ export default defineConfig({
         limitInputPixels: false,
       },
     },
+  },
+  markdown: {
+    rehypePlugins: [rehypeAppStoreCampaign],
   },
   integrations: [
     react(),

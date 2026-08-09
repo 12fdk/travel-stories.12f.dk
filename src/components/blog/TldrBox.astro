@@ -1,9 +1,14 @@
 ---
+import { withCampaignInHtml } from "../../utils/appStoreCampaign";
+
 interface Props {
   items: string[];
 }
 
-const { items } = Astro.props;
+const { items: rawItems } = Astro.props;
+// TL;DR entries are authored as HTML in frontmatter and several link to the
+// App Store, so they need attributing too (#52).
+const items = rawItems.map((item) => withCampaignInHtml(item, "blog"));
 ---
 
 {

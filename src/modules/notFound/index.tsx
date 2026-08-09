@@ -1,6 +1,7 @@
 import Navbar from "../../components/navbar";
 import Footer from "../../components/footer";
 import { ConfigContext } from "../../utils/configContext";
+import { withCampaign } from "../../utils/appStoreCampaign";
 import type { TemplateConfig } from "../../utils/configType";
 
 interface Props {
@@ -36,7 +37,7 @@ function NotFound({ config }: Props) {
               Read the blog
             </a>
             <a
-              href={config.appStoreLink}
+              href={withCampaign(config.appStoreLink, "404")}
               target="_blank"
               rel="noopener noreferrer"
               data-umami-event="404-cta-click"

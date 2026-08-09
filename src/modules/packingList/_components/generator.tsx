@@ -17,6 +17,7 @@ import {
   type TripType,
 } from "../../../data/packingList";
 import ListView from "./listView";
+import { withCampaign } from "../../../utils/appStoreCampaign";
 
 interface Props {
   /** Server-rendered configuration. The URL query overrides it after mount. */
@@ -347,7 +348,7 @@ function Generator({
           start from a blank page again.
         </p>
         <a
-          href={appStoreLink}
+          href={withCampaign(appStoreLink, "packing-list")}
           target="_blank"
           rel="noopener noreferrer"
           data-umami-event="packing-list-app-cta"

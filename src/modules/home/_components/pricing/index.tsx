@@ -3,6 +3,7 @@ import clsx from "clsx";
 import { motion } from "framer-motion";
 import { useContext } from "react";
 import { ConfigContext } from "../../../../utils/configContext";
+import { withCampaign } from "../../../../utils/appStoreCampaign";
 
 function Pricing() {
   const config = useContext(ConfigContext)!;
@@ -85,7 +86,7 @@ function Pricing() {
                 </ul>
                 {pricing.actionText && (
                   <a
-                    href={appStoreLink}
+                    href={withCampaign(appStoreLink, "pricing")}
                     target="_blank"
                     rel="noopener noreferrer"
                     data-umami-event={`pricing-cta-${plan.featured ? "premium" : "free"}`}

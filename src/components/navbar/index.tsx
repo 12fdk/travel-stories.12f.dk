@@ -5,6 +5,7 @@ import { easeIn, motion, useScroll, useTransform } from "framer-motion";
 import { useContext, useState } from "react";
 import { ConfigContext } from "../../utils/configContext";
 import { withBase } from "../../utils/basePath";
+import { withCampaign } from "../../utils/appStoreCampaign";
 import ThemeSwitcher from "./themeSwitcher";
 import LanguageSwitcher from "../languageSwitcher";
 
@@ -89,7 +90,7 @@ function Navbar() {
           </ul>
           {topNavbar.cta && appStoreLink && (
             <a
-              href={appStoreLink}
+              href={withCampaign(appStoreLink, "navbar")}
               target="_blank"
               rel="noopener noreferrer"
               data-umami-event="navbar-cta-click"
@@ -140,7 +141,7 @@ function Navbar() {
           )}
           {appStoreLink && (
             <li className="mb-2">
-              <a href={appStoreLink} target="_blank" rel="noopener noreferrer">
+              <a href={withCampaign(appStoreLink, "navbar")} target="_blank" rel="noopener noreferrer">
                 <img className="h-12" src={withBase("/stores/app-store.svg")} alt="Download on App Store" width={144} height={48} />
               </a>
             </li>
