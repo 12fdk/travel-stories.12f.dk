@@ -51,16 +51,30 @@ The post must be genuinely useful to someone who never installs anything. Mentio
 the app **once or twice at most**, where it actually solves the problem being
 discussed — typically in a `tldr` bullet or one in-body sentence.
 
-**Every App Store link must carry a campaign tag** so the post is attributable
-(see 12fdk/travel-stories.12f.dk#62):
+**Use this repo's `withCampaign()` helper — do not hand-write a tagged URL.**
+`src/utils/appStoreCampaign.ts` already exists (#61) and is the single place
+campaign parameters are constructed:
 
-```
-https://apps.apple.com/app/id6756801168?ct=blog-<post-slug>&mt=8
+```ts
+import { withCampaign } from "../../utils/appStoreCampaign";
+withCampaign("https://apps.apple.com/app/id6756801168", "blog-body")
 ```
 
-`ct` is free text, **maximum 40 characters** — truncate the slug if needed. An
-untagged link is invisible in App Store Connect's campaign reporting, so this is
-not optional decoration.
+Two reasons it must go through the helper rather than a literal `?ct=...`:
+
+- It **merges** parameters rather than appending, so the Custom Product Page
+  `ppid` that some traffic carries (#60) survives untouched.
+- It adds the provider token `pt` from one constant. Apple credits an install to
+  this site only when the link carries **`pt` *and* `ct`** — `ct` alone is not
+  enough, which is why the July 2026 report showed `App referrer = 0` despite the
+  site clearly sending traffic. `PROVIDER_TOKEN` is currently `""`, so links come
+  back untagged and the site behaves exactly as before; filling that one constant
+  switches attribution on everywhere at once.
+
+A hand-written `?ct=...&mt=8` link looks tagged, will never receive the provider
+token, and therefore stays invisible in App Store Connect forever. In a plain
+markdown post where importing is awkward, use the placement `blog-body` and keep
+the bare URL — then note it in your final report so it can be converted.
 
 ## 5. Frontmatter — must match `src/content/config.ts` exactly
 
@@ -136,7 +150,7 @@ and the Actions run is green.
 
 - [ ] Keyword came from `BLOG_CONTENT_PLAN.md` and has no existing post.
 - [ ] `title` ≤ 70 chars, `description` ≤ 160 chars.
-- [ ] Every App Store link carries `?ct=blog-<slug>&mt=8`.
+- [ ] App Store links go through `withCampaign(url, "blog-body")`, not a literal `?ct=`.
 - [ ] No claim about the app that you could not verify.
 - [ ] Nothing implies Travel Stories books anything.
 - [ ] `cover` points at a file that actually exists in `public/blog/` (a `.png`).
