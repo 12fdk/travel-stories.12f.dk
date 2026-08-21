@@ -70,7 +70,7 @@ title: "..."              # required, MAX 70 chars
 description: "..."        # required, MAX 160 chars
 lede: "..."               # required — answers the keyword question directly
 keyword: "..."            # required — the single target keyword
-cover: "/blog/<slug>.webp"
+cover: "/blog/<slug>.png"      # PNG — see §6, the container cannot make webp
 coverAlt: "..."           # describes the photograph; it is content, not decoration
 publishDate: YYYY-MM-DD   # today
 author: Robert Jensen
@@ -93,11 +93,20 @@ One cover image only — this site does **not** use in-body images (no existing
 post has any; do not start).
 
 - Generate with the `comfy-gen` tool, which reaches ComfyUI on
-  `http://localhost:8188` from inside the container (verified reachable).
+  `http://localhost:8188` from inside the container (verified reachable;
+  a 512x512 sd15 render takes ~12s).
 - Photorealistic and warm. No text overlays, no illustrations, no map graphics.
-- Save to `public/blog/<slug>.webp` so it matches the `cover` frontmatter.
-  If webp conversion is unavailable, save `<slug>.png` and point `cover` at the
-  `.png` — a working PNG beats a broken webp reference.
+- `comfy-gen` writes a **PNG** to `/comfyui/output/<prefix>_00001_.png`. That
+  directory is mounted **read-only**, so copy the file out — do not try to move,
+  rename or delete it in place.
+- Save it as **`public/blog/<slug>.png`** and set `cover: "/blog/<slug>.png"`.
+
+  **Do not attempt webp.** The existing 11 posts use `.webp`, but the container
+  has no `cwebp`, no ImageMagick and no Pillow — there is no way to convert, and
+  a `cover` pointing at a `.webp` that was never created renders a broken image.
+  The schema accepts any string, so a PNG is correct and consistent-enough. (If
+  webp parity matters later, add `cwebp` to the Hermes image and change this
+  paragraph — not before.)
 - If `comfy-gen` has not returned after a couple of minutes, **stop waiting** and
   reuse an existing image from `public/blog/`, then continue to build and push.
   A post with a recycled cover ships; a hung job does not.
@@ -130,7 +139,7 @@ and the Actions run is green.
 - [ ] Every App Store link carries `?ct=blog-<slug>&mt=8`.
 - [ ] No claim about the app that you could not verify.
 - [ ] Nothing implies Travel Stories books anything.
-- [ ] `cover` points at a file that exists in `public/blog/`.
+- [ ] `cover` points at a file that actually exists in `public/blog/` (a `.png`).
 - [ ] `npm run build` printed BUILD OK.
 - [ ] Pushed to `main`; Actions green.
 
