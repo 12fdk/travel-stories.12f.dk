@@ -92,8 +92,8 @@ before you write the file, not after.
 One cover image only — this site does **not** use in-body images (no existing
 post has any; do not start).
 
-- Generate with the `comfy-gen` tool. ComfyUI:
-  `http://spark-72aa.tail7196c.ts.net:8188`
+- Generate with the `comfy-gen` tool, which reaches ComfyUI on
+  `http://localhost:8188` from inside the container (verified reachable).
 - Photorealistic and warm. No text overlays, no illustrations, no map graphics.
 - Save to `public/blog/<slug>.webp` so it matches the `cover` frontmatter.
   If webp conversion is unavailable, save `<slug>.png` and point `cover` at the
@@ -105,9 +105,14 @@ post has any; do not start).
 ## 7. Build, verify, publish
 
 ```bash
-pnpm install --silent > /tmp/i.log 2>&1 || npm install --silent > /tmp/i.log 2>&1
-pnpm build > /tmp/b.log 2>&1 && echo BUILD OK || tail -30 /tmp/b.log
+npm install --silent > /tmp/i.log 2>&1
+npm run build > /tmp/b.log 2>&1 && echo BUILD OK || tail -30 /tmp/b.log
 ```
+
+**Use `npm`, not `pnpm`.** The repo has a `.pnpm-store/` directory, but the
+Hermes container has no `pnpm` binary — only `node` and `npm`. `pnpm build` there
+fails with "command not found", the build never prints BUILD OK, and the job
+stops without publishing. `npm run build` runs the same `astro build`.
 
 **Redirect all install/build output to a file.** Never let it into the
 conversation — build logs are the single biggest cause of context overflow on
@@ -126,7 +131,7 @@ and the Actions run is green.
 - [ ] No claim about the app that you could not verify.
 - [ ] Nothing implies Travel Stories books anything.
 - [ ] `cover` points at a file that exists in `public/blog/`.
-- [ ] `pnpm build` printed BUILD OK.
+- [ ] `npm run build` printed BUILD OK.
 - [ ] Pushed to `main`; Actions green.
 
 ## 9. Final report
