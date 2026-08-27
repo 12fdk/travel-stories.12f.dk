@@ -24,6 +24,11 @@ faq:
     answer: "Partially. Notion's mobile apps allow limited offline access to pages you have opened recently, but the experience is inconsistent — databases in particular can fail to load without a connection, and you cannot rely on it mid-trip. If offline access is a hard requirement (airports, mountains, foreign trains), a template-based system is the wrong tool; that is the one thing a native app does by design."
   - question: "How much does a Notion travel planner cost?"
     answer: "The free plan covers most personal trip planning: unlimited pages and databases for personal use. Notion's paid plans start around $10-15/month and only matter for shared workspaces with many members. The real cost is not the subscription — it is the setup time (15-30 minutes to build a proper system from a thin template) and the maintenance (updating the budget table by hand on every trip day). A trip app trades that setup for a few minutes of entering the basics."
+relatedPackingLists:
+  - "weekend-city-break-packing-list"
+  - "3-day-business-trip-packing-list"
+  - "two-week-europe-packing-list"
+  - "digital-nomad-packing-list"
 relatedSlugs: ["how-to-plan-a-trip-step-by-step", "how-to-budget-for-a-trip", "trip-planner-app-no-subscription"]
 draft: false
 ---
@@ -115,6 +120,7 @@ And here is the part the template gallery pages never show you:
 - **Offline is the weakest point.** Notion's offline support on mobile is limited to recently opened pages and is not reliable for databases. Airports, foreign trains, mountains — the exact places an itinerary must work — are the exact places the template needs a signal.
 - **Nothing connects after the trip.** This is the big one. Your Notion page after a trip is a page with a filled-in table. It does not hold the photos you took, the notes you scribbled on the back of a boarding pass, or the actual spending vs planned comparison as anything but your own arithmetic. The trip ends and the document becomes a receipt drawer.
 - **Every number is manual.** The budget table subtracts nothing, totals nothing, and remembers nothing. Every actual expense is typed by hand, and the difference column is arithmetic you do with a calculator on a Tuesday night at home.
+- **The packing block is the same list every trip.** The checklist above is generic by necessity — a template cannot know you are going somewhere cold for ten days with a child. Anything that adjusts to the trip has to be generated, which is why we built a free [packing list generator](/packing-list/) that takes trip type, length, climate, carry-on-only and kids as inputs and produces a different list for each; a [two-week Europe trip](/packing-list/two-week-europe-packing-list/) and a [3-day business trip](/packing-list/3-day-business-trip-packing-list/) genuinely should not share a checklist.
 
 None of these are Notion's fault — it is a general-purpose tool doing a specific job. But "general-purpose" is exactly the trade you are making, and it costs you the two things a trip actually needs: it has to work on the phone where you are, and it has to still mean something after you land.
 

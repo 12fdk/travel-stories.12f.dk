@@ -24,6 +24,11 @@ faq:
     answer: "Do both. The pre-trip estimate sets your targets, but only during-trip tracking tells you whether you are actually on pace. Logging each expense takes a few seconds and lets you correct course on day three instead of discovering the damage on your credit card statement after you get home."
   - question: "What is the envelope method for travel budgeting?"
     answer: "You give each category its own fixed allowance — an envelope — and when a category is empty, you stop spending in it or consciously move money from another envelope. The alternative is a running total, where you track everything against one overall number. Envelopes give more control; a running total is simpler. Many travelers combine them: envelopes for food and activities, one shared pot for the rest."
+relatedPackingLists:
+  - "carry-on-only-packing-list"
+  - "hand-luggage-only-week-packing-list"
+  - "10-day-backpacking-packing-list"
+  - "road-trip-packing-list"
 relatedSlugs: ["how-to-plan-a-trip-step-by-step", "travel-checklist-before-leaving", "best-trip-planner-apps"]
 draft: false
 ---
@@ -32,7 +37,7 @@ draft: false
 
 A travel budget only works if it covers everything the trip will actually cost — not just the big-ticket flight and hotel. The most common budgeting mistake is planning for two categories and getting quietly drained by the other four. Before you put numbers on anything, split the trip into these six categories:
 
-1. **Transport to the destination.** Flights, trains, ferries, or fuel and tolls for a road trip. Include seat selection, baggage fees, and airport transfers — they belong here, not in "surprises."
+1. **Transport to the destination.** Flights, trains, ferries, or fuel and tolls for a road trip. Include seat selection, baggage fees, and airport transfers — they belong here, not in "surprises." Checked-bag fees are the line most worth attacking: on a budget airline a return checked bag can cost more than a night's accommodation, and a [carry-on only packing list](/packing-list/carry-on-only-packing-list/) removes the charge entirely.
 2. **Accommodation.** Hotels, rentals, campsites, or hostels, including cleaning fees, city taxes, and resort fees that only show up at checkout.
 3. **Food and drink.** Every meal, coffee, snack, and drink for every day of the trip. This category is small per transaction and large in total, which is exactly why it gets underestimated.
 4. **Activities.** Museum tickets, tours, day trips, rentals, park entry fees — the things you are actually traveling for.
@@ -107,7 +112,7 @@ Two rules make the buffer work. First, do not assign it to anything in advance �
 
 The same handful of costs sink trip budgets over and over. Knowing them in advance is most of the defense:
 
-- **Airport spending.** Food, water, and last-minute purchases at airport prices, twice per flight. Eat before, carry an empty bottle, and put a small realistic amount in the food line for it.
+- **Airport spending.** Food, water, and last-minute purchases at airport prices, twice per flight. Eat before, carry an empty bottle, and put a small realistic amount in the food line for it. Most of the rest — adapters, a charger, sunscreen — is bought at a markup because it was forgotten, which is a packing problem solved before departure, not a budgeting one.
 - **Card fees and bad exchange rates.** Foreign transaction fees and "convenient" airport currency desks can quietly take a few percent of everything you spend. Check your card's fees before you leave, and pay in local currency when a terminal offers a choice.
 - **Death by small stuff.** Coffees, snacks, bottled water, souvenirs — individually trivial, collectively a real line. This is the category that tracking catches and memory never does.
 - **Taxis by default.** One taxi is a convenience; taxis all week is a budget line you never planned. Look up the transit pass before you land.

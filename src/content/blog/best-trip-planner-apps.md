@@ -25,6 +25,11 @@ faq:
     answer: "With most trip planner apps, no — TripIt and Wanderlog are built around accounts, since they sync email and enable collaboration. If you would rather not create yet another login, Travel Stories requires no account at all; your data lives on your device."
   - question: "Should I just use a spreadsheet to plan my trip?"
     answer: "A spreadsheet is genuinely fine if you enjoy building it and your trip is simple. You get total flexibility and it costs nothing. The trade-offs are that everything is manual, phone editing is clumsy, and there is no natural home for documents, photos, or day-by-day views. If you find yourself fighting the spreadsheet, that is the sign to switch to a dedicated app."
+relatedPackingLists:
+  - "two-week-europe-packing-list"
+  - "what-to-pack-for-japan-in-winter"
+  - "family-beach-holiday-packing-list"
+  - "carry-on-only-packing-list"
 relatedSlugs: ["tripit-vs-wanderlog-vs-travel-stories", "trip-planner-app-no-subscription", "how-to-plan-a-trip-step-by-step"]
 draft: false
 ---
@@ -84,7 +89,7 @@ Some travelers plan trips in Notion pages or a Google Sheet, and when it works, 
 
 ## Travel Stories: best for offline planning plus memories, without a subscription
 
-Now our own app, held to the same standard. [Travel Stories](https://apps.apple.com/app/id6756801168) is a free iPhone app (iOS 17+) that keeps the whole trip in one place: the trip itself with destination, dates, budget, and a cover image; a day-by-day itinerary; task checklists; bookings with prices and confirmation numbers; document storage for boarding passes, reservations, and insurance; notes; packing lists with suggested items; expense tracking against your budget with charts; and a photo memories timeline for after the trip.
+Now our own app, held to the same standard. [Travel Stories](https://apps.apple.com/app/id6756801168) is a free iPhone app (iOS 17+) that keeps the whole trip in one place: the trip itself with destination, dates, budget, and a cover image; a day-by-day itinerary; task checklists; bookings with prices and confirmation numbers; document storage for boarding passes, reservations, and insurance; notes; packing lists with suggested items; expense tracking against your budget with charts; and a photo memories timeline for after the trip. If you want to sample the thinking before installing anything, our [packing list generator](/packing-list/) runs free in the browser with no sign-up.
 
 Three deliberate choices set it apart from everything above:
 

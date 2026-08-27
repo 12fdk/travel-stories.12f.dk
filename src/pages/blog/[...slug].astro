@@ -5,8 +5,10 @@ import TldrBox from "../../components/blog/TldrBox.astro";
 import InlineCTA from "../../components/blog/InlineCTA.astro";
 import FaqSection from "../../components/blog/FaqSection.astro";
 import RelatedPosts from "../../components/blog/RelatedPosts.astro";
+import RelatedPackingLists from "../../components/blog/RelatedPackingLists.astro";
 import AuthorBio from "../../components/blog/AuthorBio.astro";
 import { readingTime } from "../../utils/readingTime";
+import { CURATED_PAGES } from "../../data/packingList/pages";
 
 export async function getStaticPaths() {
   const posts = await getCollection("blog", ({ data }) => !data.draft);
@@ -41,6 +43,17 @@ const related = (
     ? allPosts.filter((p) => post.data.relatedSlugs.includes(p.slug))
     : allPosts.filter((p) => p.slug !== post.slug).slice(0, 3)
 ).slice(0, 3);
+
+// A typo here would silently render an empty block, so it fails the build.
+const packingLists = post.data.relatedPackingLists.map((slug) => {
+  const page = CURATED_PAGES.find((p) => p.slug === slug);
+  if (!page) {
+    throw new Error(
+      `${post.slug}: relatedPackingLists references unknown packing list "${slug}"`,
+    );
+  }
+  return page;
+});
 
 const articleSchema = {
   "@context": "https://schema.org",
@@ -146,6 +159,8 @@ const faqNode =
       buttonText="Get Travel Stories — Free on the App Store"
       trackingId={`blog-cta-end-${post.slug}`}
     />
+
+    <RelatedPackingLists pages={packingLists} />
 
     <FaqSection items={post.data.faq} />
 

@@ -24,6 +24,11 @@ faq:
     answer: "A lifetime (or one-time) purchase means you pay once and keep the features permanently, with no renewal. Tripsy offers one at $299 and Travel Stories at $1.99. Check the App Store listing's in-app purchase section before downloading: if every item says 'per year' or 'per month', there is no one-time option regardless of what the marketing implies."
   - question: "How do I avoid auto-renewing free trials in travel apps?"
     answer: "On iPhone, a trial started through the App Store can be cancelled immediately in Settings, then your Apple account name, then Subscriptions — you keep the trial until it expires but it will not renew. Better still, check the in-app purchase list on the App Store page before installing. If the headline offer is a trial that needs payment details up front, assume it will convert to a paid year unless you act."
+relatedPackingLists:
+  - "7-day-beach-trip-packing-list"
+  - "what-to-pack-for-bali"
+  - "camping-packing-list"
+  - "festival-packing-list"
 relatedSlugs: ["tripit-vs-wanderlog-vs-travel-stories", "best-trip-planner-apps", "how-to-plan-a-trip-step-by-step"]
 draft: false
 ---
@@ -87,7 +92,8 @@ Ranked by how completely they avoid the subscription model:
 2. **TripIt (free tier).** If all you want is confirmation emails turned into a chronological itinerary, the free tier does that indefinitely without payment. You give up the Pro flight alerts, and TripIt is cloud-based, so it needs an account — but as a no-cost baseline it is honest.
 3. **Wanderlog (free tier, with the offline caveat).** Genuinely capable for collaborative planning while you have signal. Fine for planning at home; risky as your only tool on the road, for the offline reason above.
 4. **Tripsy (lifetime, $299).** The only big-name competitor selling a true buy-once option. The price makes sense only for very frequent travellers who are certain they will use it for many years.
-5. **Apple Notes, Google Maps lists, and a spreadsheet.** The zero-cost stack. It works — people planned trips this way for decades — but you assemble everything by hand and nothing connects: the map does not know your schedule, the budget does not know your bookings. Our roundup of the [best trip planner apps](/blog/best-trip-planner-apps/) covers when the DIY stack stops being worth the savings.
+5. **Free web tools.** Not planners, but genuinely free and genuinely useful: our own [packing list generator](/packing-list/) builds a categorised list from trip type, length, and climate with no download, no account, and no payment — the test we just asked you to apply to free tiers.
+6. **Apple Notes, Google Maps lists, and a spreadsheet.** The zero-cost stack. It works — people planned trips this way for decades — but you assemble everything by hand and nothing connects: the map does not know your schedule, the budget does not know your bookings. Our roundup of the [best trip planner apps](/blog/best-trip-planner-apps/) covers when the DIY stack stops being worth the savings.
 
 ## How do you check an app's real price before downloading?
 

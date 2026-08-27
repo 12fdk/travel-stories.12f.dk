@@ -26,6 +26,10 @@ const blog = defineCollection({
       )
       .default([]),
     relatedSlugs: z.array(z.string()).default([]),
+    // Slugs from src/data/packingList/pages.ts. Validated at build time in
+    // blog/[...slug].astro, so a typo fails the build rather than silently
+    // rendering nothing.
+    relatedPackingLists: z.array(z.string()).default([]),
     draft: z.boolean().default(false),
   }),
 });

@@ -24,6 +24,11 @@ faq:
     answer: "Keep every booking in one place with its price and confirmation number, rather than scattered across email threads. Store copies of the documents themselves — boarding passes, reservations, insurance — somewhere you can open without an internet connection. A trip planner app that works offline covers both."
   - question: "How do I plan a trip on a budget?"
     answer: "Set a total number before you book anything, then split it across categories: transport, lodging, food, activities, and a buffer. Book the two biggest costs — transport and lodging — first, so you know exactly what remains for everything else. Track spending against the budget during the trip so surprises show up early, not at the end."
+relatedPackingLists:
+  - "what-to-pack-for-japan-in-winter"
+  - "what-to-pack-for-italy-in-summer"
+  - "two-week-europe-packing-list"
+  - "honeymoon-packing-list"
 relatedSlugs: ["how-to-budget-for-a-trip", "packing-list-for-international-travel", "travel-checklist-before-leaving"]
 draft: false
 ---
@@ -122,7 +127,7 @@ Build the list from the itinerary, not from memory:
 - **Activities** decide the gear: hiking days need different shoes than museum days.
 - **Trip length** decides quantities — and whether you're doing laundry mid-trip.
 
-Write the list down and check items off as they go in the bag. A mental list fails exactly when you're rushed, which is always. For a complete item-by-item breakdown — clothing, toiletries, electronics, documents, and the things people forget most — use the [packing list for international travel](/blog/packing-list-for-international-travel/). To skip the writing entirely, the [packing list generator](/packing-list/) produces a checklist for your trip type, length and climate that you can tick off, print, or download.
+Write the list down and check items off as they go in the bag. A mental list fails exactly when you're rushed, which is always. For a complete item-by-item breakdown — clothing, toiletries, electronics, documents, and the things people forget most — use the [packing list for international travel](/blog/packing-list-for-international-travel/). To skip the writing entirely, the [packing list generator](/packing-list/) produces a checklist for your trip type, length and climate that you can tick off, print, or download. Where the destination itself changes the list, start from one built for it — [Japan in winter](/packing-list/what-to-pack-for-japan-in-winter/) and [Italy in summer](/packing-list/what-to-pack-for-italy-in-summer/) need different things from you than the generic version knows about.
 
 ## Step 6: Gather your documents
 

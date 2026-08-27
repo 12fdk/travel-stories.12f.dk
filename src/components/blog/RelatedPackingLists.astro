@@ -1,0 +1,57 @@
+---
+import type { CuratedPage } from "../../data/packingList/pages";
+
+interface Props {
+  pages: CuratedPage[];
+  heading?: string;
+}
+
+/**
+ * The path from a post into /packing-list/ (#65).
+ *
+ * Deliberately per-post rather than sitewide: an identical block on every
+ * article is boilerplate, and boilerplate links get discounted. Each post
+ * names the two or three lists that genuinely follow from what it just said.
+ */
+const { pages, heading = "Ready-made packing lists for this" } = Astro.props;
+---
+
+{
+  pages.length > 0 && (
+    <section
+      class="not-prose my-12 rounded-box border border-base-300 bg-base-200/40 p-6 sm:p-8"
+      aria-labelledby="related-packing-lists"
+    >
+      <h2 id="related-packing-lists" class="mb-2 text-2xl font-bold sm:text-3xl">
+        {heading}
+      </h2>
+      <p class="mb-6 max-w-2xl text-base-content/70">
+        Free, no sign-up: tick items off in the browser, print it, or adjust it
+        to your own trip.
+      </p>
+      <ul class="grid list-none gap-4 p-0 sm:grid-cols-2">
+        {pages.map((page) => (
+          <li class="m-0">
+            <a
+              href={`/packing-list/${page.slug}/`}
+              data-umami-event="blog-to-packing-list"
+              data-umami-event-list={page.slug}
+              class="group flex h-full flex-col rounded-box border border-base-300 bg-base-100 p-5 transition-colors hover:border-primary/40"
+            >
+              <h3 class="mb-2 text-lg font-bold leading-snug tracking-tight transition-colors group-hover:text-primary">
+                {page.h1}
+              </h3>
+              <p class="m-0 text-sm leading-relaxed text-base-content/70">
+                {page.description}
+              </p>
+            </a>
+          </li>
+        ))}
+      </ul>
+      <p class="mt-6 text-sm text-base-content/70">
+        Or <a href="/packing-list/" class="link link-primary font-semibold">build one from scratch</a>{" "}
+        with the packing list generator.
+      </p>
+    </section>
+  )
+}
