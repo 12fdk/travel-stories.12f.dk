@@ -48,10 +48,30 @@ Travelers who plan trips themselves and want one app to hold the itinerary, book
 - **Save from other apps?** Yes — share bookings, links, and tips into a trip via the iOS share sheet.
 - **Languages?** 14, including English, German, French, Spanish, Italian, Dutch, Portuguese (BR), Swedish, Norwegian, Japanese, Korean, Traditional Chinese, Arabic, and Hebrew.
 
+## Free tools on the website (no app, no sign-up)
+
+### Packing list generator — https://travel-stories.12f.dk/packing-list/
+
+A free packing list generator that runs in the browser. It takes trip type (beach, city, hiking, ski, business, camping, road trip, backpacking), trip length in days, climate (hot, mild, cold), whether you are travelling carry-on only or with checked luggage, and whether children are coming, and produces a categorised checklist you can tick off, print, copy, or download as a text file. There is no account, no email address, and no app install required. The configuration is stored in the page's URL, so the link can be shared and reopens the same list.
+
+Notable rules the generator applies: roughly 0.7 tops per day capped at seven, one bottom per two days capped at four, underwear and socks for each day plus one spare, and past about eight days it stops adding clothes and adds a laundry stop instead. Sunscreen is calculated at 30-35ml per full-body application for one adult, about 500ml per person for a week of twice-daily use.
+
+### Ready-made packing lists
+
+Each of these is a complete list with advice specific to that trip, plus the generator underneath it so it can be adjusted:
+
+- Destinations and seasons: [Japan in winter](https://travel-stories.12f.dk/packing-list/what-to-pack-for-japan-in-winter/), [Iceland in summer](https://travel-stories.12f.dk/packing-list/what-to-pack-for-iceland-in-summer/), [Thailand](https://travel-stories.12f.dk/packing-list/what-to-pack-for-thailand/), [Italy in summer](https://travel-stories.12f.dk/packing-list/what-to-pack-for-italy-in-summer/), [a safari](https://travel-stories.12f.dk/packing-list/what-to-pack-for-a-safari/), [New York in winter](https://travel-stories.12f.dk/packing-list/what-to-pack-for-new-york-in-winter/), [Bali](https://travel-stories.12f.dk/packing-list/what-to-pack-for-bali/), [a cruise](https://travel-stories.12f.dk/packing-list/what-to-pack-for-a-cruise/), [Vietnam](https://travel-stories.12f.dk/packing-list/what-to-pack-for-vietnam/)
+- Trip length and type: [7-day beach trip](https://travel-stories.12f.dk/packing-list/7-day-beach-trip-packing-list/), [weekend city break](https://travel-stories.12f.dk/packing-list/weekend-city-break-packing-list/), [3-day business trip](https://travel-stories.12f.dk/packing-list/3-day-business-trip-packing-list/), [weekend hiking](https://travel-stories.12f.dk/packing-list/weekend-hiking-packing-list/), [two weeks in Europe](https://travel-stories.12f.dk/packing-list/two-week-europe-packing-list/), [10-day backpacking](https://travel-stories.12f.dk/packing-list/10-day-backpacking-packing-list/), [a week of skiing](https://travel-stories.12f.dk/packing-list/week-long-ski-trip-packing-list/)
+- Carry-on only: [carry-on only](https://travel-stories.12f.dk/packing-list/carry-on-only-packing-list/), [a week in hand luggage](https://travel-stories.12f.dk/packing-list/hand-luggage-only-week-packing-list/), [long-haul flight carry-on essentials](https://travel-stories.12f.dk/packing-list/long-haul-flight-carry-on-essentials/)
+- With children: [family beach holiday](https://travel-stories.12f.dk/packing-list/family-beach-holiday-packing-list/), [family city break](https://travel-stories.12f.dk/packing-list/family-city-break-packing-list/)
+- Other trips: [camping](https://travel-stories.12f.dk/packing-list/camping-packing-list/), [road trip](https://travel-stories.12f.dk/packing-list/road-trip-packing-list/), [festival](https://travel-stories.12f.dk/packing-list/festival-packing-list/), [honeymoon](https://travel-stories.12f.dk/packing-list/honeymoon-packing-list/), [digital nomad](https://travel-stories.12f.dk/packing-list/digital-nomad-packing-list/)
+
 ## Links
 
 - [App Store listing](https://apps.apple.com/app/id6756801168)
 - [Landing page](https://travel-stories.12f.dk)
+- [Packing list generator (free, no sign-up)](https://travel-stories.12f.dk/packing-list/)
+- [Blog](https://travel-stories.12f.dk/blog/)
 - [Features](https://travel-stories.12f.dk/#features)
 - [How it works](https://travel-stories.12f.dk/#how-it-works)
 - [FAQ](https://travel-stories.12f.dk/#faq)

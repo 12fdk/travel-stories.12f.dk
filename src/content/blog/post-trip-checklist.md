@@ -24,6 +24,11 @@ faq:
     answer: "It is the cluster of small tasks a trip leaves behind: expense claims, statement checks, unpacking, laundry, restocking toiletries, backing up photos, and updating documents. Individually each task is five to twenty minutes; the problem is that untracked, they linger for months. A written post trip checklist turns them into one finite week of work."
   - question: "Should I unpack immediately after a trip?"
     answer: "Within 24 hours, yes — not necessarily the minute you walk in. A suitcase left packed becomes furniture: the laundry goes stale, the toiletry bag stays empty for the next trip, and anything borrowed or damp sits unnoticed. One systematic 20-minute pass (laundry pile, put-away pile, restock pile) beats a week of pulling items out one by one."
+relatedPackingLists:
+  - "camping-packing-list"
+  - "weekend-hiking-packing-list"
+  - "week-long-ski-trip-packing-list"
+  - "festival-packing-list"
 relatedSlugs: ["how-to-organize-travel-photos", "travel-checklist-before-leaving", "how-to-keep-a-travel-journal"]
 draft: false
 ---
@@ -66,7 +71,7 @@ Everything worn goes in the wash, and so does anything that shared a bag with a 
 
 ### 6. Restock the travel kit
 
-Refill or replace whatever the trip used up: toiletries, medication, plasters, sunscreen, spare charging cables, the emergency snack. The best time to rebuild the kit is now, when you know exactly what ran out — not at 5 a.m. before the next departure. If you keep a standing [packing list](/blog/packing-list-for-international-travel/), tick the kit off against it so it is genuinely complete.
+Refill or replace whatever the trip used up: toiletries, medication, plasters, sunscreen, spare charging cables, the emergency snack. The best time to rebuild the kit is now, when you know exactly what ran out — not at 5 a.m. before the next departure. If you keep a standing [packing list](/blog/packing-list-for-international-travel/), tick the kit off against it so it is genuinely complete. Gear-heavy trips are where this matters most — a [camping](/packing-list/camping-packing-list/) or [ski](/packing-list/week-long-ski-trip-packing-list/) kit has a dozen consumables that only get noticed when they are missing at the trailhead.
 
 ### 7. Check your passport's condition and expiry
 
@@ -94,7 +99,7 @@ The final two items take ten minutes and are the difference between getting bett
 
 ### 11. Note what you would pack and plan differently
 
-While the trip is fresh, write down the specifics: the jacket you never wore, the second pair of shoes you did not need, the adapter you had to buy, the museum that needed pre-booking, the neighbourhood you wish you had stayed in. Attach these notes to your packing list and planning notes, not to a random document — next trip, you want them to surface automatically.
+While the trip is fresh, write down the specifics: the jacket you never wore, the second pair of shoes you did not need, the adapter you had to buy, the museum that needed pre-booking, the neighbourhood you wish you had stayed in. Attach these notes to your packing list and planning notes, not to a random document — next trip, you want them to surface automatically. If you started from a [ready-made list](/packing-list/), note the edits against it: the two or three items you add or drop every trip are your real list.
 
 ### 12. Start the next trip's wishlist
 

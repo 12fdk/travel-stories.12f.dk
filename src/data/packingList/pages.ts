@@ -17,6 +17,11 @@ export interface AdviceBlock {
   body: string;
 }
 
+export interface FaqItem {
+  question: string;
+  answer: string;
+}
+
 export interface CuratedPage {
   slug: string;
   /** <title>. Distinct from every other page, including the blog. */
@@ -29,6 +34,12 @@ export interface CuratedPage {
   advice: AdviceBlock[];
   /** Items unique to this scenario, appended after the generated ones. */
   extras: PackingItem[];
+  /**
+   * Three questions this specific trip provokes, answered in full sentences.
+   * Rendered visibly and emitted as an FAQPage node — so the answer has to be
+   * worth reading on the page, not written for the snippet (#65).
+   */
+  faq: FaqItem[];
   /** Blog slugs to link to for depth. */
   related: string[];
 }
@@ -72,6 +83,20 @@ export const CURATED_PAGES: CuratedPage[] = [
       { id: "jp-rubbish-bag", category: "gear", label: "A bag for your own rubbish", note: "Street bins are rare; you carry your litter until you find one." },
       { id: "hand-warmers", category: "gear", label: "Hand warmers", note: "Or buy hokkairo stick-on ones from any convenience store for pocket change." },
     ],
+    faq: [
+      {
+        question: "How cold is Japan in winter?",
+        answer: "Tokyo and Kyoto sit around 2 to 10°C from December to February, which is cold but not extreme. The number that catches visitors out is the indoor one: shops, trains and restaurants are heated hard, frequently to 24°C or more. Pack for the gap between the two rather than for the outdoor temperature alone.",
+      },
+      {
+        question: "Do I need a heavy winter coat for Japan?",
+        answer: "Usually not. A single thick parka means you spend most of the day carrying it, because you will be indoors and overheating within minutes of arriving anywhere. Three thin layers under a windproof shell handles the same temperature range and lets you strip down at the door.",
+      },
+      {
+        question: "How much cash should I bring to Japan?",
+        answer: "More than feels normal. Cards work in city chains, but small restaurants, temple entries, shrine charms, older ryokan and rural buses are frequently cash-only. Withdraw from a 7-Eleven or Japan Post ATM, which reliably accept foreign cards, and bring a coin purse — ¥100 and ¥500 coins accumulate fast and are what lockers and vending machines want.",
+      },
+    ],
     related: ["packing-list-for-international-travel", "how-to-plan-a-trip-step-by-step"],
   }),
 
@@ -108,6 +133,20 @@ export const CURATED_PAGES: CuratedPage[] = [
       { id: "is-buff", category: "clothing", label: "Buff or neck gaiter", note: "Wind-driven rain finds the gap between collar and hood." },
       { id: "is-carsick", category: "health", label: "Motion sickness tablets", note: "The Ring Road plus gravel side roads plus a boat tour is a lot of movement." },
       { id: "is-dutyfree", category: "documents", label: "Duty-free plan for alcohol", note: "Buy on arrival at Keflavík; state-monopoly prices in town are roughly triple." },
+    ],
+    faq: [
+      {
+        question: "How cold is Iceland in summer?",
+        answer: "Summer daytime temperatures typically sit around 10 to 15°C, which sounds manageable and often is not, because the wind rarely stops. Wind-driven rain at 12°C feels far colder than still air at 5°C, so windproofing matters more than insulation for most of the trip.",
+      },
+      {
+        question: "Do I need waterproof trousers in Iceland?",
+        answer: "Yes, and they are the item people most often regret leaving at home. A waterproof jacket over ordinary trousers keeps your top half dry and your legs soaked, which ends a hiking day early. Pair them with a buff or neck gaiter — wind-driven rain finds the gap between collar and hood.",
+      },
+      {
+        question: "Do I need cash in Iceland?",
+        answer: "Almost never. Cards are accepted essentially everywhere, including small rural petrol stations and swimming pools. Spend the planning effort elsewhere: buy alcohol at the Keflavík arrivals duty-free, where prices are roughly a third of the state-monopoly shops in town, and pack an eye mask, because it does not get dark in June and curtains rarely help.",
+      },
     ],
     related: ["packing-list-for-international-travel", "how-to-budget-for-a-trip"],
   }),
@@ -146,6 +185,20 @@ export const CURATED_PAGES: CuratedPage[] = [
       { id: "th-insurance-licence", category: "documents", label: "Motorcycle licence, if you plan to ride", note: "Insurers routinely reject scooter claims without one." },
       { id: "th-power", category: "tech", label: "Type A/B/C adapter", note: "Thai sockets take all three; a universal adapter is fine." },
     ],
+    faq: [
+      {
+        question: "What should I wear to temples in Thailand?",
+        answer: "Shoulders and knees covered, for everyone. This is enforced at the door rather than politely suggested, and the sarongs some temples lend out are much-used in a humid climate. Light long trousers and a sleeved shirt in a breathable fabric cover it without being unbearable in the heat.",
+      },
+      {
+        question: "What should I buy in Thailand rather than pack?",
+        answer: "Almost all toiletries, clothing and beach gear are cheap and everywhere, so packing light and buying on arrival works well. The exceptions worth carrying from home are sunscreen, which is expensive locally and often contains skin-whitening agents, any prescription medication, and shoes if you take a large size.",
+      },
+      {
+        question: "Do I need a motorcycle licence to rent a scooter in Thailand?",
+        answer: "If you intend to ride, bring one. Rental shops often hand over a scooter without asking, but travel insurers routinely reject claims from riders who were not licensed for the vehicle — which turns a common minor accident into an uninsured hospital bill.",
+      },
+    ],
     related: ["packing-list-for-international-travel", "how-to-budget-for-a-trip"],
   }),
 
@@ -181,6 +234,20 @@ export const CURATED_PAGES: CuratedPage[] = [
       { id: "it-bottle", category: "gear", label: "Refillable bottle", note: "Rome's nasoni fountains run cold, free and drinkable all day." },
       { id: "it-crossbody", category: "gear", label: "Crossbody bag that zips", note: "Pickpockets work the same three streets in every Italian city." },
       { id: "it-mosquito", category: "health", label: "Mosquito repellent", note: "Venice and Florence at dusk in August are worse than most people expect." },
+    ],
+    faq: [
+      {
+        question: "What is the dress code for churches in Italy?",
+        answer: "Shoulders and knees covered, for men and women alike. Major churches turn people away over it every day, including at St Peter's and the Duomo. A light scarf or linen shawl in a day bag weighs nothing and solves it at the door, which is easier than planning every outfit around it.",
+      },
+      {
+        question: "Can you drink the tap water in Italy?",
+        answer: "Yes, and in Rome you can drink from the street. The nasoni drinking fountains run cold, free and potable all day across the city, and most Italian towns have equivalents. A refillable bottle saves both money and the walk to find a shop in August heat.",
+      },
+      {
+        question: "Is August a good time to visit Italy?",
+        answer: "It is the hottest and, in the cities, quieter than you would expect — but in the wrong way. Many independent restaurants and shops close for weeks around Ferragosto while their owners take their own holidays, so the streets are emptier and so is the list of places actually open. Check opening hours for anything specific you are travelling for.",
+      },
     ],
     related: ["packing-list-for-international-travel", "how-to-plan-a-trip-step-by-step"],
   }),
@@ -220,6 +287,20 @@ export const CURATED_PAGES: CuratedPage[] = [
       { id: "sf-malaria", category: "health", label: "Malaria prophylaxis and a prescription copy", note: "Start the course before you travel, per your doctor's schedule." },
       { id: "sf-torch", category: "gear", label: "Head torch", note: "Camps power down at night and paths between tents are unlit." },
     ],
+    faq: [
+      {
+        question: "What colours should you wear on safari?",
+        answer: "Neutrals: khaki, olive and beige. Avoid dark blue and black, which attract tsetse flies, and white, which shows every bit of dust within an hour. Camouflage patterns are illegal for civilians in several African countries and can cause genuine trouble at a border, so leave them at home.",
+      },
+      {
+        question: "What is the luggage limit for a safari?",
+        answer: "Light aircraft transfers between camps typically cap you at around 15kg and refuse hard-sided cases outright, because the hold is a soft irregular space. A soft-sided duffel is the standard answer. Confirm the exact figure with your operator, as it varies and it is genuinely enforced at the airstrip.",
+      },
+      {
+        question: "Is it cold on safari?",
+        answer: "Dawn game drives are genuinely cold, even where the afternoon hits 30°C. You are in an open vehicle, before sunrise, moving at speed. A fleece and a beanie are worth their space, and they come off again by mid-morning.",
+      },
+    ],
     related: ["packing-list-for-international-travel", "how-to-plan-a-trip-step-by-step"],
   }),
 
@@ -255,6 +336,20 @@ export const CURATED_PAGES: CuratedPage[] = [
       { id: "ny-touch-gloves", category: "clothing", label: "Touchscreen gloves", note: "You'll be checking directions constantly." },
       { id: "ny-smart-outfit", category: "clothing", label: "One smart-casual outfit", note: "Enough restaurants and theatres still have a dress code." },
       { id: "ny-metro-card", category: "documents", label: "A contactless card for OMNY", note: "Tap straight in at the turnstile; no ticket machine queue." },
+    ],
+    faq: [
+      {
+        question: "How cold is New York in winter?",
+        answer: "January and February typically run around -3 to 5°C, but the temperature reading understates it. The avenues funnel wind between tall buildings, so exposed crossings feel far colder than the same number in an open landscape. A hat that covers your ears does more for comfort than a thicker coat.",
+      },
+      {
+        question: "What shoes should I wear in New York in winter?",
+        answer: "Waterproof boots with real grip. Kerbside slush sits ankle-deep for days after a snowfall and refreezes overnight, and lobby floors are polished stone that turns lethal with wet soles. You will also walk a great deal further than you plan to, so comfort is not optional.",
+      },
+      {
+        question: "Should I pack light for a winter city break?",
+        answer: "Deliberately, yes. Winter clothes are bulky, and indoors is heated to around 24°C, which means the coat, hat and scarf you needed outside become things you are carrying through a museum. Fewer, warmer layers you can shed beat more individual garments.",
+      },
     ],
     related: ["packing-list-for-international-travel", "travel-checklist-before-leaving"],
   }),
@@ -292,6 +387,20 @@ export const CURATED_PAGES: CuratedPage[] = [
       { id: "bl-rehydration", category: "health", label: "Rehydration sachets and anti-diarrheal", note: "Common enough that locals have a name for it." },
       { id: "bl-repellent", category: "health", label: "DEET or picaridin repellent", note: "Dengue is present year-round." },
       { id: "bl-cash", category: "documents", label: "Rupiah in cash", note: "Warungs, temple donations and small drivers are cash-only." },
+    ],
+    faq: [
+      {
+        question: "Do I need my own sarong for Balinese temples?",
+        answer: "Every temple requires a sarong and sash, and while most lend them out, the shared ones are heavily used in a hot and humid climate. Your own costs very little locally, dries fast, and doubles as a beach towel, a shoulder cover and a picnic blanket — which is why it is the single most useful item on the list.",
+      },
+      {
+        question: "Should I bring sunscreen to Bali?",
+        answer: "Yes, and reef-safe if you plan to snorkel. Sunscreen is expensive in Bali relative to everything else, reef-safe versions are hard to find outside a few tourist shops, and many local products contain whitening agents. Bring enough for the whole trip rather than planning to restock.",
+      },
+      {
+        question: "What do I need to ride a scooter in Bali?",
+        answer: "Long trousers and closed shoes, plus a licence that actually covers motorcycles and insurance that knows about it. Scooters are how Bali moves and road rash is the most common injury travellers pick up here — shorts and flip-flops turn a low-speed slide into weeks of healing.",
+      },
     ],
     related: ["packing-list-for-international-travel", "how-to-budget-for-a-trip"],
   }),
@@ -331,6 +440,20 @@ export const CURATED_PAGES: CuratedPage[] = [
       { id: "cr-seasickness", category: "health", label: "Motion sickness tablets or bands", note: "Take them before you feel it, not after." },
       { id: "cr-small-bills", category: "documents", label: "Small-denomination cash", note: "For port taxis, tips and market stalls." },
     ],
+    faq: [
+      {
+        question: "What is banned on a cruise ship?",
+        answer: "Surge-protected extension leads are the big one: they are prohibited on essentially every line and confiscated at embarkation, because they interfere with the ship's electrical protection. Bring a non-surge multi-port USB charging cube instead. Irons, candles and anything with an open flame are also routinely taken.",
+      },
+      {
+        question: "What should be in your cruise carry-on?",
+        answer: "Swimwear, all medication, documents and a change of clothes. You board hours before your checked bag is delivered to the cabin, and the first afternoon is when the pools are empty and everyone else is queueing. Treat the checked bag as arriving at dinner time.",
+      },
+      {
+        question: "Do you need formal clothes on a cruise?",
+        answer: "Most lines still run at least one formal or smart evening per week, and the dress code is applied at the dining room door — shorts get redirected to the buffet. One jacket or one cocktail dress covers it for a typical seven-night sailing; you do not need a different outfit for each night.",
+      },
+    ],
     related: ["packing-list-for-international-travel", "how-to-plan-a-trip-step-by-step"],
   }),
 
@@ -368,6 +491,20 @@ export const CURATED_PAGES: CuratedPage[] = [
       { id: "vn-foldable-duffel", category: "gear", label: "Foldable duffel", note: "For the Hoi An tailoring you didn't plan to buy." },
       { id: "vn-cash", category: "documents", label: "Small dong notes", note: "Rural buses, markets and street food are cash-only." },
     ],
+    faq: [
+      {
+        question: "Is Vietnam hot all year round?",
+        answer: "Not in the north. Hanoi and Sapa drop to around 10 to 15°C in winter and buildings are generally unheated, so it feels colder indoors than the number suggests, while Ho Chi Minh City stays tropical year-round. A trip covering both ends of the country needs a warm layer even if the south is the reason you booked.",
+      },
+      {
+        question: "Should I bring a poncho or an umbrella to Vietnam?",
+        answer: "A poncho. Rain arrives hard and often, and a great deal of local travel happens on the back of a scooter, where an umbrella is useless and unsafe. Ponchos are also sold everywhere for very little if you would rather buy one on arrival.",
+      },
+      {
+        question: "How much luggage space should I leave for Vietnam?",
+        answer: "More than you think. Hoi An tailoring is fast, cheap and extremely hard to resist, and travellers routinely fly home with several times what they arrived with. A foldable duffel packed flat in the main bag solves the return leg without committing you to anything.",
+      },
+    ],
     related: ["packing-list-for-international-travel", "how-to-budget-for-a-trip"],
   }),
 
@@ -403,6 +540,20 @@ export const CURATED_PAGES: CuratedPage[] = [
       { id: "b7-evening-layer", category: "clothing", label: "A light long-sleeve for evenings", note: "Air conditioning and the after-dark breeze; the most-worn item of the week." },
       { id: "b7-zip-pouch", category: "gear", label: "Zip pouch for phone and cards", note: "Sand in a charging port is how beach holidays kill electronics." },
     ],
+    faq: [
+      {
+        question: "How much sunscreen do I need for a week at the beach?",
+        answer: "About 500ml per adult. A full-body application takes 30 to 35ml, and correct use means twice a day for seven days — which works out at roughly five standard travel bottles per person. Running out mid-trip and paying resort prices is one of the most common packing miscalculations.",
+      },
+      {
+        question: "How many swimsuits should I pack for a week?",
+        answer: "Two, minimum, per person. One is drying while the other is on, and pulling on a cold wet swimsuit is the small daily misery that a second one removes entirely. Two also means an afternoon swim is not blocked by the morning's laundry.",
+      },
+      {
+        question: "How many outfits do you actually need on a beach holiday?",
+        answer: "Far fewer than instinct suggests. A beach week is swimwear and a cover-up for most daylight hours, so the clothing that matters is the evening set. The single most-worn item is usually a light long-sleeve layer, for air conditioning indoors and the after-dark breeze outside.",
+      },
+    ],
     related: ["packing-list-for-international-travel", "how-to-plan-a-trip-step-by-step"],
   }),
 
@@ -435,6 +586,20 @@ export const CURATED_PAGES: CuratedPage[] = [
     extras: [
       { id: "wc-crossbody", category: "gear", label: "Crossbody bag rather than a backpack", note: "Many museums refuse backpacks and send you to a cloakroom queue." },
       { id: "wc-charge-night-before", category: "tech", label: "Everything charged the night before", note: "Two days is short enough to skip the chargers entirely if you're disciplined." },
+    ],
+    faq: [
+      {
+        question: "Can you do a weekend city break with hand luggage only?",
+        answer: "Comfortably, and the maths favours it. Checked-bag fees plus the wait at the carousel can cost more than an hour of a 48-hour trip, and a weekend simply does not need much. Cabin bag only also means you can go straight from the airport into the city and leave the bag at the hotel desk before check-in.",
+      },
+      {
+        question: "What clothes do you need for 48 hours away?",
+        answer: "Three tops and two bottoms covers it, with one layer for the evening. That gives you a change if something spills and a slightly smarter option for dinner, without carrying a fourth outfit that returns home clean.",
+      },
+      {
+        question: "Should I take a backpack or a shoulder bag for a city break?",
+        answer: "A crossbody bag that zips. Many European museums and galleries refuse backpacks and send you to a cloakroom queue, which can cost you twenty minutes at each one, and a zipped crossbody is also the harder target in the crowded streets where pickpockets work.",
+      },
     ],
     related: ["packing-list-for-international-travel", "travel-checklist-before-leaving"],
   }),
@@ -471,6 +636,20 @@ export const CURATED_PAGES: CuratedPage[] = [
       { id: "bt-spare-shirt", category: "clothing", label: "A spare shirt in the laptop bag", note: "The coffee incident always happens on the way there." },
       { id: "bt-steam", category: "toiletries", label: "The bathroom-steam trick instead of an iron", note: "Hang the suit during your first shower; creases drop in ten minutes." },
     ],
+    faq: [
+      {
+        question: "Should you fly carry-on only for a business trip?",
+        answer: "Treat it as a risk decision rather than a convenience one. A delayed checked bag on a leisure trip is annoying; on a business trip it means presenting in the clothes you travelled in. If the trip has a fixed, unmissable commitment, cabin bag only is the safer choice, not just the faster one.",
+      },
+      {
+        question: "How do you pack a suit without it wrinkling?",
+        answer: "Hang it in the bathroom during your first shower and give it ten minutes — the steam drops most travel creases without an iron or a hotel valet service. Packed properly, one suit worn repeatedly across three days looks better than two suits crammed into a cabin bag.",
+      },
+      {
+        question: "How many pairs of shoes for a three-day business trip?",
+        answer: "Two: the formal pair for the meetings and a comfortable pair for everything else. Conference venues, airports and unfamiliar cities involve far more walking than the schedule implies, and a full day in dress shoes is a genuinely bad way to arrive at an evening dinner.",
+      },
+    ],
     related: ["packing-list-for-international-travel", "travel-checklist-before-leaving"],
   }),
 
@@ -505,6 +684,20 @@ export const CURATED_PAGES: CuratedPage[] = [
       { id: "wh-stove", category: "gear", label: "Stove, fuel and a lighter", note: "Plus a backup ignition source that isn't the same lighter." },
       { id: "wh-emergency-ration", category: "gear", label: "One emergency ration you don't plan to eat", note: "For the day the walk runs three hours long." },
       { id: "wh-route-note", category: "documents", label: "Your route, left with someone at home", note: "With the time you expect to be back." },
+    ],
+    faq: [
+      {
+        question: "What are the big three in hiking gear?",
+        answer: "Pack, shelter and sleep system — the three heaviest items you carry, and the ones that decide both your comfort and your total weight. Getting these right matters far more than optimising the small stuff, because everything else on a weekend trip is a rounding error by comparison.",
+      },
+      {
+        question: "Why should you never wear cotton hiking?",
+        answer: "Cotton absorbs sweat and rain, holds it against your skin, and then pulls heat out of you as it evaporates. Wet cotton in wind is how mild days turn into hypothermia cases. Wool and synthetic base layers keep insulating when damp and dry out while you walk.",
+      },
+      {
+        question: "How much food should you take on a weekend hike?",
+        answer: "Plan per meal rather than packing a bag of snacks — breakfast, lunch and dinner for each day, plus what you will actually eat while moving. Then add one emergency ration you do not intend to touch, for the day the walk runs three hours longer than the map suggested.",
+      },
     ],
     related: ["packing-list-for-international-travel", "how-to-plan-a-trip-step-by-step"],
   }),
@@ -541,6 +734,20 @@ export const CURATED_PAGES: CuratedPage[] = [
       { id: "eu-laundry-stop", category: "clothing", label: "A laundry stop pencilled into the itinerary", note: "Two hours mid-trip halves the weight you carry for the other thirteen days." },
       { id: "eu-scarf", category: "clothing", label: "A scarf", note: "Church shoulders, cold trains, and the plane. Earns its space three ways." },
     ],
+    faq: [
+      {
+        question: "How many clothes do you need for two weeks in Europe?",
+        answer: "About a week's worth, plus one laundry stop. Two full wardrobes doubles the weight you drag up every station staircase for fourteen days in order to avoid two hours at a launderette once. Pencil the wash into the itinerary at the midpoint and pack accordingly.",
+      },
+      {
+        question: "Which plug adapters do I need for Europe?",
+        answer: "Three, not one. The standard two-pin Type C plug covers most of the continent, but the UK and Ireland use Type G and Switzerland uses Type J, and neither accepts a Europlug. A trip crossing those borders needs all three, or a universal adapter that includes them.",
+      },
+      {
+        question: "Suitcase or backpack for a two-week Europe trip?",
+        answer: "Whichever you can carry rather than only wheel. Fourth-floor walk-ups without lifts, cobbled old towns and station stairs are the norm rather than the exception, and a wheeled case that becomes a dead weight the moment the ground is not smooth is the most common bag regret on this kind of trip.",
+      },
+    ],
     related: ["packing-list-for-international-travel", "how-to-plan-a-trip-step-by-step", "how-to-budget-for-a-trip"],
   }),
 
@@ -574,6 +781,20 @@ export const CURATED_PAGES: CuratedPage[] = [
       { id: "bp-weigh", category: "gear", label: "Weigh the packed bag before you go", note: "Above 10kg, the walk from the station starts shaping your decisions." },
       { id: "bp-towel-roll", category: "toiletries", label: "Sink-wash routine", note: "Roll the wet garment in a towel and stand on it before hanging; dry by morning." },
       { id: "bp-hostel-sheet", category: "gear", label: "A sleep sheet", note: "For the hostel where the linen costs extra or looks like it should." },
+    ],
+    faq: [
+      {
+        question: "How heavy should a backpack be for ten days?",
+        answer: "Under 10kg is the target, and it is achievable for a mild-climate trip. Above that, the twenty-minute walk from the station to the hostel starts shaping your decisions — which neighbourhood you book, whether you explore before check-in, whether you take the extra day trip. Weigh the packed bag at home.",
+      },
+      {
+        question: "How many clothes for a ten-day backpacking trip?",
+        answer: "Four days' worth, washed twice. A ten-day wardrobe is heavy, and the whole point of backpacking is that the bag comes with you rather than waiting in a room. Sink-washing a couple of garments takes twenty minutes and dries overnight if you pick the fabrics for it.",
+      },
+      {
+        question: "Do packing cubes actually save space?",
+        answer: "They save time and sanity, not volume. Cubes do not compress meaningfully — they keep clean separate from dirty and let you find one item in a dorm at 6am without unpacking the whole bag onto someone else's bunk. Buy them for the organisation, not the space claim.",
+      },
     ],
     related: ["packing-list-for-international-travel", "how-to-budget-for-a-trip"],
   }),
@@ -610,6 +831,20 @@ export const CURATED_PAGES: CuratedPage[] = [
       { id: "sk-boot-dryer", category: "gear", label: "Boot dryer or newspaper", note: "Wet liners on day two make every remaining day worse." },
       { id: "sk-apres", category: "clothing", label: "One après outfit, not five", note: "Evenings are a fleece and jeans." },
     ],
+    faq: [
+      {
+        question: "Should I bring my own skis or rent them?",
+        answer: "Rent the skis, own the things that touch your body. Rental skis in any resort are fine for most people and save you an airline ski-bag fee in both directions, while boots, goggles and base layers are personal fit items that make a real difference to the week and are miserable when rented badly.",
+      },
+      {
+        question: "Can ski boots go in hand luggage?",
+        answer: "Yes, and they should. Boots are the one item a delayed suitcase makes genuinely unreplaceable — rental shops stock skis and jackets, but a boot that fits your foot is not something you can improvise on day one. Most airlines accept them as a cabin bag or personal item.",
+      },
+      {
+        question: "Do you get sunburnt skiing?",
+        answer: "Badly, and most people do not plan for it. Altitude thins the atmosphere while snow reflects the UV back up at you, so you burn on the underside of the chin and nose where sunscreen rarely goes. High-factor sunscreen and lip balm with SPF are daily items, not occasional ones.",
+      },
+    ],
     related: ["packing-list-for-international-travel", "how-to-budget-for-a-trip"],
   }),
 
@@ -644,6 +879,20 @@ export const CURATED_PAGES: CuratedPage[] = [
       { id: "co-personal-item", category: "gear", label: "A personal item that fits under the seat", note: "Most airlines allow one free; it's a third more capacity." },
       { id: "co-measure", category: "gear", label: "Measure your bag with wheels and handles", note: "Gate sizers include them; airline websites sometimes don't mention it." },
     ],
+    faq: [
+      {
+        question: "What are the liquid rules for carry-on?",
+        answer: "Each container must hold 100ml or less, and all of them must fit inside a single transparent resealable bag of about one litre, one bag per passenger. The container size is what counts, not how much is left in it — a half-empty 200ml bottle is still confiscated.",
+      },
+      {
+        question: "Do solid toiletries count towards the liquids limit?",
+        answer: "No, and that is the loophole worth using. Shampoo bars, solid deodorant, toothpaste tablets and bar soap sit outside the liquids rule entirely, which frees up most of your one-litre bag for the things that genuinely have to be liquid.",
+      },
+      {
+        question: "Does a personal item count as carry-on?",
+        answer: "On most airlines a small bag that fits under the seat in front is allowed free alongside your cabin bag, which is roughly a third more capacity for nothing. Check your specific airline's dimensions before you fly, and measure your bag with the wheels and handles included — gate sizers count them even when the website does not mention them.",
+      },
+    ],
     related: ["packing-list-for-international-travel", "travel-checklist-before-leaving"],
   }),
 
@@ -677,6 +926,20 @@ export const CURATED_PAGES: CuratedPage[] = [
       { id: "hl-merino", category: "clothing", label: "Merino or technical fabrics, not cotton", note: "Resists odour, dries overnight, and you need fewer of them." },
       { id: "hl-wash", category: "toiletries", label: "A tube of travel wash", note: "Solid or under 100ml. Twenty minutes mid-week halves what you carry." },
       { id: "hl-flat-shoes", category: "clothing", label: "One packable flat pair, worn substantial pair", note: "Shoes are the bulkiest thing in any bag." },
+    ],
+    faq: [
+      {
+        question: "Can you really do a week in hand luggage?",
+        answer: "Yes, with four days of clothes and one wash. The trip length stops being the constraint the moment you plan a laundry point, and a week is short enough that a single sink wash mid-trip covers it. What makes it fail is packing seven days of cotton.",
+      },
+      {
+        question: "How do you wash clothes in a hotel sink?",
+        answer: "Wash in the basin with a little travel wash, rinse, then lay the garment flat on a towel, roll the towel up tightly and stand on it. That squeezes out far more water than wringing and does not stretch the fabric. Hung up afterwards, a merino top or technical shirt is dry by morning.",
+      },
+      {
+        question: "What fabrics work best for hand luggage only?",
+        answer: "Merino wool and technical synthetics. They resist odour, so a top survives more than one wear, and they dry overnight, which is what makes the one-wash plan work. Cotton does the opposite on both counts, which is why it is the fabric that forces people back to a checked bag.",
+      },
     ],
     related: ["packing-list-for-international-travel", "travel-checklist-before-leaving"],
   }),
@@ -714,6 +977,20 @@ export const CURATED_PAGES: CuratedPage[] = [
       { id: "lh-med-schedule", category: "health", label: "Your medication schedule across time zones", note: "Work it out before you fly, not at 3am over the Atlantic." },
       { id: "lh-downloads", category: "tech", label: "Everything downloaded in advance", note: "In-flight Wi-Fi is slow, expensive, or absent." },
       { id: "lh-seatback", category: "gear", label: "Nothing valuable in the seat-back pocket", note: "It is where passports go to be left behind." },
+    ],
+    faq: [
+      {
+        question: "Should you wear compression socks on a long flight?",
+        answer: "For anything over about eight hours, yes. Sitting still in a pressurised cabin slows circulation in the legs, and compression socks measurably lower the risk of deep vein thrombosis. They are cheap, take no space, and the discomfort argument against them disappears somewhere over hour six.",
+      },
+      {
+        question: "Should I wear glasses or contact lenses on a plane?",
+        answer: "Glasses. Cabin humidity typically runs between 10 and 20 percent, which is drier than most deserts, and lenses that are comfortable for a workday become genuinely painful across a long-haul flight. Pack the lenses for the destination and land in glasses.",
+      },
+      {
+        question: "What should you do in the last hour of a long flight?",
+        answer: "Reset before you land rather than after. A toothbrush, a face wipe, deodorant and a clean t-shirt in your under-seat bag take five minutes in the toilet and change how the arrival, the immigration queue and the first hours at your destination feel. Keep nothing valuable in the seat-back pocket — it is where passports go to be left behind.",
+      },
     ],
     related: ["packing-list-for-international-travel", "travel-checklist-before-leaving"],
   }),
@@ -753,6 +1030,20 @@ export const CURATED_PAGES: CuratedPage[] = [
       { id: "fb-chin-strap-hat", category: "kids", label: "Sun hats with chin straps", note: "The ones without get lost on the first day." },
       { id: "fb-armbands", category: "kids", label: "Armbands or float vests you trust", note: "Rental gear at the pool is a lottery on both fit and condition." },
     ],
+    faq: [
+      {
+        question: "How do you protect children from the sun at the beach?",
+        answer: "Cover them with fabric rather than relying on cream alone. A long-sleeved UV swimsuit gives continuous protection without you chasing a wet child around with a bottle every ninety minutes, and a sun hat with a chin strap survives the first day, which the ones without generally do not.",
+      },
+      {
+        question: "How do you get sand off children?",
+        answer: "Baby powder. Sprinkle it on dry skin and the sand brushes straight off, including the film that a towel just grinds in further. It is the standard trick among parents who have spent a week on a sandy beach, and it takes almost no room in the bag.",
+      },
+      {
+        question: "What do you need for a beach holiday with a toddler?",
+        answer: "Bring your own shade — a pop-up beach tent, because most beaches have none and midday UV is exactly when it stops being fun. Add a wet bag for swimwear so the beach bag and the hire car stay survivable, and float vests or armbands you actually trust, since rental gear at the pool is a lottery on both fit and condition.",
+      },
+    ],
     related: ["packing-list-for-international-travel", "how-to-plan-a-trip-step-by-step"],
   }),
 
@@ -787,6 +1078,20 @@ export const CURATED_PAGES: CuratedPage[] = [
       { id: "fc-contact-card", category: "kids", label: "A card in each pocket with your number", note: "With the country code. Works without a battery." },
       { id: "fc-carrier", category: "kids", label: "Carrier or stroller — decided by the metro map", note: "Older networks are stairs; check whether your stations have lifts." },
       { id: "fc-day-bag-change", category: "kids", label: "Spare clothes in the day bag", note: "Not at the hotel, which is always forty minutes away." },
+    ],
+    faq: [
+      {
+        question: "Stroller or carrier for a city break with kids?",
+        answer: "Let the metro map decide. Older underground networks are largely stairs, and a station without a lift turns a stroller into something you carry with a child in the other arm. Check whether the stations you will actually use have step-free access before you commit to either.",
+      },
+      {
+        question: "What should you do in case a child gets lost in a city?",
+        answer: "Take a photo of each child every morning, so you can show exactly what they are wearing rather than describing it under stress. Put a card in each of their pockets with your phone number including the country code — it works with no battery, no phone and no shared language.",
+      },
+      {
+        question: "How much should you plan per day with children?",
+        answer: "One thing a day. A single anchor activity plus whatever happens around it survives contact with tired legs and missed naps, where three scheduled sights do not. Keep a change of clothes in the day bag rather than at the hotel, which is always forty minutes away when you need it.",
+      },
     ],
     related: ["packing-list-for-international-travel", "how-to-plan-a-trip-step-by-step"],
   }),
@@ -826,6 +1131,20 @@ export const CURATED_PAGES: CuratedPage[] = [
       { id: "cp-water-plan", category: "gear", label: "Water carrying and treatment sorted", note: "Check the site's supply before you arrive, not after." },
       { id: "cp-rubbish", category: "gear", label: "Rubbish bags", note: "Everything you brought in comes out with you, food waste included." },
     ],
+    faq: [
+      {
+        question: "What matters more, the sleeping bag or the mat?",
+        answer: "The mat, more often than people expect. The ground conducts heat away from you far faster than the air does, so a warm bag on a thin mat still means a cold night. Look at the mat's R-value: around 2 is enough for summer, 4 or above for cold nights.",
+      },
+      {
+        question: "Should you pitch a tent before you go camping?",
+        answer: "Once, at home, always. It confirms every pole, peg and guyline is actually in the bag, which is the failure that ruins an arrival in the dark, and it means the first real pitch is not also the first time you have read the instructions. Twenty minutes in a garden or a living room is enough.",
+      },
+      {
+        question: "Is a tarp worth taking camping?",
+        answer: "It roughly doubles your usable space in bad weather. A tent is somewhere to sleep; a tarp strung beside it is a dry place to cook, sit and wait out a shower, which is the difference between a rainy day spent lying down in a nylon tube and a rainy day that still works.",
+      },
+    ],
     related: ["packing-list-for-international-travel", "how-to-plan-a-trip-step-by-step"],
   }),
 
@@ -863,6 +1182,20 @@ export const CURATED_PAGES: CuratedPage[] = [
       { id: "rt-offline-maps", category: "tech", label: "Maps downloaded for the whole route", note: "Canyons and mountain passes are exactly where coverage stops." },
       { id: "rt-cooler", category: "gear", label: "Cooler, snacks and a blanket" },
       { id: "rt-sunshade", category: "gear", label: "Windscreen sunshade", note: "For the afternoon the car spends in a car park at 35°C." },
+    ],
+    faq: [
+      {
+        question: "What documents do you need for a road trip abroad?",
+        answer: "Licence, an International Driving Permit, the vehicle registration or rental agreement, insurance and breakdown cover — all findable offline, because a roadside stop is exactly where the signal is worst. Several countries require the IDP alongside EU and US licences, so check the specific one rather than assuming.",
+      },
+      {
+        question: "Can you take a hire car across a border?",
+        answer: "Often not, and doing it anyway usually voids the insurance rather than merely breaching the contract. Many rental agreements restrict which countries you may enter, and some require paperwork bought in advance. Confirm it with the rental company before you book the accommodation on the other side.",
+      },
+      {
+        question: "How should you pack a car for a road trip?",
+        answer: "With a separate overnight bag. If the trip involves several one-night stops, the alternative is unloading the entire boot at every hotel and repacking it in the morning. One small bag with what you need for a night means the rest of the car stays untouched until the destination.",
+      },
     ],
     related: ["packing-list-for-international-travel", "how-to-plan-a-trip-step-by-step"],
   }),
@@ -903,6 +1236,20 @@ export const CURATED_PAGES: CuratedPage[] = [
       { id: "fs-earplugs", category: "gear", label: "Earplugs — for sleeping and for the front row" },
       { id: "fs-bin-bags", category: "gear", label: "Bin bags", note: "A poncho, a groundsheet, and a way to take your rubbish home." },
     ],
+    faq: [
+      {
+        question: "What should you pack for a wet festival?",
+        answer: "Wellies, waterproofs, and more pairs of socks than there are days. The item that matters most is one complete change of clothes sealed in a dry bag that stays shut until you genuinely need it — because everything else in your tent will be damp by the second night whether it rains on you or not.",
+      },
+      {
+        question: "How do you charge your phone at a festival?",
+        answer: "Assume you cannot. Charging tents run hour-long queues and charge for the privilege, and finding one costs you a set you wanted to see. A power bank sized for the whole weekend, charged before you arrive, is the only reliable answer — and keep the phone in flight mode between uses.",
+      },
+      {
+        question: "How do you find your tent at a festival?",
+        answer: "Put something tall above it. Ten thousand identical tents look genuinely identical at 2am in the dark, and dropping a pin on your phone only helps while the phone still has battery. A flag, a tall marker or anything visible from a distance is the low-tech version that always works.",
+      },
+    ],
     related: ["packing-list-for-international-travel", "how-to-budget-for-a-trip"],
   }),
 
@@ -938,6 +1285,20 @@ export const CURATED_PAGES: CuratedPage[] = [
       { id: "hm-two-evenings", category: "clothing", label: "Two or three evening outfits", note: "Resort restaurants commonly enforce a dress code after six." },
       { id: "hm-split-bags", category: "clothing", label: "Split your clothes across both suitcases", note: "One delayed bag then leaves you both with something to wear." },
       { id: "hm-space", category: "gear", label: "Pack the outbound bags to 80%", note: "The return journey is where the space runs out." },
+    ],
+    faq: [
+      {
+        question: "Does the name on the ticket have to match the passport?",
+        answer: "Exactly, and this is the honeymoon-specific trap. If you have changed your name after the wedding but the passport has not caught up, book in the passport name. A mismatch is treated as refused boarding and a rebooking at full fare, not as a clerical fix at the desk.",
+      },
+      {
+        question: "Should you take your marriage certificate on honeymoon?",
+        answer: "A photo of it on your phone is enough and worth having. Resorts and airlines hand out honeymoon upgrades, room amenities and occasional free extras, and a fair number ask for something to back the claim up before they do.",
+      },
+      {
+        question: "How do you avoid losing everything if a bag is delayed?",
+        answer: "Split your clothes across both suitcases rather than packing one bag each. If one is delayed you both still have something to wear, instead of one person having everything and the other having nothing. Pack the outbound bags to about 80 percent as well — the return journey is where the space runs out.",
+      },
     ],
     related: ["packing-list-for-international-travel", "how-to-plan-a-trip-step-by-step"],
   }),
@@ -975,6 +1336,20 @@ export const CURATED_PAGES: CuratedPage[] = [
       { id: "dn-anc", category: "tech", label: "Noise-cancelling headphones", note: "Working equipment, not entertainment." },
       { id: "dn-onward", category: "documents", label: "Proof of onward travel and insurance, offline", note: "Asked for at check-in and immigration more often than you'd expect." },
       { id: "dn-encrypted-drive", category: "tech", label: "Encrypted backup drive, kept separately", note: "A stolen laptop takes out the machine and the local copy at once." },
+    ],
+    faq: [
+      {
+        question: "What charger should a digital nomad carry?",
+        answer: "One 65W or higher multi-port GaN charger, not four separate bricks. It runs the laptop, phone and headphones from a single socket, which means you also carry one plug adapter rather than three — and hostel and cafe sockets are rarely plentiful enough for anything else.",
+      },
+      {
+        question: "How do you work from a laptop for months without wrecking your back?",
+        answer: "A folding laptop stand and a compact external keyboard, together well under a kilo. Raising the screen to eye level is the difference between working comfortably for months and working for a week before your neck decides otherwise. It is the highest-value kilo in the bag.",
+      },
+      {
+        question: "Do you need a backup SIM as a digital nomad?",
+        answer: "Two eSIM providers, with the backup tested before you rely on it. Connectivity is the thing your income depends on, and a provider that works badly in one country works fine in the next — so the second option needs to already be installed and proven, not researched during an outage. Confirm hotspot use is permitted on the plan you buy.",
+      },
     ],
     related: ["packing-list-for-international-travel", "trip-planner-app-no-subscription"],
   }),

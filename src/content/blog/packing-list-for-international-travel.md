@@ -24,6 +24,13 @@ faq:
     answer: "Almost always, yes. Plug shapes and voltages differ by region, so check your destination's plug type before you leave. A single universal adapter with USB ports covers most trips and takes less space than one adapter per device. Modern phone and laptop chargers handle 100-240V, so you rarely need a voltage converter."
   - question: "What is the most commonly forgotten item on international trips?"
     answer: "Chargers and adapters top most travelers' lists, followed by medications, sunscreen, and copies of travel documents. The fix is boring but reliable: keep a written packing list, check items off as they physically go in the bag, and do a final sweep of outlets and bathroom shelves before leaving home."
+relatedPackingLists:
+  - "what-to-pack-for-japan-in-winter"
+  - "what-to-pack-for-iceland-in-summer"
+  - "what-to-pack-for-thailand"
+  - "what-to-pack-for-vietnam"
+  - "what-to-pack-for-a-safari"
+  - "what-to-pack-for-new-york-in-winter"
 relatedSlugs: ["travel-checklist-before-leaving", "how-to-plan-a-trip-step-by-step", "best-trip-planner-apps"]
 draft: false
 ---

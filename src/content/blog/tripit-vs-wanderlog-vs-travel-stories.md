@@ -24,6 +24,11 @@ faq:
     answer: "Yes. Travel Stories for iPhone charges a one-time $1.99 for its Premium Lifetime unlock instead of a recurring fee. The free version includes one trip with every feature — itinerary with maps, bookings, expenses, packing lists, and a travel diary — and the one-time purchase unlocks unlimited trips, spending charts, calendar export, and trip sharing. It works fully offline with no account."
   - question: "Does Travel Stories replace TripIt or Wanderlog?"
     answer: "For some travellers, not all. It covers itinerary, budget tracking, packing lists, and a travel journal in one offline app, which is more than either competitor bundles. But it is iPhone-only, it does not auto-build itineraries from forwarded emails like TripIt, and it has no live collaborative editing like Wanderlog. If those two features are essential to you, the subscriptions earn their keep."
+relatedPackingLists:
+  - "3-day-business-trip-packing-list"
+  - "long-haul-flight-carry-on-essentials"
+  - "two-week-europe-packing-list"
+  - "what-to-pack-for-a-cruise"
 relatedSlugs: ["best-trip-planner-apps", "trip-planner-app-no-subscription", "how-to-budget-for-a-trip"]
 draft: false
 ---
@@ -84,7 +89,7 @@ What it covers, all in one app:
 
 - **Itinerary with maps** — day-by-day plans, bookings, and tasks, with departure reminders 1-30 days out and a Home Screen countdown widget
 - **Budget and expenses** — set a trip budget, log spending as it happens, and (with the one-time unlock) see visual spending charts; the method from our guide on [how to budget for a trip](/blog/how-to-budget-for-a-trip/) maps directly onto it
-- **Packing lists** — with over 100 built-in suggestions
+- **Packing lists** — with over 100 built-in suggestions; the same engine runs free on the web if you want to see it first, including ready-made lists for [a long-haul flight](/packing-list/long-haul-flight-carry-on-essentials/) or [a two-week Europe trip](/packing-list/two-week-europe-packing-list/)
 - **Travel diary** — notes and photos captured per day, so the trip's memories live next to its plan
 - **Share sheet capture** — send bookings, links, and tips into the right trip from any iOS app
 - **Fully offline, no account** — everything stays on your phone; there is no server and no cloud sync, in 14 languages

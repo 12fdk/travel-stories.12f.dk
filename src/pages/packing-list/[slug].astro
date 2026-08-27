@@ -2,6 +2,7 @@
 import { getCollection } from "astro:content";
 import BlogLayout from "../../layouts/BlogLayout.astro";
 import RelatedLists from "../../modules/packingList/_components/RelatedLists.astro";
+import FaqSection from "../../components/blog/FaqSection.astro";
 import PackingListGenerator from "../../modules/packingList";
 import defaultTemplateConfig from "../../utils/config";
 import { CURATED_PAGES, type CuratedPage } from "../../data/packingList/pages";
@@ -46,13 +47,26 @@ const itemListNode = {
     )
     .map((item, index) => ({ ...item, position: index + 1 })),
 };
+
+const faqNode =
+  page.faq.length > 0
+    ? {
+        "@type": "FAQPage",
+        "@id": `${canonicalURL.href}#faq`,
+        mainEntity: page.faq.map((item) => ({
+          "@type": "Question",
+          name: item.question,
+          acceptedAnswer: { "@type": "Answer", text: item.answer },
+        })),
+      }
+    : null;
 ---
 
 <BlogLayout
   title={`${page.title} | Travel Stories`}
   description={page.description}
   canonicalPath={canonicalPath}
-  extraGraphNodes={[itemListNode]}
+  extraGraphNodes={faqNode ? [itemListNode, faqNode] : [itemListNode]}
   hideAppBanner={true}
   appStoreLinkOverride={defaultTemplateConfig.packingAppStoreLink}
   bodyClass="packing-page"
@@ -131,6 +145,10 @@ const itemListNode = {
         </section>
       )
     }
+
+    <div class="max-w-3xl">
+      <FaqSection items={page.faq} />
+    </div>
 
     <RelatedLists currentSlug={page.slug} heading="Other packing lists" />
   </main>
