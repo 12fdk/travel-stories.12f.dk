@@ -58,7 +58,7 @@ The honest summary: paper is a better *writing* experience, and a phone is a bet
 
 There's also a structural advantage to using the same tool you planned the trip with. Your itinerary already knows it's day 4 and you were in Kyoto; your expense log already says "eel restaurant, ¥3,200." A dedicated notebook starts every entry from a blank page. A trip app starts every entry half-written. (If you're choosing a tool, the [best trip planner apps](/blog/best-trip-planner-apps/) roundup compares the options.)
 
-If you love paper, keep the paper — but back it with the phone method below so a lost notebook doesn't mean a lost trip.
+If you love paper, keep the paper — but back it with the phone method below so a lost notebook doesn't mean a lost trip. If you want the full picture — what to document besides the journal itself, and how to keep the daily cost under two minutes — the guide on [how to document your travels](/blog/how-to-document-your-travels/) covers the five layers.
 
 ## The 5-minute daily method
 
@@ -128,7 +128,7 @@ A journal's value is realized in the rereading, and raw daily entries need about
 3. **Write the closing note.** Three sentences: what you'd tell someone taking this trip, what you'd do differently, the moment you'd relive. This paragraph is disproportionately what future-you will treasure.
 4. **Skim the expense log once.** It reads like a diary you didn't know you kept — and it makes [budgeting the next trip](/blog/how-to-plan-a-trip-step-by-step/) dramatically more accurate, because you now have real numbers instead of guesses.
 
-Then the last habit: **reread on anniversaries.** A year later, open the trip and scroll the timeline. This costs nothing and is the entire payoff of the whole method — five minutes a night, traded for the ability to walk back into a week of your life whenever you want.
+Then the last habit: **reread on anniversaries.** A year later, open the trip and scroll the timeline. This costs nothing and is the entire payoff of the whole method — five minutes a night, traded for the ability to walk back into a week of your life whenever you want. If your journaling is one of several documentation habits — voice notes, receipts, the photos — the [guide on documenting your travels](/blog/how-to-document-your-travels/) shows how they fit together without becoming a chore.
 
 ## Put it into practice
 

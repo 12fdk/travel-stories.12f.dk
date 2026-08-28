@@ -116,4 +116,4 @@ Twelve items sounds like a lot; spread across a week it is not:
 | Day 4-5 | Submit reimbursements and claims (3), photo pass two (8), finish the journal (9) |
 | Day 6-7 | Check statements (2), archive the trip (10), lessons and wishlist (11, 12) |
 
-No single day takes more than about half an hour. By the weekend, the money is settled, the gear is reset, the memories are kept, and the next trip already has a head start — which is the entire point of a post-trip checklist: the trip ends deliberately, instead of just trailing off.
+No single day takes more than about half an hour. By the weekend, the money is settled, the gear is reset, the memories are kept, and the next trip already has a head start — which is the entire point of a post-trip checklist: the trip ends deliberately, instead of just trailing off. If you want to know what to capture *during* the trip so this week has raw material to work with, our guide on [how to document your travels](/blog/how-to-document-your-travels/) covers the five layers.

@@ -36,7 +36,7 @@ The photos themselves are fine. They will sit in your camera roll untouched for 
 
 The second clock is the one that matters. The *stories* behind the photos — what the waiter said, why everyone is laughing in that shot, which hike that view came from — decay fast. Memory research has shown for over a century that forgetting is steepest immediately after an event and flattens out later; the fine-grained details go first, and they go within days and weeks, not years. A photo without its story eventually becomes a nice image of a place you can no longer quite explain.
 
-So the deadline is not "organize the photos someday." It is "capture the stories this week, while you still have them." The organizing is really just the scaffolding that makes that possible.
+So the deadline is not "organize the photos someday." It is "capture the stories this week, while you still have them." The organizing is really just the scaffolding that makes that possible — one layer of the wider system in our guide on [how to document your travels](/blog/how-to-document-your-travels/).
 
 Here is the full workflow, with honest time estimates. Total: about two hours, spread across the first week.
 
