@@ -119,7 +119,7 @@ Each post links to 2–3 others (internal linking), includes a contextual CTA to
 | 4 | Listicle | The Best Trip Planner Apps in 2026 (Honest Round-Up) | best trip planner apps | Round-up (include competitors honestly) | 2,500 | [x] |
 | 5 | ★ Pillar | How to Keep a Travel Journal (That You'll Actually Finish) | how to keep a travel journal | Guide | 2,200 | [x] |
 | 6 | Checklist | The Travel Checklist Before Leaving Home | travel checklist before leaving | Checklist | 1,500 | [x] |
-| 7 | ★ Freebie | The Free Travel Budget Template (PDF + Google Sheet) | travel budget template | Template + guide | 2,000 | ☐ |
+| 7 | ★ Freebie | The Free Travel Budget Template (PDF + Google Sheet) | travel budget template | Template + guide | 2,000 | [x] |
 | 8 | Comparison | Looking for a TripIt Alternative? Start Here | tripit alternative | Comparison | 1,800 | ☐ |
 | 9 | Commercial | Trip Planner Apps Without a Subscription (Yes, They Exist) | trip planner app no subscription | Buyer's guide | 1,600 | ☐ |
 | 10 | Comparison | Notion Travel Planner Template vs an Actual Trip App | notion travel planner template | Honest comparison + free template | 1,800 | ☐ |
