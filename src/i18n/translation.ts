@@ -4,7 +4,7 @@ import { homepageAlternates, localeHref } from "./locales";
 /**
  * The full set of translatable homepage strings, in one flat shape (#22).
  * English is the base config itself; every other locale is a translation of
- * this shape. Non-text config (icons, images, emoji, ids, hrefs, screenshots,
+ * this shape. Non-text config (icons, images, ids, hrefs, screenshots,
  * featured flags) is NOT here — it comes from the base config unchanged.
  *
  * Card/step/row/QA arrays must have the SAME length and order as the base
