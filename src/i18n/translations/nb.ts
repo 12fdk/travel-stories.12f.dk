@@ -13,7 +13,7 @@ const nb: Translation = {
   header: {
     headline: "Planlegg ditt perfekte eventyr",
     subtitle:
-      "Travel Stories er din alt-i-ett reisefølgesvenn for å planlegge, organisere og huske hvert eneste eventyr. Lag reiseruter, hold oversikt over utgiftene og ta vare på minnene.",
+      "Travel Stories er en gratis iPhone-app for å planlegge, organisere og huske reisen. Lag reiseruter, hold oversikt over utgiftene og ta vare på minnene. Den bestiller ikke fly eller hotell.",
     headlineMark: [2, 3],
   },
   ui: {
@@ -317,6 +317,11 @@ const nb: Translation = {
         question: "Finnes det en Android-versjon?",
         answer:
           "Nei – Travel Stories er en iPhone-app, og vi fokuserer på å lage den best mulige iOS-opplevelsen. Hvis det endrer seg, blir det annonsert her først.",
+      },
+      {
+        question: "Bestiller Travel Stories fly eller hotell?",
+        answer:
+          "Nei. Travel Stories er en reiseplanlegger, organisator og dagbok for iPhone. Den lagrer reiserute, bestillingsnummer, pakkeliste, utgifter og en fotodagbok på telefonen. Du bestiller fly og hotell et annet sted, og lagrer detaljene i appen.",
       },
     ],
   },

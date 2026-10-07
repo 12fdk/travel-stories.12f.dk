@@ -1,6 +1,6 @@
 ---
 title: "Trip Planner Apps Without a Subscription (Yes, They Exist)"
-description: "Tired of $40-60/year trip planner subscriptions? Here are the apps that are genuinely free or one-time purchases, and the trial traps to avoid."
+description: "Tired of $40-60/year trip planner subscriptions? Here are the apps that are genuinely free or a one-time purchase, and the trial traps to avoid."
 lede: "Most big-name trip planner apps now charge a yearly subscription — TripIt Pro is $49 a year, Wanderlog Pro about $40, Tripsy Pro $59, Roadtrippers Premium $59.99. But a trip planner app with no subscription does exist: some apps have genuinely usable free tiers, and a few charge a small one-time price for everything. This guide sorts the honest options from the trial traps."
 keyword: "trip planner app no subscription"
 cover: "/blog/trip-planner-app-no-subscription.webp"

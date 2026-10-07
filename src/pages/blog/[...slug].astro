@@ -57,26 +57,19 @@ const packingLists = post.data.relatedPackingLists.map((slug) => {
 
 const articleSchema = {
   "@context": "https://schema.org",
-  "@type": "Article",
+  "@type": "BlogPosting",
+  "@id": `${canonicalURL.href}#article`,
   headline: post.data.title,
   description: post.data.description,
   image: new URL(ogImage, Astro.site).href,
   datePublished: post.data.publishDate.toISOString(),
   dateModified: (post.data.updatedDate ?? post.data.publishDate).toISOString(),
-  author: {
-    "@type": "Person",
-    name: post.data.author,
-    url: "https://www.12f.dk",
-  },
-  publisher: {
-    "@type": "Organization",
-    name: "12f.dk",
-    url: "https://www.12f.dk",
-  },
-  mainEntityOfPage: {
-    "@type": "WebPage",
-    "@id": canonicalURL.href,
-  },
+  author:
+    post.data.author === "Robert Jensen"
+      ? { "@id": "https://www.12f.dk/#robert" }
+      : { "@type": "Person", name: post.data.author },
+  publisher: { "@id": "https://www.12f.dk/#organization" },
+  mainEntityOfPage: { "@id": `${canonicalURL.href}#webpage` },
   keywords: [post.data.keyword, ...post.data.tags].join(", "),
   inLanguage: "en",
   isPartOf: {
@@ -121,6 +114,8 @@ const faqNode =
       <a href="/" class="hover:text-primary">Home</a>
       <span class="mx-1.5" aria-hidden="true">/</span>
       <a href="/blog/" class="hover:text-primary">Blog</a>
+      <span class="mx-1.5" aria-hidden="true">/</span>
+      <span aria-current="page">{post.data.title}</span>
     </nav>
 
     <header class="mb-8">

@@ -13,7 +13,7 @@ const fr: Translation = {
   header: {
     headline: "Planifiez votre aventure parfaite",
     subtitle:
-      "Travel Stories est votre compagnon de voyage tout-en-un pour planifier, organiser et vous souvenir de chaque aventure. Créez des itinéraires, suivez vos dépenses et capturez vos souvenirs.",
+      "Travel Stories est un planificateur, organiseur et journal de voyage gratuit pour iPhone. Créez des itinéraires, suivez vos dépenses et capturez vos souvenirs. L'app ne réserve ni vols ni hôtels.",
     headlineMark: [2, 4],
   },
   ui: {
@@ -316,6 +316,11 @@ const fr: Translation = {
         question: "Existe-t-il une version Android ?",
         answer:
           "Non — Travel Stories est une app iPhone, et nous nous concentrons sur la meilleure expérience iOS possible. Si cela change, ce sera annoncé ici en premier.",
+      },
+      {
+        question: "Travel Stories réserve-t-il des vols ou des hôtels ?",
+        answer:
+          "Non. Travel Stories est un planificateur, un organiseur et un journal de voyage pour iPhone. L'app conserve l'itinéraire, les numéros de confirmation, la liste de bagages, les dépenses et un journal photo sur l'iPhone. Vous réservez vols et hôtels ailleurs, puis vous gardez les détails dans l'app.",
       },
     ],
   },

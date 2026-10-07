@@ -13,7 +13,7 @@ const ko: Translation = {
   header: {
     headline: "완벽한 여행을 계획하세요",
     subtitle:
-      "Travel Stories는 모든 여행의 계획, 정리, 기록을 한 곳에서 해결하는 올인원 여행 동반자입니다. 일정을 만들고, 경비를 관리하고, 추억을 남겨 보세요.",
+      "Travel Stories는 여행을 계획하고 정리하고 기록하는 무료 iPhone 앱입니다. 일정을 만들고, 경비를 관리하고, 추억을 남깁니다. 항공권이나 호텔을 예약하지는 않습니다.",
     headlineMark: [1, 2],
   },
   ui: {
@@ -315,6 +315,11 @@ const ko: Translation = {
         question: "Android 버전도 있나요?",
         answer:
           "아니요 — Travel Stories는 iPhone 앱이며, 최고의 iOS 경험을 만드는 데 집중하고 있습니다. 계획이 바뀌면 이곳에서 가장 먼저 알려 드릴게요.",
+      },
+      {
+        question: "Travel Stories가 항공권이나 호텔을 예약하나요?",
+        answer:
+          "아니요. Travel Stories는 iPhone용 여행 플래너, 정리 앱, 여행 일지입니다. 일정, 예약 번호, 짐 목록, 지출, 사진 일기를 iPhone에 저장합니다. 항공권과 호텔은 다른 곳에서 예약하고, 그 내용을 앱에 남겨 둡니다.",
       },
     ],
   },

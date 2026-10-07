@@ -53,7 +53,7 @@ export const CURATED_PAGES: CuratedPage[] = [
     title: "What to Pack for Japan in Winter: The Complete List",
     h1: "What to pack for Japan in winter",
     description:
-      "A winter Japan packing list built around what actually catches visitors out: constant shoe removal, cash-only counters, brutal indoor heating, and tiny hotel rooms.",
+      "A winter Japan packing list built around what actually catches visitors out: constant shoe removal, cash-only counters, indoor heating, and tiny hotel rooms.",
     lede: "Japan in winter is cold outside and genuinely hot inside, and you will take your shoes off several times a day. Pack thin layers you can shed, slip-on shoes, socks without holes, and more cash than feels normal.",
     options: { type: "city", days: 10, climate: "cold", carryOnOnly: false, checkedBag: true, kids: false },
     advice: [
@@ -156,7 +156,7 @@ export const CURATED_PAGES: CuratedPage[] = [
     title: "What to Pack for Thailand: A Two-Week Backpacking List",
     h1: "What to pack for Thailand",
     description:
-      "A Thailand packing list that assumes you'll buy half of it there. Temple dress codes, the heat, the rain, and the things that are genuinely worth carrying from home.",
+      "A Thailand packing list that assumes you'll buy half of it there. Temple dress codes, the heat, the rain, and what is genuinely worth carrying from home.",
     lede: "Pack light for Thailand — clothes, toiletries and most gear are cheap and everywhere. What's worth carrying from home is sunscreen, repellent you trust, and one outfit that covers shoulders and knees.",
     options: { type: "backpacking", days: 14, climate: "tropical", carryOnOnly: false, checkedBag: true, kids: false },
     advice: [
@@ -207,7 +207,7 @@ export const CURATED_PAGES: CuratedPage[] = [
     title: "What to Pack for Italy in Summer: Cities, Churches & Heat",
     h1: "What to pack for Italy in summer",
     description:
-      "An Italian summer packing list built around three realities: church dress codes, cobblestones, and 35°C afternoons. Includes what to wear and what to leave home.",
+      "An Italian summer packing list built around three realities: church dress codes, cobblestones, and 35°C afternoons. What to wear and what to leave home.",
     lede: "Italy in summer means heat, cobblestones and dress codes. Pack a light scarf or shawl for churches, shoes with real soles, and a refillable bottle — the public fountains are drinkable and everywhere.",
     options: { type: "city", days: 7, climate: "hot", carryOnOnly: false, checkedBag: true, kids: false },
     advice: [
@@ -257,7 +257,7 @@ export const CURATED_PAGES: CuratedPage[] = [
     title: "What to Pack for a Safari: Colours, Weight Limits & Dust",
     h1: "What to pack for a safari",
     description:
-      "A safari packing list covering the two rules that catch people out: which colours to avoid and why, and the strict soft-bag weight limits on light aircraft transfers.",
+      "A safari packing list covering the two rules that catch people out: which colours to avoid and why, and soft-bag weight limits on light aircraft transfers.",
     lede: "Safari packing has two hard rules: neutral colours only — no blue or black, no camouflage — and a soft-sided bag, because light aircraft transfers cap luggage at around 15kg with no hard cases allowed.",
     options: { type: "hiking", days: 7, climate: "hot", carryOnOnly: false, checkedBag: true, kids: false },
     advice: [
@@ -309,7 +309,7 @@ export const CURATED_PAGES: CuratedPage[] = [
     title: "What to Pack for New York in Winter: A 4-Day List",
     h1: "What to pack for New York in winter",
     description:
-      "A winter New York packing list for a long weekend: wind tunnels, slush at every crossing, overheated interiors, and the fact that you'll be carrying your coat indoors.",
+      "A winter New York packing list for a long weekend: wind tunnels, slush at every crossing, overheated interiors, and carrying your coat indoors all day.",
     lede: "New York in winter is a walking city with wind funnelled between towers and slush at every kerb. Pack waterproof boots with grip, a hat that covers your ears, and layers you can strip off the moment you step inside.",
     options: { type: "city", days: 4, climate: "cold", carryOnOnly: false, checkedBag: true, kids: false },
     advice: [
@@ -359,7 +359,7 @@ export const CURATED_PAGES: CuratedPage[] = [
     title: "What to Pack for Bali: A 10-Day List",
     h1: "What to pack for Bali",
     description:
-      "A Bali packing list covering temple sarongs, reef-safe sunscreen, scooter safety, and why laundry at a dollar a kilo means you should pack for four days, not ten.",
+      "A Bali packing list covering temple sarongs, reef-safe sunscreen, scooter safety, and why laundry at a dollar a kilo means packing for four days, not ten.",
     lede: "Pack four days of clothes for ten days in Bali — laundry costs about a dollar a kilo and comes back the next morning. What's worth carrying is a sarong, reef-safe sunscreen, and a stomach kit you trust.",
     options: { type: "beach", days: 10, climate: "tropical", carryOnOnly: false, checkedBag: true, kids: false },
     advice: [
@@ -410,7 +410,7 @@ export const CURATED_PAGES: CuratedPage[] = [
     title: "What to Pack for a Cruise: Cabin Storage, Dress Codes & Ports",
     h1: "What to pack for a cruise",
     description:
-      "A cruise packing list built around the cabin: vertical storage on magnetic steel walls, scarce outlets, banned surge protectors, and the bag that arrives four hours after you do.",
+      "A cruise packing list built around the cabin: magnetic walls for storage, scarce outlets, banned surge protectors, and a bag that arrives hours later.",
     lede: "A cruise cabin is small, its walls are magnetic steel, and its power outlets are few. Pack magnetic hooks, a non-surge USB charger, and a carry-on with your swimwear — your main bag may not arrive for hours.",
     options: { type: "beach", days: 7, climate: "hot", carryOnOnly: false, checkedBag: true, kids: false },
     advice: [
@@ -658,7 +658,7 @@ export const CURATED_PAGES: CuratedPage[] = [
     title: "Weekend Hiking Packing List: Two Days, One Pack",
     h1: "Weekend hiking packing list",
     description:
-      "A two-day hiking list organised by weight: the big three that dominate your pack, the layering system that works, and the items you carry precisely because you hope not to use them.",
+      "A two-day hiking list organised by weight: the big three that dominate your pack, the layering system that works, and the gear you hope you will not need.",
     lede: "On a weekend hike you carry everything, so pack by weight rather than by category. Your pack, sleep system and shelter decide the load; everything else is grams around the edges.",
     options: { type: "hiking", days: 2, climate: "mild", carryOnOnly: false, checkedBag: false, kids: false },
     advice: [
@@ -707,7 +707,7 @@ export const CURATED_PAGES: CuratedPage[] = [
     title: "Two-Week Europe Packing List for Multiple Cities",
     h1: "Two-week Europe packing list",
     description:
-      "A multi-city Europe list built around the bag you carry up a fourth-floor walk-up: one laundry stop, three plug types, and 15°C of variation between north and south.",
+      "A multi-city Europe list built around the bag you carry up a walk-up: one laundry stop, three plug types, and 15°C of variation between north and south.",
     lede: "For two weeks across several European cities, pack one week of clothes and plan a laundry stop. The binding constraint isn't the wardrobe — it's the bag you'll carry up a fourth-floor walk-up with no lift.",
     options: { type: "city", days: 14, climate: "mild", carryOnOnly: false, checkedBag: true, kids: false },
     advice: [
@@ -854,7 +854,7 @@ export const CURATED_PAGES: CuratedPage[] = [
     title: "Carry-On Only Packing List: What Actually Fits",
     h1: "Carry-on only packing list",
     description:
-      "Travelling with hand luggage only: the liquids bag is the real constraint, not the clothes. Solid swaps, the roll method, and the two things that never leave your body.",
+      "Travelling with hand luggage only: the liquids bag is the real constraint, not the clothes. Solid swaps, the roll method, and what never leaves your body.",
     lede: "Carry-on only is usually a volume problem, not a weight problem — and the volume is mostly toiletries. Swap your bulkiest liquids for solids and the rest of the bag stops being tight.",
     options: { type: "city", days: 5, climate: "mild", carryOnOnly: true, checkedBag: false, kids: false },
     advice: [
@@ -901,7 +901,7 @@ export const CURATED_PAGES: CuratedPage[] = [
     title: "Hand Luggage Only: A One-Week Packing List",
     h1: "Hand luggage only packing list for a week",
     description:
-      "Seven days in a cabin bag, done by packing four days of clothes and washing once. The sink-wash routine, the fabrics that make it work, and the one-pair-of-shoes rule.",
+      "Seven days in a cabin bag, done by packing four days of clothes and washing once. The sink-wash routine, the fabrics that work, and one pair of shoes.",
     lede: "Seven days fits in hand luggage if you pack four days of clothes and wash once. That single decision, not clever folding, is what makes a week of carry-on travel comfortable rather than tight.",
     options: { type: "city", days: 7, climate: "mild", carryOnOnly: true, checkedBag: false, kids: false },
     advice: [
@@ -949,7 +949,7 @@ export const CURATED_PAGES: CuratedPage[] = [
     title: "Long-Haul Flight Carry-On Essentials: What to Keep at Your Seat",
     h1: "Long-haul flight carry-on essentials",
     description:
-      "What belongs in the bag at your feet on a ten-hour flight: hydration, compression socks, the last-hour reset kit, and the seat-back pocket rule that saves your passport.",
+      "What belongs in the bag at your feet on a ten-hour flight: hydration, compression socks, the last-hour reset kit, and the rule that saves your passport.",
     lede: "On a long-haul flight, the bag at your feet matters more than the one in the locker. Pack for hydration, sleep, and the twenty minutes before landing when you want to feel human again.",
     options: { type: "city", days: 10, climate: "mild", carryOnOnly: true, checkedBag: false, kids: false },
     advice: [
@@ -1001,7 +1001,7 @@ export const CURATED_PAGES: CuratedPage[] = [
     title: "Family Beach Holiday Packing List (With Kids)",
     h1: "Family beach holiday packing list",
     description:
-      "A week at the beach with children: UV swimsuits instead of endless sunscreen reapplication, the shade you have to bring yourself, and the wet bag that saves the car.",
+      "A week at the beach with children: UV swimsuits instead of endless sunscreen, the shade you bring yourself, and the wet bag that saves the car seats.",
     lede: "With children at the beach, sun protection is most of the job — and a UV swimsuit does more of it than any amount of chasing a wet child with a sunscreen bottle.",
     options: { type: "beach", days: 7, climate: "hot", carryOnOnly: false, checkedBag: true, kids: true },
     advice: [
@@ -1102,7 +1102,7 @@ export const CURATED_PAGES: CuratedPage[] = [
     title: "Camping Packing List: Shelter, Sleep, Cook",
     h1: "Camping packing list",
     description:
-      "A camping list organised by the three systems that matter — shelter, sleep and cook — plus the R-value most people ignore and the tarp that doubles your usable space.",
+      "A camping packing list organised by shelter, sleep, and cook — plus the sleeping-pad R-value most people ignore and the tarp that adds covered living space.",
     lede: "Camping packing has three systems: shelter, sleep and cook. Get those right and everything else is comfort. The most commonly underestimated item is the sleeping mat, not the sleeping bag.",
     options: { type: "hiking", days: 3, climate: "mild", carryOnOnly: false, checkedBag: false, kids: false },
     advice: [
@@ -1153,7 +1153,7 @@ export const CURATED_PAGES: CuratedPage[] = [
     title: "Road Trip Packing List: The Car, the Bags & the Documents",
     h1: "Road trip packing list",
     description:
-      "A road trip list for the trip where you can overpack: the overnight bag that saves you unloading the boot, the documents police ask for, and the offline map that works in the canyon.",
+      "A road trip list for when you can overpack: the overnight bag that saves unloading the boot, the documents police ask for, and an offline canyon map.",
     lede: "A road trip removes the weight limit, which is exactly the trap. Pack a separate overnight bag so you're not unloading the whole boot at every motel, and download the maps before you lose signal.",
     options: { type: "city", days: 7, climate: "mild", carryOnOnly: false, checkedBag: true, kids: false },
     advice: [
@@ -1258,7 +1258,7 @@ export const CURATED_PAGES: CuratedPage[] = [
     title: "Honeymoon Packing List: Names, Dress Codes & Two Weeks",
     h1: "Honeymoon packing list",
     description:
-      "A honeymoon packing list including the thing that ruins them: booking in a married name your passport doesn't have yet. Plus resort dress codes and the certificate worth carrying.",
+      "A honeymoon packing list: a booking in a married name your passport doesn't have yet, plus resort dress codes and the certificate worth carrying with you.",
     lede: "Book and travel in the name printed in your passport, whatever you've changed it to since. Beyond that, a honeymoon packs like a beach holiday with two more evenings that matter.",
     options: { type: "beach", days: 10, climate: "hot", carryOnOnly: false, checkedBag: true, kids: false },
     advice: [
@@ -1308,7 +1308,7 @@ export const CURATED_PAGES: CuratedPage[] = [
     title: "Digital Nomad Packing List: Work Setup in a Carry-On",
     h1: "Digital nomad packing list",
     description:
-      "A packing list for working while travelling: the desk setup that fits a cabin bag, one charger instead of four, connectivity with a real fallback, and the documents borders ask for.",
+      "A packing list for working while travelling: a cabin-bag desk setup, one charger instead of four, a connectivity fallback, and documents borders ask for.",
     lede: "Working while travelling means the desk comes with you: laptop, stand, keyboard, and one charger that runs everything. The clothes are a four-day rotation — the setup is what needs thought.",
     options: { type: "city", days: 21, climate: "mild", carryOnOnly: true, checkedBag: false, kids: false },
     advice: [

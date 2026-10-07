@@ -3,7 +3,7 @@ import "@styles/styles.scss";
 import fs from "node:fs";
 import path from "node:path";
 import type { TemplateConfig } from "utils/configType";
-import { getLocale, DEFAULT_LOCALE } from "./i18n/locales";
+import { getLocale, DEFAULT_LOCALE, LOCALES } from "./i18n/locales";
 
 const { backgroundGrid, seo, logo, theme, forceTheme, appStoreLink, name, appStore, home, noindex, locale, localeAlternates } =
   Astro.props as TemplateConfig & { noindex?: boolean };
@@ -27,6 +27,10 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 // Always the generated 1200x630 card (src/pages/og-image.png.ts) — never the
 // square App Store icon, whose dimensions contradict og:image:width/height.
 const ogImage = new URL("/og-image.png", Astro.site).href;
+const ogImageAlt = "Travel Stories, a free iPhone trip planner, organizer, and journal";
+// Organization logo is the real mark (App Store icon when the build fetched
+// it, otherwise /logo.svg). The 1200×630 card is a social image, not a logo.
+const logoUrl = logo.startsWith("http") ? logo : new URL(logo, Astro.site).href;
 
 // Live rating/version from App Store lookup. AggregateRating markup is only
 // emitted once there are enough real ratings to stand behind — a self-serving
@@ -107,7 +111,15 @@ const howToSteps = (home?.howItWorks?.steps ?? []).map((step, index) => ({
   "url": `${canonicalURL.href}#how-it-works`,
 }));
 
-const isHome = Astro.url.pathname === "/" || Astro.url.pathname === "";
+// English lives at /; each other locale has its own homepage (/da/, /de/, …).
+// Those pages carry the same FAQ, how-to, and feature blocks, so they get the
+// same structured data. The SoftwareApplication node itself is emitted once,
+// on the English homepage, and other locales point at its @id.
+const homePaths = new Set(
+  LOCALES.map((l) => (l.code === DEFAULT_LOCALE ? "/" : `/${l.code}/`)),
+);
+const isHome = homePaths.has(Astro.url.pathname);
+const emitAppNode = isHome && localeCode === DEFAULT_LOCALE;
 
 // ---------------------------------------------------------------------------
 // One consolidated JSON-LD @graph per page (event-stories pattern, #24).
@@ -121,7 +133,7 @@ const orgNode = {
   "@id": orgId,
   "name": "12f.dk",
   "url": "https://www.12f.dk",
-  "logo": { "@type": "ImageObject", "url": ogImage, "caption": "12f.dk logo" },
+  "logo": { "@type": "ImageObject", "url": logoUrl, "caption": "Travel Stories logo" },
   "image": ogImage,
   "sameAs": orgSameAs,
   "founder": { "@id": authorId },
@@ -198,7 +210,7 @@ const webPageNode = {
 };
 
 const appNode = {
-  "@type": "MobileApplication",
+  "@type": ["MobileApplication", "SoftwareApplication"],
   "@id": appId,
   "name": "Travel Stories - Trip Planner",
   "alternateName": "Travel Stories",
@@ -260,8 +272,12 @@ const howToNode =
     ? {
         "@type": "HowTo",
         "@id": `${canonicalURL.href}#howto`,
-        "name": "How to plan a trip with Travel Stories",
-        "description": "Plan, organise, and remember your next adventure in five simple steps using the Travel Stories iPhone app.",
+        "name": localeCode === DEFAULT_LOCALE
+          ? "How to plan a trip with Travel Stories"
+          : (home?.howItWorks?.title ?? "How it works"),
+        "description": localeCode === DEFAULT_LOCALE
+          ? "Plan, organise, and remember your next adventure in five simple steps using the Travel Stories iPhone app."
+          : (home?.howItWorks?.subtitle ?? ""),
         "totalTime": "PT10M",
         "tool": [{ "@type": "HowToTool", "name": "Travel Stories iPhone app" }],
         "step": howToSteps,
@@ -293,7 +309,7 @@ const graph = [
   webSiteNode,
   webPageNode,
   breadcrumbNode,
-  ...(isHome ? [appNode] : []),
+  ...(emitAppNode ? [appNode] : []),
   faqNode,
   howToNode,
   featuresNode,
@@ -346,6 +362,7 @@ const graph = [
 
     <!-- Hints for AI/LLM crawlers -->
     <link rel="alternate" type="text/markdown" title="LLM-friendly summary" href="/llms.txt" />
+    <link rel="alternate" type="text/plain" title="AI citation guide" href="/ai.txt" />
     <meta name="ai-content-declaration" content="human-authored" />
 
     <!-- Apple App Store Smart Banner -->
@@ -361,6 +378,7 @@ const graph = [
     <meta property="og:title" content={seo.title} />
     <meta property="og:description" content={seo.description} />
     <meta property="og:image" content={ogImage} />
+    <meta property="og:image:alt" content={ogImageAlt} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:site_name" content={name} />
@@ -375,6 +393,7 @@ const graph = [
     <meta name="twitter:title" content={seo.title} />
     <meta name="twitter:description" content={seo.description} />
     <meta name="twitter:image" content={ogImage} />
+    <meta name="twitter:image:alt" content={ogImageAlt} />
 
     <!-- Structured Data: one consolidated @graph (see frontmatter) -->
     <script type="application/ld+json" set:html={JSON.stringify({

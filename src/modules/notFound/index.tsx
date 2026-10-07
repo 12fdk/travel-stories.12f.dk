@@ -36,6 +36,9 @@ function NotFound({ config }: Props) {
             <a href="/blog/" className="link text-base-content/70">
               Read the blog
             </a>
+            <a href="/packing-list/" className="link text-base-content/70">
+              Build a packing list
+            </a>
             <a
               href={withCampaign(config.appStoreLink, "404")}
               target="_blank"

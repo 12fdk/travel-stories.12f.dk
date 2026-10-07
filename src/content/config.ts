@@ -35,6 +35,14 @@ const blog = defineCollection({
     // rendering nothing.
     relatedPackingLists: z.array(z.string()).default([]),
     draft: z.boolean().default(false),
+  }).superRefine((data, ctx) => {
+    if (data.cover && !data.coverAlt?.trim()) {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        message: "coverAlt is required when cover is set",
+        path: ["coverAlt"],
+      });
+    }
   }),
 });
 

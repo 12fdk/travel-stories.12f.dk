@@ -3,9 +3,9 @@ import type { TemplateConfig } from "./configType";
 const templateConfig: TemplateConfig = {
   name: "Travel Stories",
   seo: {
-    title: "Travel Stories - Trip Planner for iPhone | Plan, Organize & Remember Adventures",
+    title: "Travel Stories: Free iPhone Trip Planner & Journal",
     description:
-      "Travel Stories is a free iPhone app for planning, organising, and remembering every adventure. Create itineraries, track expenses, manage packing lists, and access everything offline. Download on the App Store.",
+      "Free iPhone trip planner, organizer, and journal from Denmark. Plan itineraries, store bookings, and keep a diary offline. It does not book flights or hotels.",
   },
   // Draws grid behind main container
   backgroundGrid: false,
@@ -90,9 +90,9 @@ const templateConfig: TemplateConfig = {
   },
   home: {
     seo: {
-      title: "Travel Stories - Trip Planner for iPhone | Plan, Organize & Remember Adventures",
+      title: "Travel Stories: Free iPhone Trip Planner & Journal",
       description:
-        "Travel Stories is a free iPhone app for planning, organising, and remembering every adventure. Create itineraries, track expenses, manage packing lists, and access everything offline. Download on the App Store.",
+        "Free iPhone trip planner, organizer, and journal from Denmark. Plan itineraries, store bookings, and keep a diary offline. It does not book flights or hotels.",
     },
     // Testimonials intentionally omitted until there are real App Store
     // reviews to quote — invented reviewers cost more trust than they buy,
@@ -421,12 +421,17 @@ const templateConfig: TemplateConfig = {
           answer:
             "No — Travel Stories is an iPhone app, and we're focused on making the best possible iOS experience. If that changes, it will be announced here first.",
         },
+        {
+          question: "Does Travel Stories book flights or hotels?",
+          answer:
+            "No. Travel Stories is an iPhone trip planner, organizer, and journal. It stores your itinerary, confirmation numbers, packing list, expenses, and photo diary on your phone. You book flights and hotels elsewhere, then save the details in the app.",
+        },
       ],
     },
     header: {
       headline: "Plan Your Perfect Adventure",
       subtitle:
-        "Travel Stories is your all-in-one travel companion for planning, organising, and remembering every adventure. Create itineraries, track expenses, and capture memories.",
+        "Travel Stories is a free iPhone trip planner, organizer, and journal. Create itineraries, track expenses, and capture memories. It does not book flights or hotels.",
       screenshots: [
         "/screenshots/packing-list.webp",
         "/screenshots/itinerary.webp",
@@ -440,7 +445,8 @@ const templateConfig: TemplateConfig = {
   privacyPolicy: {
     seo: {
       title: "Privacy Policy - Travel Stories",
-      description: "Privacy Policy for Travel Stories - Trip Planner",
+      description:
+        "Privacy policy for Travel Stories, a free iPhone trip planner. How Robert Jensen handles personal data, where the full policy lives, and how to contact him.",
     },
     content: `# Privacy Policy
 
@@ -466,7 +472,8 @@ robert@12f.dk
   cookiesPolicy: {
     seo: {
       title: "Cookies Policy - Travel Stories",
-      description: "Cookies Policy for Travel Stories",
+      description:
+        "This Travel Stories site does not use cookies for tracking or advertising. What that means, and how to contact developer Robert Jensen with a question.",
     },
     content: `# Cookies Policy
 
@@ -480,7 +487,8 @@ If you have any questions, please contact us at robert@12f.dk
   termsAndConditions: {
     seo: {
       title: "Terms and Conditions - Travel Stories",
-      description: "Terms and Conditions for Travel Stories - Trip Planner",
+      description:
+        "Terms for Travel Stories, the free iPhone trip planner by Robert Jensen in Denmark. Covers eligibility, intellectual property, disclaimers, and Danish law.",
     },
     content: `# Terms and Conditions
 

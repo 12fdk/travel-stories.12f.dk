@@ -1,6 +1,6 @@
 ---
 title: "Notion Travel Planner Template vs an Actual Trip App"
-description: "Honest comparison: a Notion travel planner template is free and flexible, but an app wins offline, on the phone. Free copy-paste template inside."
+description: "Honest comparison: a Notion travel planner template is free and flexible, but an app wins offline, on the phone. Includes a free copy-paste template."
 lede: "A Notion travel planner template is three parts: a trip hub page, a day-by-day itinerary database, and a budget table. It is free and genuinely flexible — but it lives in a browser, needs an account, and degrades badly on a phone offline. If you plan in long sessions at a desk, copy the template below and use it. If your planning happens on the train, in the airport, and in hotel rooms with flaky wifi, a purpose-built app does the same job with zero setup."
 keyword: "notion travel planner template"
 cover: "/blog/notion-travel-planner-template.png"
