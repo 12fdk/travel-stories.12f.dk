@@ -1,6 +1,8 @@
 # Travel Stories - Trip Planner
 # https://travel-stories.12f.dk
 # Contact: robert@12f.dk
+# Product summary for AI answer engines: https://travel-stories.12f.dk/llms.txt
+# Citation guide: https://travel-stories.12f.dk/ai.txt
 
 # Default: allow everything
 User-agent: *

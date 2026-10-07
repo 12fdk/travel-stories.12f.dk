@@ -13,7 +13,7 @@ const ja: Translation = {
   header: {
     headline: "最高の冒険を 計画しよう",
     subtitle:
-      "Travel Storiesは、旅の計画・整理・記録をひとつでこなすオールインワンの旅行アプリ。旅程を作り、旅費を記録し、思い出を残しましょう。",
+      "Travel Storiesは、旅程の計画・整理・記録ができる無料のiPhoneアプリです。旅程を作り、旅費を記録し、思い出を残します。航空券やホテルの予約はしません。",
     headlineMark: [0, 1],
   },
   ui: {
@@ -315,6 +315,11 @@ const ja: Translation = {
         question: "Android版はありますか？",
         answer:
           "いいえ — Travel StoriesはiPhoneアプリで、最高のiOS体験づくりに集中しています。方針が変わることがあれば、まずここでお知らせします。",
+      },
+      {
+        question: "Travel Storiesは航空券やホテルを予約しますか？",
+        answer:
+          "いいえ。Travel StoriesはiPhone向けの旅行プランナー、オーガナイザー、旅行記です。旅程、予約番号、持ち物リスト、支出、写真日記をiPhone内に保存します。航空券やホテルは別のサービスで予約し、その内容をアプリに残します。",
       },
     ],
   },

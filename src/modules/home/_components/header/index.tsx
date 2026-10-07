@@ -94,6 +94,7 @@ function Header() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.5, ease: "easeInOut" }}
                 className="whitespace-pre-wrap text-left m-0 my-1 max-w-md md:text-lg md:max-w-lg text-base-content"
+                data-speakable
               >
                 {header.subtitle}
               </motion.p>

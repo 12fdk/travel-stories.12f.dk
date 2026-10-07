@@ -113,6 +113,28 @@ const breadcrumbNode = {
   itemListElement: breadcrumbItems,
 };
 
+const webpageNode = {
+  "@type": "WebPage",
+  "@id": `${canonicalURL.href}#webpage`,
+  url: canonicalURL.href,
+  name: title,
+  description,
+  inLanguage: "en",
+  isPartOf: { "@id": siteId },
+  breadcrumb: { "@id": breadcrumbId },
+  primaryImageOfPage: { "@type": "ImageObject", url: resolvedOgImage },
+};
+
+const personNode = {
+  "@type": "Person",
+  "@id": "https://www.12f.dk/#robert",
+  name: "Robert Jensen",
+  email: "robert@12f.dk",
+  url: "https://www.12f.dk",
+  jobTitle: "Founder & Developer",
+  worksFor: { "@id": orgId },
+};
+
 // Strip any @context the page passed on the article node — the graph has one.
 const articleNode = articleSchema
   ? Object.fromEntries(
@@ -120,9 +142,15 @@ const articleNode = articleSchema
     )
   : null;
 
-const graph = [orgNode, websiteNode, breadcrumbNode, articleNode, ...extraGraphNodes].filter(
-  Boolean,
-);
+const graph = [
+  orgNode,
+  personNode,
+  websiteNode,
+  webpageNode,
+  breadcrumbNode,
+  articleNode,
+  ...extraGraphNodes,
+].filter(Boolean);
 ---
 
 <!doctype html>
@@ -154,6 +182,7 @@ const graph = [orgNode, websiteNode, breadcrumbNode, articleNode, ...extraGraphN
     <meta name="color-scheme" content="light dark" />
 
     <link rel="alternate" type="text/markdown" title="LLM-friendly summary" href="/llms.txt" />
+    <link rel="alternate" type="text/plain" title="AI citation guide" href="/ai.txt" />
     <meta name="ai-content-declaration" content="human-authored" />
 
     <meta name="apple-itunes-app" content="app-id=6756801168" />
@@ -166,6 +195,7 @@ const graph = [orgNode, websiteNode, breadcrumbNode, articleNode, ...extraGraphN
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={resolvedOgImage} />
+    <meta property="og:image:alt" content={title} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:site_name" content={config.name} />
@@ -180,6 +210,7 @@ const graph = [orgNode, websiteNode, breadcrumbNode, articleNode, ...extraGraphN
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={resolvedOgImage} />
+    <meta name="twitter:image:alt" content={title} />
 
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",

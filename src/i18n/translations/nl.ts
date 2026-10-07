@@ -13,7 +13,7 @@ const nl: Translation = {
   header: {
     headline: "Plan je perfecte avontuur",
     subtitle:
-      "Travel Stories is je alles-in-één reisgenoot voor het plannen, organiseren en herinneren van elk avontuur. Maak reisschema's, houd uitgaven bij en leg herinneringen vast.",
+      "Travel Stories is een gratis iPhone-app om een reis te plannen, organiseren en bewaren. Maak reisschema's, houd uitgaven bij en leg herinneringen vast. De app boekt geen vluchten of hotels.",
     headlineMark: [2, 4],
   },
   ui: {
@@ -309,6 +309,11 @@ const nl: Translation = {
         question: "Is er een Android-versie?",
         answer:
           "Nee — Travel Stories is een iPhone-app en we richten ons op de best mogelijke iOS-ervaring. Als dat verandert, lees je het hier als eerste.",
+      },
+      {
+        question: "Boekt Travel Stories vluchten of hotels?",
+        answer:
+          "Nee. Travel Stories is een reisplanner, organizer en dagboek voor iPhone. De app bewaart het reisschema, bevestigingsnummers, de paklijst, uitgaven en een fotodagboek op je iPhone. Vluchten en hotels boek je ergens anders; de details bewaar je in de app.",
       },
     ],
   },

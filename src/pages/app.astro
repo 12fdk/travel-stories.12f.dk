@@ -4,6 +4,14 @@ import Layout from "Layout.astro";
 import defaultTemplateConfig from "utils/config";
 ---
 
-<Layout {...defaultTemplateConfig}>
+<Layout
+  {...defaultTemplateConfig}
+  noindex
+  seo={{
+    title: "Opening the Travel Stories app",
+    description:
+      "This short page sends you to the Travel Stories App Store listing, or back to the homepage if the store can't open.",
+  }}
+>
   <AppRedirectionPage client:load config={defaultTemplateConfig} />
 </Layout>

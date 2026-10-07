@@ -62,6 +62,9 @@ function blogLastmod() {
 export default defineConfig({
   site: "https://travel-stories.12f.dk",
   base: "/",
+  // One canonical form. Sitemap URLs, <link rel="canonical">, and internal
+  // links all use a trailing slash so Google doesn't see duplicates.
+  trailingSlash: "always",
   vite: {
     css: {
       preprocessorOptions: {
@@ -106,8 +109,9 @@ export default defineConfig({
           fr: "fr", es: "es", it: "it", pt: "pt-BR", ko: "ko", ja: "ja",
         },
       },
-      // /app is a redirect stub — it doesn't belong in the index.
-      filter: (page) => !page.includes("/app/"),
+      // /app is a redirect stub and /404 is the error page — neither belongs
+      // in the index. Both are also noindex in the page itself.
+      filter: (page) => !page.includes("/app") && !page.includes("/404"),
       serialize(item) {
         if (item.url === `${SITE}/`) {
           item.priority = 1.0;

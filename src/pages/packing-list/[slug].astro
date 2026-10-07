@@ -63,7 +63,11 @@ const faqNode =
 ---
 
 <BlogLayout
-  title={`${page.title} | Travel Stories`}
+  title={
+    `${page.title} | Travel Stories`.length <= 60
+      ? `${page.title} | Travel Stories`
+      : page.title
+  }
   description={page.description}
   canonicalPath={canonicalPath}
   extraGraphNodes={faqNode ? [itemListNode, faqNode] : [itemListNode]}
