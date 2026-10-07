@@ -171,37 +171,37 @@ const templateConfig: TemplateConfig = {
         "From a spontaneous weekend away to a month-long expedition — one app for the whole journey.",
       cards: [
         {
-          emoji: "✈️",
+          image: "/icons/use-cases/international.webp",
           title: "International vacation",
           subtitle:
             "Flights, hotels, documents, and a day-by-day plan — all offline once you land.",
         },
         {
-          emoji: "🚗",
+          image: "/icons/use-cases/road-trip.webp",
           title: "Road trip",
           subtitle:
             "Map the route, plan the stops, and log expenses while someone else drives.",
         },
         {
-          emoji: "💼",
+          image: "/icons/use-cases/business.webp",
           title: "Business travel",
           subtitle:
             "Bookings and confirmation numbers in one place, expenses tracked for the report back home.",
         },
         {
-          emoji: "🏖️",
+          image: "/icons/use-cases/weekend.webp",
           title: "Weekend getaway",
           subtitle:
             "A quick itinerary and a packing list in minutes — anticipation from the countdown widget.",
         },
         {
-          emoji: "🎒",
+          image: "/icons/use-cases/backpacking.webp",
           title: "Backpacking",
           subtitle:
             "Budget-first travel with visual spending breakdowns, built to work without data.",
         },
         {
-          emoji: "👨‍👩‍👧‍👦",
+          image: "/icons/use-cases/family.webp",
           title: "Family holiday",
           subtitle:
             "Shared tasks before departure, everyone's packing lists, and a diary of the memories.",

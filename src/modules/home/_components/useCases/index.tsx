@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { useContext } from "react";
 import AnimatedText from "../../../../components/animatedText";
+import { withBase } from "../../../../utils/basePath";
 import { ConfigContext } from "../../../../utils/configContext";
 
 function UseCases() {
@@ -46,9 +47,14 @@ function UseCases() {
                 aria-hidden="true"
                 className="absolute inset-x-0 top-0 h-0.5 origin-left scale-x-0 bg-primary transition-transform duration-500 ease-out group-hover:scale-x-100"
               />
-              <span className="text-4xl" role="img" aria-label={useCase.title}>
-                {useCase.emoji}
-              </span>
+              <img
+                src={withBase(useCase.image)}
+                alt={useCase.title}
+                width={72}
+                height={72}
+                loading="lazy"
+                className="h-[72px] w-[72px] object-contain"
+              />
               <h3 className="mt-4 text-xl font-semibold tracking-tight text-base-content">
                 {useCase.title}
               </h3>

@@ -189,7 +189,8 @@ export type TemplateConfig = {
             title: string;
             subtitle?: string | undefined;
             cards: {
-                emoji: string;
+                /** Public path to the card icon, e.g. /icons/use-cases/international.webp. */
+                image: string;
                 title: string;
                 subtitle: string;
             }[];
