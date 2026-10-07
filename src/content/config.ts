@@ -26,6 +26,10 @@ const blog = defineCollection({
       )
       .default([]),
     relatedSlugs: z.array(z.string()).default([]),
+    // Optional end-of-post CTA. Falls back to the shared copy when omitted.
+    ctaHeading: z.string().max(80).optional(),
+    ctaBody: z.string().max(400).optional(),
+    ctaButton: z.string().max(60).optional(),
     // Slugs from src/data/packingList/pages.ts. Validated at build time in
     // blog/[...slug].astro, so a typo fails the build rather than silently
     // rendering nothing.

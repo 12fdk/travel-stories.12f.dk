@@ -154,9 +154,10 @@ const faqNode =
     </div>
 
     <InlineCTA
-      heading="Ready to put this into practice?"
-      body="Travel Stories is the free iPhone app that turns this kind of advice into one tappable trip — itinerary, packing list, budget, documents, and memories included. No account, no subscription."
-      buttonText="Get Travel Stories — Free on the App Store"
+      heading={post.data.ctaHeading ?? "Ready to put this into practice?"}
+      body={post.data.ctaBody ??
+        "Travel Stories is the free iPhone app that turns this kind of advice into one tappable trip — itinerary, packing list, budget, documents, and memories included. No account, no subscription."}
+      buttonText={post.data.ctaButton ?? "Get Travel Stories — Free on the App Store"}
       trackingId={`blog-cta-end-${post.slug}`}
     />
 

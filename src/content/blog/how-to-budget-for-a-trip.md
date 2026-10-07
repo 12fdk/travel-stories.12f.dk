@@ -89,7 +89,7 @@ These are two different jobs, and a travel budget needs both.
 
 **During the trip**, you are tracking. Every expense gets logged against its category the day it happens — ideally the minute it happens, because nobody accurately remembers Tuesday's taxis on Friday. The point is early warning: if food is at 70% of its budget by day three of seven, you know today, while a couple of self-catered dinners can still fix it. If you only find out after you are home, the budget was decoration.
 
-Paper works, spreadsheets work, but a phone app you already carry works best. If you want your budget, expenses, and the rest of your trip planning in one place, the free [Travel Stories app](https://apps.apple.com/app/id6756801168) lets you set a budget per trip, log expenses as they happen, and see spending against budget in a simple chart — offline, with no account to create.
+Paper works and spreadsheets work. The blank columns, the formulas, and a filled example are in the [free travel budget template](/blog/travel-budget-template/). A phone app you already carry works best when you will not open either one on the road. If you want your budget, expenses, and the rest of your trip planning in one place, the free [Travel Stories app](https://apps.apple.com/app/id6756801168) lets you set a budget per trip, log expenses as they happen, and see spending against budget in a simple chart — offline, with no account to create.
 
 ## Why keep a 10-15% buffer?
 
