@@ -170,8 +170,8 @@ export type TemplateConfig = {
             title: string;
             subtitle?: string | undefined;
             cards: {
-                /** Key into the inline SVG icon set in the capabilities component. */
-                icon: string;
+                /** Public path to the card icon, e.g. /icons/capabilities/countdown.webp. */
+                image: string;
                 title: string;
                 subtitle: string;
             }[];

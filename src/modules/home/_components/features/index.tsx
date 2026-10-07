@@ -60,17 +60,12 @@ function Features() {
               }
             )}
           >
-            <div className="relative mb-4 mt-4">
-              <div
-                className={clsx(
-                  "absolute left-0 right-0 top-0 bottom-0 bg-secondary/50 -z-10 rounded-lg"
-                )}
-              />
+            <div className="mb-4 mt-4">
               <figure className="py-4">
                 <img
                   src={withBase(feat.icon)}
                   alt={feat.title}
-                  className="w-40 transition-transform group-hover:scale-90"
+                  className="w-40 rounded-3xl bg-white object-contain transition-transform group-hover:scale-90"
                   loading="lazy"
                   width={160}
                   height={160}
