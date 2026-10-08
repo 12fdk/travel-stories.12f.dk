@@ -26,3 +26,6 @@ pnpm-debug.log*
 # pnpm store
 .pnpm-store/
 screenshoots/
+
+# reddit-topics.py feed cache
+.cache/
