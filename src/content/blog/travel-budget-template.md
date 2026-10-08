@@ -4,7 +4,7 @@ description: "Free travel budget template with six categories, sheet formulas, a
 lede: "A travel budget template is six categories — transport, accommodation, food and drink, activities, local transit, and a buffer — with three columns: Planned, Actual, and Left (Planned minus Actual). Copy the rows into Google Sheets with the SUMIF formulas below, or print the blank PDF, then replace every sample figure with a quote for your own trip. In the worked example, a $2,400 trip for two starts $140 over and lands on $2,400 after two specific cuts."
 keyword: "travel budget template"
 cover: "/blog/travel-budget-template.png"
-coverAlt: "Overhead photo of a sunlit wooden desk with an open notebook, a paper spreadsheet grid, a brass pen, a few coins, folded linen, and a cup of coffee"
+coverAlt: "Overhead of a pale marble table with mixed coins, a closed green notebook, a fountain pen, reading glasses, and a small empty cup"
 publishDate: 2026-10-07
 author: Robert Jensen
 tags: ["budgeting", "templates", "trip planning"]

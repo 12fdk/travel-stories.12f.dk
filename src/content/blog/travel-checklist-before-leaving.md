@@ -4,7 +4,7 @@ description: "The complete pre-departure travel checklist — what to do 2 weeks
 lede: "A good travel checklist works backwards from departure in four waves: two weeks out (documents, health, big arrangements), one week out (money, tech, home logistics), the day before (packing, charging, confirmations), and the day of (final walkthrough and go). Group each wave into documents, home, money, health, tech, and packing, and nothing slips through. The full copy-paste version is below."
 keyword: "travel checklist"
 cover: "/blog/travel-checklist-before-leaving.webp"
-coverAlt: "Traveler preparing for departure with phone in hand"
+coverAlt: "An empty home entryway before departure: a packed navy carry-on by the door, a wool coat on a hook, keys in a bowl, and white sneakers"
 publishDate: 2026-07-08
 updatedDate: 2026-07-16
 author: Robert Jensen

@@ -4,7 +4,7 @@ description: "A 12-item post trip checklist covering finances, unpacking, photo 
 lede: "A good post trip checklist covers four areas in the week after you get home: close out the money (log final expenses, check statements, submit reimbursements), reset the practical side (unpack, laundry, restock your travel kit), preserve the memories (photos, journal, archive), and capture lessons for next time. Twelve small tasks, spread over seven days, and the trip is properly finished instead of half-abandoned."
 keyword: "post trip checklist"
 cover: "/blog/post-trip-checklist.webp"
-coverAlt: "Traveler settling back in at home after a trip, phone in hand"
+coverAlt: "An open suitcase on a rumpled bed at dusk, with a closed passport, a house key, and a warm lamp on the nightstand"
 publishDate: 2026-07-16
 author: Robert Jensen
 tags: ["trip planning", "checklists"]
