@@ -4,7 +4,7 @@ description: "A one-week workflow to organize travel photos: cull in two favorit
 lede: "To organize travel photos after a trip, cull them in two quick favorites-first passes, sort the keepers into one album per trip with day-by-day structure, write a one-line note about what was happening in each keeper, and back everything up — all within a week of getting home. The culling takes 30-60 minutes; the notes are the part almost everyone skips and regrets, because the stories fade far faster than the photos do."
 keyword: "how to organize travel photos"
 cover: "/blog/how-to-organize-travel-photos.webp"
-coverAlt: "Traveler capturing and organizing photos from a trip on their phone"
+coverAlt: "Printed landscape photographs scattered on a pale oak table beside a closed photo album and a face-down phone"
 publishDate: 2026-07-16
 author: Robert Jensen
 tags: ["travel photos", "travel journaling", "after the trip"]

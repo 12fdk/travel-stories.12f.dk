@@ -4,7 +4,7 @@ description: "Learn how to plan a trip step by step — pick dates, set a budget
 lede: "To plan a trip, work through nine steps in order: pick your destination and dates, set a budget, book transport and a place to stay, build a day-by-day itinerary, make a packing list, gather your documents, run a pre-departure checklist, track spending during the trip, and save your memories after. Doing the steps in this order means every decision builds on the one before it, so nothing gets booked twice or forgotten."
 keyword: "how to plan a trip"
 cover: "/blog/how-to-plan-a-trip-step-by-step.webp"
-coverAlt: "Traveler planning a trip on their phone by a window overlooking a coastal bay"
+coverAlt: "A windowsill overlooking a harbor: a face-down phone, a mug of tea, a closed notebook, and binoculars"
 publishDate: 2026-06-12
 author: Robert Jensen
 tags: ["trip planning", "travel tips", "itinerary"]
