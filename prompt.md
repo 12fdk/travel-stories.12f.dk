@@ -220,7 +220,7 @@ Only after `BUILD OK`: commit and push to `main`. Deployment is automatic
 submission is likewise automatic via `indexnow.yml`. Confirm the push succeeded
 and the Actions run is green.
 
-## 8. Site-specific review checks
+## Site-specific review checks
 
 Run these in the review pass before committing, on top of the generic checks.
 Fix every NO, rebuild, and re-read what you changed.
@@ -250,17 +250,17 @@ Fix every NO, rebuild, and re-read what you changed.
 9. **Plan updated.** The keyword's §3 row has ✅ and its calendar row (if any)
    is ticked, in the same commit.
 
-## 9. Final checklist — all must be YES before pushing
+## 8. Final checklist — all must be YES before pushing
 
 - [ ] Topic from the digest mapped to a plan keyword, or the fallback — and the
       keyword has no existing post.
-- [ ] Every check in §8 passes.
+- [ ] Every site-specific review check passes.
 - [ ] No claim about the app that you could not verify.
 - [ ] `npm run build` printed BUILD OK.
 - [ ] Only the post, its cover and `BLOG_CONTENT_PLAN.md` are staged.
 - [ ] Pushed to `main`; Actions green.
 
-## 10. Final report
+## 9. Final report
 
 State:
 
