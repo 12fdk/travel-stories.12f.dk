@@ -26,6 +26,12 @@ const blog = defineCollection({
       )
       .default([]),
     relatedSlugs: z.array(z.string()).default([]),
+    // Mid-article App Store CTA knobs (src/plugins/rehype-inline-cta.mjs).
+    // `inlineCta: false` turns the card off for one post, `inlineCtaAfter`
+    // names the H2 to put it after, `inlineCtaText` replaces the sentence.
+    inlineCta: z.boolean().optional(),
+    inlineCtaAfter: z.string().optional(),
+    inlineCtaText: z.string().max(240).optional(),
     // Optional end-of-post CTA. Falls back to the shared copy when omitted.
     ctaHeading: z.string().max(80).optional(),
     ctaBody: z.string().max(400).optional(),

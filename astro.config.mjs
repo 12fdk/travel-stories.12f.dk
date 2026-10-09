@@ -5,6 +5,7 @@ import react from "@astrojs/react";
 import tailwind from "@astrojs/tailwind";
 import sitemap from "@astrojs/sitemap";
 import { withCampaign } from "./src/utils/appStoreCampaign";
+import { rehypeInlineCta } from "./src/plugins/rehype-inline-cta.mjs";
 
 const SITE = "https://travel-stories.12f.dk";
 
@@ -94,7 +95,10 @@ export default defineConfig({
     },
   },
   markdown: {
-    rehypePlugins: [rehypeAppStoreCampaign],
+    // rehypeInlineCta runs first so the card it injects (with its own button)
+    // then flows through the campaign-attribution rewrite like any other
+    // in-prose App Store link. #78
+    rehypePlugins: [rehypeInlineCta, rehypeAppStoreCampaign],
   },
   integrations: [
     react(),
