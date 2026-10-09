@@ -64,7 +64,7 @@ Estimates below are *educated guesses* — confirm with a real tool before sched
 | 15 | travel budget template | 500–1.5k | 25–35 | Informational + freebie | ☐ |
 | 16 | travel itinerary template | 1k–3k | 30–40 | Informational + freebie | ☐ |
 | 17 | travel documents checklist | 300–800 | 15–25 | Checklist | ☐ |
-| 18 | trip planning timeline (what to do 3/2/1 months out) | 100–300 | 10–20 | Informational | ☐ |
+| 18 | trip planning timeline (what to do 3/2/1 months out) ✅ | 100–300 | 10–20 | Informational | ☐ |
 | 19 | how much cash to bring on vacation | 200–500 | 10–20 | Informational | ☐ |
 | 20 | carry on packing list | 1k–5k | 35–45 | Informational (HARD — long-tail angle only) | ☐ |
 
@@ -125,7 +125,7 @@ Each post links to 2–3 others (internal linking), includes a contextual CTA to
 | 10 | Comparison | Notion Travel Planner Template vs an Actual Trip App | notion travel planner template | Honest comparison + free template | 1,800 | ☐ |
 | 11 | Checklist | The Travel Documents Checklist (What You Need, By Destination Type) | travel documents checklist | Checklist | 1,500 | ☐ |
 | 12 | ★ Freebie | The Free Travel Itinerary Template (Day-by-Day) | travel itinerary template | Template + guide | 2,000 | ☐ |
-| 13 | How-to | The Trip Planning Timeline: What to Do 3, 2, and 1 Months Out | trip planning timeline | Timeline guide | 1,800 | ☐ |
+| 13 | How-to | The Trip Planning Timeline: What to Do 3, 2, and 1 Months Out | trip planning timeline | Timeline guide | 1,800 | [x] |
 | 14 | Comparison | Wanderlog Alternative: What to Use Instead (and Why) | wanderlog alternative | Comparison | 1,800 | ☐ |
 | 15 | How-to | How Much Cash to Bring on Vacation (Real Numbers by Country Type) | how much cash to bring on vacation | Focused guide | 1,400 | ☐ |
 
