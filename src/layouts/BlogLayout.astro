@@ -231,7 +231,20 @@ const graph = [
       }
     </script>
 
-    <script defer src="https://umami.robert-jensen.dk/script.js" data-website-id="48716c88-8707-4174-aef6-cff0c0aef35b"></script>
+    <!-- Umami Analytics: production-hostname guard (see Layout.astro) -->
+    <script is:inline>
+      (function () {
+        var H = "travel-stories.12f.dk",
+          d = document;
+        if (location.hostname === H || location.hostname === "www." + H) {
+          var s = d.createElement("script");
+          s.defer = true;
+          s.src = "https://umami.robert-jensen.dk/script.js";
+          s.dataset.websiteId = "48716c88-8707-4174-aef6-cff0c0aef35b";
+          d.head.appendChild(s);
+        }
+      })();
+    </script>
   </head>
   <body class={`relative ${bodyClass}`}>
     <BlogNavbar client:load config={config} />
