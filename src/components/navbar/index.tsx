@@ -134,14 +134,14 @@ function Navbar() {
         >
           {googlePlayLink && (
             <li className="mb-2">
-              <a href={googlePlayLink} target="_blank" rel="noopener noreferrer">
+              <a href={googlePlayLink} target="_blank" rel="noopener noreferrer" data-umami-event="playstore-click" data-umami-event-placement="nav">
                 <img className="h-12" src={withBase("/stores/google-play.svg")} alt="Download on Google Play" width={144} height={48} />
               </a>
             </li>
           )}
           {appStoreLink && (
             <li className="mb-2">
-              <a href={withCampaign(appStoreLink, "navbar")} target="_blank" rel="noopener noreferrer">
+              <a href={withCampaign(appStoreLink, "navbar")} target="_blank" rel="noopener noreferrer" data-umami-event="appstore-click" data-umami-event-placement="nav">
                 <img className="h-12" src={withBase("/stores/app-store.svg")} alt="Download on App Store" width={144} height={48} />
               </a>
             </li>
