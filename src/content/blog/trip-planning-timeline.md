@@ -4,7 +4,7 @@ description: "How far in advance should you plan a trip? A 3-2-1 trip planning t
 lede: "Start a trip planning timeline about three months before departure for a typical flight-based trip: documents and dates in month three, the main bookings in month two, and logistics in the final month. Shorter trips need less — two to four weeks can cover a domestic weekend — but a few deadlines, like passport and visa processing, cannot be compressed, so the documents decide how early you must start."
 keyword: "trip planning timeline"
 cover: "/blog/trip-planning-timeline.png"
-coverAlt: "Open travel books and a coffee mug on a wooden table inside a cabin at golden hour, with a calm lake and hills visible through the window"
+coverAlt: "A traveller at a train window with a notebook and pen on the fold-down table, green fields passing outside in warm evening light"
 publishDate: 2026-10-09
 author: Robert Jensen
 tags: ["trip planning", "timeline", "checklist"]
