@@ -13,7 +13,7 @@ tldr:
   - "The 3-2-1 split: documents and dates in month three, the main bookings and insurance in month two, logistics and fine-tuning in month one, and the final checks in the last two weeks."
   - "Decide dates and budget first — every other decision follows from those two numbers."
   - "A last-minute trip is possible if you cut scope: choose flexible dates, skip anything that needs processing time, and accept less availability."
-  - 'Keep the whole timeline in one place on your phone — <a href="https://apps.apple.com/app/id6756801168">Travel Stories</a> holds the checklist, budget, and itinerary offline, so planning and the trip itself are the same list.'
+  - 'Keep the whole timeline in one place on your phone — <a href="https://apps.apple.com/app/id6756801168?ct=blog-trip-planning-timeline&mt=8">Travel Stories</a> holds the checklist, budget, and itinerary offline, so planning and the trip itself are the same list.'
 faq:
   - question: "How far in advance should I plan a trip?"
     answer: "For a typical flight-based international trip, about three months is the sweet spot: it leaves room for documents that take weeks, for booking prices to settle, and for the plan to change without panic. Domestic or short trips need less — two to four weeks is often enough. The exception is anything with a processing time you cannot control: a new US passport takes 4–6 weeks of routine processing plus mailing time, and some visas take months, so those decide how early you must start."
@@ -89,7 +89,7 @@ This is the stage where the plan becomes a day-by-day itinerary.
 - **Set the budget and its buffer.** The [budget template](/blog/travel-budget-template/) has the six categories and the 10–15% buffer ready; the numbers from your bookings drop straight in.
 - **Re-verify every confirmation** — dates, names exactly as on your passport, booking references — and put a copy of each where you can reach it offline.
 
-This is also the stage where a phone beats a notebook: the plan stops being a document and starts being something you open at 7 am at an airport. Travel Stories keeps the checklist, budget, and day-by-day itinerary together in one offline app — [free on the App Store](https://apps.apple.com/app/id6756801168) — so the thing you planned is the thing you carry.
+This is also the stage where a phone beats a notebook: the plan stops being a document and starts being something you open at 7 am at an airport. Travel Stories keeps the checklist, budget, and day-by-day itinerary together in one offline app — [free on the App Store](https://apps.apple.com/app/id6756801168?ct=blog-trip-planning-timeline&mt=8) — so the thing you planned is the thing you carry.
 
 ## Two weeks out: the final checks
 

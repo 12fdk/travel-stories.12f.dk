@@ -142,7 +142,7 @@ const faqNode =
       </p>
     </header>
 
-    <TldrBox items={post.data.tldr} />
+    <TldrBox items={post.data.tldr} slug={post.slug} />
 
     <div class="prose prose-lg max-w-none prose-headings:font-bold prose-h2:mt-12 prose-h2:text-3xl prose-h3:text-xl prose-a:text-primary prose-a:no-underline hover:prose-a:underline prose-img:rounded-xl">
       <Content />
@@ -154,6 +154,7 @@ const faqNode =
         "Travel Stories is the free iPhone app that turns this kind of advice into one tappable trip — itinerary, packing list, budget, documents, and memories included. No account, no subscription."}
       buttonText={post.data.ctaButton ?? "Get Travel Stories — Free on the App Store"}
       trackingId={`blog-cta-end-${post.slug}`}
+      slug={post.slug}
     />
 
     <RelatedPackingLists pages={packingLists} />

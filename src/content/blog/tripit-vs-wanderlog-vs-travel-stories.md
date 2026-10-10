@@ -11,7 +11,7 @@ tags: ["app comparison", "trip planning"]
 tldr:
   - "TripIt wins on automation: forward booking emails and it assembles your itinerary, and TripIt Pro ($49/year) adds real-time flight alerts, seat tracking, and fare monitoring."
   - "Wanderlog wins on collaboration: live group editing on a map-first itinerary, with Pro ($39.99/year) unlocking offline maps, route optimisation, and Gmail auto-import."
-  - 'Travel Stories takes a different path: one <a href="https://apps.apple.com/app/id6756801168">iPhone app</a> for itinerary, budget, packing, and a travel diary — fully offline, no account, $1.99 once instead of a subscription.'
+  - 'Travel Stories takes a different path: one <a href="https://apps.apple.com/app/id6756801168?ct=blog-tripit-vs-wanderlog-vs-travel-stori&mt=8">iPhone app</a> for itinerary, budget, packing, and a travel diary — fully offline, no account, $1.99 once instead of a subscription.'
   - "Over five years the paid tiers cost roughly $245 (TripIt Pro), $200 (Wanderlog Pro), and $1.99 (Travel Stories) — but the right choice depends on how you travel, not just price."
 faq:
   - question: "Is TripIt or Wanderlog better?"
@@ -94,7 +94,7 @@ What it covers, all in one app:
 - **Share sheet capture** — send bookings, links, and tips into the right trip from any iOS app
 - **Fully offline, no account** — everything stays on your phone; there is no server and no cloud sync, in 14 languages
 
-The pricing is the headline: the free version includes **one trip with every feature**, and the Premium Lifetime unlock — unlimited trips, spending charts, itinerary export to Apple Calendar, trip sharing and exports — costs **$1.99 once**. If you plan a couple of trips a year and want the whole thing organised in one place without another recurring charge, you can [get Travel Stories on the App Store](https://apps.apple.com/app/id6756801168) and be done with pricing decisions permanently.
+The pricing is the headline: the free version includes **one trip with every feature**, and the Premium Lifetime unlock — unlimited trips, spending charts, itinerary export to Apple Calendar, trip sharing and exports — costs **$1.99 once**. If you plan a couple of trips a year and want the whole thing organised in one place without another recurring charge, you can [get Travel Stories on the App Store](https://apps.apple.com/app/id6756801168?ct=blog-tripit-vs-wanderlog-vs-travel-stori&mt=8) and be done with pricing decisions permanently.
 
 **Where Travel Stories is weak — honestly:** it is iPhone-only (iOS 17 or later, no Android or iPad version), so mixed-platform groups are out. There is no email-forwarding automation — you add bookings yourself, helped by the share sheet but not replaced by it. And because data stays on-device, there is no live collaborative editing; you share a trip as an export rather than a live document. If any of those three is a dealbreaker, it is a dealbreaker, and one of the other two apps will serve you better.
 

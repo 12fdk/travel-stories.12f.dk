@@ -4,26 +4,29 @@ import path from "node:path";
 import react from "@astrojs/react";
 import tailwind from "@astrojs/tailwind";
 import sitemap from "@astrojs/sitemap";
-import { withCampaign } from "./src/utils/appStoreCampaign";
+import { withCampaign, blogCampaignToken } from "./src/utils/appStoreCampaign";
 import { rehypeInlineCta } from "./src/plugins/rehype-inline-cta.mjs";
 
 const SITE = "https://travel-stories.12f.dk";
 
 /**
- * Attribute App Store links written inline in post bodies (#52).
+ * Attribute App Store links written inline in post bodies (#62).
  *
- * There are 22 of them across the blog and they are authored as ordinary
- * markdown, so rewriting them here keeps the provider token in exactly one
- * place instead of pasting it into every post. Hand-rolled walk rather than
- * unist-util-visit, which isn't a direct dependency.
+ * Posts are ordinary markdown, so this rewrite is what makes a bare listing
+ * URL — and the mid-article card button — carry `ct=blog-<slug>&mt=8`.
+ * Hand-rolled walk rather than unist-util-visit, which isn't a direct dependency.
  */
 function rehypeAppStoreCampaign() {
-  return (tree) => {
+  return (tree, file) => {
+    const filepath = String(file?.path ?? file?.history?.[0] ?? "");
+    if (!filepath.includes("content/blog")) return;
+    const slug = filepath.split(/[/\\]/).pop()?.replace(/\.mdx?$/, "") ?? "";
+    const campaign = blogCampaignToken(slug);
     const walk = (node) => {
       if (node.type === "element" && node.tagName === "a") {
         const href = node.properties?.href;
         if (typeof href === "string" && href.startsWith("https://apps.apple.com/")) {
-          node.properties.href = withCampaign(href, "blog-body");
+          node.properties.href = withCampaign(href, campaign);
         }
       }
       for (const child of node.children ?? []) walk(child);

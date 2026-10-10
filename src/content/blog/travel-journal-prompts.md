@@ -12,7 +12,7 @@ tldr:
   - "Blank pages kill travel journals; a specific prompt like 'what surprised me today?' gets you writing in seconds."
   - "Use 10 prompts before the trip for anticipation, 25 during for arrival days, food, people, places, and hard moments, and 15 after for reflection."
   - "Five minutes a day beats an hour on Sunday — small daily entries capture details that weekly catch-ups always lose."
-  - 'A free app like <a href="https://apps.apple.com/app/id6756801168">Travel Stories</a> keeps a travel diary with photos inside the same trip as your itinerary, offline and without an account.'
+  - 'A free app like <a href="https://apps.apple.com/app/id6756801168?ct=blog-travel-journal-prompts&mt=8">Travel Stories</a> keeps a travel diary with photos inside the same trip as your itinerary, offline and without an account.'
 faq:
   - question: "What should I write in a travel journal?"
     answer: "Write specifics, not summaries. One surprising thing you saw, one conversation, one meal described properly, one thing that went wrong — a single concrete detail per day is worth more than a page of 'we had a great time'. Prompts help because they ask for the specific thing directly instead of leaving you staring at a blank page."
@@ -139,7 +139,7 @@ The prompts solve the blank page; these four habits solve everything else.
 - **Attach it to an anchor.** Journal at the same trigger every day — with your morning coffee, on the evening train, in bed before sleep. A habit tied to a moment survives; a habit tied to "when I get a chance" does not.
 - **Keep entries small on purpose.** Three to six sentences answering one prompt is a complete entry. If you write more, fine — but never *owe* more. The journals that reach the last day of the trip are the modest ones.
 - **Never write catch-up entries.** Missed yesterday? Let it go and write today. Reconstructing two lost days from memory feels like homework, produces the journal's worst pages, and is the single most common reason people quit.
-- **Keep the journal where the trip already lives.** The less friction between you and the page, the more entries exist. If your phone is already out for photos and directions, a diary in the same app is the shortest possible path — the free [Travel Stories](https://apps.apple.com/app/id6756801168) app keeps a travel diary with photos inside the same trip as your itinerary, expenses, and packing list, works fully offline, and needs no account, so a five-minute entry really takes five minutes.
+- **Keep the journal where the trip already lives.** The less friction between you and the page, the more entries exist. If your phone is already out for photos and directions, a diary in the same app is the shortest possible path — the free [Travel Stories](https://apps.apple.com/app/id6756801168?ct=blog-travel-journal-prompts&mt=8) app keeps a travel diary with photos inside the same trip as your itinerary, expenses, and packing list, works fully offline, and needs no account, so a five-minute entry really takes five minutes.
 
 ## Pick ten and go
 

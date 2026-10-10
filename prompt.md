@@ -120,30 +120,32 @@ The post must be genuinely useful to someone who never installs anything. Mentio
 the app **once or twice at most**, where it actually solves the problem being
 discussed — typically in a `tldr` bullet or one in-body sentence.
 
-**Use this repo's `withCampaign()` helper — do not hand-write a tagged URL.**
-`src/utils/appStoreCampaign.ts` already exists (#61) and is the single place
-campaign parameters are constructed:
+**Tag every App Store link with `ct`. Do not add `pt=`.**
 
-```ts
-import { withCampaign } from "../../utils/appStoreCampaign";
-withCampaign("https://apps.apple.com/app/id6756801168", "blog-body")
+`ct` is what fills the Campaign column in App Store Connect (issue #62). It is
+free text, **at most 40 characters**. The token for a post is `blog-<slug>`,
+where `<slug>` is the filename without `.md`, and the whole token is truncated
+to 40 characters. Write this URL in markdown links and in any HTML `<a href>`
+inside `tldr`:
+
+```
+https://apps.apple.com/app/id6756801168?ct=blog-<slug>&mt=8
 ```
 
-Two reasons it must go through the helper rather than a literal `?ct=...`:
+Examples: `blog-travel-budget-template` (fits), `blog-tripit-vs-wanderlog-vs-travel-stori`
+(the `tripit-vs-wanderlog-vs-travel-stories` slug, truncated).
 
-- It **merges** parameters rather than appending, so the Custom Product Page
-  `ppid` that some traffic carries (#60) survives untouched.
-- It adds the provider token `pt` from one constant. Apple credits an install to
-  this site only when the link carries **`pt` *and* `ct`** — `ct` alone is not
-  enough, which is why the July 2026 report showed `App referrer = 0` despite the
-  site clearly sending traffic. `PROVIDER_TOKEN` is currently `""`, so links come
-  back untagged and the site behaves exactly as before; filling that one constant
-  switches attribution on everywhere at once.
+The other two tokens are not for posts: homepage and site chrome use
+`site-travel-stories`; `public/llms.txt` and `public/ai.txt` use
+`llms-travel-stories`. Do not invent a fourth token, and do not add `pt=`.
 
-A hand-written `?ct=...&mt=8` link looks tagged, will never receive the provider
-token, and therefore stays invisible in App Store Connect forever. In a plain
-markdown post where importing is awkward, use the placement `blog-body` and keep
-the bare URL — then note it in your final report so it can be converted.
+The build rewrites a bare `https://apps.apple.com/app/id6756801168` in the post
+body, the TL;DR, and the end-of-post button to `blog-<slug>` via
+`src/utils/appStoreCampaign.ts`. Write the tagged URL anyway, so the source
+file is attributable even if that rewrite is skipped. The helper merges query
+parameters, so an existing `ppid` is kept and `pt` is added only when
+`PROVIDER_TOKEN` is non-empty — it is empty, so links ship with `ct` and `mt`
+only.
 
 ## 5. Frontmatter — must match `src/content/config.ts` exactly
 
@@ -240,8 +242,9 @@ Fix every NO, rebuild, and re-read what you changed.
 5. **The digest's questions are answered.** If you took the topic from the
    digest, each verbatim question you built the post on is answered in the body
    or the FAQ.
-6. **Links.** App Store links go through `withCampaign(url, "blog-body")` (or,
-   in plain markdown, the bare URL — noted in the report). Every `relatedSlugs`
+6. **Links.** Every App Store link is
+   `https://apps.apple.com/app/id6756801168?ct=blog-<slug>&mt=8`, with the `ct`
+   value truncated to 40 characters and no `pt=`. Every `relatedSlugs`
    entry and every `/blog/<slug>/` link is a file in `src/content/blog/`.
 7. **Frontmatter limits.** `title` ≤ 70 chars, `description` ≤ 160 chars, 3–5
    `tldr` bullets, 4–6 `faq` entries.
@@ -270,6 +273,6 @@ State:
 - the keyword and where it sits in the plan (tier + row number);
 - the post slug and its live URL, `https://travel-stories.12f.dk/blog/<slug>/`;
 - the cover image path, and whether it was generated or reused;
-- any App Store link left as a bare URL (to convert to `withCampaign()`);
+- any App Store link whose `ct` is not `blog-<slug>` truncated to 40 characters;
 - the build result and push confirmation;
 - a one-line factual-accuracy self-check on every product claim you made.
