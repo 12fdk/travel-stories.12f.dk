@@ -4,6 +4,7 @@ import fs from "node:fs";
 import path from "node:path";
 import type { TemplateConfig } from "utils/configType";
 import { getLocale, DEFAULT_LOCALE, LOCALES } from "./i18n/locales";
+import { withCampaign, SITE_CAMPAIGN, appleItunesAppContent } from "./utils/appStoreCampaign";
 
 const { backgroundGrid, seo, logo, theme, forceTheme, appStoreLink, name, appStore, home, noindex, locale, localeAlternates } =
   Astro.props as TemplateConfig & { noindex?: boolean };
@@ -24,6 +25,8 @@ const ogLocaleAlternates = localeAlternates?.length
   : [];
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+// Listing URLs in this layout are homepage / site-chrome downloads (#62).
+const appStoreDownloadLink = withCampaign(appStoreLink, SITE_CAMPAIGN);
 // Always the generated 1200x630 card (src/pages/og-image.png.ts) — never the
 // square App Store icon, whose dimensions contradict og:image:width/height.
 const ogImage = new URL("/og-image.png", Astro.site).href;
@@ -84,7 +87,7 @@ const appId = `${Astro.site?.href ?? ""}#app`;
 const orgSameAs = [
   "https://www.facebook.com/profile.php?id=61574251436717",
   "https://www.instagram.com/travel_stories_app/",
-  appStoreLink,
+  appStoreDownloadLink,
 ].filter((u): u is string => Boolean(u));
 
 // Publisher reference reused across Reviews / WebSite / App so the knowledge graph
@@ -222,13 +225,13 @@ const appNode = {
   ...(lastUpdated ? { "dateModified": lastUpdated } : {}),
   "inLanguage": "en",
   "featureList": featureList,
-  "sameAs": [appStoreLink].filter(Boolean),
+  "sameAs": [appStoreDownloadLink].filter(Boolean),
   "offers": {
     "@type": "Offer",
     "price": appPrice,
     "priceCurrency": "USD",
     "availability": "https://schema.org/InStock",
-    "url": appStoreLink,
+    "url": appStoreDownloadLink,
     "eligibleRegion": { "@type": "Place", "name": "Worldwide" },
     "seller": { "@id": orgId },
     "description": "Free to download (1 trip included). Optional one-time Premium Lifetime in-app purchase ($1.99) unlocks unlimited trips, spending charts, calendar export, and sharing. No subscription.",
@@ -246,8 +249,8 @@ const appNode = {
     : {}),
   "description": seo.description,
   "url": canonicalURL.href,
-  "downloadUrl": appStoreLink,
-  "installUrl": appStoreLink,
+  "downloadUrl": appStoreDownloadLink,
+  "installUrl": appStoreDownloadLink,
   "screenshot": screenshotUrls,
   "image": ogImage,
   "author": { "@id": authorId },
@@ -366,7 +369,7 @@ const graph = [
     <meta name="ai-content-declaration" content="human-authored" />
 
     <!-- Apple App Store Smart Banner -->
-    <meta name="apple-itunes-app" content="app-id=6756801168" />
+    <meta name="apple-itunes-app" content={appleItunesAppContent(SITE_CAMPAIGN)} />
     <meta name="apple-mobile-web-app-title" content="Travel Stories" />
 
     <!-- Google Search Console Verification -->

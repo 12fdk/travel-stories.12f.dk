@@ -12,7 +12,7 @@ tldr:
   - "Split your travel budget into six categories: transport, accommodation, food, activities, local transit, and a buffer."
   - "A useful rule of thumb: roughly 30% transport, 25% stay, 20% food, 10% activities, 5% local transit, 10% buffer — then adjust for your trip."
   - "Estimate before you leave, then track real spending during the trip so small overruns never snowball."
-  - 'A free app like <a href="https://apps.apple.com/app/id6756801168">Travel Stories</a> lets you set a trip budget and log expenses against it with charts, offline, no account needed.'
+  - 'A free app like <a href="https://apps.apple.com/app/id6756801168?ct=blog-how-to-budget-for-a-trip&mt=8">Travel Stories</a> lets you set a trip budget and log expenses against it with charts, offline, no account needed.'
 faq:
   - question: "How much should I budget for a trip?"
     answer: "It depends on your destination, travel style, and trip length, so start from real prices rather than a universal number. Look up actual flight and accommodation costs for your dates, estimate a daily food and activity spend, and add everything up. Then add a 10-15% buffer on top. That bottom-up total is far more reliable than any generic per-day figure."
@@ -89,7 +89,7 @@ These are two different jobs, and a travel budget needs both.
 
 **During the trip**, you are tracking. Every expense gets logged against its category the day it happens — ideally the minute it happens, because nobody accurately remembers Tuesday's taxis on Friday. The point is early warning: if food is at 70% of its budget by day three of seven, you know today, while a couple of self-catered dinners can still fix it. If you only find out after you are home, the budget was decoration.
 
-Paper works and spreadsheets work. The blank columns, the formulas, and a filled example are in the [free travel budget template](/blog/travel-budget-template/). A phone app you already carry works best when you will not open either one on the road. If you want your budget, expenses, and the rest of your trip planning in one place, the free [Travel Stories app](https://apps.apple.com/app/id6756801168) lets you set a budget per trip, log expenses as they happen, and see spending against budget in a simple chart — offline, with no account to create.
+Paper works and spreadsheets work. The blank columns, the formulas, and a filled example are in the [free travel budget template](/blog/travel-budget-template/). A phone app you already carry works best when you will not open either one on the road. If you want your budget, expenses, and the rest of your trip planning in one place, the free [Travel Stories app](https://apps.apple.com/app/id6756801168?ct=blog-how-to-budget-for-a-trip&mt=8) lets you set a budget per trip, log expenses as they happen, and see spending against budget in a simple chart — offline, with no account to create.
 
 ## Why keep a 10-15% buffer?
 

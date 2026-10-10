@@ -180,6 +180,22 @@ Every post follows this skeleton — no exceptions:
 8. **Related posts** — 3 internal links to other blog posts.
 9. **End CTA** — clear App Store button.
 
+### App Store campaign token
+
+Every App Store link is tagged so the download is attributable (issue #62). `ct` is at most 40 characters. Do not add `pt=`.
+
+| Surface | `ct` |
+|---|---|
+| Homepage / site chrome CTA | `site-travel-stories` |
+| A blog post | `blog-<post-slug>` (truncate the whole token to 40 characters) |
+| `llms.txt` / `ai.txt` | `llms-travel-stories` |
+
+In a post, write the link as:
+
+`https://apps.apple.com/app/id6756801168?ct=blog-<post-slug>&mt=8`
+
+`<post-slug>` is the filename without `.md`. The build also rewrites a bare `https://apps.apple.com/app/id6756801168` in the post body, the TL;DR, and the end-of-post button to that same token. Write the tagged URL in the markdown anyway, so the source is attributable on its own. Future posts that follow this scheme tag themselves.
+
 ---
 
 ## 6. On-page SEO checklist (per post)
@@ -195,6 +211,7 @@ Every post follows this skeleton — no exceptions:
 - [ ] Article schema with author, datePublished, dateModified
 - [ ] Page weight under 1 MB, LCP under 2.5s
 - [ ] Reading level: grade 7–9 (use Hemingway)
+- [ ] App Store links use `?ct=blog-<post-slug>&mt=8` (the `ct` value is at most 40 characters; no `pt=`)
 
 ---
 

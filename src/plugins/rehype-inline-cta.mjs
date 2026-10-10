@@ -15,9 +15,9 @@ import {
  *
  *   small label · one sentence · "Get the app" button
  *
- * The card button is a bare App Store URL: the existing `rehypeAppStoreCampaign`
- * plugin (astro.config.mjs) rewrites it with the campaign tokens, exactly like
- * every other in-prose App Store link, so attribution stays in one place.
+ * The card button is a bare App Store URL: `rehypeAppStoreCampaign`
+ * (astro.config.mjs) rewrites it to `?ct=blog-<slug>&mt=8`, exactly like
+ * every other in-prose App Store link, so the token stays in one place.
  *
  * The card and any upgraded prose link carry the blog CTA event name with the
  * post slug (`blog-inline-cta-<slug>`), mirroring the end-of-post box

@@ -12,7 +12,7 @@ tldr:
   - "Plan in order: destination and dates first, budget second, bookings third — each step depends on the one before it."
   - "Build the day-by-day itinerary only after transport and lodging are locked in, then plan around fixed times like flights and check-ins."
   - "Start packing lists and document collection a week or more before departure, not the night before."
-  - 'Keep the itinerary, bookings, budget, and packing list in one place — a free app like <a href="https://apps.apple.com/app/id6756801168">Travel Stories</a> holds all of it offline on your iPhone.'
+  - 'Keep the itinerary, bookings, budget, and packing list in one place — a free app like <a href="https://apps.apple.com/app/id6756801168?ct=blog-how-to-plan-a-trip-step-by-step&mt=8">Travel Stories</a> holds all of it offline on your iPhone.'
 faq:
   - question: "How far in advance should I plan a trip?"
     answer: "For international trips, start two to three months out so you have time for flights, lodging, and any visa paperwork. Domestic trips and road trips can come together in two to four weeks. The booking steps need the most lead time; the itinerary and packing list can be done in the final two weeks."
@@ -115,7 +115,7 @@ A few practical rules:
 - **Go easy on arrival day.** After a long flight, plan a walk and a good dinner, not a packed schedule.
 - **Check opening days.** Museums close on Mondays more often than you'd think. Verify before you anchor a day on one.
 
-Keep the itinerary somewhere you'll actually look at it during the trip — which in practice means on your phone, and available offline, since you won't always have a connection when you need it. Travel Stories keeps your itinerary, bookings, packing list, and budget in one offline app — [free on the App Store](https://apps.apple.com/app/id6756801168).
+Keep the itinerary somewhere you'll actually look at it during the trip — which in practice means on your phone, and available offline, since you won't always have a connection when you need it. Travel Stories keeps your itinerary, bookings, packing list, and budget in one offline app — [free on the App Store](https://apps.apple.com/app/id6756801168?ct=blog-how-to-plan-a-trip-step-by-step&mt=8).
 
 ## Step 5: Make your packing list
 
