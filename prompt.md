@@ -276,3 +276,9 @@ State:
 - any App Store link whose `ct` is not `blog-<slug>` truncated to 40 characters;
 - the build result and push confirmation;
 - a one-line factual-accuracy self-check on every product claim you made.
+- Traffic check: after the deploy is green, run
+  `python3 /opt/data/profiles/blogger/scripts/umami_post_views.py
+  48716c88-8707-4174-aef6-cff0c0aef35b /blog/<slug>/ 12` and report the number
+  as a **traffic line** (0 in the first hours is normal — real traffic and
+  indexing take time; never fail or retry a publish because of it, the
+  publish proof is the deploy + the HTTP 200).
