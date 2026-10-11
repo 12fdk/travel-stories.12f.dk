@@ -29,7 +29,7 @@ relatedPackingLists:
   - "long-haul-flight-carry-on-essentials"
   - "two-week-europe-packing-list"
   - "what-to-pack-for-a-cruise"
-relatedSlugs: ["best-trip-planner-apps", "trip-planner-app-no-subscription", "how-to-budget-for-a-trip"]
+relatedSlugs: ["best-trip-planner-apps", "trip-planner-app-no-subscription", "how-to-budget-for-a-trip", "wanderlog-pro-cost"]
 draft: false
 ---
 
@@ -121,7 +121,7 @@ Subscriptions are small numbers that compound. Here is the straightforward maths
 | 3 years | $147 | $119.97 | $1.99 |
 | 5 years | $245 | $199.95 | $1.99 |
 
-Two honest caveats cut both ways. First, both TripIt and Wanderlog have real free tiers, and plenty of travellers never pay: TripIt Free still does email-forwarding itinerary building, and Wanderlog Free still does collaborative planning. The subscriptions buy the premium layer, not the core. Second, a subscription can be worth every cent — a frequent flyer whose TripIt Pro fare alert catches one price drop, or whose delay notification saves one missed connection, has covered the $49 several times over.
+Two honest caveats cut both ways. First, both TripIt and Wanderlog have real free tiers, and plenty of travellers never pay: TripIt Free still does email-forwarding itinerary building, and Wanderlog Free still does collaborative planning. The subscriptions buy the premium layer, not the core. Second, a subscription can be worth every cent — a frequent flyer whose TripIt Pro fare alert catches one price drop, or whose delay notification saves one missed connection, has covered the $49 several times over. If you are comparing the price itself rather than the apps, we have done the line-by-line maths on [how much Wanderlog Pro costs](/blog/wanderlog-pro-cost/) before you pay it.
 
 The comparison to make is with your own travel pattern: if you fly weekly, $49 a year for flight intelligence is cheap insurance. If you take two or three leisure trips a year and mostly need a place to keep the plan, the budget, and the memories, paying yearly for features you use twice is where the one-time $1.99 model wins. We have written a fuller breakdown of the subscription question in our guide to finding a [trip planner app with no subscription](/blog/trip-planner-app-no-subscription/).
 
