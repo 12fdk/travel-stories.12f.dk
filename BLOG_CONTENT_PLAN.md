@@ -73,8 +73,9 @@ Estimates below are *educated guesses* — confirm with a real tool before sched
 | # | Keyword | Est. vol/mo | Est. KD | Intent | V |
 |---|---|---|---|---|---|
 | 21 | notion travel planner template | 300–800 | 15–25 | Comparison (template seekers → app converts) | ☐ |
-| 22 | tripit vs wanderlog | 100–300 | 10–20 | Comparison | ☐ |
+| 22 | tripit vs wanderlog ✅ | 100–300 | 10–20 | Comparison | ☐ |
 | 23 | spreadsheet vs app for trip planning | 30–100 | 5–15 | Comparison | ☐ |
+| 26 | wanderlog pro cost ✅ (added from GSC: ~7.2k imp/90d on the query) | — | — | Competitor pricing (decision-stage) | ☐ |
 
 ### Tier D — During & after the trip (the memory cluster — our differentiator)
 
