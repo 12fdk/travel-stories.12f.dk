@@ -1,6 +1,6 @@
 ---
-title: "TripIt vs Wanderlog vs Travel Stories: 2026 Comparison"
-description: "TripIt Pro costs $49/year, Wanderlog Pro $39.99/year, Travel Stories $1.99 once. An honest three-way comparison of what each trip planner does best."
+title: "Travel Planner App Costs 2026: TripIt $49 vs Wanderlog $39.99"
+description: "Wanderlog Pro is $39.99/year, TripIt Pro $49/year, Travel Stories $1.99 once. What each trip planner's paid tier adds — and which one is worth it."
 lede: "TripIt is the best app for automatically organising bookings — forward a confirmation email and your itinerary builds itself, with Pro at $49 per year. Wanderlog is the best app for planning a trip with other people on a shared map, with Pro at $39.99 per year. Travel Stories is a simpler iPhone-only planner that covers itinerary, budget, packing, and a travel diary offline with no account, for a one-time $1.99 instead of a subscription."
 keyword: "tripit vs wanderlog"
 cover: "/blog/tripit-vs-wanderlog-vs-travel-stories.webp"
