@@ -71,3 +71,5 @@ is the only tracker.
   `social-landing-home`; that is accepted for simplicity.
 - If an ad blocker or in-app browser blocks Umami, the hop still redirects and
   that visit simply is not counted.
+- `/go` shares the site stylesheet (the cached `_astro` CSS the landing
+  page loads next), so the extra cost on the hop is essentially a preload.

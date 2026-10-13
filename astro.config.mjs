@@ -116,9 +116,9 @@ export default defineConfig({
           fr: "fr", es: "es", it: "it", pt: "pt-BR", ko: "ko", ja: "ja",
         },
       },
-      // /app is a redirect stub, /404 is the error page, and /go/ is the source-
-      // attribution tracking hop — none of them belongs in the sitemap
-      // in the index. Both are also noindex in the page itself.
+      // /app is a redirect stub, /404 is the error page, and /go/ is the
+      // source-attribution tracking hop — none of them belongs in the index.
+      // All three are also noindex in the page itself.
       filter:
         (page) =>
           !page.includes("/app") &&

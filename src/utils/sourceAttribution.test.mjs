@@ -120,7 +120,7 @@ test("runGo: no tracker, still redirects once", async () => {
   assert.deepEqual(calls, ["redirect:/da/?src=facebook"]);
 });
 
-test("runGo: tracker never resolves, timeout fires once", async () => {
+test("runGo: tracker resolves late, after timeout — still one redirect", async () => {
   const calls = [];
   const redirect = (p) => calls.push("redirect:" + p);
   let timeoutCb = null;
@@ -128,21 +128,25 @@ test("runGo: tracker never resolves, timeout fires once", async () => {
     timeoutCb = fn;
     return 0;
   };
+  let resolveTracker;
   runGo({
     search: "?src=x",
-    loadTracker: () => new Promise(() => {}), // never resolves
+    // deferred: stays pending until we resolve it below
+    loadTracker: () => new Promise((r) => (resolveTracker = r)),
     redirect,
     setTimer,
   });
-  // let the tracker promise's .then chain schedule (it stays pending)
+  // the tracker is still pending
   await new Promise((r) => setImmediate(r));
   assert.equal(calls.length, 0);
   timeoutCb();
   await new Promise((r) => setImmediate(r));
   assert.deepEqual(calls, ["redirect:/?src=x"]);
-  // a late resolution must not trigger a second redirect
-  // (we can't resolve it here, but re-invoke timeout cb)
-  timeoutCb();
+  // now the tracker resolves LATE, after the redirect already happened:
+  // the .then(finish, finish) chain must NOT redirect a second time.
+  const track = (n) => calls.push("track:" + n);
+  resolveTracker(track);
+  await new Promise((r) => setImmediate(r));
   await new Promise((r) => setImmediate(r));
   assert.deepEqual(calls, ["redirect:/?src=x"]);
 });
