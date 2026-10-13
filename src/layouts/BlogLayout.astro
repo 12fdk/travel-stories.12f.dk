@@ -5,6 +5,7 @@ import defaultTemplateConfig from "utils/config";
 import { fetchAppStoreData, fallbackAppStoreData, toAppStoreMetadata } from "utils/appStoreData";
 import type { TemplateConfig } from "utils/configType";
 import { appleItunesAppContent, campaignForPathname } from "utils/appStoreCampaign";
+import SourceAttribution from "../components/SourceAttribution.astro";
 
 interface Props {
   title: string;
@@ -233,6 +234,7 @@ const graph = [
       }
     </script>
 
+    <SourceAttribution />
     <!-- Umami Analytics: production-hostname guard (see Layout.astro) -->
     <script is:inline>
       (function () {
