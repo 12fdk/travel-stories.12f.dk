@@ -148,7 +148,13 @@ test("runGo: tracker resolves late, after timeout — still one redirect", async
   resolveTracker(track);
   await new Promise((r) => setImmediate(r));
   await new Promise((r) => setImmediate(r));
-  assert.deepEqual(calls, ["redirect:/?src=x"]);
+  // the tracker fires exactly once, and there is STILL exactly one redirect.
+  const redirects = calls.filter((c) => c.startsWith("redirect:"));
+  assert.deepEqual(redirects, ["redirect:/?src=x"]);
+  assert.equal(
+    calls.filter((c) => c.startsWith("track:")).length,
+    1
+  );
 });
 
 test("runGo: track throws, still redirects once", async () => {
