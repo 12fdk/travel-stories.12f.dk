@@ -10,6 +10,9 @@ import {
   runGo,
   attachSourceToClicks,
   waitForUmami,
+  APP_STORE_ORIGINS,
+  APP_STORE_URL,
+  appStoreTarget,
 } from "./sourceAttribution.mjs";
 
 test("SOURCE_PARAM and SITE_ORIGIN", () => {
@@ -253,4 +256,104 @@ test("waitForUmami resolves immediately when already ready", async () => {
   const win = { umami: { track: (n, d) => [n, d] } };
   const track = await waitForUmami(win, 5000, 10);
   assert.equal(typeof track, "function");
+});
+
+test("appStoreTarget accepts exact Apple origins", () => {
+  assert.equal(appStoreTarget(APP_STORE_URL), APP_STORE_URL);
+  assert.equal(
+    appStoreTarget("https://itunes.apple.com/app/id6756801168"),
+    "https://itunes.apple.com/app/id6756801168"
+  );
+  assert.equal(
+    appStoreTarget("https://apps.apple.com/app/id6756801168?l=da"),
+    "https://apps.apple.com/app/id6756801168?l=da"
+  );
+  assert.deepEqual([...APP_STORE_ORIGINS], [
+    "https://apps.apple.com",
+    "https://itunes.apple.com",
+  ]);
+});
+
+test("appStoreTarget rejects everything else", () => {
+  for (const bad of [
+    "http://apps.apple.com/app/id6756801168",
+    "https://not-apple.com/app/id1",
+    "//apps.apple.com/app/id1",
+    "https://apps.apple.com.evil.com/app/id1",
+    "https://evilapps.apple.com/",
+    "https://apple.com/",
+    "https://evil.com@evil.com/",
+    "https://user@apps.apple.com/",
+    "https://apps.apple.com:8443/",
+    "https://apps.apple.com./",
+    "javascript:alert(1)",
+    "HTTPS://apps.apple.com/",
+    " https://apps.apple.com/",
+    "https://evil.com/?u=https://apps.apple.com",
+    "/da/",
+    "",
+  ]) {
+    assert.equal(appStoreTarget(bad), null, `should reject: ${bad}`);
+  }
+  assert.equal(appStoreTarget(null), null);
+  assert.equal(appStoreTarget(123), null);
+});
+
+test("buildDestination: App Store to passes through intact", () => {
+  const enc = encodeURIComponent(APP_STORE_URL);
+  const d = buildDestination(`?src=instagram&to=${enc}`);
+  assert.deepEqual(d, { src: "instagram", path: APP_STORE_URL });
+  assert.ok(!d.path.includes("src="));
+  assert.deepEqual(buildDestination(`?src=instagram&to=${APP_STORE_URL}`), d);
+  assert.deepEqual(buildDestination(`?to=${enc}`), { src: null, path: APP_STORE_URL });
+});
+
+test("buildDestination: rejected external to falls back to / with src", () => {
+  for (const bad of [
+    "http://apps.apple.com/app/id1",
+    "https://not-apple.com/",
+    "//apps.apple.com/app/id1",
+    "https://apps.apple.com.evil.com/app/id1",
+  ]) {
+    assert.deepEqual(
+      buildDestination(`?src=instagram&to=${encodeURIComponent(bad)}`),
+      { src: "instagram", path: "/?src=instagram" },
+      `should fall back for: ${bad}`
+    );
+  }
+});
+
+test("goUrl: App Store to", () => {
+  const ok = goUrl("instagram", APP_STORE_URL);
+  assert.equal(
+    ok,
+    `https://travel-stories.12f.dk/go/?src=instagram&to=${encodeURIComponent(APP_STORE_URL)}`
+  );
+  assert.equal(goUrl("instagram", "https://apps.apple.com.evil.com/x"), "https://travel-stories.12f.dk/go/?src=instagram");
+  assert.equal(goUrl("instagram", "http://apps.apple.com/x"), "https://travel-stories.12f.dk/go/?src=instagram");
+  assert.equal(buildDestination(new URL(ok).search).path, APP_STORE_URL);
+});
+
+test("runGo: App Store to — track then redirect to absolute URL once", async () => {
+  const calls = [];
+  const track = (n, d) => calls.push(`track:${n}:${d.src}`);
+  const redirect = (t) => calls.push(`redirect:${t}`);
+  let pendingTimer;
+  const setTimer = (fn) => { pendingTimer = fn; return 0; };
+  runGo({
+    search: `?src=instagram&to=${encodeURIComponent(APP_STORE_URL)}`,
+    loadTracker: () => Promise.resolve(track),
+    redirect,
+    setTimer,
+  });
+  // let the loadTracker promise resolve, then fire the timer (redirect path)
+  await new Promise((r) => setImmediate(r));
+  await new Promise((r) => setImmediate(r));
+  if (pendingTimer) pendingTimer();
+  await new Promise((r) => setImmediate(r));
+  assert.deepEqual(calls, [`track:social-landing:instagram`, `redirect:${APP_STORE_URL}`]);
+});
+
+test("safeTarget still rejects App Store URLs", () => {
+  assert.equal(safeTarget(APP_STORE_URL), "/");
 });

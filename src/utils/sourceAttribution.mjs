@@ -12,6 +12,10 @@
  * processed <script> tags import from it, so it is bundled once.
  *
  * `src` lives in the URL only — no cookies, no localStorage, no sessionStorage.
+ *
+ * `to` may also be an App Store URL on an exact-origin whitelist
+ * (apps.apple.com / itunes.apple.com); then /go redirects straight to the
+ * store after firing `social-landing`. Anything else is an internal path.
  */
 
 /** Query param that carries the source slug. */
@@ -19,6 +23,19 @@ export const SOURCE_PARAM = "src";
 
 /** Production origin, used to validate the `to` target and build /go URLs. */
 export const SITE_ORIGIN = "https://travel-stories.12f.dk";
+
+/**
+ * External origins `to` may point at (the App Store only). Exact origin
+ * match — no suffix/subdomain matching — so /go can never be an open redirect.
+ */
+export const APP_STORE_ORIGINS = Object.freeze([
+  "https://apps.apple.com",
+  "https://itunes.apple.com",
+]);
+
+/** The Travel Stories App Store listing, for direct-to-store bio links. */
+export const APP_STORE_URL =
+  "https://apps.apple.com/app/travel-stories-trip-planner/id6756801168";
 
 /**
  * Known sources, documentation only. Any slug that passes normalizeSource is
@@ -79,14 +96,47 @@ export function safeTarget(raw) {
 }
 
 /**
+ * Validate an external `to` target against APP_STORE_ORIGINS.
+ *
+ * @param {unknown} raw
+ * @returns {string | null} the normalized absolute URL, or null when not an
+ *   exact https App Store origin.
+ */
+export function appStoreTarget(raw) {
+  if (
+    typeof raw !== "string" ||
+    !raw.startsWith("https://") ||
+    raw.includes("\\") ||
+    /[\s\u0000-\u001f]/.test(raw)
+  ) {
+    return null;
+  }
+  let url;
+  try {
+    url = new URL(raw);
+  } catch {
+    return null;
+  }
+  if (url.protocol !== "https:") return null;
+  if (url.username !== "" || url.password !== "") return null;
+  if (!APP_STORE_ORIGINS.includes(url.origin)) return null;
+  return url.href;
+}
+
+/**
  * Resolve the /go destination from a search string.
  *
- * @param {string} search e.g. "?src=instagram&to=/da/"
+ * @param {string} search e.g. "?src=instagram&to=/da/" or
+ *   "?src=instagram&to=https%3A%2F%2Fapps.apple.com%2F...". `path` is an
+ *   internal path, or an absolute whitelisted App Store URL when `to` passes
+ *   appStoreTarget (src is never appended to external URLs).
  * @returns {{ src: (string | null), path: string }}
  */
 export function buildDestination(search) {
   const params = new URLSearchParams(search);
   const src = normalizeSource(params.get(SOURCE_PARAM));
+  const external = appStoreTarget(params.get("to"));
+  if (external) return { src, path: external };
   const url = new URL(safeTarget(params.get("to")), SITE_ORIGIN);
   if (src) url.searchParams.set(SOURCE_PARAM, src);
   return { src, path: url.pathname + url.search + url.hash };
@@ -96,7 +146,9 @@ export function buildDestination(search) {
  * Build the public source-attributed URL to put in a profile bio link.
  *
  * @param {string} src
- * @param {string} [to] optional internal landing path (must be safe)
+ * @param {string} [to] optional landing target: an internal path (must pass
+ *   safeTarget) or an App Store URL (must pass appStoreTarget). An invalid
+ *   `to` is silently dropped.
  * @returns {string}
  */
 export function goUrl(src, to) {
@@ -105,7 +157,9 @@ export function goUrl(src, to) {
   }
   let url = `${SITE_ORIGIN}/go/?src=${encodeURIComponent(src)}`;
   if (to !== undefined) {
-    if (safeTarget(to) === to) url += `&to=${encodeURIComponent(to)}`;
+    if (safeTarget(to) === to || appStoreTarget(to) === to) {
+      url += `&to=${encodeURIComponent(to)}`;
+    }
   }
   return url;
 }
@@ -117,7 +171,7 @@ export function goUrl(src, to) {
  * @param {{
  *   search: string,
  *   loadTracker: () => Promise<((n: string, d: object) => any) | null>,
- *   redirect: (path: string) => void,
+ *   redirect: (target: string) => void, // internal path or absolute URL
  *   timeoutMs?: number,
  *   setTimer?: (fn: () => void, ms: number) => any,
  * }} opts

@@ -17,8 +17,11 @@ Always use the **trailing-slash** form:
 - The trailing slash avoids GitHub Pages' extra 301 from `/go` to `/go/`.
 - `<slug>` is lowercase `a-z0-9_-`, at most 40 characters. Anything else is
   recorded as `src: none` and the visitor lands without a source tag.
-- Optional `&to=<internal path>` lands on a specific page (only same-origin
-  paths starting with `/` are allowed; anything else falls back to `/`).
+- Optional `&to=` lands on a specific page or **straight at the App Store**:
+  it accepts a same-origin path starting with `/`, or an App Store URL on
+  exactly `https://apps.apple.com` / `https://itunes.apple.com`. Anything
+  else falls back to `/` (with `?src=` kept). This exact-origin whitelist
+  means `/go` can never become an open redirect.
 
 ## Source URLs to use in profile bios
 
@@ -63,7 +66,32 @@ is the only tracker.
 4. **Conversion:** `social-landing-home` (denominator) → App Store clicks
    (numerator), per `src`.
 
+## Straight to the App Store (bio link)
+
+The profile bio link can point at the App Store **and** be tracked. The hop
+fires `social-landing {src}` and then `location.replace()`s straight to the
+store (no landing page in between).
+
+- App Store URL: `https://apps.apple.com/app/travel-stories-trip-planner/id6756801168`
+- Bio link recipe:
+
+      https://travel-stories.12f.dk/go/?src=instagram&to=https%3A%2F%2Fapps.apple.com%2Fapp%2Ftravel-stories-trip-planner%2Fid6756801168
+
+  (The URL above has no `?`/`&`, so the unencoded `&to=https://apps.apple.com/...`
+  form also works. If the store URL ever gains query params such as `?l=da`,
+  use the encoded form — `goUrl("instagram", APP_STORE_URL)` produces it.)
+- What gets counted: `social-landing` counts the **bio tap**, grouped by `src`.
+  The download itself happens in the App Store, which Umami cannot see after
+  the redirect. `social-landing-home` and the `src`-tagged click events do
+  **not** fire for this path, so the conversion ratio in "Reading the funnel"
+  only applies to bio links that land on the site. Download attribution comes
+  from App Store Connect, not Umami.
+- `src` is **not** appended to the App Store URL.
+- If you use both link styles (landing page and direct-to-store), consider a
+  distinct slug (e.g. `instagram-store`) so the two stay comparable.
+
 ## Caveats
+
 
 - **In-app browsers send no referrer** — that is exactly why the explicit
   `src` exists; without the `/go` hop this traffic is invisible.

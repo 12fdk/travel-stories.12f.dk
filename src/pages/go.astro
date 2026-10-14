@@ -5,7 +5,9 @@
 // so the profile -> landing hop is countable in Umami (in-app browsers send
 // no referrer). Fires `social-landing` with { src } BEFORE redirecting to the
 // homepage with `src` preserved, so the homepage can fire `social-landing-home`
-// and tag its App Store CTA clicks with the same source.
+// and tag its App Store CTA clicks with the same source. `to` may also be an
+// App Store URL (exact-origin whitelist in appStoreTarget), in which case the
+// hop redirects straight to the store after tracking.
 //
 // Standalone document on purpose: no Layout, no JSON-LD, no hero preloads.
 // Keep this hop fast.
@@ -20,6 +22,7 @@
     <title>Opening Travel Stories…</title>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="preconnect" href="https://umami.robert-jensen.dk" />
+    <!-- Static host: without JS the query string cannot be read, so no-JS visitors go to the homepage (which links to the App Store). -->
     <noscript>
       <meta http-equiv="refresh" content="0; url=/" />
     </noscript>
