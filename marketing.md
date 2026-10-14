@@ -38,6 +38,9 @@ Owner: Robert · Maintained by: Hermes (social pipeline agent) · Last updated: 
 
 ## 3. Content rules
 
+- Text-slide colours: background #2d1b2e · text #f8f0e3 · accent #e8a87c
+  (carousel text slides; `marketing-post --colors-from` reads this line, so
+  keep its format. Robert's decision 2026-10-14, spark#129.)
 - Product-first visuals: real product UI footage (assets in `/workspace/motion`)
   or real destination stills.
 - Never AI-generated people with visible faces.
