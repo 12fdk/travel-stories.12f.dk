@@ -5,6 +5,7 @@ import path from "node:path";
 import type { TemplateConfig } from "utils/configType";
 import { getLocale, DEFAULT_LOCALE, LOCALES } from "./i18n/locales";
 import { withCampaign, SITE_CAMPAIGN, appleItunesAppContent } from "./utils/appStoreCampaign";
+import SourceAttribution from "./components/SourceAttribution.astro";
 
 const { backgroundGrid, seo, logo, theme, forceTheme, appStoreLink, name, appStore, home, noindex, locale, localeAlternates } =
   Astro.props as TemplateConfig & { noindex?: boolean };
@@ -418,6 +419,7 @@ const graph = [
       }
     </script>
 
+    <SourceAttribution />
     <!-- Umami Analytics: production-hostname guard — local dev (localhost/127.0.0.1/preview
          domains) never reports to the travel-stories.12f.dk production site. -->
     <script is:inline>
