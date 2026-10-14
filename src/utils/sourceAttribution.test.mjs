@@ -282,7 +282,8 @@ test("appStoreTarget rejects everything else", () => {
     "https://apps.apple.com.evil.com/app/id1",
     "https://evilapps.apple.com/",
     "https://apple.com/",
-    "https://evil.com@evil.com/",
+    "https://apps.apple.com@evil.com/",
+    "https://apps.apple.com\\evil.com",
     "https://user@apps.apple.com/",
     "https://apps.apple.com:8443/",
     "https://apps.apple.com./",
@@ -314,6 +315,7 @@ test("buildDestination: rejected external to falls back to / with src", () => {
     "https://not-apple.com/",
     "//apps.apple.com/app/id1",
     "https://apps.apple.com.evil.com/app/id1",
+    "https://apps.apple.com@evil.com/",
   ]) {
     assert.deepEqual(
       buildDestination(`?src=instagram&to=${encodeURIComponent(bad)}`),

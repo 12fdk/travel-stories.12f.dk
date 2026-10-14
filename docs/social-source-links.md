@@ -92,7 +92,7 @@ store (no landing page in between).
 
 ## Caveats
 
-
+- **No-JS visitors** fall back to the homepage: the static `<noscript>` refresh cannot read `to`, so a direct-to-App-Store link sends them to `/` (which links to the App Store) instead.
 - **In-app browsers send no referrer** — that is exactly why the explicit
   `src` exists; without the `/go` hop this traffic is invisible.
 - A reload or back-navigation to a `?src=` page re-fires
