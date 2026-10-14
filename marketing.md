@@ -123,8 +123,9 @@ direction is real):
 
 ## 7. 7-day review procedure
 
-1. Every Monday, select posts with `status=published` published exactly 7 days
-   ago (Appwrite db `marketing`, posts collection).
+1. Every Monday, select posts with `status=published` published 7–13 days ago
+   that do not yet have a §8 learnings-log row (Appwrite db `marketing`, posts
+   collection). The 1-day grace covers posts published on other weekdays.
 2. For each post, read the metrics `collect-metrics` wrote into the post doc:
    reach, likes, comments, saves, shares (IG and FB). Note the doc's
    last-collected time.
@@ -172,10 +173,9 @@ Append-only. Newest at bottom. Never edit or delete rows.
 - **Umami ingestion lag** (owner: Hermes). Do not read the Saturday funnel
   report as final for the last 24–48h.
 - **Stories (IG/FB)?** (owner: Robert) decide after the week of Nov 9.
-- **Review window gap** (owner: Robert): the Monday "exactly 7 days ago"
-  selection only catches posts published on a Monday; Tue–Sun posts are never
-  reviewed (the Oct 14 Wed reel is missed by the Oct 19 run). Decide whether
-  the selection becomes "published 7–13 days ago, not yet reviewed".
+- **Review window** (resolved 2026-10-14): the selection is "published 7–13
+  days ago, not yet reviewed" (§7 step 1), so posts published on any weekday
+  are caught by the next Monday run.
 - **`optimize-guidelines` is dormant** (owner: Robert): decide whether to
   enable once §8 has ≥ 4 weeks of logs.
 - **IG target vs pipeline** (owner: Robert): IG target is 5–7/week, pipeline
