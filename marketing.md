@@ -168,6 +168,7 @@ Append-only. Newest at bottom. Never edit or delete rows.
 | Date | Post | Numbers | Verdict | Change |
 |---|---|---|---|---|
 | 2026-10-14 | BASELINE: 131 posts (93 with metrics) | median reach 2–4; best (Apr–May story/advice images) reach 5–8, likes 3–5, saves on advice posts; worst (Jul–Aug generic-pain carousels) reach 0–1, score ~1 | BASELINE | Concrete destination + concrete problem hooks; no generic-pain openers. First auto-published reel 2026-10-14 = first post in new system; review due ~2026-10-21. |
+| 2026-10-14 | REVIEW RUN: no posts published 7–13 days ago (only the 2026-10-14 reel `9d7e141a9148`, review due ~2026-10-21) | — | NO-DATA | Window empty, nothing judged. Footage note: `footage-tour.mp4` has no street-map frame (full-res + per-second pixel scan); the 'Download offline maps' task is on screen at t≈35–38 s. Week 2026-10-19 posts created ready: reel `6acffaa9e525281e1a9b` (offline maps, 2026-10-19 15:00Z), carousel `6acffaab023c7d3cf05f` (day-by-day plans, 2026-10-22 15:00Z). |
 
 ## 9. Open questions & watch items
 
