@@ -1,17 +1,20 @@
 # Travel Stories — Marketing Plan (living doc)
 
-Owner: Robert · Maintained by: Hermes (social pipeline agent) · Last updated: 2026-10-14
+Owner: Robert · Maintained by: Hermes (social pipeline agent) · Last updated: 2026-10-15
 
 ## 1. What this is & how it's updated
 
 - Hermes owns this file and runs every step in it. Robert reviews it and owns
   the decisions marked *Robert* in §9.
 - Pipeline (Appwrite db `marketing` on app.12f.dk):
-  - Weekly cron (Monday) renders the images on the spark (`comfy-gen`) and creates the post with `marketing-post` as `status=ready` (media uploaded by the CLI, spark#125); `publish-social` publishes once `scheduledAt` has passed. `queue-comfyui` is not used: the platform has no renderer and needs no ComfyUI URL.
+  - Nightly job (`travel-stories-social-content`, shared `social-post` template, channel
+    platform): builds the next due §6 row — media rendered on the spark (`comfy-gen`,
+    `motion-render`), created with `marketing-post` as `status=ready` at the time it picks
+    (Hermes owns the schedule, marketing#97); `publish-social` publishes it then.
   - Function `publish-social` (every 15 min) publishes to IG and FB; enforces a 20h minimum gap.
   - Function `collect-metrics` (every 2h) writes IG/FB engagement into the post docs.
   - Function `optimize-guidelines` (monthly) — **dormant**.
-- The Monday cron also runs the §7 review and appends rows to §8.
+- The nightly job also runs the §7 review and appends rows to §8.
 - Editing rules for this file:
   - Append-only to §8: never delete or rewrite past log rows.
   - Plan changes go in §6, plus a §8 row that says why.
@@ -101,28 +104,31 @@ direction is real):
 
 ## 6. Content plan (next 4 weeks)
 
-| Week of | # | Format | Feature / message | Hook (first 1–2 s) | Music |
-|---|---|---|---|---|---|
-| Oct 19 | 1 | Reel | Offline maps | "No signal in Lisbon's Alfama? Your map still works." | v1 a-major |
-| Oct 19 | 2 | Carousel | Day-by-day plans | "3 days in Lisbon, planned day by day." | — |
-| Oct 26 | 1 | Reel | AI trip planning | "10 days in Thailand — planned in one tap." | v4 d-major |
-| Oct 26 | 2 | Carousel | Budget tracking | "10 days in Thailand. Real receipts, tracked." | — |
-| Oct 26 | 3 | Reel | Itinerary sharing | "One Rome plan. Everyone in the group sees it." | v5 c-min |
-| Nov 2 | 1 | Reel | AI trip planning | "Road trip down the Algarve — route planned for you." | v0 c-major |
-| Nov 2 | 2 | Carousel | Day-by-day plans | "Tokyo, 5 days: what to do each morning." | — |
-| Nov 2 | 3 | Reel | Budget tracking | "Barcelona weekend: see what you've spent, in your currency." | v3 e-min |
-| Nov 2 | 4 | Carousel | Itinerary saving | "Bag didn't arrive? Your bookings are still on your phone, offline." | — |
-| Nov 9 | 1 | Reel | Itinerary sharing | "Paris with friends: one shared day-by-day plan." | v2 g-min |
-| Nov 9 | 2 | Reel | Offline maps | "Hiking Madeira's levadas without signal." | v1 a-major |
-| Nov 9 | 3 | Carousel | AI trip planning | "First time in Japan? A 7-day plan in seconds." | — |
-| Nov 9 | 4 | Carousel | Budget tracking | "Lisbon long weekend: every euro, tracked." | — |
+| Week of | # | Format | Feature / message | Hook (first 1–2 s) | Music | Status |
+|---|---|---|---|---|---|---|
+| Oct 19 | 1 | Reel | Offline maps | "No signal in Lisbon's Alfama? Your map still works." | v1 a-major | built 2026-10-14 6acffaa9e525281e1a9b |
+| Oct 19 | 2 | Carousel | Day-by-day plans | "3 days in Lisbon, planned day by day." | — | built 2026-10-14 6acffaab023c7d3cf05f |
+| Oct 26 | 1 | Reel | AI trip planning | "10 days in Thailand — planned in one tap." | v4 d-major | queued |
+| Oct 26 | 2 | Carousel | Budget tracking | "10 days in Thailand. Real receipts, tracked." | — | queued |
+| Oct 26 | 3 | Reel | Itinerary sharing | "One Rome plan. Everyone in the group sees it." | v5 c-min | queued |
+| Nov 2 | 1 | Reel | AI trip planning | "Road trip down the Algarve — route planned for you." | v0 c-major | queued |
+| Nov 2 | 2 | Carousel | Day-by-day plans | "Tokyo, 5 days: what to do each morning." | — | queued |
+| Nov 2 | 3 | Reel | Budget tracking | "Barcelona weekend: see what you've spent, in your currency." | v3 e-min | queued |
+| Nov 2 | 4 | Carousel | Itinerary saving | "Bag didn't arrive? Your bookings are still on your phone, offline." | — | queued |
+| Nov 9 | 1 | Reel | Itinerary sharing | "Paris with friends: one shared day-by-day plan." | v2 g-min | queued |
+| Nov 9 | 2 | Reel | Offline maps | "Hiking Madeira's levadas without signal." | v1 a-major | queued |
+| Nov 9 | 3 | Carousel | AI trip planning | "First time in Japan? A 7-day plan in seconds." | — | queued |
+| Nov 9 | 4 | Carousel | Budget tracking | "Lisbon long weekend: every euro, tracked." | — | queued |
 
 - Music ids are `music.mjs` variant numbers (0–5). The 2026-10-14 reel used
   v2 g-min; the rotation above continues from there with no repeat within 6
   consecutive reels.
 - Every post ends with "Get notified in the App Store."
-- The Monday cron may swap a row only per a §7 verdict, and must log the swap
+- The nightly job may swap a row only per a §7 verdict, and must log the swap
   in §8.
+- **Status** (spark#136): `queued` → `built <date> <postId>` (created, scheduled)
+  → `posted <date> <postId>`. The nightly job builds the first `queued` row whose
+  week starts within 7 days, one row per night, and writes its status here.
 
 ## 7. 7-day review procedure
 
@@ -169,6 +175,8 @@ Append-only. Newest at bottom. Never edit or delete rows.
 |---|---|---|---|---|
 | 2026-10-14 | BASELINE: 131 posts (93 with metrics) | median reach 2–4; best (Apr–May story/advice images) reach 5–8, likes 3–5, saves on advice posts; worst (Jul–Aug generic-pain carousels) reach 0–1, score ~1 | BASELINE | Concrete destination + concrete problem hooks; no generic-pain openers. First auto-published reel 2026-10-14 = first post in new system; review due ~2026-10-21. |
 | 2026-10-14 | REVIEW RUN: no posts published 7–13 days ago (only the 2026-10-14 reel `9d7e141a9148`, review due ~2026-10-21) | — | NO-DATA | Window empty, nothing judged. Footage note: `footage-tour.mp4` has no street-map frame (full-res + per-second pixel scan); the 'Download offline maps' task is on screen at t≈35–38 s. Week 2026-10-19 posts created ready: reel `6acffaa9e525281e1a9b` (offline maps, 2026-10-19 15:00Z), carousel `6acffaab023c7d3cf05f` (day-by-day plans, 2026-10-22 15:00Z). |
+
+- 2026-10-15 — plan format: §6 got a Status column and the content job runs nightly (one due row per night) instead of Monday-weekly (Robert; spark#136). Rows Oct 19 #1–#2 were built by the earlier weekly runs.
 
 ## 9. Open questions & watch items
 
