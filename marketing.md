@@ -222,7 +222,8 @@ weeks. Hooks never state an unverified date or any statistic.
 | Week of | # | Format | Feature / message | Hook (first 1–2 s) | Music | Look / scene (start point; must differ from recent looks) | Status |
 |---|---|---|---|---|---|---|---|
 | Oct 19 | 1 | Reel | Offline maps | "No signal in Lisbon's Alfama? Your map still works." | v1 a-major | (built) | built 2026-10-14 6acffaa9e525281e1a9b |
-| Oct 19 | 2 | Carousel | Day-by-day plans | "3 days in Lisbon, planned day by day." | — | (built) | built 2026-10-14 6acffaab023c7d3cf05f |
+| Oct 19 | 2 | Carousel | Day-by-day plans | "3 days in Lisbon, planned day by day." | — | — | published 2026-10-15 6acffaab023c7d3cf05f (text-heavy, superseded) |
+| Oct 16 | 1 | Carousel | Day-by-day plans | "3 days in Lisbon, planned day by day." (photo-led rebuild) | 7 photos + 2 text | — | scheduled 06:00 UTC 6ad0ba765a0b80ce0cf5 |
 | Oct 26 | 1 | Reel | Day-by-day itinerary + bookings | "10 days in Thailand, 4 islands, 6 ferry bookings — one day-by-day plan." | v4 d-major | longtail boats at a Krabi pier, turquoise water, hard noon sun, low wide shots | queued |
 | Oct 26 | 2 | Carousel | Budget tracking | "10 days in Thailand. Real receipts, tracked." | — | Bangkok night-market flat-lay: baht notes and street-food receipts, neon pink and green, overhead | queued |
 | Oct 26 | 3 | Reel | Trip sharing (Premium) | "Rome with three friends and three different plans? Send one." | v5 c-min | Roman cobbled side street at blue hour, ivy and a parked Vespa, cool blue with warm window glow | queued |
