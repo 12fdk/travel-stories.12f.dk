@@ -116,6 +116,13 @@ Owner: Robert · Maintained by: Hermes (social pipeline agent) · Last updated: 
 |---|---|---|---|
 | Reel (15–45 s) | Reach to non-followers (+36% vs carousels) | Reels are the top-of-funnel format at our size | Destination b-roll shot fresh for the post + a new moment of the real app footage in second 0–1; use the next music variant |
 | Carousel (6–10 slides) | Earns saves (+109% engagement per person reached) | Saves are the retention signal; packing lists, budgets and day plans are the most saveable | Slide 1 = concrete destination + concrete problem (best-history pattern); last slide = CTA |
+
+**Carousels are photo-led (Robert, 2026-10-15):** most slides are
+photographic; at most 2–3 short text slides (hook + one CTA). The 2026-10-15
+carousels shipped "2 photos + 7 text" and read flat — rebuild as ≥6 rendered
+photos + 1–2 text slides. Every photo slide is a fresh `comfy-gen` render
+(photographic, no phone screens, no visible faces); the caption still carries
+the saveable content, the slides carry the look.
 | Stories | Polls, countdowns, tips | Brand profile wants them daily | Pipeline is feed-only today — decision in §9 |
 | Single image | Historically our best format | Baseline below | Not in the steady mix; its lesson goes to carousel covers |
 
