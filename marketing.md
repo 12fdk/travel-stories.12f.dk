@@ -1,6 +1,6 @@
 # Travel Stories — Marketing Plan (living doc)
 
-Owner: Robert · Maintained by: Hermes (social pipeline agent) · Last updated: 2026-10-15
+Owner: Robert · Maintained by: Hermes (social pipeline agent) · Last updated: 2026-10-15 (nightly run)
 
 ## 1. What this is & how it's updated
 
@@ -221,9 +221,8 @@ weeks. Hooks never state an unverified date or any statistic.
 
 | Week of | # | Format | Feature / message | Hook (first 1–2 s) | Music | Look / scene (start point; must differ from recent looks) | Status |
 |---|---|---|---|---|---|---|---|
-| Oct 19 | 1 | Reel | Offline maps | "No signal in Lisbon's Alfama? Your map still works." | v1 a-major | (built) | built 2026-10-14 6acffaa9e525281e1a9b |
 | Oct 19 | 2 | Carousel | Day-by-day plans | "3 days in Lisbon, planned day by day." | — | — | published 2026-10-15 6acffaab023c7d3cf05f (text-heavy, superseded) |
-| Oct 16 | 1 | Carousel | Day-by-day plans | "3 days in Lisbon, planned day by day." (photo-led rebuild) | 7 photos + 2 text | — | scheduled 06:00 UTC 6ad0ba765a0b80ce0cf5 |
+| Oct 16 | 1 | Carousel | Day-by-day plans | "3 days in Lisbon, planned day by day." (photo-led rebuild) | 7 photos + 2 text | — | posted 2026-10-15 6ad0ba765a0b80ce0cf5 |
 | Oct 26 | 1 | Reel | Day-by-day itinerary + bookings | "10 days in Thailand, 4 islands, 6 ferry bookings — one day-by-day plan." | v4 d-major | longtail boats at a Krabi pier, turquoise water, hard noon sun, low wide shots | queued |
 | Oct 26 | 2 | Carousel | Budget tracking | "10 days in Thailand. Real receipts, tracked." | — | Bangkok night-market flat-lay: baht notes and street-food receipts, neon pink and green, overhead | queued |
 | Oct 26 | 3 | Reel | Trip sharing (Premium) | "Rome with three friends and three different plans? Send one." | v5 c-min | Roman cobbled side street at blue hour, ivy and a parked Vespa, cool blue with warm window glow | queued |
@@ -383,6 +382,7 @@ Append-only. Newest at bottom. Never edit or delete rows.
 - 2026-10-15 — plan format: §6 got a Status column and the content job runs nightly (one due row per night) instead of Monday-weekly (Robert; spark#136). Rows Oct 19 #1–#2 were built by the earlier weekly runs.
 - 2026-10-15 — plan expanded (Robert's request: bring the plan up to date the same way as Event Stories): §6 now runs week of Oct 19, 2026 – week of Feb 22, 2027 (85 rows: Oct 6, Nov 24, Dec 17, Jan 20, Feb 18; 48 reels, 37 carousels; 83 queued) with a Calendar hooks table (Christmas markets, ski season, US Thanksgiving, Black Friday / Cyber Monday / Travel Tuesday, Christmas travel, NYE city trips, January planning, Venice and Rio Carnival, Lunar New Year, Valentine's, Feb half-term, spring break, Easter Mar 28, cherry blossom) and a Look column so each row starts from a distinct scene (spark#133); music rotation continues in the fixed order v4, v5, v0, v3, v2, v1. §5 got a claim sheet of verbatim site lines and a never-claim list. Changed queued rows (claims not on the live site): Oct 26 #1, Nov 2 #1 and Nov 9 #3 were "AI trip planning" — the site has no AI planning — now day-by-day + bookings (Thailand), route on a map (Algarve) and the Japan-in-winter packing list; Nov 9 #2 "Offline maps" → offline access (the site promises offline itineraries/bookings/diary, not maps); Oct 26 #3 and Nov 9 #1 sharing hooks no longer imply live group sync (sharing = sending the plan, Premium). Added Oct 26 #4 (ramp 3–4), Nov 2 #5, Nov 9 #5. Oct 19 #1–#2 unchanged (built). §2: the app is LIVE (App Store since 2026-01-06, free + one-time Premium), not pre-launch; feature list now matches the site (removed AI trip planning, offline maps, live travel updates); site languages corrected. §1: added the prune step (spark#138). §3 (Robert's say-so; all implied by his rules or this request): hashtag rule fixed from the After Stories brand tag (a copy-paste error from that app) to `#TravelStories` + the app record's brandHashtags; visuals line now follows the fresh-shoot rule (only the real app footage may be reused, other moments, around new b-roll); no app UI in generated images; CTA changed from the pre-launch "Get notified in the App Store." to "Download Travel Stories free" (ctaOptions) because the app is live and the site says "Download free". §4 unchanged.
 
+- 2026-10-15 — Housekeeping: row Oct 16 #1 (carousel "3 days in Lisbon, planned day by day.", post 6ad0ba765a0b80ce0cf5) — the post is published (2026-10-15 12:38 UTC); status normalized from the legacy "scheduled 06:00 UTC …" to `posted 2026-10-15 6ad0ba765a0b80ce0cf5` so the next plan_prune removes it. §7 review not run today (Thursday; the review runs Monday, and there are no unreviewed posts published 7–13 days ago). No §6 row due tonight: the first `queued` row is week of Oct 26 (starts in 11 days, outside the 7-day window).
 ## 9. Open questions & watch items
 
 - **Oct 19 #1 claims offline maps** (owner: Robert) — the built reel
