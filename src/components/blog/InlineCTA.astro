@@ -36,24 +36,25 @@ const ctaLink = withCampaign(appStoreLink, blogCampaignToken(slug));
         target="_blank"
         rel="noopener"
         data-umami-event={trackingId}
-        class="link link-primary font-semibold"
+        class="ts-link font-medium text-ink"
       >
         {body}
       </a>
     </p>
   ) : (
     <aside
-      class="not-prose my-10 rounded-2xl border border-base-300 bg-base-200 p-6 sm:p-8"
+      data-reveal-self
+      class="not-prose my-14 rounded-ui bg-field p-7 text-field-ink sm:p-10"
       data-cta-id={trackingId}
     >
-      <h3 class="mb-2 text-xl font-bold text-base-content sm:text-2xl">{heading}</h3>
-      <p class="mb-5 text-base-content/80">{body}</p>
+      <h3 class="mb-3 text-lead">{heading}</h3>
+      <p class="mb-7 max-w-[52ch] text-body text-field-muted">{body}</p>
       <a
         href={ctaLink}
         target="_blank"
         rel="noopener"
         data-umami-event={trackingId}
-        class="btn btn-primary"
+        class="ts-button"
       >
         {buttonText}
       </a>

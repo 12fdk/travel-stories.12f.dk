@@ -32,13 +32,13 @@ function LanguageSwitcher() {
   return (
     <details className="dropdown dropdown-end">
       <summary
-        className="btn btn-ghost btn-sm h-9 min-h-0 gap-1.5 px-2 font-medium normal-case text-base-content/70 hover:text-base-content"
+        className="flex min-h-[44px] cursor-pointer items-center gap-1.5 px-1 text-small text-ink"
         aria-label="Language"
       >
         <GlobeIcon />
-        <span className="text-sm">{current.label}</span>
+        <span>{current.label}</span>
       </summary>
-      <ul className="menu dropdown-content z-[60] mt-2 max-h-80 w-48 flex-nowrap overflow-y-auto rounded-box border border-base-300 bg-base-100 p-2 shadow-xl">
+      <ul className="menu dropdown-content z-[60] mt-2 max-h-80 w-48 flex-nowrap overflow-y-auto rounded-ui bg-surface p-2 text-small text-ink">
         {LOCALES.map((l) => (
           <li key={l.code}>
             <a
@@ -46,7 +46,7 @@ function LanguageSwitcher() {
               hrefLang={l.hreflang}
               lang={l.hreflang}
               aria-current={l.code === locale ? "true" : undefined}
-              className={l.code === locale ? "active font-semibold" : ""}
+              className={l.code === locale ? "active font-medium" : ""}
             >
               {l.label}
             </a>

@@ -36,6 +36,16 @@ const it: Translation = {
     },
     pricingFootnote:
       "Prezzi in USD; il prezzo locale esatto dipende dal tuo App Store. Nessun abbonamento: Premium è un acquisto unico, tuo per sempre.",
+    live: {
+      departs: "Partenza tra",
+      length: "Durata del viaggio",
+      remind: "Promemoria",
+      nDays: "{n} giorni",
+      nDaysBefore: "{n} giorni prima",
+      daysToGo: "giorni alla partenza",
+      tripName: "Porto e Lisbona",
+    },
+    photoCredits: "Fotografie",
   },
   facts: [
     { label: "Prezzo", value: "Gratis" },

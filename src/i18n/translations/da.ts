@@ -36,6 +36,16 @@ const da: Translation = {
     },
     pricingFootnote:
       "Priser vises i USD; din App Store-butik bestemmer den præcise lokale pris. Intet abonnement – Premium er et engangskøb, dit for altid.",
+    live: {
+      departs: "Afrejse om",
+      length: "Rejsens længde",
+      remind: "Påmindelse",
+      nDays: "{n} dage",
+      nDaysBefore: "{n} dage før",
+      daysToGo: "dage tilbage",
+      tripName: "Porto og Lissabon",
+    },
+    photoCredits: "Fotografier",
   },
   facts: [
     { label: "Pris", value: "Gratis" },

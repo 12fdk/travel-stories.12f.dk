@@ -36,6 +36,16 @@ const nl: Translation = {
     },
     pricingFootnote:
       "Prijzen in USD; je App Store-regio bepaalt de exacte lokale prijs. Geen abonnement — Premium is een eenmalige aankoop, voor altijd van jou.",
+    live: {
+      departs: "Vertrek over",
+      length: "Duur van de reis",
+      remind: "Herinnering",
+      nDays: "{n} dagen",
+      nDaysBefore: "{n} dagen vooraf",
+      daysToGo: "dagen te gaan",
+      tripName: "Porto en Lissabon",
+    },
+    photoCredits: "Foto's",
   },
   facts: [
     { label: "Prijs", value: "Gratis" },

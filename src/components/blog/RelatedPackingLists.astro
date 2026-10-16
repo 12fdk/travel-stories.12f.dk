@@ -18,38 +18,31 @@ const { pages, heading = "Ready-made packing lists for this" } = Astro.props;
 
 {
   pages.length > 0 && (
-    <section
-      class="not-prose my-12 rounded-box border border-base-300 bg-base-200/40 p-6 sm:p-8"
-      aria-labelledby="related-packing-lists"
-    >
-      <h2 id="related-packing-lists" class="mb-2 text-2xl font-bold sm:text-3xl">
+    <section class="not-prose my-16" aria-labelledby="related-packing-lists">
+      <h2 id="related-packing-lists" class="text-lead font-medium">
         {heading}
       </h2>
-      <p class="mb-6 max-w-2xl text-base-content/70">
+      <p class="mt-2 max-w-2xl text-body text-muted">
         Free, no sign-up: tick items off in the browser, print it, or adjust it
         to your own trip.
       </p>
-      <ul class="grid list-none gap-4 p-0 sm:grid-cols-2">
+      <ul class="mt-6 flex list-none flex-col gap-4 p-0" data-reveal>
         {pages.map((page) => (
           <li class="m-0">
             <a
               href={`/packing-list/${page.slug}/`}
               data-umami-event="blog-to-packing-list"
               data-umami-event-list={page.slug}
-              class="group flex h-full flex-col rounded-box border border-base-300 bg-base-100 p-5 transition-colors hover:border-primary/40"
+              class="group block"
             >
-              <h3 class="mb-2 text-lg font-bold leading-snug tracking-tight transition-colors group-hover:text-primary">
-                {page.h1}
-              </h3>
-              <p class="m-0 text-sm leading-relaxed text-base-content/70">
-                {page.description}
-              </p>
+              <span class="ts-link text-body text-ink">{page.h1}</span>
+              <span class="mt-1 block text-small text-muted">{page.description}</span>
             </a>
           </li>
         ))}
       </ul>
-      <p class="mt-6 text-sm text-base-content/70">
-        Or <a href="/packing-list/" class="link link-primary font-semibold">build one from scratch</a>{" "}
+      <p class="mt-6 text-small text-muted">
+        Or <a href="/packing-list/" class="ts-link text-ink">build one from scratch</a>{" "}
         with the packing list generator.
       </p>
     </section>

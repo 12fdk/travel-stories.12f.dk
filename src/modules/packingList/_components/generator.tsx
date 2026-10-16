@@ -171,7 +171,7 @@ function Generator({
   return (
     <div>
       <form
-        className="packing-list-controls rounded-box border border-base-300 bg-base-200/60 p-5 sm:p-6"
+        className="packing-list-controls rounded-ui bg-surface p-5 sm:p-7"
         onSubmit={(event) => event.preventDefault()}
         aria-label="Packing list options"
       >
@@ -179,13 +179,13 @@ function Generator({
           <div>
             <label
               htmlFor="trip-type"
-              className="mb-1.5 block text-sm font-semibold"
+              className="mb-1.5 block text-small font-medium"
             >
               Trip type
             </label>
             <select
               id="trip-type"
-              className="select select-bordered w-full bg-base-100"
+              className="select w-full rounded-ui bg-ground text-body"
               value={options.type}
               onChange={(event) =>
                 update({ type: event.target.value as TripType })
@@ -202,13 +202,13 @@ function Generator({
           <div>
             <label
               htmlFor="trip-days"
-              className="mb-1.5 block text-sm font-semibold"
+              className="mb-1.5 block text-small font-medium"
             >
               How long
             </label>
             <select
               id="trip-days"
-              className="select select-bordered w-full bg-base-100"
+              className="select w-full rounded-ui bg-ground text-body"
               value={options.days}
               onChange={(event) =>
                 update({ days: Number(event.target.value) })
@@ -230,13 +230,13 @@ function Generator({
           <div>
             <label
               htmlFor="trip-climate"
-              className="mb-1.5 block text-sm font-semibold"
+              className="mb-1.5 block text-small font-medium"
             >
               Climate
             </label>
             <select
               id="trip-climate"
-              className="select select-bordered w-full bg-base-100"
+              className="select w-full rounded-ui bg-ground text-body"
               value={options.climate}
               onChange={(event) =>
                 update({ climate: event.target.value as Climate })
@@ -252,13 +252,13 @@ function Generator({
         </div>
 
         <fieldset className="mt-5">
-          <legend className="mb-2 text-sm font-semibold">Also</legend>
+          <legend className="mb-2 text-small font-medium">Also</legend>
           <div className="flex flex-wrap gap-x-6 gap-y-3">
             {TOGGLES.map(({ key, label }) => (
               <label
                 key={key}
                 htmlFor={`opt-${key}`}
-                className="flex cursor-pointer items-center gap-2 text-sm font-medium"
+                className="flex min-h-[44px] cursor-pointer items-center gap-2 text-small"
               >
                 <input
                   type="checkbox"
@@ -276,10 +276,10 @@ function Generator({
         </fieldset>
       </form>
 
-      <div className="packing-list-summary mt-8 flex flex-wrap items-center justify-between gap-4">
+      <div className="packing-list-summary mt-16 flex flex-wrap items-center justify-between gap-4">
         <div>
-          <h2 className="m-0 text-2xl font-bold">Your list</h2>
-          <p className="m-0 mt-1 text-base-content/70">
+          <h2 className="m-0 text-head font-light">Your list</h2>
+          <p className="m-0 mt-2 text-body text-muted">
             {/* first-letter, not `capitalize` — that title-cases every word. */}
             <span className="inline-block first-letter:uppercase">{summary}</span> ·{" "}
             <span aria-live="polite">
@@ -290,21 +290,21 @@ function Generator({
         <div className="packing-list-actions flex flex-wrap gap-2">
           <button
             type="button"
-            className="btn btn-sm border-base-300 bg-base-100 hover:bg-base-200"
+            className="ts-button ts-button--quiet !min-h-[44px] !text-small"
             onClick={() => window.print()}
           >
             Print
           </button>
           <button
             type="button"
-            className="btn btn-sm border-base-300 bg-base-100 hover:bg-base-200"
+            className="ts-button ts-button--quiet !min-h-[44px] !text-small"
             onClick={copy}
           >
             {confirmation === "copy" ? "Copied" : "Copy"}
           </button>
           <button
             type="button"
-            className="btn btn-sm border-base-300 bg-base-100 hover:bg-base-200"
+            className="ts-button ts-button--quiet !min-h-[44px] !text-small"
             onClick={download}
           >
             {confirmation === "download" ? "Downloaded" : "Download .txt"}
@@ -312,7 +312,7 @@ function Generator({
           {packed > 0 && (
             <button
               type="button"
-              className="btn btn-ghost btn-sm"
+              className="min-h-[44px] px-2 text-small text-ink"
               onClick={reset}
             >
               Clear ticks
@@ -332,16 +332,16 @@ function Generator({
         {total} items · {summary} · travel-stories.12f.dk/packing-list/
       </p>
 
-      <div className="mt-6">
+      <div className="mt-8">
         <ListView sections={sections} checked={checked} onToggle={toggle} />
       </div>
 
       {appStoreLink && (
-      <aside className="packing-list-cta mt-4 rounded-box border border-primary/20 bg-primary/5 p-6 sm:p-8">
-        <h2 className="m-0 text-xl font-bold sm:text-2xl">
+      <aside className="packing-list-cta mt-6 rounded-ui bg-field p-7 text-field-ink sm:p-10">
+        <h2 className="m-0 text-lead">
           Take this list with you
         </h2>
-        <p className="mb-5 mt-2 max-w-2xl text-base-content/75">
+        <p className="mb-7 mt-3 max-w-2xl text-body text-field-muted">
           A printed list stays at home in the drawer. Travel Stories keeps the
           same checklist on your phone next to the itinerary, the bookings and
           the budget — offline, free, and reusable on the next trip so you never
@@ -352,7 +352,7 @@ function Generator({
           target="_blank"
           rel="noopener noreferrer"
           data-umami-event="packing-list-app-cta"
-          className="btn border-none bg-primary text-primary-content shadow-md shadow-primary/30 hover:brightness-110"
+          className="ts-button"
         >
           Open this list in Travel Stories — free
         </a>

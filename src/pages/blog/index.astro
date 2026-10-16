@@ -63,38 +63,35 @@ const postListNode = {
   extraGraphNodes={[blogNode, postListNode]}
   hideAppBanner={true}
 >
-  <main id="main" class="max-w-screen-lg mx-auto px-4 py-12 md:py-20">
-    <header class="mb-14 max-w-3xl">
-      <p class="m-0 flex items-center gap-3 text-sm font-semibold uppercase tracking-wide text-base-content/50">
-        <span class="inline-block h-0.5 w-8 bg-primary"></span>
-        Travel Stories Blog
-      </p>
-      <h1 class="mb-4 mt-5 text-4xl font-extrabold leading-[1.05] md:text-5xl">
-        Plan better trips. Keep better memories.
+  <main id="main" class="mx-auto max-w-[1440px] px-[var(--gutter)] pb-8 pt-[clamp(56px,8vw,128px)]">
+    <header class="max-w-[64rem]" data-reveal>
+      <h1 class="text-display font-light">
+        Travel planning guides
       </h1>
-      <p class="text-lg leading-relaxed text-base-content/70">
-        Practical guides on planning, packing, and budgeting your trips — and on
-        holding onto them afterwards. Real checklists, real methods, no fluff.
+      <p class="mt-8 max-w-[40ch] text-lead text-ink">
+        Plan better trips. Keep better memories. Practical guides on planning,
+        packing and budgeting your trips, and on holding onto them afterwards.
       </p>
-      <p class="mt-5 text-base text-base-content/70">
+      <p class="mt-5 text-body text-muted">
         Looking for a checklist rather than an article? The{" "}
-        <a href="/packing-list/" class="link link-primary font-semibold">
-          packing list generator
-        </a>{" "}
-        builds one for your trip — free, no sign-up, printable.
+        <a href="/packing-list/" class="ts-link text-ink">packing list generator</a>{" "}
+        builds one for your trip: free, no sign-up, printable.
       </p>
     </header>
 
     {
       postsWithMeta.length === 0 ? (
-        <p class="text-base-content/60">No posts yet — coming soon.</p>
+        <p class="mt-16 text-body text-muted">No posts yet.</p>
       ) : (
-        <ul class="grid list-none gap-8 p-0 md:grid-cols-2">
+        <ul class="mt-[clamp(64px,8vw,128px)] flex list-none flex-col gap-[clamp(56px,7vw,112px)] p-0">
           {postsWithMeta.map(({ post, minutes }, index) => (
-            <li class="group m-0 overflow-hidden rounded-box border border-base-300 bg-base-100 p-0 transition-colors hover:border-base-content/30">
-              <a href={`/blog/${post.slug}/`} class="flex h-full flex-col">
+            <li class="m-0 p-0" data-reveal>
+              <a
+                href={`/blog/${post.slug}/`}
+                class="group grid items-center gap-6 md:grid-cols-12 md:gap-10"
+              >
                 {post.data.cover && (
-                  <div class="overflow-hidden border-b border-base-300 bg-base-200">
+                  <div class={`overflow-hidden rounded-ui bg-surface ${index === 0 ? "md:col-span-7" : "md:col-span-5"}`}>
                     <img
                       src={post.data.cover}
                       alt={post.data.coverAlt ?? ""}
@@ -102,33 +99,23 @@ const postListNode = {
                       height={360}
                       loading={index < 2 ? "eager" : "lazy"}
                       decoding="async"
-                      class="aspect-[16/9] w-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.03]"
+                      class="aspect-[16/9] w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
                     />
                   </div>
                 )}
-                <div class="flex flex-1 flex-col p-6 sm:p-7">
-                  <div class="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-base-content/40">
+                <div class={index === 0 ? "md:col-span-5" : "md:col-span-6 md:col-start-7"}>
+                  <h2 class="text-lead text-ink">
+                    <span class="ts-link">{post.data.title}</span>
+                  </h2>
+                  <p class="mt-3 max-w-[52ch] text-body text-muted">
+                    {post.data.description}
+                  </p>
+                  <p class="mt-4 text-small text-muted tabular">
                     <time datetime={post.data.publishDate.toISOString()}>
                       {formatDate(post.data.publishDate)}
                     </time>
-                    <span aria-hidden="true">·</span>
-                    <span>{minutes} min</span>
-                    {post.data.tags.slice(0, 2).map((tag) => (
-                      <>
-                        <span aria-hidden="true">·</span>
-                        <span>{tag}</span>
-                      </>
-                    ))}
-                  </div>
-                  <h2 class="mb-0 mt-3 text-xl font-bold leading-snug text-base-content transition-colors group-hover:text-primary sm:text-2xl">
-                    {post.data.title}
-                  </h2>
-                  <p class="mt-3 text-base leading-relaxed text-base-content/70">
-                    {post.data.description}
+                    {" · "}{minutes} min
                   </p>
-                  <span class="mt-5 inline-block self-start border-b-2 border-primary pb-1 text-sm font-semibold text-base-content">
-                    Read more
-                  </span>
                 </div>
               </a>
             </li>

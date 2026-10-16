@@ -16,8 +16,10 @@ function CookiesPolicyPage({ config }: Props) {
     <ConfigContext.Provider value={config}>
       <main>
         <Navbar />
-        <section className="max-w-screen-lg mx-auto py-4 px-4 md:py-16">
-          <Markdown className="prose">{cookiesPolicy.content}</Markdown>
+        <section className="mx-auto max-w-[46rem] px-[var(--gutter)] pb-[clamp(96px,10vw,160px)] pt-[clamp(40px,6vw,96px)]">
+          <div data-reveal-each className="prose max-w-none prose-h1:text-head prose-h1:font-light">
+            <Markdown>{cookiesPolicy.content}</Markdown>
+          </div>
         </section>
         <AppBanner />
         <Footer />

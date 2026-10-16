@@ -14,21 +14,21 @@ const pages = CURATED_PAGES.filter((page) => page.slug !== currentSlug);
 const shown = limit ? pages.slice(0, limit) : pages;
 ---
 
-<section aria-labelledby="related-lists" class="mt-16">
-  <h2 id="related-lists" class="mb-2 text-2xl font-bold">{heading}</h2>
-  <p class="mb-6 max-w-2xl text-base-content/70">
-    Each one is a full list with advice specific to that trip — and the
+<section aria-labelledby="related-lists" class="mt-24">
+  <h2 id="related-lists" class="mb-3 text-head font-light">{heading}</h2>
+  <p class="mb-8 max-w-2xl text-body text-muted">
+    Each one is a full list with advice specific to that trip, and the
     generator underneath it, so you can adjust it to yours.
   </p>
-  <ul class="grid list-none grid-cols-1 gap-3 p-0 sm:grid-cols-2 lg:grid-cols-3">
+  <ul class="m-0 list-none columns-1 gap-10 p-0 sm:columns-2 lg:columns-3" data-reveal-each>
     {
       shown.map((page) => (
-        <li class="m-0">
+        <li class="m-0 break-inside-avoid">
           <a
             href={`/packing-list/${page.slug}/`}
-            class="flex h-full items-center rounded-box border border-base-300 bg-base-100 px-4 py-3 text-sm font-medium leading-snug transition-colors hover:border-primary/40 hover:text-primary"
+            class="flex min-h-[44px] items-center py-1 text-body text-ink"
           >
-            {page.h1}
+            <span class="ts-link">{page.h1}</span>
           </a>
         </li>
       ))

@@ -36,6 +36,16 @@ const sv: Translation = {
     },
     pricingFootnote:
       "Priserna visas i USD; din App Store-butik avgör det exakta lokala priset. Ingen prenumeration – Premium är ett engångsköp, ditt för alltid.",
+    live: {
+      departs: "Avresa om",
+      length: "Resans längd",
+      remind: "Påminnelse",
+      nDays: "{n} dagar",
+      nDaysBefore: "{n} dagar före",
+      daysToGo: "dagar kvar",
+      tripName: "Porto och Lissabon",
+    },
+    photoCredits: "Fotografier",
   },
   facts: [
     { label: "Pris", value: "Gratis" },

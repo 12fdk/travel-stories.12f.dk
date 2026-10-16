@@ -36,6 +36,16 @@ const es: Translation = {
     },
     pricingFootnote:
       "Precios mostrados en USD; tu tienda del App Store fija el precio local exacto. Sin suscripción: Premium es un pago único, tuyo para siempre.",
+    live: {
+      departs: "Salida en",
+      length: "Duración del viaje",
+      remind: "Recordatorio",
+      nDays: "{n} días",
+      nDaysBefore: "{n} días antes",
+      daysToGo: "días para salir",
+      tripName: "Oporto y Lisboa",
+    },
+    photoCredits: "Fotografías",
   },
   facts: [
     { label: "Precio", value: "Gratis" },

@@ -31,8 +31,9 @@ function ThemeSwitcher() {
   const isDarkMode = mode === darkTheme;
 
   return (
-    <label className="flex cursor-pointer gap-2 items-center mr-4 md:mr-0">
+    <label className="flex min-h-[44px] cursor-pointer items-center gap-2 text-ink">
       <svg
+        aria-hidden="true"
         xmlns="http://www.w3.org/2000/svg"
         width="20"
         height="20"
@@ -60,6 +61,7 @@ function ThemeSwitcher() {
         }}
       />
       <svg
+        aria-hidden="true"
         xmlns="http://www.w3.org/2000/svg"
         width="20"
         height="20"

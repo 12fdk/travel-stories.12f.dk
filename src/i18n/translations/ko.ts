@@ -36,6 +36,16 @@ const ko: Translation = {
     },
     pricingFootnote:
       "표시된 가격은 USD 기준이며, 실제 가격은 이용 중인 App Store 스토어에 따라 결정됩니다. 구독이 아닙니다 — 프리미엄은 한 번만 결제하면 평생 이용할 수 있습니다.",
+    live: {
+      departs: "출발까지",
+      length: "여행 기간",
+      remind: "알림",
+      nDays: "{n}일",
+      nDaysBefore: "{n}일 전",
+      daysToGo: "일 남음",
+      tripName: "포르투와 리스본",
+    },
+    photoCredits: "사진",
   },
   facts: [
     { label: "가격", value: "무료" },

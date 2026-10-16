@@ -118,8 +118,8 @@ export interface AppStoreReview {
 }
 
 const REVIEW_STOREFRONTS = ["us", "gb", "ca", "au", "de", "dk", "nl", "se", "no"];
-/** Minimum usable written reviews before the section renders at all. */
-export const MIN_REVIEWS_TO_SHOW = 3;
+import { MIN_REVIEWS_TO_SHOW } from "./reviewsGate";
+export { MIN_REVIEWS_TO_SHOW };
 /** Only quote clearly positive reviews. */
 const MIN_REVIEW_RATING = 4;
 

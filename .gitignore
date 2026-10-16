@@ -29,3 +29,6 @@ screenshoots/
 
 # reddit-topics.py feed cache
 .cache/
+
+# design-taste-frontend working files (screenshots, direction sheet)
+.taste-skill/

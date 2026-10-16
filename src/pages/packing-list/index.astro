@@ -92,26 +92,32 @@ const webAppNode = {
   bodyClass="packing-page"
   breadcrumbTrail={[{ name: "Packing lists", item: canonicalURL.href }]}
 >
-  <main id="main" class="mx-auto max-w-screen-lg px-4 py-12 md:py-16">
-    <nav aria-label="Breadcrumb" class="mb-6 text-sm text-base-content/60">
-      <a href="/" class="hover:text-primary">Home</a>
+  <main id="main" class="mx-auto max-w-[1440px] px-[var(--gutter)] pb-8 pt-[clamp(40px,6vw,96px)]">
+    <nav aria-label="Breadcrumb" class="mb-8 text-small text-muted">
+      <a href="/" class="ts-link">Home</a>
       <span class="mx-1.5" aria-hidden="true">/</span>
       <span>Packing lists</span>
     </nav>
 
-    <header class="mb-10 max-w-3xl">
-      <p class="m-0 flex items-center gap-3 text-sm font-semibold uppercase tracking-wide text-base-content/50">
-        <span class="inline-block h-0.5 w-8 bg-primary"></span>
-        Free tool
-      </p>
-      <h1 class="mb-4 mt-5 text-4xl font-extrabold leading-[1.05] md:text-5xl">
-        Packing list generator
-      </h1>
-      <p class="text-lg leading-relaxed text-base-content/75" data-speakable>
-        Choose the kind of trip, how long you're going, and what the weather
-        will do. You get a categorised checklist you can tick off, print, copy,
-        or download — no account, no email address, no install.
-      </p>
+    <header class="mb-16 grid items-end gap-10 lg:grid-cols-12">
+      <div class="lg:col-span-6 lg:pb-4" data-reveal>
+        <h1 class="mb-6 text-head font-light">
+          Packing list generator
+        </h1>
+        <p class="text-lead text-ink" data-speakable>
+          Choose the kind of trip, how long you're going, and what the weather
+          will do. You get a categorised checklist you can tick off, print, copy,
+          or download — no account, no email address, no install.
+        </p>
+      </div>
+      <img
+        src="/images/how-it-works/03-organize.webp"
+        alt="A phone, a passport wallet, keys and travel documents laid out for packing"
+        width="784"
+        height="1168"
+        fetchpriority="high"
+        class="aspect-[16/9] w-full rounded-ui object-cover lg:col-span-6 lg:col-start-7 lg:aspect-auto lg:h-[min(72svh,720px)]"
+      />
     </header>
 
     <div class="packing-list-root">
@@ -124,11 +130,11 @@ const webAppNode = {
       />
     </div>
 
-    <section class="mt-16 max-w-3xl" aria-labelledby="how-it-works">
-      <h2 id="how-it-works" class="mb-4 text-2xl font-bold">
+    <section class="mt-24 max-w-[46rem]" aria-labelledby="how-it-works">
+      <h2 id="how-it-works" class="mb-6 text-head font-light">
         How the list is put together
       </h2>
-      <div class="space-y-4 text-base-content/80">
+      <div class="space-y-4 text-body text-ink">
         <p class="m-0">
           Every list starts from the same base: the documents, medication, tech
           and clothing that no trip works without. On top of that go three sets
@@ -150,7 +156,7 @@ const webAppNode = {
         </p>
         <p class="m-0">
           If you'd rather read the reasoning at length than tick a list, the{" "}
-          <a href="/blog/packing-list-for-international-travel/" class="link link-primary">
+          <a href="/blog/packing-list-for-international-travel/" class="ts-link font-medium">
             complete guide to packing for international travel
           </a>{" "}
           covers the clothing formula, what to leave at home, and the

@@ -1,0 +1,47 @@
+---
+/**
+ * Section entrances for every page. Marks <html> with `js` only once this
+ * script runs, so content is never hidden when scripts fail. Uses a data
+ * attribute rather than a class, because React re-renders own className.
+ */
+---
+
+<script is:inline>
+  (function () {
+    var root = document.documentElement;
+    // [data-reveal-each]: every child is revealed on its own as it arrives
+    // (long articles, lists), instead of all at once with the container.
+    Array.prototype.forEach.call(
+      document.querySelectorAll("[data-reveal-each]"),
+      function (parent) {
+        Array.prototype.forEach.call(parent.children, function (child) {
+          child.setAttribute("data-reveal-self", "");
+        });
+      },
+    );
+    var els = Array.prototype.slice.call(
+      document.querySelectorAll("[data-reveal],[data-reveal-self]"),
+    );
+    els.forEach(function (el) {
+      if (!el.hasAttribute("data-reveal")) return;
+      Array.prototype.forEach.call(el.children, function (child, i) {
+        child.style.setProperty("--i", String(Math.min(i, 8)));
+      });
+    });
+    if (!("IntersectionObserver" in window)) return;
+    root.classList.add("js");
+    var io = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          entry.target.setAttribute("data-in", "");
+          io.unobserve(entry.target);
+        });
+      },
+      { rootMargin: "0px 0px -8% 0px", threshold: 0.06 },
+    );
+    els.forEach(function (el) {
+      io.observe(el);
+    });
+  })();
+</script>
