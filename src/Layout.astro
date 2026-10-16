@@ -4,8 +4,9 @@ import fs from "node:fs";
 import path from "node:path";
 import type { TemplateConfig } from "utils/configType";
 import { getLocale, DEFAULT_LOCALE, LOCALES } from "./i18n/locales";
+import RevealScript from "./components/RevealScript.astro";
 
-const { backgroundGrid, seo, logo, theme, forceTheme, appStoreLink, name, appStore, home, noindex, locale, localeAlternates } =
+const { seo, logo, theme, forceTheme, appStoreLink, name, appStore, home, noindex, locale, localeAlternates } =
   Astro.props as TemplateConfig & { noindex?: boolean };
 
 // Locale metadata (attached by src/i18n/getConfig.ts on localized homepages).
@@ -262,7 +263,7 @@ const faqNode =
         "mainEntity": faqEntities,
         "speakable": {
           "@type": "SpeakableSpecification",
-          "cssSelector": [".faq-item summary", ".faq-item summary + div"],
+          "cssSelector": [".faq-item"],
         },
       }
     : null;
@@ -326,13 +327,13 @@ const graph = [
     {logo.startsWith("http") && <link rel="apple-touch-icon" href={logo} />}
     <meta name="generator" content={Astro.generator} />
 
-    <!-- Preload critical fonts -->
-    <link rel="preload" href="/fonts/Inter-Regular.woff2" as="font" type="font/woff2" crossorigin />
-    <link rel="preload" href="/fonts/Inter-Bold.woff2" as="font" type="font/woff2" crossorigin />
+    <!-- Work Sans: the site's one family (light display, regular text) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
 
-    <!-- Preload the first hero screenshot (same asset used at all viewports
-         inside the fixed-width iPhone frame). -->
-    <link rel="preload" href="/screenshots/packing-list.webp" as="image" type="image/webp" fetchpriority="high" />
+    <!-- The stage photograph is the first thing painted on the homepage. -->
+    {isHome && <link rel="preload" href="/images/world/lisbon-tram.webp" as="image" type="image/webp" fetchpriority="high" />}
 
     <!-- Preconnect to external resources -->
     <link rel="preconnect" href="https://umami.robert-jensen.dk" />
@@ -355,8 +356,8 @@ const graph = [
     <meta name="author" content="Robert Jensen" />
     <meta name="publisher" content="12f.dk" />
     <meta name="robots" content={noindex ? "noindex, nofollow" : "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"} />
-    <meta name="theme-color" content="#007AFF" media="(prefers-color-scheme: light)" />
-    <meta name="theme-color" content="#0A84FF" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#dfdedb" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#191915" media="(prefers-color-scheme: dark)" />
     <meta name="color-scheme" content="light dark" />
     <meta name="format-detection" content="telephone=no" />
 
@@ -433,7 +434,7 @@ const graph = [
   </head>
   <body class="relative">
     <a href="#main" class="skip-link">Skip to main content</a>
-    {backgroundGrid && <div class="backgroundGrid" />}
-    <slot />
+        <slot />
+    <RevealScript />
   </body>
 </html>

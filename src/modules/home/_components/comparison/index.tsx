@@ -1,11 +1,29 @@
-import { motion } from "framer-motion";
 import { useContext } from "react";
-import AnimatedText from "../../../../components/animatedText";
 import { ConfigContext } from "../../../../utils/configContext";
+import { withBase } from "../../../../utils/basePath";
+
+/** Shallow scallops along the sheet's top and bottom edge. */
+function Scallops({ flip = false }: { flip?: boolean }) {
+  return (
+    <svg
+      className={`block h-[10px] w-full text-[var(--paper)] ${flip ? "rotate-180" : ""}`}
+      aria-hidden="true"
+      preserveAspectRatio="none"
+    >
+      <defs>
+        <pattern id={`scallop-${flip ? "b" : "t"}`} width="20" height="10" patternUnits="userSpaceOnUse">
+          <circle cx="10" cy="10" r="10" fill="currentColor" />
+        </pattern>
+      </defs>
+      <rect width="100%" height="10" fill={`url(#scallop-${flip ? "b" : "t"})`} />
+    </svg>
+  );
+}
 
 /**
- * The real competitor isn't another app — it's the notes-app / spreadsheet /
- * group-chat chaos people already use. One honest table, no named rivals.
+ * The real competitor isn't another app; it's the notes app, the spreadsheet
+ * and the group chat. Set as one printed sheet over a photograph of the
+ * river the sample trip ends on.
  */
 function Comparison() {
   const {
@@ -14,97 +32,46 @@ function Comparison() {
   if (!comparison) return null;
 
   return (
-    <section id={comparison.id} className="border-y border-base-300 bg-base-200/60">
-      <div className="mx-auto max-w-screen-lg px-4 py-16 md:py-24">
-        <div className="mb-10 max-w-none flex flex-col items-center prose prose-lg text-center">
-          <h2 className="mb-0">
-            <AnimatedText text={comparison.title} />
-          </h2>
-          {comparison.subtitle && (
-            <motion.p
-              initial={{ y: "50%", opacity: 0 }}
-              whileInView={{ y: "0%", opacity: 1 }}
-              viewport={{ once: true }}
-              className="text-xl max-w-lg text-base-content"
-            >
-              {comparison.subtitle}
-            </motion.p>
-          )}
-        </div>
-
-        {/* Mobile: one stacked card per aspect — no horizontal scroll. */}
-        <motion.dl
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-          className="divide-y divide-base-300 border-y border-base-300 md:hidden"
-        >
-          {comparison.rows.map((row) => (
-            <div key={row.aspect} className="py-5">
-              <dt className="text-xs uppercase tracking-widest text-base-content/50">
-                {row.aspect}
-              </dt>
-              <dd className="m-0 mt-2 text-sm leading-relaxed text-base-content/60">
-                <span className="mr-2 text-xs uppercase tracking-widest text-base-content/40">
-                  {comparison.columns.them}
-                </span>
-                {row.them}
-              </dd>
-              <dd className="m-0 mt-2 text-sm font-medium leading-relaxed text-base-content">
-                <span className="mr-2 text-xs uppercase tracking-widest text-primary">
-                  {comparison.columns.us}
-                </span>
-                {row.us}
-              </dd>
-            </div>
-          ))}
-        </motion.dl>
-
-        {/* Desktop: the honest three-column table. */}
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-          className="hidden md:block"
-        >
-          <table className="w-full border-collapse text-sm">
-            <thead>
-              <tr className="border-b border-base-300">
-                <th className="w-40 py-3 pr-4 text-left align-bottom" aria-label="Aspect" />
-                <th className="py-3 pr-4 text-left align-bottom font-normal">
-                  <span className="text-xs uppercase tracking-widest text-base-content/50">
-                    {comparison.columns.them}
-                  </span>
-                </th>
-                <th className="py-3 text-left align-bottom font-normal">
-                  <span className="flex items-center gap-2 text-xs uppercase tracking-widest text-base-content">
-                    <span className="inline-block h-0.5 w-4 bg-primary" aria-hidden="true" />
-                    {comparison.columns.us}
-                  </span>
-                </th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-base-300">
+    <section id={comparison.id} aria-labelledby="comparison-heading" className="relative overflow-hidden">
+      <img
+        src={withBase("/images/world/porto-rabelo.webp")}
+        srcSet={`${withBase("/images/world/porto-rabelo-900.webp")} 900w, ${withBase("/images/world/porto-rabelo.webp")} 1920w`}
+        sizes="100vw"
+        alt="Rabelo boats on the Douro river in front of the Ribeira quarter of Porto"
+        width={1920}
+        height={1281}
+        loading="lazy"
+        className="absolute inset-0 h-full w-full object-cover"
+      />
+      <div className="relative mx-auto grid max-w-[1440px] px-[10px] py-[clamp(72px,10vw,160px)] sm:px-[var(--gutter)] lg:grid-cols-12">
+        <div className="lg:col-span-6 lg:col-start-7" data-reveal-self>
+          <Scallops />
+          <div className="bg-[var(--paper)] px-5 py-12 text-center sm:px-16 sm:py-16">
+            <h2 id="comparison-heading" className="mx-auto text-lead">
+              {comparison.title}
+            </h2>
+            {comparison.subtitle && (
+              <p className="mx-auto mt-5 max-w-[40ch] text-body text-muted">{comparison.subtitle}</p>
+            )}
+            <dl className="mt-14 flex flex-col gap-11">
               {comparison.rows.map((row) => (
-                <tr key={row.aspect}>
-                  <td className="py-4 pr-4 align-top">
-                    <span className="text-xs uppercase tracking-widest text-base-content/50">
-                      {row.aspect}
-                    </span>
-                  </td>
-                  <td className="py-4 pr-4 align-top leading-relaxed text-base-content/60">
-                    {row.them}
-                  </td>
-                  <td className="py-4 align-top font-medium leading-relaxed text-base-content">
-                    {row.us}
-                  </td>
-                </tr>
+                <div key={row.aspect}>
+                  <dt className="text-lead text-ink">{row.aspect}</dt>
+                  <dd className="mx-auto mt-2 max-w-[38ch] text-body text-ink">{row.us}</dd>
+                  <dd className="mx-auto mt-1 max-w-[38ch] text-small text-muted">
+                    {comparison.columns.them}: {row.them}
+                  </dd>
+                </div>
               ))}
-            </tbody>
-          </table>
-        </motion.div>
+            </dl>
+            <p className="mt-14 text-small text-muted">
+              {comparison.columns.us}
+              <br />
+              {comparison.columns.them}
+            </p>
+          </div>
+          <Scallops flip />
+        </div>
       </div>
     </section>
   );

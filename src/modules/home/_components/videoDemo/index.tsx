@@ -1,13 +1,11 @@
-import { motion } from "framer-motion";
 import { useContext, useEffect, useRef } from "react";
-import AnimatedText from "../../../../components/animatedText";
 import { ConfigContext } from "../../../../utils/configContext";
 import { withBase } from "../../../../utils/basePath";
 
 /**
- * "See it in action" — the real App Store preview video in a phone-shaped
- * player. Muted, no controls chrome, plays only while scrolled into view,
- * honors prefers-reduced-motion by never autoplaying.
+ * "See it in action": the real App Store preview video on the dark field,
+ * the one place the page breaks out of the split at full width. Muted, plays
+ * only while in view, never autoplays under prefers-reduced-motion.
  */
 function VideoDemo() {
   const {
@@ -37,30 +35,21 @@ function VideoDemo() {
   if (!videoDemo) return null;
 
   return (
-    <section id={videoDemo.id} className="bg-neutral text-neutral-content">
-      <div className="mx-auto flex max-w-screen-lg flex-col items-center gap-10 px-4 py-16 md:flex-row md:py-24">
-        <div className="flex-1 prose prose-lg">
-          <h2 className="text-neutral-content">
-            <AnimatedText text={videoDemo.title} />
+    <section
+      id={videoDemo.id}
+      aria-labelledby="demo-heading"
+      className="bg-field text-field-ink"
+    >
+      <div className="mx-auto grid max-w-[1440px] items-end gap-12 px-[var(--gutter)] py-[clamp(96px,11vw,176px)] lg:grid-cols-12">
+        <div className="lg:col-span-6 lg:pb-8" data-reveal>
+          <h2 id="demo-heading" className="text-head font-light">
+            {videoDemo.title}
           </h2>
           {videoDemo.subtitle && (
-            <motion.p
-              initial={{ y: "50%", opacity: 0 }}
-              whileInView={{ y: "0%", opacity: 1 }}
-              viewport={{ once: true }}
-              className="text-neutral-content/80"
-            >
-              {videoDemo.subtitle}
-            </motion.p>
+            <p className="mt-6 max-w-[34ch] text-lead text-field-muted">{videoDemo.subtitle}</p>
           )}
         </div>
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-          className="w-[260px] shrink-0 overflow-hidden rounded-[2.5rem] border-4 border-base-content/20 shadow-2xl"
-        >
+        <div className="lg:col-span-5 lg:col-start-8" data-reveal-self>
           <video
             ref={videoRef}
             muted
@@ -69,11 +58,13 @@ function VideoDemo() {
             preload="none"
             poster={withBase(videoDemo.poster)}
             aria-label={videoDemo.videoAriaLabel ?? "App demo video"}
-            className="block h-auto w-full"
+            width={590}
+            height={1279}
+            className="mx-auto block h-auto w-full max-w-[340px] rounded-ui lg:mr-0"
           >
             <source src={withBase(videoDemo.video)} type="video/mp4" />
           </video>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

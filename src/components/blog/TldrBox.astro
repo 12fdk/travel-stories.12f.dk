@@ -14,21 +14,15 @@ const items = rawItems.map((item) => withCampaignInHtml(item, "blog"));
 {
   items.length > 0 && (
     <aside
-      class="not-prose my-8 rounded-2xl border-l-4 border-primary bg-base-200 p-5 sm:p-6"
+      data-reveal-self
+      class="not-prose my-10 rounded-ui bg-surface p-6 sm:p-8"
       data-speakable
       aria-label="Article summary"
     >
-      <p class="mb-3 text-sm font-bold uppercase tracking-wide text-primary">
-        TL;DR
-      </p>
-      <ul class="space-y-2 text-base-content">
+      <p class="mb-3 text-body font-medium text-ink">In short</p>
+      <ul class="m-0 flex list-disc flex-col gap-2 pl-5 text-body text-ink marker:text-muted">
         {items.map((item) => (
-          <li class="flex gap-2">
-            <span class="text-primary" aria-hidden="true">
-              ▸
-            </span>
-            <span set:html={item} />
-          </li>
+          <li><span set:html={item} /></li>
         ))}
       </ul>
     </aside>

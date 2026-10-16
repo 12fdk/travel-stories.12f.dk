@@ -16,27 +16,24 @@ function NotFound({ config }: Props) {
   return (
     <ConfigContext.Provider value={config}>
       <Navbar />
-      <main id="main" className="flex min-h-[60vh] items-center px-4 py-24">
-        <div className="mx-auto w-full max-w-screen-lg">
-          <p className="m-0 flex items-center gap-3 text-sm font-semibold uppercase tracking-wide text-base-content/50">
-            <span className="inline-block h-0.5 w-8 bg-primary" />
-            404 — Page not found
-          </p>
-          <h1 className="mt-4 text-4xl font-extrabold leading-[1.1] md:text-6xl">
+      <main id="main" className="px-[var(--gutter)] py-[clamp(96px,14vw,200px)]">
+        <div className="mx-auto w-full max-w-[1440px]" data-reveal>
+          <p className="text-display font-light tabular text-muted">404</p>
+          <h1 className="mt-6 max-w-[20ch] text-head font-light">
             This page wandered off the itinerary.
           </h1>
-          <p className="mt-6 max-w-xl leading-relaxed text-base-content/70">
+          <p className="mt-6 max-w-xl text-body text-ink">
             The page you're after was moved, renamed, or never existed. The rest
             of the site is right where you left it.
           </p>
-          <div className="mt-10 flex flex-wrap items-center gap-6">
-            <a href="/" className="btn btn-primary">
+          <div className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-4">
+            <a href="/" className="ts-button">
               Back to the homepage
             </a>
-            <a href="/blog/" className="link text-base-content/70">
+            <a href="/blog/" className="ts-link text-body text-ink">
               Read the blog
             </a>
-            <a href="/packing-list/" className="link text-base-content/70">
+            <a href="/packing-list/" className="ts-link text-body text-ink">
               Build a packing list
             </a>
             <a
@@ -44,7 +41,7 @@ function NotFound({ config }: Props) {
               target="_blank"
               rel="noopener noreferrer"
               data-umami-event="404-cta-click"
-              className="link text-base-content/70"
+              className="ts-link text-body text-ink"
             >
               Get the app
             </a>

@@ -1,69 +1,96 @@
-/* Self-hosted Inter font for better performance */
-@font-face {
-  font-family: "Inter";
-  src: url("/fonts/Inter-Regular.woff2") format("woff2");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
+/* ---------------------------------------------------------------------------
+   Tokens. Stone and blueprint: one ground, one ink, one blue for the action,
+   one dark field for the sections that change the whole page colour.
+   Everything below references these, never a raw colour.
+   --------------------------------------------------------------------------- */
+:root,
+[data-theme="travel"] {
+  --bg: #dfdedb;
+  --surface: #d3d2ce;
+  --surface-2: #c6c5c0;
+  --ink: #26251e;
+  --muted: #5a5850;
+  --accent: #2456d6;
+  --accent-ink: #ffffff;
+  --accent-press: #1c46b4;
+  --field: #26251e;
+  --field-ink: #e9e7e1;
+  --field-muted: #b4b1a6;
+  --paper: #efeeea;
+  --radius: 12px;
+
+  --step-small: clamp(0.875rem, 0.85rem + 0.1vw, 0.9375rem);
+  --step-body: clamp(1.0625rem, 1rem + 0.25vw, 1.1875rem);
+  --step-lead: clamp(1.25rem, 1.1rem + 0.7vw, 1.625rem);
+  --step-head: clamp(2rem, 1.2rem + 2vw, 3rem);
+  --step-display: clamp(3.5rem, 1rem + 8.4vw, 9.5rem);
+
+  --gutter: clamp(16px, 2.2vw, 32px);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur: 0.7s;
+  color-scheme: light;
 }
 
-@font-face {
-  font-family: "Inter";
-  src: url("/fonts/Inter-Medium.woff2") format("woff2");
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
+[data-theme="travel-dark"] {
+  --bg: #191915;
+  --surface: #23221d;
+  --surface-2: #2f2e28;
+  --ink: #e6e4de;
+  --muted: #a8a59a;
+  --accent: #7d9dff;
+  --accent-ink: #0c1433;
+  --accent-press: #a3baff;
+  --field: #0f0f0c;
+  --field-ink: #e6e4de;
+  --field-muted: #a8a59a;
+  --paper: #2a2924;
+  color-scheme: dark;
 }
 
-@font-face {
-  font-family: "Inter";
-  src: url("/fonts/Inter-SemiBold.woff2") format("woff2");
-  font-weight: 600;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Inter";
-  src: url("/fonts/Inter-Bold.woff2") format("woff2");
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-
-/* Keep CabinSketch for decorative elements if needed */
-@font-face {
-  font-family: "CabinSketch";
-  src: url("/fonts/CabinSketch.ttf") format("truetype");
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
+/* Before the inline theme script runs, follow the system setting. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="travel"]) {
+    --bg: #191915;
+    --surface: #23221d;
+    --surface-2: #2f2e28;
+    --ink: #e6e4de;
+    --muted: #a8a59a;
+    --accent: #7d9dff;
+    --accent-ink: #0c1433;
+    --accent-press: #a3baff;
+    --field: #0f0f0c;
+    --field-ink: #e6e4de;
+    --field-muted: #a8a59a;
+    --paper: #2a2924;
+  }
 }
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 6rem;
+  scroll-padding-top: 2rem;
+  background: var(--bg);
 }
 
-/* Respect user preference for reduced motion */
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "Work Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: var(--step-body);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: "kern", "liga";
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--accent-ink);
 }
 
 /* Accessible focus ring, global default */
 :focus-visible {
-  outline: 2px solid var(--fallback-p, #007AFF);
-  outline-offset: 2px;
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
   border-radius: 4px;
 }
 
@@ -74,10 +101,9 @@ html {
   top: 0;
   z-index: 100;
   padding: 0.75rem 1rem;
-  background: #000;
-  color: #fff;
-  border-radius: 0 0 0.5rem 0;
-  font-weight: 600;
+  background: var(--ink);
+  color: var(--bg);
+  font-weight: 500;
 }
 .skip-link:focus {
   left: 0;
@@ -90,22 +116,205 @@ details > summary {
 details > summary::-webkit-details-marker {
   display: none;
 }
-/* Smooth open animation for the FAQ */
-.faq-item[open] > div {
-  animation: faq-open 0.25s ease-out;
-}
-@keyframes faq-open {
-  from { opacity: 0; transform: translateY(-4px); }
-  to { opacity: 1; transform: translateY(0); }
+
+.tabular {
+  font-variant-numeric: tabular-nums;
 }
 
-/* Subtle fade-in for FAQ items; CSS-only so static HTML is crawler-visible */
-.faq-item {
-  animation: faq-fade-in 0.5s ease-out both;
+/* ---------------------------------------------------------------------------
+   The one button. Flat, one fill, the page radius. Press, hover and focus
+   all answer, with transform and colour only.
+   --------------------------------------------------------------------------- */
+.ts-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6em;
+  min-height: 52px;
+  padding: 0 1.4em;
+  border-radius: var(--radius);
+  background: var(--accent);
+  color: var(--accent-ink);
+  font-size: var(--step-body);
+  font-weight: 500;
+  line-height: 1;
+  white-space: nowrap;
+  transition: transform 0.18s var(--ease-out), background-color 0.18s ease;
 }
-@keyframes faq-fade-in {
-  from { opacity: 0; transform: translateY(6px); }
-  to { opacity: 1; transform: translateY(0); }
+.ts-button:hover {
+  background: var(--accent-press);
+  transform: translateY(-2px);
+}
+.ts-button:active {
+  transform: translateY(0) scale(0.98);
+}
+.ts-button--quiet {
+  background: var(--surface);
+  color: var(--ink);
+}
+.ts-button--quiet:hover {
+  background: var(--surface-2);
+}
+.ts-button--ink {
+  background: var(--ink);
+  color: var(--bg);
+}
+.ts-button--ink:hover {
+  background: var(--ink);
+  opacity: 0.88;
+}
+
+/* Text links that move: the underline grows from the left on hover. */
+.ts-link {
+  position: relative;
+  transition: color 0.2s ease;
+}
+.ts-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -3px;
+  height: 2px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+  transition: transform 0.3s var(--ease-out);
+}
+.ts-link:hover::after,
+.ts-link:focus-visible::after,
+a:hover > .ts-link::after,
+a:focus-visible > .ts-link::after,
+.ts-link[aria-current="page"]::after {
+  transform: scaleX(1);
+}
+
+/* ---------------------------------------------------------------------------
+   Entrances. Content is visible without script; with script, parts of each
+   section rise in one after another as the section arrives.
+   --------------------------------------------------------------------------- */
+.js [data-reveal] > *,
+.js [data-reveal-self] {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity var(--dur) var(--ease-out),
+    transform var(--dur) var(--ease-out);
+}
+.js [data-reveal] > * {
+  transition-delay: calc(var(--i, 0) * 80ms);
+}
+.js [data-reveal][data-in] > *,
+.js [data-reveal-self][data-in] {
+  opacity: 1;
+  transform: none;
+}
+
+/* The signature move: the wordmark settles from 0.94 to 1 as it arrives. */
+@supports (animation-timeline: view()) {
+  .ts-wordmark-scale {
+    animation: ts-wordmark linear both;
+    animation-timeline: view();
+    animation-range: entry 0% cover 45%;
+    transform-origin: 0 100%;
+  }
+  .ts-wordmark-shrink {
+    animation: ts-wordmark-out linear both;
+    animation-timeline: view();
+    animation-range: exit 0% exit 100%;
+    transform-origin: 100% 100%;
+  }
+}
+@keyframes ts-wordmark {
+  from { transform: scale(0.94); }
+  to { transform: scale(1); }
+}
+@keyframes ts-wordmark-out {
+  from { transform: scale(1); }
+  to { transform: scale(0.93) translateY(-2%); }
+}
+
+/* A slow drift on the stage photograph: the one picture that always moves. */
+@keyframes ts-drift {
+  from { transform: scale(1.06) translate3d(-1%, 0, 0); }
+  to { transform: scale(1.06) translate3d(1%, -1.5%, 0); }
+}
+.ts-drift {
+  animation: ts-drift 24s ease-in-out infinite alternate;
+}
+
+/* Respect user preference for reduced motion: keep the content, drop travel. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .js [data-reveal] > *,
+  .js [data-reveal-self] {
+    transform: none;
+    transition: opacity 0.2s linear;
+  }
+  .ts-drift,
+  .ts-wordmark-scale,
+  .ts-wordmark-shrink {
+    animation: none;
+  }
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Long-form reading (blog posts, legal pages): set in the page's own ink. */
+.prose {
+  --tw-prose-body: var(--ink);
+  --tw-prose-headings: var(--ink);
+  --tw-prose-lead: var(--ink);
+  --tw-prose-links: var(--accent);
+  --tw-prose-bold: var(--ink);
+  --tw-prose-counters: var(--muted);
+  --tw-prose-bullets: var(--muted);
+  --tw-prose-hr: transparent;
+  --tw-prose-quotes: var(--ink);
+  --tw-prose-quote-borders: var(--surface-2);
+  --tw-prose-captions: var(--muted);
+  --tw-prose-code: var(--ink);
+  --tw-prose-th-borders: var(--surface-2);
+  --tw-prose-td-borders: var(--surface);
+  font-size: var(--step-body);
+}
+.prose :where(h1, h2, h3, h4) {
+  font-weight: 400;
+  letter-spacing: -0.02em;
+}
+.prose :where(h2) {
+  font-size: clamp(1.625rem, 1.3rem + 1.2vw, 2.25rem);
+  line-height: 1.15;
+}
+.prose :where(h3) {
+  font-size: var(--step-lead);
+  font-weight: 500;
+}
+.prose :where(strong) {
+  font-weight: 500;
+}
+.prose :where(a) {
+  font-weight: 500;
+}
+.prose :where(hr) {
+  border: 0;
+  height: 0;
+  margin: 3rem 0;
+}
+.prose :where(blockquote) {
+  border-left: 0;
+  background: var(--surface);
+  padding: 1rem 1.25rem;
+  border-radius: var(--radius);
+  font-style: normal;
+}
+.prose :where(img) {
+  border-radius: var(--radius);
 }
 
 /* ---------------------------------------------------------------------------
@@ -128,7 +337,7 @@ details > summary::-webkit-details-marker {
    whole point is picking many. Square them off. */
 .packing-list-section .checkbox,
 .packing-list-controls .checkbox {
-  border-radius: 0.25rem;
+  border-radius: 4px;
 }
 
 /* Only ever visible on paper. */
@@ -190,7 +399,7 @@ details > summary::-webkit-details-marker {
     font-size: 9.5pt;
     text-transform: uppercase;
     letter-spacing: 0.04em;
-    border-bottom: 1px solid #999;
+    border-bottom: 1px solid #999; /* taste-skill-ignore: print rule / data-ui fragment or floating sheet */
   }
   .packing-list-section label {
     padding: 0.05rem 0 !important;
@@ -224,161 +433,534 @@ details > summary::-webkit-details-marker {
   }
 }
 
-/* Clean, modern body styling */
-body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-.backgroundGrid {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  z-index: -9;
-  background-size: 50px 50px;
-  background-image: linear-gradient(
-      rgba(200, 200, 200, 0.1) 1px,
-      transparent 1px
-    ),
-    linear-gradient(to right, rgba(200, 200, 200, 0.1) 1px, transparent 1px);
-}
-[data-theme="dark"] .backgroundGrid {
-  background-image: linear-gradient(
-      rgba(200, 200, 200, 0.03) 1px,
-      transparent 1px
-    ),
-    linear-gradient(to right, rgba(200, 200, 200, 0.03) 1px, transparent 1px);
-}
 
-/* iPhone 16 Pro CSS Frame */
-.iphone-frame {
-  --iphone-width: 280px;
-  --iphone-height: calc(var(--iphone-width) * 2.17);
-  --iphone-bezel: 10px;
-  --iphone-radius: 44px;
-  --iphone-screen-radius: 38px;
-  --iphone-color: #1a1a1a;
-  --iphone-border-color: #2a2a2a;
-
-  display: inline-block;
-  width: var(--iphone-width);
-  height: var(--iphone-height);
-}
-
-.iphone-device {
+/* ---------------------------------------------------------------------------
+   Homepage: the split stage (#88). Left, one photograph that never moves with
+   the app screen standing on it; right, a reading column.
+   --------------------------------------------------------------------------- */
+.ts-split {
   position: relative;
+}
+.ts-split__stage {
+  position: relative;
+  z-index: 0;
+  height: 58svh;
+  padding: 12px 12px 0;
+}
+.ts-split__column {
+  position: relative;
+  z-index: 1;
+  padding: 0 var(--gutter);
+}
+.ts-stage {
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+.ts-stage__photo {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, var(--iphone-color) 0%, #0a0a0a 100%);
-  border-radius: var(--iphone-radius);
-  box-shadow:
-    0 0 0 2px var(--iphone-border-color),
-    0 0 0 4px #3a3a3a,
-    0 20px 40px rgba(0, 0, 0, 0.4),
-    inset 0 0 2px rgba(255, 255, 255, 0.1);
-  overflow: hidden;
+  object-fit: cover;
+  object-position: 50% 40%;
 }
-
-/* Dynamic Island */
-.iphone-dynamic-island {
+.ts-stage__screens {
   position: absolute;
-  top: 12px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 90px;
-  height: 28px;
-  background: #000;
-  border-radius: 20px;
-  z-index: 20;
-  box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.8);
+  right: 8%;
+  bottom: 9%;
+  width: min(40vw, 172px);
+  aspect-ratio: 1206 / 2622;
+  transition: opacity 0.4s ease, transform 0.6s var(--ease-out);
 }
-
-/* Screen area */
-.iphone-screen {
+.ts-stage__screens.is-hidden {
+  opacity: 0;
+  transform: translateY(24px);
+}
+.ts-stage__screen {
   position: absolute;
-  top: var(--iphone-bezel);
-  left: var(--iphone-bezel);
-  right: var(--iphone-bezel);
-  bottom: var(--iphone-bezel);
-  background: #000;
-  border-radius: var(--iphone-screen-radius);
-  overflow: hidden;
-  /* Ensure crisp rendering of images inside */
-  -webkit-transform: translateZ(0);
-  transform: translateZ(0);
-  will-change: transform;
-}
-
-.iphone-screenshot {
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: top;
-  image-rendering: -webkit-optimize-contrast;
-  image-rendering: crisp-edges;
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-  transform: translateZ(0);
+  border-radius: var(--radius);
+  opacity: 0;
+  transform: translateY(14px) scale(0.985);
+  transition: opacity 0.45s ease, transform 0.6s var(--ease-out);
 }
-
-/* Side buttons - left side */
-.iphone-button-left {
-  position: absolute;
-  left: -3px;
-  width: 3px;
-  background: linear-gradient(90deg, #2a2a2a, #1a1a1a);
-  border-radius: 2px 0 0 2px;
+.ts-stage__screen.is-active {
+  opacity: 1;
+  transform: none;
 }
-
-.iphone-button-silent {
-  top: 100px;
-  height: 24px;
-}
-
-.iphone-button-volume-up {
-  top: 140px;
-  height: 44px;
-}
-
-.iphone-button-volume-down {
-  top: 195px;
-  height: 44px;
-}
-
-/* Side button - right side */
-.iphone-button-right {
-  position: absolute;
-  right: -3px;
-  width: 3px;
-  background: linear-gradient(270deg, #2a2a2a, #1a1a1a);
-  border-radius: 0 2px 2px 0;
-}
-
-.iphone-button-power {
-  top: 150px;
-  height: 70px;
-}
-
-/* Responsive sizing */
-@media (min-width: 640px) {
-  .iphone-frame {
-    --iphone-width: 320px;
-  }
+.ts-stage__card {
+  display: none;
 }
 
 @media (min-width: 1024px) {
-  .iphone-frame {
-    --iphone-width: 280px;
+  .ts-split {
+    display: grid;
+    grid-template-columns: 47vw minmax(0, 1fr);
+  }
+  .ts-split__stage {
+    position: sticky;
+    top: 0;
+    height: 100svh;
+    padding: 20px 0 20px 20px;
+  }
+  .ts-split__column {
+    padding: 0 var(--gutter) 0 clamp(40px, 5vw, 96px);
+    max-width: 760px;
+  }
+  .ts-stage__screens {
+    right: 8%;
+    top: 7%;
+    bottom: auto;
+    width: min(15vw, 27svh);
+  }
+  .ts-stage__card {
+    display: block;
+    position: absolute;
+    right: 7%;
+    bottom: 6%;
+    width: min(360px, 30vw);
+    max-height: calc(100svh - 120px);
+    overflow: hidden;
+    border-radius: var(--radius);
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.45s ease, transform 0.6s var(--ease-out);
+    pointer-events: none;
+  }
+  .ts-stage__card.is-active {
+    opacity: 1;
+    transform: none;
   }
 }
 
-/* Optional larger variant */
-.iphone-frame-lg {
-  --iphone-width: 360px;
+/* Hero, in the reading column. The name runs along its foot and crosses the
+   edge of the photograph. */
+.ts-hero {
+  display: flex;
+  flex-direction: column;
+}
+.ts-hero__text {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 28px 0 0;
+}
+.ts-hero__text > p {
+  font-size: var(--step-body);
+  max-width: 44ch;
+}
+.ts-wordmark {
+  order: -1;
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+  font-size: var(--step-display);
+  font-weight: 400;
+  line-height: 0.86;
+  letter-spacing: -0.045em;
+  color: var(--ink);
+  white-space: nowrap;
+}
+@media (min-width: 1024px) {
+  .ts-hero {
+    min-height: 100svh;
+    justify-content: space-between;
+    padding: clamp(104px, 22svh, 220px) 0 clamp(24px, 4svh, 44px);
+  }
+  .ts-hero__text {
+    padding: 0;
+  }
+  .ts-wordmark {
+    order: 0;
+    margin-top: 48px;
+  }
 }
 
-/* Titanium color variants */
-.iphone-frame-titanium {
-  --iphone-color: #4a4a4a;
-  --iphone-border-color: #5a5a5a;
+.ts-block {
+  padding-top: clamp(112px, 12vw, 200px);
+}
+.ts-block--tight {
+  padding-top: clamp(56px, 6vw, 96px);
+}
+
+.ts-facts {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 28px 32px;
+  padding: 28px;
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+.ts-facts dd {
+  margin: 4px 0 0;
+}
+@media (min-width: 640px) {
+  .ts-facts {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+/* Showcase: the outputs as an index the reader picks from. */
+.ts-index {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 40px;
+}
+.ts-index__item {
+  text-align: left;
+  color: var(--muted);
+  opacity: 0.62;
+  padding: 0.08em 0;
+  transition: opacity 0.25s ease, transform 0.4s var(--ease-out), color 0.25s ease;
+}
+.ts-index__item:hover,
+.ts-index__item[aria-pressed="true"] {
+  color: var(--ink);
+  opacity: 1;
+}
+.ts-index__item[aria-pressed="true"] {
+  transform: translateX(12px);
+}
+.ts-index__note {
+  margin-top: 32px;
+  min-height: 4.8em;
+}
+.ts-inline-stage {
+  margin-top: 28px;
+  height: 64svh;
+  overflow: hidden;
+  border-radius: var(--radius);
+  background: var(--surface);
+  padding: 32px 0 0;
+  display: flex;
+  justify-content: center;
+}
+@media (min-width: 1024px) {
+  .ts-inline-stage,
+  .ts-live__inline {
+    display: none;
+  }
+}
+.ts-inline-stage img {
+  width: min(64vw, 300px);
+  height: auto;
+  align-self: flex-start;
+  border-radius: var(--radius);
+}
+
+/* How it works: one reading column, evidence after each paragraph. */
+.ts-steps {
+  list-style: none;
+  margin: 48px 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 72px;
+}
+.ts-steps__evidence {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  margin-top: 20px;
+  border-radius: var(--radius);
+}
+
+/* The live trip: controls in the column, the card on the stage. */
+.ts-live__block {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 56px;
+}
+.ts-live__block > :last-child {
+  margin-top: 12px;
+}
+@media (min-width: 1024px) {
+  .ts-live__block {
+    min-height: 46svh;
+    justify-content: center;
+    margin-top: 0;
+  }
+}
+.ts-live__inline {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  margin: 28px calc(-1 * var(--gutter)) 0;
+  padding: 10px var(--gutter);
+  background: var(--bg);
+  max-height: 50svh;
+  overflow: hidden;
+}
+.ts-live__inline .ts-trip-card__cover {
+  display: none;
+}
+.ts-choice {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.ts-choice__item {
+  min-height: 44px;
+  padding: 0 16px;
+  border-radius: var(--radius);
+  background: var(--surface);
+  color: var(--ink);
+  font-size: var(--step-small);
+  transition: background-color 0.2s ease, color 0.2s ease, transform 0.15s var(--ease-out);
+}
+.ts-choice__item:hover {
+  background: var(--surface-2);
+}
+.ts-choice__item:active {
+  transform: scale(0.97);
+}
+.ts-choice__item[aria-pressed="true"] {
+  background: var(--ink);
+  color: var(--bg);
+}
+.ts-range {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.ts-range__row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+}
+.ts-range input {
+  width: 100%;
+  height: 44px;
+  accent-color: var(--accent);
+  cursor: pointer;
+}
+
+/* Interface fragments drawn in HTML keep the app's own look: iOS system
+   type, white cards, hairlines, the system blue. */
+.ts-ui {
+  --ui-bg: #ffffff;
+  --ui-ink: #1c1c1e;
+  --ui-muted: #6c6c70;
+  --ui-fill: #f2f2f7;
+  --ui-line: #e5e5ea;
+  --ui-blue: #007aff;
+  --ui-blue-fill: #e5f0ff;
+  --ui-blue-text: #0058c4;
+  --ui-blue-button: #0066d6;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif;
+  color: var(--ui-ink);
+  letter-spacing: -0.01em;
+}
+[data-theme="travel-dark"] .ts-ui {
+  --ui-bg: #1c1c1e;
+  --ui-ink: #ffffff;
+  --ui-muted: #98989f;
+  --ui-fill: #2c2c2e;
+  --ui-line: #38383a;
+  --ui-blue: #0a84ff;
+  --ui-blue-fill: #0a2a52;
+  --ui-blue-text: #8cc4ff;
+  --ui-blue-button: #0a6ad8;
+}
+.ts-trip-card {
+  background: var(--ui-bg);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.ts-trip-card__cover {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+.ts-trip-card__body {
+  padding: 16px 18px 18px;
+}
+.ts-trip-card__title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+.ts-trip-card__name {
+  font-size: 20px;
+  font-weight: 600;
+}
+.ts-trip-card__chip {
+  flex-shrink: 0;
+  max-width: 50%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding: 3px 8px;
+  border-radius: 6px;
+  background: var(--ui-blue-fill);
+  color: var(--ui-blue-text);
+  font-size: 13px;
+  font-weight: 500;
+}
+.ts-trip-card__dates {
+  margin-top: 2px;
+  font-size: 15px;
+  color: var(--ui-muted);
+  min-height: 1.4em;
+}
+.ts-trip-card__countdown {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-top: 10px;
+}
+.ts-trip-card__count {
+  font-size: 56px;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: var(--ui-blue);
+}
+.ts-trip-card__count-label {
+  font-size: 15px;
+  color: var(--ui-muted);
+}
+.ts-trip-card__reminder {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 14px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: var(--ui-fill);
+  font-size: 15px;
+}
+.ts-trip-card__reminder svg {
+  color: #ff9500;
+}
+.ts-trip-card__reminder-value {
+  margin-left: auto;
+  color: var(--ui-muted);
+}
+.ts-trip-card__days {
+  list-style: none;
+  margin: 10px 0 0;
+  padding: 0;
+  font-size: 15px;
+}
+.ts-trip-card__days li {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 9px 0;
+  border-bottom: 0.5px solid var(--ui-line); /* taste-skill-ignore: print rule / data-ui fragment or floating sheet */
+}
+.ts-trip-card__days li:last-child {
+  border-bottom: 0;
+}
+.ts-trip-card__day {
+  color: var(--ui-blue);
+  font-weight: 600;
+}
+.ts-trip-card__more {
+  color: var(--ui-muted);
+}
+
+/* The app's "new trip" sheet in the closing section. It floats above the
+   page like the app's own sheet, so it keeps its depth. */
+.ts-dialog {
+  width: 100%;
+  max-width: 440px;
+  padding: 20px;
+  border-radius: var(--radius);
+  background: var(--ui-bg);
+  box-shadow: 0 24px 60px rgba(10, 20, 60, 0.28); /* taste-skill-ignore: print rule / data-ui fragment or floating sheet */
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+@media (min-width: 1024px) {
+  .ts-dialog {
+    margin-left: auto;
+  }
+}
+.ts-dialog__title {
+  text-align: center;
+  font-size: 17px;
+  font-weight: 600;
+  padding-bottom: 4px;
+}
+.ts-dialog__field {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 52px;
+  padding: 0 14px;
+  border-radius: 10px;
+  background: var(--ui-fill);
+  color: var(--ui-muted);
+}
+.ts-dialog__field input {
+  flex: 1;
+  min-width: 0;
+  background: transparent;
+  border: 0;
+  outline: 0;
+  font-size: 17px;
+  color: var(--ui-ink);
+}
+.ts-dialog__field:focus-within {
+  box-shadow: 0 0 0 2px var(--ui-blue); /* taste-skill-ignore: print rule / data-ui fragment or floating sheet */
+}
+.ts-dialog__segments {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+  padding: 2px;
+  border-radius: 9px;
+  background: var(--ui-fill);
+}
+.ts-dialog__segments button {
+  min-height: 40px;
+  border-radius: 7px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--ui-ink);
+  transition: background-color 0.2s ease, transform 0.15s var(--ease-out);
+}
+.ts-dialog__segments button[aria-pressed="true"] {
+  background: var(--ui-bg);
+}
+.ts-dialog__segments button:active {
+  transform: scale(0.97);
+}
+.ts-dialog__primary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 52px;
+  border-radius: 12px;
+  background: var(--ui-blue-button);
+  color: #fff;
+  font-size: 17px;
+  font-weight: 600;
+  transition: transform 0.18s var(--ease-out), opacity 0.18s ease;
+}
+.ts-dialog__primary:hover {
+  transform: translateY(-2px);
+  opacity: 0.92;
+}
+.ts-dialog__primary:active {
+  transform: scale(0.98);
 }

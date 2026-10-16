@@ -1,0 +1,74 @@
+[
+  {
+    "file": "public/images/world/lisbon-se.webp",
+    "media": "image",
+    "ref": "openverse:410d396d-ee30-433b-8400-1154f0105853",
+    "title": "Lisbon. Tram 28 passing by Sé de Lisboa. (41223895764)",
+    "creator": "Vernaccia",
+    "creatorUrl": "https://www.flickr.com/people/29561984@N06",
+    "date": null,
+    "license": "CC BY 2.0",
+    "licenseCode": "by",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+    "creditRequired": true,
+    "page": "https://commons.wikimedia.org/w/index.php?curid=73559190",
+    "via": "Wikimedia Commons",
+    "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/83/Lisbon._Tram_28_passing_by_S%C3%A9_de_Lisboa._%2841223895764%29.jpg/1920px-Lisbon._Tram_28_passing_by_S%C3%A9_de_Lisboa._%2841223895764%29.jpg",
+    "width": 1920,
+    "height": 2343,
+    "bytes": 1235348,
+    "credit": "\"Lisbon. Tram 28 passing by Sé de Lisboa. (41223895764)\" by Vernaccia, CC BY 2.0, via Wikimedia Commons",
+    "notes": [
+      "converted to WebP and resized"
+    ],
+    "saved": "2026-10-16T08:05:57.148Z"
+  },
+  {
+    "file": "public/images/world/lisbon-tram.webp",
+    "media": "image",
+    "ref": "openverse:8ddaae66-e732-4736-89b8-dc6d850ae397",
+    "title": "Lisbon Tram 28 (50654219761)",
+    "creator": "Sonse",
+    "creatorUrl": "https://www.flickr.com/people/34585612@N00",
+    "date": null,
+    "license": "CC BY 2.0",
+    "licenseCode": "by",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+    "creditRequired": true,
+    "page": "https://commons.wikimedia.org/w/index.php?curid=97188959",
+    "via": "Wikimedia Commons",
+    "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e5/Lisbon_Tram_28_%2850654219761%29.jpg/1920px-Lisbon_Tram_28_%2850654219761%29.jpg",
+    "width": 1920,
+    "height": 2531,
+    "bytes": 1456199,
+    "credit": "\"Lisbon Tram 28 (50654219761)\" by Sonse, CC BY 2.0, via Wikimedia Commons",
+    "notes": [
+      "converted to WebP and resized"
+    ],
+    "saved": "2026-10-16T08:06:01.410Z"
+  },
+  {
+    "file": "public/images/world/porto-rabelo.webp",
+    "media": "image",
+    "ref": "commons:193115530",
+    "title": "Rabelo boats and Ribeira seen from Cais de Gaia, 20250605 1623 9879",
+    "creator": "Jakub Hałun",
+    "creatorUrl": null,
+    "date": "2025-06-05",
+    "license": "CC BY 4.0",
+    "licenseCode": "by",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+    "creditRequired": true,
+    "page": "https://commons.wikimedia.org/wiki/File:Rabelo_boats_and_Ribeira_seen_from_Cais_de_Gaia,_20250605_1623_9879.jpg",
+    "via": "Wikimedia Commons",
+    "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/21/Rabelo_boats_and_Ribeira_seen_from_Cais_de_Gaia%2C_20250605_1623_9879.jpg/1920px-Rabelo_boats_and_Ribeira_seen_from_Cais_de_Gaia%2C_20250605_1623_9879.jpg",
+    "width": 1920,
+    "height": 1281,
+    "bytes": 817408,
+    "credit": "\"Rabelo boats and Ribeira seen from Cais de Gaia, 20250605 1623 9879\" by Jakub Hałun, CC BY 4.0, via Wikimedia Commons",
+    "notes": [
+      "converted to WebP and resized"
+    ],
+    "saved": "2026-10-16T08:06:24.291Z"
+  }
+]

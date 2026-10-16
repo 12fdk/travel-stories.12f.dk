@@ -1,65 +1,50 @@
-import { motion } from "framer-motion";
 import { useContext } from "react";
-import AnimatedText from "../../../../components/animatedText";
-import { withBase } from "../../../../utils/basePath";
 import { ConfigContext } from "../../../../utils/configContext";
 
+/** Capabilities that need the one-time Premium purchase (index into cards). */
+const PREMIUM = new Set([2]);
+/** "14 languages" gets its own section with the names, so it is left out here. */
+const SHOWN_ELSEWHERE = new Set([4]);
+
+/**
+ * The small things around the edges, as two-ended rows: what it does on the
+ * left, which plan it comes with on the right.
+ */
 function Capabilities() {
   const {
-    home: { capabilities },
+    home: { capabilities, pricing },
   } = useContext(ConfigContext)!;
   if (!capabilities) return null;
+
+  const free = pricing?.plans?.[0]?.title ?? "Free";
+  const premium = pricing?.plans?.[1]?.title ?? "Premium";
 
   return (
     <section
       id={capabilities.id}
-      className="mx-auto max-w-screen-lg px-4 py-16 md:py-24"
+      aria-labelledby="capabilities-heading"
+      className="mx-auto max-w-[1440px] px-[var(--gutter)] pt-[clamp(112px,12vw,200px)]"
     >
-      <div className="mb-12 max-w-none flex flex-col items-center prose prose-lg text-center">
-        <h2 className="mb-0">
-          <AnimatedText text={capabilities.title} />
-        </h2>
-        {capabilities.subtitle && (
-          <motion.p
-            initial={{ y: "50%", opacity: 0 }}
-            whileInView={{ y: "0%", opacity: 1 }}
-            viewport={{ once: true }}
-            className="text-xl max-w-lg text-base-content"
-          >
-            {capabilities.subtitle}
-          </motion.p>
-        )}
-      </div>
-
-      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        {capabilities.cards.map((cap, index) => (
-          <motion.article
-            key={cap.title}
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-60px" }}
-            transition={{
-              duration: 0.5,
-              delay: (index % 4) * 0.06,
-              ease: [0.16, 1, 0.3, 1],
-            }}
-            className="flex flex-col rounded-box border border-base-300 bg-base-100 p-6 shadow-sm"
-          >
-            <img
-              src={withBase(cap.image)}
-              alt=""
-              aria-hidden="true"
-              width={72}
-              height={72}
-              loading="lazy"
-              className="h-[72px] w-[72px] rounded-2xl bg-white object-contain"
-            />
-            <h3 className="mt-4 text-lg font-bold tracking-tight text-base-content">
-              {cap.title}
-            </h3>
-            <p className="mt-2 text-sm text-base-content/70">{cap.subtitle}</p>
-          </motion.article>
-        ))}
+      <div className="mx-auto max-w-[620px] lg:ml-[22%]">
+        <div data-reveal>
+          <h2 id="capabilities-heading" className="text-lead font-medium">
+            {capabilities.title}
+          </h2>
+          {capabilities.subtitle && <p className="mt-2 text-body text-muted">{capabilities.subtitle}</p>}
+        </div>
+        <ul className="mt-8 flex list-none flex-col p-0" data-reveal>
+          {capabilities.cards.map((cap, i) =>
+            SHOWN_ELSEWHERE.has(i) ? null : (
+              <li key={cap.title} className="flex items-baseline justify-between gap-6 py-3">
+                <span>
+                  <span className="block text-body text-ink">{cap.title}</span>
+                  <span className="block text-small text-muted">{cap.subtitle}</span>
+                </span>
+                <span className="shrink-0 text-small text-muted">{PREMIUM.has(i) ? premium : free}</span>
+              </li>
+            ),
+          )}
+        </ul>
       </div>
     </section>
   );

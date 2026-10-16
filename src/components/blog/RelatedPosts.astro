@@ -10,31 +10,29 @@ const { posts } = Astro.props;
 
 {
   posts.length > 0 && (
-    <section class="not-prose my-12 border-t border-base-300 pt-10">
-      <h2 class="mb-6 text-2xl font-bold sm:text-3xl">Keep reading</h2>
-      <ul class="grid list-none gap-4 p-0 sm:grid-cols-2 lg:grid-cols-3">
+    <section class="not-prose mt-24" aria-labelledby="keep-reading">
+      <h2 id="keep-reading" class="mb-8 text-head font-light">Keep reading</h2>
+      <ul class="grid list-none gap-10 p-0 sm:grid-cols-2 lg:grid-cols-3" data-reveal>
         {posts.map((post) => (
-          <li class="group m-0 overflow-hidden rounded-box border border-base-300 bg-base-100 p-0 transition-colors hover:border-base-content/30">
-            <a href={`/blog/${post.slug}/`} class="flex h-full flex-col">
+          <li class="m-0 p-0">
+            <a href={`/blog/${post.slug}/`} class="group flex h-full flex-col">
               {post.data.cover && (
-                <img
-                  src={post.data.cover}
-                  alt={post.data.coverAlt ?? ""}
-                  width={400}
-                  height={225}
-                  loading="lazy"
-                  decoding="async"
-                  class="aspect-[16/9] w-full border-b border-base-300 object-cover"
-                />
+                <span class="block overflow-hidden rounded-ui bg-surface">
+                  <img
+                    src={post.data.cover}
+                    alt={post.data.coverAlt ?? ""}
+                    width={400}
+                    height={225}
+                    loading="lazy"
+                    decoding="async"
+                    class="aspect-[16/9] w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+                  />
+                </span>
               )}
-              <div class="p-5">
-                <h3 class="mb-2 text-lg font-bold tracking-tight text-base-content transition-colors group-hover:text-primary">
-                  {post.data.title}
-                </h3>
-                <p class="text-sm leading-relaxed text-base-content/70">
-                  {post.data.description}
-                </p>
-              </div>
+              <span class="mt-4 block text-body text-ink">
+                <span class="ts-link">{post.data.title}</span>
+              </span>
+              <span class="mt-2 block text-small text-muted">{post.data.description}</span>
             </a>
           </li>
         ))}

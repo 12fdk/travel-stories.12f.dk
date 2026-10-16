@@ -15,19 +15,19 @@ interface Props {
  */
 function ListView({ sections, checked, onToggle }: Props) {
   return (
-    <div className="packing-list-columns">
+    <div className="packing-list-columns" data-reveal-each>
       {sections.map((section) => (
         <section
           key={section.id}
           aria-labelledby={`section-${section.id}`}
-          className="packing-list-section mb-6 break-inside-avoid rounded-box border border-base-300 bg-base-100 p-5 sm:p-6"
+          className="packing-list-section mb-6 break-inside-avoid rounded-ui bg-surface p-5 sm:p-6"
         >
           <h3
             id={`section-${section.id}`}
-            className="mb-3 flex items-baseline gap-2 text-lg font-bold"
+            className="mb-3 flex items-baseline gap-2 text-lead"
           >
             {section.title}
-            <span className="text-sm font-normal text-base-content/50">
+            <span className="text-small text-muted tabular">
               {section.items.length}
             </span>
           </h3>
@@ -39,7 +39,7 @@ function ListView({ sections, checked, onToggle }: Props) {
                 <li key={item.id} className="m-0 p-0">
                   <label
                     htmlFor={id}
-                    className="flex cursor-pointer items-start gap-3 rounded-lg px-2 py-1.5 transition-colors hover:bg-base-200"
+                    className="flex min-h-[44px] cursor-pointer items-start gap-3 rounded-ui px-2 py-2 transition-colors hover:bg-[var(--surface-2)]"
                   >
                     <input
                       type="checkbox"
@@ -50,14 +50,14 @@ function ListView({ sections, checked, onToggle }: Props) {
                     />
                     <span className="min-w-0">
                       <span
-                        className={`block font-medium leading-snug ${
-                          isChecked ? "text-base-content/40 line-through" : ""
+                        className={`block text-body leading-snug ${
+                          isChecked ? "text-muted line-through" : ""
                         }`}
                       >
                         {item.label}
                       </span>
                       {item.note && (
-                        <span className="packing-list-note mt-0.5 block text-sm leading-snug text-base-content/60">
+                        <span className="packing-list-note mt-0.5 block text-small leading-snug text-muted">
                           {item.note}
                         </span>
                       )}

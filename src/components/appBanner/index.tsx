@@ -1,153 +1,83 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { ConfigContext } from "../../utils/configContext";
-import { withBase } from "../../utils/basePath";
 import { withCampaign } from "../../utils/appStoreCampaign";
-import Spill from "./svgs/spill";
-import IphoneFrame from "../../components/iphoneFrame";
-import { motion } from "framer-motion";
-import clsx from "clsx";
+import AppleGlyph from "../appleGlyph";
 
+/**
+ * The close: a field in the action colour with the app's own first screen
+ * already open. The destination is editable and the trip type switches; the
+ * one button takes the visitor to the App Store to make it for real.
+ */
 function AppBanner() {
-  const { googlePlayLink, appStoreLink, appBanner } =
-    useContext(ConfigContext)!;
+  const { appStoreLink, appBanner, ui, topNavbar, home } = useContext(ConfigContext)!;
+  const [destination, setDestination] = useState(ui?.live?.tripName ?? "Porto & Lisbon");
+  const types = (home?.useCases?.cards ?? []).slice(0, 2).map((c) => c.title);
+  const [type, setType] = useState(0);
 
   if (!appBanner) return null;
+
   return (
-    <motion.section
+    <section
       id={appBanner.id}
       aria-labelledby="app-banner-heading"
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount: 0.4 }}
-      className="relative max-w-screen-lg mx-auto px-4 -mb-6 z-10 md:-mb-10 lg:-mb-14"
+      className="bg-accent text-accent-ink"
     >
-      <motion.div
-        variants={{
-          hidden: {
-            opacity: 0,
-            scale: 0.9,
-          },
-          visible: {
-            opacity: 1,
-            scale: 1,
-          },
-        }}
-        transition={{
-          mass: 0.4,
-          type: "spring",
-          duration: 0.2,
-        }}
-      >
-        <div className="p-4 bg-primary text-primary-content rounded-t-[var(--rounded-box)] flex flex-col items-center md:flex-row">
-          <div className="flex-1 flex flex-col items-center justify-center min-h-full">
-            <motion.h2
-              id="app-banner-heading"
-              initial={{ opacity: 0, y: "-100%" }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.3 }}
-              className="mt-0 mb-4 text-4xl md:text-6xl"
-            >
-              {appBanner.title}
-            </motion.h2>
-            <motion.p
-              initial={{ opacity: 0, y: "100%" }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5 }}
-              className="text-primary-content/90 whitespace-pre-wrap text-left m-0 mt-1 md:text-lg"
-            >
-              {appBanner.subtitle}
-            </motion.p>
-            <motion.ul
-              initial={{ opacity: 0, y: "100%" }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.8 }}
-              className="list-none flex gap-4 my-6 p-0 w-full"
-            >
-              {googlePlayLink && (
-                <li className="m-0 p-0">
-                  <a
-                    href={googlePlayLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    data-umami-event="footer-banner-google-play-click"
-                    aria-label="Download Travel Stories on Google Play"
-                    className="inline-block transition-transform duration-200 hover:-translate-y-0.5 active:translate-y-0"
-                  >
-                    <img
-                      className="h-14"
-                      alt="Get it on Google Play"
-                      src={withBase("/stores/google-play.svg")}
-                      width={168}
-                      height={56}
-                    />
-                  </a>
-                </li>
-              )}
-              {appStoreLink && (
-                <li className="m-0 p-0">
-                  <a
-                    href={withCampaign(appStoreLink, "app-banner")}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    data-umami-event="footer-banner-app-store-click"
-                    aria-label="Download Travel Stories on the Apple App Store"
-                    className="inline-block transition-transform duration-200 hover:-translate-y-0.5 active:translate-y-0"
-                  >
-                    <img
-                      className="h-14"
-                      alt="Download on the App Store"
-                      src={withBase("/stores/app-store.svg")}
-                      width={168}
-                      height={56}
-                    />
-                  </a>
-                </li>
-              )}
-            </motion.ul>
-          </div>
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.4 }}
-            className="relative flex-1 flex justify-center"
-          >
-            {appBanner.screenshots.map((src, index) => (
-              <motion.div
-                key={index}
-                variants={{
-                  hidden: {
-                    scale: index > 0 ? 0.9 : 1,
-                    opacity: 0,
-                    rotate: 0,
-                  },
-                  visible: {
-                    scale: index > 0 ? 0.9 : 1,
-                    opacity: 1,
-                    rotate: index === 0 ? 0 : index === 1 ? "-30deg" : "30deg",
-                  },
-                }}
-                transition={{
-                  stiffness: 150,
-                  mass: 0.5,
-                  type: "spring",
-                  delay: index > 0 ? 0.8 : 0.5,
-                }}
-                className={clsx(
-                  "h-[30rem]",
-                  index === 0 && "relative z-20 block",
-                  index === 1 && "absolute origin-bottom-left hidden xl:block",
-                  index === 2 && "absolute origin-bottom-right hidden xl:block"
-                )}
-              >
-                <IphoneFrame src={withBase(src)} />
-              </motion.div>
-            ))}
-          </motion.div>
+      <div className="mx-auto grid min-h-[90svh] max-w-[1440px] gap-12 px-[var(--gutter)] py-14 lg:grid-cols-12 lg:items-center lg:py-10">
+        <div className="flex flex-col lg:col-span-5 lg:h-full lg:justify-end lg:pb-6" data-reveal>
+          <h2 id="app-banner-heading" className="text-head font-light">
+            {appBanner.title}
+          </h2>
+          <p className="mt-6 max-w-[42ch] text-body">{appBanner.subtitle}</p>
         </div>
-        <Spill className="-translate-y-1"/>
-      </motion.div>
-    </motion.section>
+
+        <div className="lg:col-span-5 lg:col-start-7" data-reveal-self>
+          <form
+            data-ui
+            className="ts-ui ts-dialog"
+            onSubmit={(e) => e.preventDefault()}
+            aria-label={topNavbar.cta ?? "New trip"}
+          >
+            <p className="ts-dialog__title">{topNavbar.cta}</p>
+            <label className="ts-dialog__field">
+              <span className="sr-only">Destination</span>
+              <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+                <path
+                  fill="currentColor"
+                  d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5Z"
+                />
+              </svg>
+              <input
+                type="text"
+                value={destination}
+                onChange={(e) => setDestination(e.currentTarget.value)}
+                autoComplete="off"
+              />
+            </label>
+            {types.length === 2 && (
+              <div className="ts-dialog__segments" role="group" aria-label="Trip type">
+                {types.map((t, i) => (
+                  <button key={t} type="button" aria-pressed={type === i} onClick={() => setType(i)}>
+                    {t}
+                  </button>
+                ))}
+              </div>
+            )}
+            {appStoreLink && (
+              <a
+                href={withCampaign(appStoreLink, "app-banner")}
+                target="_blank"
+                rel="noopener noreferrer"
+                data-umami-event="footer-banner-app-store-click"
+                className="ts-dialog__primary"
+              >
+                <AppleGlyph className="h-5 w-5" />
+                {ui?.downloadFree ?? "Download free"}
+              </a>
+            )}
+          </form>
+        </div>
+      </div>
+    </section>
   );
 }
 

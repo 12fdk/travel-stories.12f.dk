@@ -17,18 +17,15 @@ const { items, heading = "Frequently asked questions" } = Astro.props;
 
 {
   items.length > 0 && (
-    <section class="not-prose my-12" aria-labelledby="post-faq">
-      <h2 id="post-faq" class="mb-6 text-2xl font-bold sm:text-3xl">
+    <section class="not-prose my-16 max-w-[46rem]" aria-labelledby="post-faq">
+      <h2 id="post-faq" class="mb-8 text-head font-light">
         {heading}
       </h2>
-      <div class="space-y-3">
+      <div class="flex flex-col gap-6" data-reveal-each>
         {items.map((item) => (
-          <details class="rounded-xl border border-base-300 bg-base-100 p-4 open:bg-base-200">
-            <summary class="cursor-pointer text-base font-semibold sm:text-lg">
-              {item.question}
-            </summary>
-            <p class="faq-answer mt-3 text-base-content/80">{item.answer}</p>
-          </details>
+          <p class="faq-answer text-body text-muted">
+            <strong class="font-medium text-ink">{item.question}</strong> {item.answer}
+          </p>
         ))}
       </div>
     </section>

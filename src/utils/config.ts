@@ -45,6 +45,16 @@ const templateConfig: TemplateConfig = {
     },
     pricingFootnote:
       "Prices shown in USD; your App Store storefront sets the exact local price. No subscription — Premium is a single purchase, yours forever.",
+    live: {
+      departs: "Departs in",
+      length: "Trip length",
+      remind: "Reminder",
+      nDays: "{n} days",
+      nDaysBefore: "{n} days before",
+      daysToGo: "days to go",
+      tripName: "Porto & Lisbon",
+    },
+    photoCredits: "Photographs",
   },
   footer: {
     legalLinks: {

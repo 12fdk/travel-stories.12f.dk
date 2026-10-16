@@ -1,14 +1,14 @@
 import { useContext } from "react";
-import { motion } from "framer-motion";
 import { ConfigContext } from "../../../../utils/configContext";
+import { withBase } from "../../../../utils/basePath";
 
 const POPULAR = [
-  { href: "/packing-list/carry-on-only-packing-list/", title: "Carry-on only" },
-  { href: "/packing-list/7-day-beach-trip-packing-list/", title: "7-day beach trip" },
-  { href: "/packing-list/what-to-pack-for-japan-in-winter/", title: "Japan in winter" },
-  { href: "/packing-list/3-day-business-trip-packing-list/", title: "3-day business trip" },
-  { href: "/packing-list/family-beach-holiday-packing-list/", title: "Beach with kids" },
-  { href: "/packing-list/week-long-ski-trip-packing-list/", title: "A week of skiing" },
+  { href: "/packing-list/carry-on-only-packing-list/", title: "Carry-on only", note: "1 bag" },
+  { href: "/packing-list/7-day-beach-trip-packing-list/", title: "7-day beach trip", note: "7 days" },
+  { href: "/packing-list/what-to-pack-for-japan-in-winter/", title: "Japan in winter", note: "Cold" },
+  { href: "/packing-list/3-day-business-trip-packing-list/", title: "3-day business trip", note: "3 days" },
+  { href: "/packing-list/family-beach-holiday-packing-list/", title: "Beach with kids", note: "Family" },
+  { href: "/packing-list/week-long-ski-trip-packing-list/", title: "A week of skiing", note: "7 days" },
 ];
 
 /**
@@ -25,52 +25,48 @@ function PackingTool() {
     <section
       id="packing-list-tool"
       aria-labelledby="packing-tool-heading"
-      className="mx-auto max-w-screen-lg px-4 py-16 md:py-24"
+      className="mx-auto max-w-[1440px] px-[var(--gutter)] pt-[clamp(112px,12vw,200px)]"
     >
-      <motion.div
-        initial={{ opacity: 0, y: 16 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-60px" }}
-        transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-        className="rounded-box border border-base-300 bg-base-200/50 p-8 md:p-12"
-      >
-        <p className="m-0 flex items-center gap-3 text-sm font-semibold uppercase tracking-wide text-base-content/50">
-          <span className="inline-block h-0.5 w-8 bg-primary" />
-          Free tool — no install
-        </p>
-        <h2
-          id="packing-tool-heading"
-          className="mb-3 mt-5 text-3xl font-extrabold leading-[1.05] md:text-4xl"
-        >
-          Build your packing list right here
-        </h2>
-        <p className="m-0 max-w-2xl text-lg leading-relaxed text-base-content/70">
-          Pick the trip, the length and the weather, and get a categorised
-          checklist you can tick off, print or download. No account, no email
-          address, nothing to install.
-        </p>
-
-        <a
-          href="/packing-list/"
-          data-umami-event="home-packing-list-cta"
-          className="btn mt-7 border-none bg-primary text-primary-content shadow-md shadow-primary/30 hover:brightness-110"
-        >
-          Open the packing list generator
-        </a>
-
-        <ul className="mt-8 flex list-none flex-wrap gap-2 p-0">
-          {POPULAR.map((item) => (
-            <li key={item.href} className="m-0">
-              <a
-                href={item.href}
-                className="inline-block rounded-full border border-base-300 bg-base-100 px-4 py-2 text-sm font-medium transition-colors hover:border-primary/40 hover:text-primary"
-              >
-                {item.title}
-              </a>
-            </li>
-          ))}
-        </ul>
-      </motion.div>
+      <div className="grid items-center gap-10 lg:grid-cols-12">
+        <img
+          src={withBase("/images/how-it-works/03-organize.webp")}
+          alt="A phone, a passport wallet, keys and travel documents laid out for packing"
+          width={784}
+          height={1168}
+          loading="lazy"
+          className="aspect-[4/3] w-full rounded-ui object-cover lg:col-span-5 lg:aspect-[4/5]"
+          data-reveal-self
+        />
+        <div className="lg:col-span-6 lg:col-start-7">
+          <div data-reveal>
+            <h2 id="packing-tool-heading" className="text-head font-light">
+              Build your packing list here
+            </h2>
+            <p className="mt-5 max-w-[48ch] text-body text-ink">
+              Pick the trip, the length and the weather, and get a checklist by category that you
+              can tick off, print or download. No account, no email address, nothing to install.
+            </p>
+            <a href="/packing-list/" data-umami-event="home-packing-list-cta" className="ts-button mt-8">
+              Open the packing list generator
+            </a>
+          </div>
+          <ul className="mt-12 flex list-none flex-col p-0" data-reveal>
+            {POPULAR.map((item) => (
+              <li key={item.href}>
+                <a
+                  href={item.href}
+                  className="group flex min-h-[44px] items-center justify-between gap-6 py-1 text-body text-ink"
+                >
+                  <span className="ts-link">{item.title}</span>
+                  <span className="text-small text-muted transition-transform duration-300 group-hover:-translate-x-1">
+                    {item.note}
+                  </span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
     </section>
   );
 }

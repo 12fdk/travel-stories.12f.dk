@@ -1,154 +1,110 @@
-import AnimatedList from "../../components/animatedList";
-import MenuToggle from "../../components/menuToggle";
 import clsx from "clsx";
-import { easeIn, motion, useScroll, useTransform } from "framer-motion";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { ConfigContext } from "../../utils/configContext";
-import { withBase } from "../../utils/basePath";
 import { withCampaign } from "../../utils/appStoreCampaign";
 import ThemeSwitcher from "./themeSwitcher";
 import LanguageSwitcher from "../languageSwitcher";
 
-function Navbar() {
-  const {
-    name,
-    logo,
-    showThemeSwitch,
-    topNavbar,
-    googlePlayLink,
-    appStoreLink,
-    homeHref = "/",
-  } = useContext(ConfigContext)!;
+interface Props {
+  /**
+   * Homepage only: on wide screens the bar sits over the reading column of
+   * the split stage instead of above it, and the small name gives way to the
+   * large one in the hero.
+   */
+  overlay?: boolean;
+}
 
-  const [isMobileNavVisible, setIsMobileNavVisible] = useState(false);
-  const { scrollYProgress } = useScroll();
-  const y = useTransform(scrollYProgress, [0, 1 / 3], [0, 12], {
-    ease: easeIn,
-  });
-  const width = useTransform(scrollYProgress, [0, 1 / 3], ["100%", "80%"], {
-    ease: easeIn,
-  });
-  const opacity = useTransform(scrollYProgress, [0, 1 / 3], [0, 1], {
-    ease: easeIn,
-  });
+/** A plain bar: the name, a few links, the language, one action. */
+function Navbar({ overlay = false }: Props) {
+  const { showThemeSwitch, topNavbar, appStoreLink, homeHref = "/" } = useContext(ConfigContext)!;
+  const [open, setOpen] = useState(false);
 
-  const closeMobileNav = () => setIsMobileNavVisible(false);
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setOpen(false);
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [open]);
+
+  const cta = topNavbar.cta && appStoreLink && (
+    <a
+      href={withCampaign(appStoreLink, "navbar")}
+      target="_blank"
+      rel="noopener noreferrer"
+      data-umami-event="navbar-cta-click"
+      aria-label={`${topNavbar.cta}: opens the App Store in a new tab`}
+      className="ts-button !min-h-[44px] !px-4 !text-small"
+    >
+      {topNavbar.cta}
+    </a>
+  );
 
   return (
-    <motion.nav
+    <nav
       aria-label="Primary"
-      className="opacity-0 max-w-screen-lg mx-auto sticky top-0 z-50"
-      animate={{ opacity: 1 }}
+      className={clsx("relative z-30", overlay && "lg:absolute lg:left-[47vw] lg:right-0 lg:top-0")}
     >
-      <motion.div
-        style={{
-          width:
-            isMobileNavVisible || topNavbar.disableWidthAnimation
-              ? "100%"
-              : width,
-          translateY: isMobileNavVisible ? 0 : y,
-        }}
-        className="will-change-[width,transform] transition-all mx-auto navbar relative px-4 max-md:!w-full"
+      <div
+        className={clsx(
+          "flex h-[72px] items-center justify-between gap-4 px-[var(--gutter)]",
+          overlay ? "lg:pl-[clamp(40px,5vw,96px)]" : "mx-auto max-w-[1440px]",
+        )}
       >
-        <motion.div
-          style={{ opacity: isMobileNavVisible ? 1 : opacity }}
-          className={clsx(
-            "will-change-[border-radius,opacity] transition-all z-[-1] rounded-full absolute left-0 right-0 top-0 bottom-0 bg-base-100 shadow-xl",
-            {
-              "rounded-none": isMobileNavVisible,
-            }
-          )}
-        />
-        <div className="navbar-start">
-          <a href={homeHref} className="flex items-center">
-            <img className="h-12 rounded-[22%]" src={withBase(logo)} alt={`${name} logo`} width={48} height={48} />
-            <span className="font-bold mx-1 md:text-lg">{name}</span>
-          </a>
+        <a
+          href={homeHref}
+          className={clsx("text-body font-medium tracking-tight text-ink", overlay && "lg:invisible")}
+        >
+          travel stories
+        </a>
+
+        <div className="flex items-center gap-2 sm:gap-4">
+          <ul className="m-0 hidden list-none items-center gap-4 p-0 min-[1360px]:flex">
+            {topNavbar.links.map(({ title, href }) => (
+              <li key={href}>
+                <a className="ts-link whitespace-nowrap text-small text-ink" href={href}>
+                  {title}
+                </a>
+              </li>
+            ))}
+          </ul>
+          <div className="hidden sm:block">
+            <LanguageSwitcher />
+          </div>
+          {cta}
+          <button
+            type="button"
+            className="min-h-[44px] px-2 text-small text-ink min-[1360px]:hidden"
+            aria-expanded={open}
+            aria-controls="site-menu"
+            onClick={() => setOpen((v) => !v)}
+          >
+            <span className="ts-link">{open ? "Close" : "Menu"}</span>
+          </button>
         </div>
-        <div className="navbar-end md:hidden">
-          <LanguageSwitcher />
-          {showThemeSwitch && <ThemeSwitcher />}
-          <MenuToggle
-            toggle={() => setIsMobileNavVisible((current) => !current)}
-            isOpen={isMobileNavVisible}
-          />
-        </div>
-        <div className="navbar-end hidden font-semibold md:flex">
-          <ul className="flex gap-4 px-1 items-center">
-            <li><LanguageSwitcher /></li>
-            {showThemeSwitch && <li><ThemeSwitcher /></li>}
-            {topNavbar.links.map(({ title, href }, index) => (
-              <li key={index}>
+      </div>
+
+      {open && (
+        <div id="site-menu" className="bg-surface px-[var(--gutter)] pb-8 pt-4 min-[1360px]:hidden">
+          <ul className="m-0 flex list-none flex-col gap-1 p-0">
+            {topNavbar.links.map(({ title, href }) => (
+              <li key={href}>
                 <a
-                  className="text-sm whitespace-nowrap link link-hover"
+                  className="block py-2 text-lead text-ink"
                   href={href}
+                  onClick={() => setOpen(false)}
                 >
                   {title}
                 </a>
               </li>
             ))}
           </ul>
-          {topNavbar.cta && appStoreLink && (
-            <a
-              href={withCampaign(appStoreLink, "navbar")}
-              target="_blank"
-              rel="noopener noreferrer"
-              data-umami-event="navbar-cta-click"
-              aria-label={`${topNavbar.cta} — opens App Store in a new tab`}
-              className="ml-3 btn py-4 bg-primary hover:brightness-110 active:scale-95 transition-all text-primary-content border-none shadow-md shadow-primary/30"
-            >
-              {topNavbar.cta}
-              <svg aria-hidden="true" viewBox="0 0 20 20" className="w-4 h-4 ml-1 fill-current opacity-90">
-                <path d="M11 3a1 1 0 1 0 0 2h2.586l-6.293 6.293a1 1 0 1 0 1.414 1.414L15 6.414V9a1 1 0 1 0 2 0V4a1 1 0 0 0-1-1h-5z"/>
-                <path d="M5 5a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2v-3a1 1 0 1 0-2 0v3H5V7h3a1 1 0 0 0 0-2H5z"/>
-              </svg>
-            </a>
-          )}
+          <div className="mt-6 flex items-center gap-6">
+            <LanguageSwitcher />
+            {showThemeSwitch && <ThemeSwitcher />}
+          </div>
         </div>
-      </motion.div>
-      <AnimatedList
-        listKey="mobile-navbar"
-        listClassName="absolute bg-base-100 top-20 shadow-lg rounded-b-lg w-full px-4 flex flex-col gap-2 md:hidden"
-        isVisible={isMobileNavVisible}
-      >
-        {topNavbar.links.map(({ title, href }, index) => (
-          <motion.a
-            key={index}
-            className="btn btn-ghost w-full"
-            href={href}
-            onClick={closeMobileNav}
-            variants={{
-              show: { x: 0 },
-              hidden: { x: "-100%" },
-            }}
-          >
-            {title}
-          </motion.a>
-        ))}
-        <motion.ul
-          variants={{
-            show: { opacity: 1, y: 0 },
-            hidden: { opacity: 0, y: "100%" },
-          }}
-          className="menu menu-horizontal justify-center py-0 px-1"
-        >
-          {googlePlayLink && (
-            <li className="mb-2">
-              <a href={googlePlayLink} target="_blank" rel="noopener noreferrer">
-                <img className="h-12" src={withBase("/stores/google-play.svg")} alt="Download on Google Play" width={144} height={48} />
-              </a>
-            </li>
-          )}
-          {appStoreLink && (
-            <li className="mb-2">
-              <a href={withCampaign(appStoreLink, "navbar")} target="_blank" rel="noopener noreferrer">
-                <img className="h-12" src={withBase("/stores/app-store.svg")} alt="Download on App Store" width={144} height={48} />
-              </a>
-            </li>
-          )}
-        </motion.ul>
-      </AnimatedList>
-    </motion.nav>
+      )}
+    </nav>
   );
 }
 

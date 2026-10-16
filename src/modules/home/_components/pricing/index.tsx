@@ -1,111 +1,75 @@
-import AnimatedText from "../../../../components/animatedText";
 import clsx from "clsx";
-import { motion } from "framer-motion";
 import { useContext } from "react";
 import { ConfigContext } from "../../../../utils/configContext";
 import { withCampaign } from "../../../../utils/appStoreCampaign";
 
+/**
+ * Two plans as two full-height fields that meet at a hard edge. Premium gets
+ * the wider, darker field; the width says which matters more, no badge.
+ */
 function Pricing() {
-  const config = useContext(ConfigContext)!;
   const {
     appStoreLink,
     ui,
     home: { pricing },
-  } = config;
+  } = useContext(ConfigContext)!;
   if (!pricing) return null;
+  const plans = pricing.plans ?? [];
 
   return (
-    <section
-      id={pricing.id}
-      className="overflow-hidden max-w-screen-lg mx-auto px-4 py-12"
-    >
-      <div className="mb-12 max-w-none flex flex-col items-center prose prose-lg text-center">
-        <h2 className="mb-0">
-          <AnimatedText text={pricing.title} />
+    <section id={pricing.id} aria-labelledby="pricing-heading" className="pt-[clamp(112px,12vw,200px)]">
+      <div className="mx-auto max-w-[1440px] px-[var(--gutter)] pb-12" data-reveal>
+        <h2 id="pricing-heading" className="text-lead font-light sm:text-head">
+          {pricing.title}
         </h2>
-        {pricing.subtitle && (
-          <motion.p
-            initial={{ y: "100%", opacity: 0 }}
-            whileInView={{ y: "0%", opacity: 1 }}
-            viewport={{ once: true }}
-            className="text-xl max-w-lg text-base-content"
-          >
-            {pricing.subtitle}
-          </motion.p>
-        )}
+        {pricing.subtitle && <p className="mt-5 max-w-[46ch] text-body text-muted">{pricing.subtitle}</p>}
       </div>
-      <motion.div
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        className="flex flex-col max-w-none gap-8 md:flex-row md:justify-center"
-      >
-        {pricing.plans?.map((plan, index) => (
-          <motion.div
-            key={index}
-            transition={{ delay: 0.25 + index * 0.25 }}
-            className="md:w-2/5 flex relative"
-            variants={{
-              hidden: { y: 40, opacity: 0 },
-              visible: { y: 0, opacity: 1 },
-            }}
+
+      <div className="grid lg:grid-cols-12">
+        {plans.map((plan) => (
+          <div
+            key={plan.title}
+            className={clsx(
+              "flex min-h-[70svh] flex-col justify-between gap-12 px-[var(--gutter)] py-10 lg:min-h-[86svh] lg:px-10",
+              plan.featured
+                ? "order-first bg-field text-field-ink lg:order-none lg:col-span-7"
+                : "bg-surface text-ink lg:col-span-5",
+            )}
           >
-            <div
-              className={clsx(
-                "flex-1 card p-8 shadow-md bg-base-100 z-10 overflow-hidden border-2",
-                plan.featured ? "border-primary" : "border-primary/10"
-              )}
-            >
-              {plan.featured && (
-                <div className="badge badge-primary absolute top-4 right-4">
-                  One-time
-                </div>
-              )}
-              <div className="card-body p-0">
-                <h3 className="text-xl font-bold my-1">{plan.title}</h3>
-                <p className="text-3xl font-extrabold my-1">{plan.price}</p>
-                <ul className="mt-4 mb-6 space-y-3 list-none p-0">
-                  {plan.rows.map((row, rowIndex) => (
-                    <li key={rowIndex} className="flex items-start gap-3">
-                      <svg
-                        className="w-5 h-5 mt-0.5 shrink-0 text-primary"
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="3"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        aria-hidden="true"
-                      >
-                        <path d="M20 6 9 17l-5-5" />
-                      </svg>
-                      <span className="flex-1 text-left">{row}</span>
-                    </li>
-                  ))}
-                </ul>
-                {pricing.actionText && (
-                  <a
-                    href={withCampaign(appStoreLink, "pricing")}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    data-umami-event={`pricing-cta-${plan.featured ? "premium" : "free"}`}
-                    className={clsx(
-                      "btn no-animation w-full text-lg mt-auto",
-                      plan.featured ? "btn-primary !text-white" : "btn-outline"
-                    )}
-                  >
-                    {pricing.actionText}
-                  </a>
+            <div data-reveal>
+              <h3 className="text-head font-light">{plan.title}</h3>
+              <ul
+                className={clsx(
+                  "m-0 mt-6 flex list-none flex-col gap-1 p-0 text-body",
+                  plan.featured ? "text-field-muted" : "text-muted",
                 )}
-              </div>
+              >
+                {plan.rows.map((row) => (
+                  <li key={row}>{row}</li>
+                ))}
+              </ul>
             </div>
-          </motion.div>
+            <div className="flex flex-wrap items-end justify-between gap-6" data-reveal>
+              <p className="text-display font-light tabular">{plan.price}</p>
+              {pricing.actionText && appStoreLink && (
+                <a
+                  href={withCampaign(appStoreLink, "pricing")}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  data-umami-event={`pricing-cta-${plan.featured ? "premium" : "free"}`}
+                  className="ts-button w-full sm:w-auto"
+                >
+                  {pricing.actionText}
+                </a>
+              )}
+            </div>
+          </div>
         ))}
-      </motion.div>
-      <p className="text-center text-sm text-base-content/60 mt-6">
+      </div>
+
+      <p className="mx-auto max-w-[1440px] px-[var(--gutter)] pt-6 text-small text-muted">
         {ui?.pricingFootnote ??
-          "Prices shown in USD; your App Store storefront sets the exact local price. No subscription — Premium is a single purchase, yours forever."}
+          "Prices shown in USD; your App Store storefront sets the exact local price. No subscription: Premium is a single purchase, yours forever."}
       </p>
     </section>
   );

@@ -36,6 +36,16 @@ const ja: Translation = {
     },
     pricingFootnote:
       "表示価格はUSDです。実際の価格はお使いのApp Storeストアフロントによって決まります。サブスクリプションではありません — プレミアムは一度買えばずっと使えます。",
+    live: {
+      departs: "出発まで",
+      length: "旅行日数",
+      remind: "リマインダー",
+      nDays: "{n}日",
+      nDaysBefore: "{n}日前",
+      daysToGo: "日後に出発",
+      tripName: "ポルトとリスボン",
+    },
+    photoCredits: "写真",
   },
   facts: [
     { label: "価格", value: "無料" },

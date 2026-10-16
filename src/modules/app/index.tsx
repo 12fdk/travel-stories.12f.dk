@@ -20,9 +20,9 @@ function AppRedirectionPage({ config }: Props) {
   }, [googlePlayLink, appStoreLink]);
 
   return (
-    <main className="w-screen h-screen flex flex-col items-center justify-center">
+    <main className="flex h-[100svh] w-full flex-col items-center justify-center gap-6 px-[var(--gutter)]">
       <span className="loading loading-dots w-16"></span>
-      <h1 className="text-center max-w-xs md:max-w-md text-xl">
+      <h1 className="max-w-md text-center text-lead">
         We're sending you to our app. If nothing happens, you'll be redirected
         shortly.
       </h1>

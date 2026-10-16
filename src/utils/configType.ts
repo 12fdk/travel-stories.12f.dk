@@ -13,6 +13,18 @@ export interface UiStrings {
     sampleTrip: { label: string; budgetLabel: string; of: string; day: string };
     fromTheBlog: { title: string; heading: string; allPosts: string; minutes: string };
     pricingFootnote: string;
+    /** Labels for the "set your trip" live card on the homepage. `{n}` is the number. */
+    live?: {
+        departs: string;
+        length: string;
+        remind: string;
+        nDays: string;
+        nDaysBefore: string;
+        daysToGo: string;
+        tripName: string;
+    };
+    /** Heading for the credit line of the found photographs. */
+    photoCredits?: string;
 }
 
 export type TemplateConfig = {
