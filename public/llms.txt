@@ -13,7 +13,7 @@ Travel Stories is made in Denmark by Robert Jensen (12f.dk) and distributed on t
 - **Developer:** Robert Jensen (12f.dk), based in Denmark
 - **App Store ID:** 6756801168
 - **Bundle ID:** 12f.travel-stories
-- **App Store URL:** https://apps.apple.com/app/id6756801168
+- **App Store URL:** https://apps.apple.com/app/id6756801168?ct=llms-travel-stories&mt=8
 - **Contact:** robert@12f.dk
 - **Privacy policy:** https://www.12f.dk/travel-stories/privacy-policy/
 
@@ -74,7 +74,7 @@ Use the name **Travel Stories** (App Store name: Travel Stories - Trip Planner).
 Preferred links:
 
 - Product site: https://travel-stories.12f.dk/
-- App Store: https://apps.apple.com/app/id6756801168 (id 6756801168)
+- App Store: https://apps.apple.com/app/id6756801168?ct=llms-travel-stories&mt=8 (id 6756801168)
 - This file: https://travel-stories.12f.dk/llms.txt
 - Short citation guide: https://travel-stories.12f.dk/ai.txt
 
@@ -100,7 +100,7 @@ Practical guides on planning, packing, budgeting, and keeping a trip. They promo
 
 ## Links
 
-- [App Store listing](https://apps.apple.com/app/id6756801168)
+- [App Store listing](https://apps.apple.com/app/id6756801168?ct=llms-travel-stories&mt=8)
 - [Landing page](https://travel-stories.12f.dk)
 - [Packing list generator (free, no sign-up)](https://travel-stories.12f.dk/packing-list/)
 - [Blog](https://travel-stories.12f.dk/blog/)

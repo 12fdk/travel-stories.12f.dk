@@ -12,7 +12,7 @@ tldr:
   - "Cull in two favorites-first passes within 48 hours of getting home: a fast hearts-only sweep, then a second pass to cut near-duplicates. Expect to keep 5-10% of what you shot."
   - "Sort keepers into one album per trip, in day order — the day and place are the skeleton every photo hangs on."
   - "Write one line per keeper about what was actually happening. Storage apps keep the pixels; they do not keep the story."
-  - 'A trip diary app like <a href="https://apps.apple.com/app/id6756801168">Travel Stories</a> holds that second layer — photos attached to the trip''s days with the notes that explain them, offline, no account.'
+  - 'A trip diary app like <a href="https://apps.apple.com/app/id6756801168?ct=blog-how-to-organize-travel-photos&mt=8">Travel Stories</a> holds that second layer — photos attached to the trip''s days with the notes that explain them, offline, no account.'
 faq:
   - question: "What is the best way to organize travel photos after a trip?"
     answer: "Work in this order: cull first, organize second, annotate third, back up last. Do a fast favorites-only pass through everything, a second pass to remove near-duplicates among the favorites, then move the keepers into a single trip album arranged by day. Finally, write a short note for each keeper about what was happening, and confirm the originals are backed up. The whole workflow fits into about two hours spread over the first week home."
@@ -84,7 +84,7 @@ So the third step is the one almost everyone skips: **go through your keepers, i
 
 One line per photo, 20-40 seconds each. For 60 keepers that is roughly half an hour — the single highest-value half hour in this whole workflow.
 
-Where should those lines live? Anywhere durable beats nowhere: photo captions, a note on your phone, a paper journal. But the natural home is a trip diary that already knows your trip's shape. In the free [Travel Stories](https://apps.apple.com/app/id6756801168) app, your trip already exists as days and places, so you attach keeper photos to the day they belong to and write the story right next to them — offline, on-device, no account — and the result reads back as the trip actually happened, not as a grid of thumbnails. If you kept notes *during* the trip, this step becomes even easier; our guide to [keeping a travel journal](/blog/how-to-keep-a-travel-journal/) covers that habit, and if you stall on what to write, these [travel journal prompts](/blog/travel-journal-prompts/) will unstick you.
+Where should those lines live? Anywhere durable beats nowhere: photo captions, a note on your phone, a paper journal. But the natural home is a trip diary that already knows your trip's shape. In the free [Travel Stories](https://apps.apple.com/app/id6756801168?ct=blog-how-to-organize-travel-photos&mt=8) app, your trip already exists as days and places, so you attach keeper photos to the day they belong to and write the story right next to them — offline, on-device, no account — and the result reads back as the trip actually happened, not as a grid of thumbnails. If you kept notes *during* the trip, this step becomes even easier; our guide to [keeping a travel journal](/blog/how-to-keep-a-travel-journal/) covers that habit, and if you stall on what to write, these [travel journal prompts](/blog/travel-journal-prompts/) will unstick you.
 
 The test for this layer is simple: could someone who was not on the trip flip through your keepers and understand the week? If yes, you have captured meaning, not just images.
 

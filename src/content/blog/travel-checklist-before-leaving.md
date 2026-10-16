@@ -13,7 +13,7 @@ tldr:
   - "Work backwards from departure in four waves: 2 weeks out, 1 week out, the day before, and the day of."
   - "Anything with a long lead time — passport validity, visas, prescriptions, pet care — belongs in the 2-weeks-out wave, not the final days."
   - "Keep offline copies of your passport, bookings, and insurance; airports and airplanes are where you need documents and lose signal."
-  - 'Turn this page into a living checklist you tick off — <a href="https://apps.apple.com/app/id6756801168">Travel Stories</a> stores trip checklists, documents, and packing lists offline on your iPhone, free.'
+  - 'Turn this page into a living checklist you tick off — <a href="https://apps.apple.com/app/id6756801168?ct=blog-travel-checklist-before-leaving&mt=8">Travel Stories</a> stores trip checklists, documents, and packing lists offline on your iPhone, free.'
 faq:
   - question: "When should I start my travel checklist?"
     answer: "Start two weeks before departure for most trips, because that's the lead time the slowest items need — prescription refills, pet-sitter arrangements, and checking passport validity. If a visa is involved, check requirements as soon as you book, since some take a month or more. Everything else fits comfortably in the final week."
@@ -124,7 +124,7 @@ The middle wave: money, tech, and the home logistics that can't be done too earl
 - Do laundry so everything on the packing list is actually clean and available
 - Finalize the packing list — the item-by-item version is in the [packing list for international travel](/blog/packing-list-for-international-travel/), or build one for your exact trip with the [packing list generator](/packing-list/)
 
-This is also the week to move your checklist off scraps of paper. Travel Stories keeps your checklist, packing list, documents, and itinerary together in one offline app — [free on the App Store](https://apps.apple.com/app/id6756801168) — so ticking items off this week is the same app you'll open at the airport.
+This is also the week to move your checklist off scraps of paper. Travel Stories keeps your checklist, packing list, documents, and itinerary together in one offline app — [free on the App Store](https://apps.apple.com/app/id6756801168?ct=blog-travel-checklist-before-leaving&mt=8) — so ticking items off this week is the same app you'll open at the airport.
 
 ## The day before you leave
 

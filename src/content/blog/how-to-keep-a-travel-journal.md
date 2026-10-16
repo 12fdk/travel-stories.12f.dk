@@ -13,7 +13,7 @@ tldr:
   - "Trip memories blur fast — details like names, prices, and what a place smelled like fade within days, so capture them the same day or lose them."
   - "The 5-minute method: one honest line per day, one photo with a caption, and let your expense log double as diary entries."
   - "Swap 'dear diary' for concrete prompts: what surprised you, what you'd tell someone going tomorrow, the best thing you ate."
-  - "Use a tool that holds the plan and the memory in one place — <a href=\"https://apps.apple.com/app/id6756801168\">Travel Stories</a> turns your itinerary, photos, and expenses into a timeline you can revisit."
+  - "Use a tool that holds the plan and the memory in one place — <a href=\"https://apps.apple.com/app/id6756801168?ct=blog-how-to-keep-a-travel-journal&mt=8\">Travel Stories</a> turns your itinerary, photos, and expenses into a timeline you can revisit."
 faq:
   - question: "What should I write in a travel journal?"
     answer: "Write specifics, not summaries: the name of the street food stall, what the taxi cost, the sentence a stranger said to you, what surprised you that day. Skip the weather report and the play-by-play. One concrete detail per day beats a page of generalities, because details are what actually bring the day back later."
@@ -90,7 +90,7 @@ This is the most underrated journaling trick, because it's journaling you're doi
 
 Logged the day they happen, expenses build a skeleton of the trip with zero extra effort. Your one-liners and captions put flesh on it. This is also why keeping the journal inside your trip planner beats a separate diary app: the skeleton is already there.
 
-By the way, this combination — the plan and the memory living in the same place — is the idea Travel Stories is built around: the itinerary, checklists, and budget you make before the trip become the timeline of photos, notes, and expenses you keep after it, and you can [download it free on the App Store](https://apps.apple.com/app/id6756801168). One honest caveat: no app writes the one-liner for you. The five minutes are still yours to spend.
+By the way, this combination — the plan and the memory living in the same place — is the idea Travel Stories is built around: the itinerary, checklists, and budget you make before the trip become the timeline of photos, notes, and expenses you keep after it, and you can [download it free on the App Store](https://apps.apple.com/app/id6756801168?ct=blog-how-to-keep-a-travel-journal&mt=8). One honest caveat: no app writes the one-liner for you. The five minutes are still yours to spend.
 
 ## Prompts that beat "dear diary"
 

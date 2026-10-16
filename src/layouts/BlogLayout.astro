@@ -5,6 +5,8 @@ import RevealScript from "@components/RevealScript.astro";
 import defaultTemplateConfig from "utils/config";
 import { fetchAppStoreData, fallbackAppStoreData, toAppStoreMetadata } from "utils/appStoreData";
 import type { TemplateConfig } from "utils/configType";
+import { appleItunesAppContent, campaignForPathname } from "utils/appStoreCampaign";
+import SourceAttribution from "../components/SourceAttribution.astro";
 
 interface Props {
   title: string;
@@ -65,6 +67,7 @@ const config: TemplateConfig = {
 };
 
 const canonicalURL = new URL(canonicalPath ?? Astro.url.pathname, Astro.site);
+const smartBannerCampaign = campaignForPathname(canonicalPath ?? Astro.url.pathname);
 const resolvedOgImage = ogImage
   ? new URL(ogImage, Astro.site).href
   : new URL("/og-image.png", Astro.site).href;
@@ -188,7 +191,7 @@ const graph = [
     <link rel="alternate" type="text/plain" title="AI citation guide" href="/ai.txt" />
     <meta name="ai-content-declaration" content="human-authored" />
 
-    <meta name="apple-itunes-app" content="app-id=6756801168" />
+    <meta name="apple-itunes-app" content={appleItunesAppContent(smartBannerCampaign)} />
     <meta name="apple-mobile-web-app-title" content="Travel Stories" />
 
     <meta name="google-site-verification" content="qIt43wKbCVGfZYBrH1zV-3NRdMEtU0fo9qT-7NBC4n8" />
@@ -234,6 +237,7 @@ const graph = [
       }
     </script>
 
+    <SourceAttribution />
     <!-- Umami Analytics: production-hostname guard (see Layout.astro) -->
     <script is:inline>
       (function () {
@@ -244,6 +248,7 @@ const graph = [
           s.defer = true;
           s.src = "https://umami.robert-jensen.dk/script.js";
           s.dataset.websiteId = "48716c88-8707-4174-aef6-cff0c0aef35b";
+          s.dataset.performance = "true";
           d.head.appendChild(s);
         }
       })();

@@ -13,7 +13,7 @@ tldr:
   - "TripIt is best for frequent flyers: forward booking emails and it builds your itinerary automatically, with a Pro subscription for alerts."
   - "Wanderlog is best for group trips: collaborative itineraries and maps on a freemium subscription model."
   - "Google Maps lists and Notion are free and flexible, but neither is a real trip planner — expect manual work and gaps offline."
-  - 'Our app, <a href="https://apps.apple.com/app/id6756801168">Travel Stories</a>, is best if you want planning, budget, documents, and memories in one offline iPhone app for a one-time ~$1.99 upgrade instead of a subscription.'
+  - 'Our app, <a href="https://apps.apple.com/app/id6756801168?ct=blog-best-trip-planner-apps&mt=8">Travel Stories</a>, is best if you want planning, budget, documents, and memories in one offline iPhone app for a one-time ~$1.99 upgrade instead of a subscription.'
 faq:
   - question: "What is the best free trip planner app?"
     answer: "It depends on what you need for free. Google Maps lists cost nothing and are great for saving places, but they do not handle dates, budgets, or bookings. TripIt and Wanderlog both have useful free tiers with paid subscriptions on top. Travel Stories is free to download with full core planning features and a one-time upgrade instead of a subscription."
@@ -89,7 +89,7 @@ Some travelers plan trips in Notion pages or a Google Sheet, and when it works, 
 
 ## Travel Stories: best for offline planning plus memories, without a subscription
 
-Now our own app, held to the same standard. [Travel Stories](https://apps.apple.com/app/id6756801168) is a free iPhone app (iOS 17+) that keeps the whole trip in one place: the trip itself with destination, dates, budget, and a cover image; a day-by-day itinerary; task checklists; bookings with prices and confirmation numbers; document storage for boarding passes, reservations, and insurance; notes; packing lists with suggested items; expense tracking against your budget with charts; and a photo memories timeline for after the trip. If you want to sample the thinking before installing anything, our [packing list generator](/packing-list/) runs free in the browser with no sign-up.
+Now our own app, held to the same standard. [Travel Stories](https://apps.apple.com/app/id6756801168?ct=blog-best-trip-planner-apps&mt=8) is a free iPhone app (iOS 17+) that keeps the whole trip in one place: the trip itself with destination, dates, budget, and a cover image; a day-by-day itinerary; task checklists; bookings with prices and confirmation numbers; document storage for boarding passes, reservations, and insurance; notes; packing lists with suggested items; expense tracking against your budget with charts; and a photo memories timeline for after the trip. If you want to sample the thinking before installing anything, our [packing list generator](/packing-list/) runs free in the browser with no sign-up.
 
 Three deliberate choices set it apart from everything above:
 
@@ -102,7 +102,7 @@ The memories side matters too: the same app that held the plan holds the photo t
 - **Best for:** solo travelers, couples, and families who want planning, budget, documents, and memories in one private, offline app — and who are tired of subscriptions.
 - **Where it falls short:** it does not auto-import bookings from email like TripIt, and it is not a real-time collaborative planner like Wanderlog. It is iPhone-only. If those are your must-haves, pick accordingly — see above.
 
-If that trade-off sounds like your kind of travel, you can [download Travel Stories free from the App Store](https://apps.apple.com/app/id6756801168) and try it on your next trip before deciding whether the one-time upgrade is worth it.
+If that trade-off sounds like your kind of travel, you can [download Travel Stories free from the App Store](https://apps.apple.com/app/id6756801168?ct=blog-best-trip-planner-apps&mt=8) and try it on your next trip before deciding whether the one-time upgrade is worth it.
 
 ## Comparison table: trip planner apps at a glance
 

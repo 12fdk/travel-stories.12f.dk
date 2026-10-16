@@ -91,7 +91,7 @@ If you kept a travel journal, write the final entry — the journey home, the be
 
 ### 10. Archive the trip in one place
 
-Bookings, tickets, the itinerary, the expense totals, the diary, the favourite photos — bring them together into a single trip record before they scatter across four apps and an email inbox. This is exactly what a trip app's history is for: in the free [Travel Stories app](https://apps.apple.com/app/id6756801168), the itinerary, expenses, packing list, and photo diary you built during the trip already sit together as one finished, offline record — closing the trip is simply a matter of writing the last diary entry.
+Bookings, tickets, the itinerary, the expense totals, the diary, the favourite photos — bring them together into a single trip record before they scatter across four apps and an email inbox. This is exactly what a trip app's history is for: in the free [Travel Stories app](https://apps.apple.com/app/id6756801168?ct=blog-post-trip-checklist&mt=8), the itinerary, expenses, packing list, and photo diary you built during the trip already sit together as one finished, offline record — closing the trip is simply a matter of writing the last diary entry.
 
 ## Forward-looking: bank the lessons
 

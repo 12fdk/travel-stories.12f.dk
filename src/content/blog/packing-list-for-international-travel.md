@@ -12,7 +12,7 @@ tldr:
   - "Pack documents and medications in your carry-on, never in checked luggage — those are the two things you cannot replace at your destination."
   - "Use the 5-4-3-2-1 formula for a week of clothing: 5 tops, 4 bottoms, 3 pairs of shoes, 2 layers, 1 outfit for a nice evening."
   - "Adjust the base list with a destination modifier — beach, city, cold weather, or business — instead of writing a new list every trip."
-  - "Build the list once in an app like <a href=\"https://apps.apple.com/app/id6756801168\">Travel Stories</a> and reuse it, so every trip starts from a checklist that already works."
+  - "Build the list once in an app like <a href=\"https://apps.apple.com/app/id6756801168?ct=blog-packing-list-for-international-trav&mt=8\">Travel Stories</a> and reuse it, so every trip starts from a checklist that already works."
 faq:
   - question: "How far in advance should I start packing for an international trip?"
     answer: "Start the list two weeks out and do the physical packing two to three days before departure. The two-week head start matters for things you might need to buy or renew, like adapters, medication refills, or a passport check. The actual folding takes an evening once the list exists."
@@ -185,7 +185,7 @@ A packing list only works if you check things off as they physically enter the b
 3. **The night before:** pack, checking off each item as it goes in.
 4. **Before leaving home:** final sweep — wall sockets, bathroom shelf, fridge, door keys.
 
-Paper lists work but get thrown away, and next trip you start from zero. This is where a reusable checklist earns its place: build it once, and every future trip starts at 90% done. Travel Stories includes packing lists with suggested items built in, alongside your itinerary and documents — you can [get it free on the App Store](https://apps.apple.com/app/id6756801168) and have this list rebuilt in about five minutes.
+Paper lists work but get thrown away, and next trip you start from zero. This is where a reusable checklist earns its place: build it once, and every future trip starts at 90% done. Travel Stories includes packing lists with suggested items built in, alongside your itinerary and documents — you can [get it free on the App Store](https://apps.apple.com/app/id6756801168?ct=blog-packing-list-for-international-trav&mt=8) and have this list rebuilt in about five minutes.
 
 Packing is also only one lane of trip prep. Booking order, budget, and the day-by-day plan each have their own routine — the [step-by-step trip planning guide](/blog/how-to-plan-a-trip-step-by-step/) covers the full sequence, and if you're comparing tools, see the [best trip planner apps](/blog/best-trip-planner-apps/).
 

@@ -341,7 +341,7 @@ Write each amount the day it happens. You will not rebuild Tuesday from memory o
 
 The pencil log on the PDF is enough when you will use the pencil. The Log tab is enough when you will open it.
 
-If what you have with you is your phone, [Travel Stories](https://apps.apple.com/app/id6756801168) lets you set a budget for the trip and log each expense against it on an iPhone, offline, with no account. The free download includes expense tracking for one trip. Premium Lifetime is about $1.99 (19 DKK) once, not a subscription.
+If what you have with you is your phone, [Travel Stories](https://apps.apple.com/app/id6756801168?ct=blog-travel-budget-template&mt=8) lets you set a budget for the trip and log each expense against it on an iPhone, offline, with no account. The free download includes expense tracking for one trip. Premium Lifetime is about $1.99 (19 DKK) once, not a subscription.
 
 ## Where a travel budget template usually goes wrong
 

@@ -1,6 +1,6 @@
 ---
 import defaultTemplateConfig from "../../utils/config";
-import { withCampaign } from "../../utils/appStoreCampaign";
+import { withCampaign, blogCampaignToken } from "../../utils/appStoreCampaign";
 
 type Variant = "inline" | "callout";
 
@@ -11,6 +11,8 @@ interface Props {
   buttonText?: string;
   trackingId?: string;
   appStoreLink?: string;
+  /** Post slug. The button's `ct` is `blog-<slug>`, truncated to 40 characters. */
+  slug: string;
 }
 
 const {
@@ -20,9 +22,10 @@ const {
   buttonText = "Get Travel Stories — Free",
   trackingId = "blog-inline-cta",
   appStoreLink = defaultTemplateConfig.appStoreLink,
+  slug,
 } = Astro.props;
 
-const ctaLink = withCampaign(appStoreLink, "blog");
+const ctaLink = withCampaign(appStoreLink, blogCampaignToken(slug));
 ---
 
 {

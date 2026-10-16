@@ -1,6 +1,6 @@
 ---
-title: "TripIt vs Wanderlog vs Travel Stories: 2026 Comparison"
-description: "TripIt Pro costs $49/year, Wanderlog Pro $39.99/year, Travel Stories $1.99 once. An honest three-way comparison of what each trip planner does best."
+title: "Travel Planner App Costs 2026: TripIt $49 vs Wanderlog $39.99"
+description: "Wanderlog Pro is $39.99/year, TripIt Pro $49/year, Travel Stories $1.99 once. What each trip planner's paid tier adds — and which one is worth it."
 lede: "TripIt is the best app for automatically organising bookings — forward a confirmation email and your itinerary builds itself, with Pro at $49 per year. Wanderlog is the best app for planning a trip with other people on a shared map, with Pro at $39.99 per year. Travel Stories is a simpler iPhone-only planner that covers itinerary, budget, packing, and a travel diary offline with no account, for a one-time $1.99 instead of a subscription."
 keyword: "tripit vs wanderlog"
 cover: "/blog/tripit-vs-wanderlog-vs-travel-stories.webp"
@@ -11,7 +11,7 @@ tags: ["app comparison", "trip planning"]
 tldr:
   - "TripIt wins on automation: forward booking emails and it assembles your itinerary, and TripIt Pro ($49/year) adds real-time flight alerts, seat tracking, and fare monitoring."
   - "Wanderlog wins on collaboration: live group editing on a map-first itinerary, with Pro ($39.99/year) unlocking offline maps, route optimisation, and Gmail auto-import."
-  - 'Travel Stories takes a different path: one <a href="https://apps.apple.com/app/id6756801168">iPhone app</a> for itinerary, budget, packing, and a travel diary — fully offline, no account, $1.99 once instead of a subscription.'
+  - 'Travel Stories takes a different path: one <a href="https://apps.apple.com/app/id6756801168?ct=blog-tripit-vs-wanderlog-vs-travel-stori&mt=8">iPhone app</a> for itinerary, budget, packing, and a travel diary — fully offline, no account, $1.99 once instead of a subscription.'
   - "Over five years the paid tiers cost roughly $245 (TripIt Pro), $200 (Wanderlog Pro), and $1.99 (Travel Stories) — but the right choice depends on how you travel, not just price."
 faq:
   - question: "Is TripIt or Wanderlog better?"
@@ -29,7 +29,7 @@ relatedPackingLists:
   - "long-haul-flight-carry-on-essentials"
   - "two-week-europe-packing-list"
   - "what-to-pack-for-a-cruise"
-relatedSlugs: ["best-trip-planner-apps", "trip-planner-app-no-subscription", "how-to-budget-for-a-trip"]
+relatedSlugs: ["best-trip-planner-apps", "trip-planner-app-no-subscription", "how-to-budget-for-a-trip", "wanderlog-pro-cost"]
 draft: false
 ---
 
@@ -94,7 +94,7 @@ What it covers, all in one app:
 - **Share sheet capture** — send bookings, links, and tips into the right trip from any iOS app
 - **Fully offline, no account** — everything stays on your phone; there is no server and no cloud sync, in 14 languages
 
-The pricing is the headline: the free version includes **one trip with every feature**, and the Premium Lifetime unlock — unlimited trips, spending charts, itinerary export to Apple Calendar, trip sharing and exports — costs **$1.99 once**. If you plan a couple of trips a year and want the whole thing organised in one place without another recurring charge, you can [get Travel Stories on the App Store](https://apps.apple.com/app/id6756801168) and be done with pricing decisions permanently.
+The pricing is the headline: the free version includes **one trip with every feature**, and the Premium Lifetime unlock — unlimited trips, spending charts, itinerary export to Apple Calendar, trip sharing and exports — costs **$1.99 once**. If you plan a couple of trips a year and want the whole thing organised in one place without another recurring charge, you can [get Travel Stories on the App Store](https://apps.apple.com/app/id6756801168?ct=blog-tripit-vs-wanderlog-vs-travel-stori&mt=8) and be done with pricing decisions permanently.
 
 **Where Travel Stories is weak — honestly:** it is iPhone-only (iOS 17 or later, no Android or iPad version), so mixed-platform groups are out. There is no email-forwarding automation — you add bookings yourself, helped by the share sheet but not replaced by it. And because data stays on-device, there is no live collaborative editing; you share a trip as an export rather than a live document. If any of those three is a dealbreaker, it is a dealbreaker, and one of the other two apps will serve you better.
 
@@ -121,7 +121,7 @@ Subscriptions are small numbers that compound. Here is the straightforward maths
 | 3 years | $147 | $119.97 | $1.99 |
 | 5 years | $245 | $199.95 | $1.99 |
 
-Two honest caveats cut both ways. First, both TripIt and Wanderlog have real free tiers, and plenty of travellers never pay: TripIt Free still does email-forwarding itinerary building, and Wanderlog Free still does collaborative planning. The subscriptions buy the premium layer, not the core. Second, a subscription can be worth every cent — a frequent flyer whose TripIt Pro fare alert catches one price drop, or whose delay notification saves one missed connection, has covered the $49 several times over.
+Two honest caveats cut both ways. First, both TripIt and Wanderlog have real free tiers, and plenty of travellers never pay: TripIt Free still does email-forwarding itinerary building, and Wanderlog Free still does collaborative planning. The subscriptions buy the premium layer, not the core. Second, a subscription can be worth every cent — a frequent flyer whose TripIt Pro fare alert catches one price drop, or whose delay notification saves one missed connection, has covered the $49 several times over. If you are comparing the price itself rather than the apps, we have done the line-by-line maths on [how much Wanderlog Pro costs](/blog/wanderlog-pro-cost/) before you pay it.
 
 The comparison to make is with your own travel pattern: if you fly weekly, $49 a year for flight intelligence is cheap insurance. If you take two or three leisure trips a year and mostly need a place to keep the plan, the budget, and the memories, paying yearly for features you use twice is where the one-time $1.99 model wins. We have written a fuller breakdown of the subscription question in our guide to finding a [trip planner app with no subscription](/blog/trip-planner-app-no-subscription/).
 

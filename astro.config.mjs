@@ -4,25 +4,29 @@ import path from "node:path";
 import react from "@astrojs/react";
 import tailwind from "@astrojs/tailwind";
 import sitemap from "@astrojs/sitemap";
-import { withCampaign } from "./src/utils/appStoreCampaign";
+import { withCampaign, blogCampaignToken } from "./src/utils/appStoreCampaign";
+import { rehypeInlineCta } from "./src/plugins/rehype-inline-cta.mjs";
 
 const SITE = "https://travel-stories.12f.dk";
 
 /**
- * Attribute App Store links written inline in post bodies (#52).
+ * Attribute App Store links written inline in post bodies (#62).
  *
- * There are 22 of them across the blog and they are authored as ordinary
- * markdown, so rewriting them here keeps the provider token in exactly one
- * place instead of pasting it into every post. Hand-rolled walk rather than
- * unist-util-visit, which isn't a direct dependency.
+ * Posts are ordinary markdown, so this rewrite is what makes a bare listing
+ * URL — and the mid-article card button — carry `ct=blog-<slug>&mt=8`.
+ * Hand-rolled walk rather than unist-util-visit, which isn't a direct dependency.
  */
 function rehypeAppStoreCampaign() {
-  return (tree) => {
+  return (tree, file) => {
+    const filepath = String(file?.path ?? file?.history?.[0] ?? "");
+    if (!filepath.includes("content/blog")) return;
+    const slug = filepath.split(/[/\\]/).pop()?.replace(/\.mdx?$/, "") ?? "";
+    const campaign = blogCampaignToken(slug);
     const walk = (node) => {
       if (node.type === "element" && node.tagName === "a") {
         const href = node.properties?.href;
         if (typeof href === "string" && href.startsWith("https://apps.apple.com/")) {
-          node.properties.href = withCampaign(href, "blog-body");
+          node.properties.href = withCampaign(href, campaign);
         }
       }
       for (const child of node.children ?? []) walk(child);
@@ -94,7 +98,10 @@ export default defineConfig({
     },
   },
   markdown: {
-    rehypePlugins: [rehypeAppStoreCampaign],
+    // rehypeInlineCta runs first so the card it injects (with its own button)
+    // then flows through the campaign-attribution rewrite like any other
+    // in-prose App Store link. #78
+    rehypePlugins: [rehypeInlineCta, rehypeAppStoreCampaign],
   },
   integrations: [
     react(),
@@ -109,9 +116,14 @@ export default defineConfig({
           fr: "fr", es: "es", it: "it", pt: "pt-BR", ko: "ko", ja: "ja",
         },
       },
-      // /app is a redirect stub and /404 is the error page — neither belongs
-      // in the index. Both are also noindex in the page itself.
-      filter: (page) => !page.includes("/app") && !page.includes("/404"),
+      // /app is a redirect stub, /404 is the error page, and /go/ is the
+      // source-attribution tracking hop — none of them belongs in the index.
+      // All three are also noindex in the page itself.
+      filter:
+        (page) =>
+          !page.includes("/app") &&
+          !page.includes("/404") &&
+          !page.endsWith("/go/"),
       serialize(item) {
         if (item.url === `${SITE}/`) {
           item.priority = 1.0;

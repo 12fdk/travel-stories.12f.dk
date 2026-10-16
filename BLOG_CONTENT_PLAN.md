@@ -65,7 +65,7 @@ Estimates below are *educated guesses* — confirm with a real tool before sched
 | 16 | travel itinerary template | 1k–3k | 30–40 | Informational + freebie | ☐ |
 | 17 | travel documents checklist | 300–800 | 15–25 | Checklist | ☐ |
 | 18 | trip planning timeline (what to do 3/2/1 months out) ✅ | 100–300 | 10–20 | Informational | ☐ |
-| 19 | how much cash to bring on vacation | 200–500 | 10–20 | Informational | ☐ |
+| 19 | how much cash to bring on vacation ✅ | 200–500 | 10–20 | Informational | ☐ |
 | 20 | carry on packing list | 1k–5k | 35–45 | Informational (HARD — long-tail angle only) | ☐ |
 
 ### Tier C — Comparison / decision-stage
@@ -73,8 +73,9 @@ Estimates below are *educated guesses* — confirm with a real tool before sched
 | # | Keyword | Est. vol/mo | Est. KD | Intent | V |
 |---|---|---|---|---|---|
 | 21 | notion travel planner template | 300–800 | 15–25 | Comparison (template seekers → app converts) | ☐ |
-| 22 | tripit vs wanderlog | 100–300 | 10–20 | Comparison | ☐ |
+| 22 | tripit vs wanderlog ✅ | 100–300 | 10–20 | Comparison | ☐ |
 | 23 | spreadsheet vs app for trip planning | 30–100 | 5–15 | Comparison | ☐ |
+| 26 | wanderlog pro cost ✅ (added from GSC: ~7.2k imp/90d on the query) | — | — | Competitor pricing (decision-stage) | ☐ |
 
 ### Tier D — During & after the trip (the memory cluster — our differentiator)
 
@@ -127,7 +128,7 @@ Each post links to 2–3 others (internal linking), includes a contextual CTA to
 | 12 | ★ Freebie | The Free Travel Itinerary Template (Day-by-Day) | travel itinerary template | Template + guide | 2,000 | ☐ |
 | 13 | How-to | The Trip Planning Timeline: What to Do 3, 2, and 1 Months Out | trip planning timeline | Timeline guide | 1,800 | [x] |
 | 14 | Comparison | Wanderlog Alternative: What to Use Instead (and Why) | wanderlog alternative | Comparison | 1,800 | ☐ |
-| 15 | How-to | How Much Cash to Bring on Vacation (Real Numbers by Country Type) | how much cash to bring on vacation | Focused guide | 1,400 | ☐ |
+| 15 | How-to | How Much Cash to Bring on Vacation (Real Numbers by Country Type) | how much cash to bring on vacation | Focused guide | 1,400 | [x] |
 
 **Why this order:**
 - Posts 1–6 are done — they cover the head of every cluster the app already ranks for in the App Store (plan, pack, budget, apps, journal, checklist). Everything below internally links back to them.
@@ -180,6 +181,22 @@ Every post follows this skeleton — no exceptions:
 8. **Related posts** — 3 internal links to other blog posts.
 9. **End CTA** — clear App Store button.
 
+### App Store campaign token
+
+Every App Store link is tagged so the download is attributable (issue #62). `ct` is at most 40 characters. Do not add `pt=`.
+
+| Surface | `ct` |
+|---|---|
+| Homepage / site chrome CTA | `site-travel-stories` |
+| A blog post | `blog-<post-slug>` (truncate the whole token to 40 characters) |
+| `llms.txt` / `ai.txt` | `llms-travel-stories` |
+
+In a post, write the link as:
+
+`https://apps.apple.com/app/id6756801168?ct=blog-<post-slug>&mt=8`
+
+`<post-slug>` is the filename without `.md`. The build also rewrites a bare `https://apps.apple.com/app/id6756801168` in the post body, the TL;DR, and the end-of-post button to that same token. Write the tagged URL in the markdown anyway, so the source is attributable on its own. Future posts that follow this scheme tag themselves.
+
 ---
 
 ## 6. On-page SEO checklist (per post)
@@ -195,6 +212,7 @@ Every post follows this skeleton — no exceptions:
 - [ ] Article schema with author, datePublished, dateModified
 - [ ] Page weight under 1 MB, LCP under 2.5s
 - [ ] Reading level: grade 7–9 (use Hemingway)
+- [ ] App Store links use `?ct=blog-<post-slug>&mt=8` (the `ct` value is at most 40 characters; no `pt=`)
 
 ---
 
@@ -286,4 +304,4 @@ Tied to existing issues: #14 (blog infra), #15 (this plan + first 6 posts), #17 
 
 ---
 
-*Last updated: 2026-07-16*
+*Last updated: 2026-10-16*
