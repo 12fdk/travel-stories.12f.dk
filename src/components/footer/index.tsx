@@ -3,6 +3,15 @@ import { ConfigContext } from "../../utils/configContext";
 import { PHOTO_CREDITS } from "../../data/photoCredits";
 import ThemeSwitcher from "../navbar/themeSwitcher";
 
+// Sister apps from the same developer: one quiet line of plain links with
+// descriptive anchors, in the static HTML of every page.
+// #151 (12fdk/home-stories.12f.dk)
+const MORE_APPS = [
+  { title: "Home Stories – renovation planner & budget tracker", href: "https://home-stories.12f.dk/" },
+  { title: "Event Stories – party planner app", href: "https://event-stories.12f.dk/" },
+  { title: "Bike Stories – bike maintenance log", href: "https://bike-stories.12f.dk/" },
+];
+
 interface Props {
   /** Show the credit line for the found photographs (homepage). */
   credits?: boolean;
@@ -70,6 +79,18 @@ function Footer({ credits = false }: Props) {
           {showThemeSwitch && <ThemeSwitcher />}
         </div>
       </div>
+      <nav aria-label="More apps from 12f" className="mt-6">
+        <ul className="m-0 flex list-none flex-wrap gap-x-6 gap-y-2 p-0">
+          <li className="text-muted">More apps from 12f</li>
+          {MORE_APPS.map(({ title, href }) => (
+            <li key={href}>
+              <a className="ts-link text-ink" href={href}>
+                {title}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
       {credits && (
         <p className="mt-6 max-w-[110ch] text-muted">
           {ui?.photoCredits ?? "Photographs"}:{" "}
