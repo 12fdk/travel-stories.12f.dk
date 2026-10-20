@@ -1,6 +1,6 @@
 # Travel Stories — Marketing Plan (living doc)
 
-Owner: Robert · Maintained by: Hermes (social pipeline agent) · Last updated: 2026-10-20 (nightly run)
+Owner: Robert · Maintained by: Hermes (social pipeline agent) · Last updated: 2026-10-21 (nightly run)
 
 ## 1. What this is & how it's updated
 
@@ -222,8 +222,7 @@ weeks. Hooks never state an unverified date or any statistic.
 | Week of | # | Format | Feature / message | Hook (first 1–2 s) | Music | Look / scene (start point; must differ from recent looks) | Status |
 |---|---|---|---|---|---|---|---|
 | Oct 19 | 2 | Carousel | Day-by-day plans | "3 days in Lisbon, planned day by day." | — | — | published 2026-10-15 6acffaab023c7d3cf05f (text-heavy, superseded) |
-| Oct 26 | 2 | Carousel | Budget tracking | "10 days in Thailand. Real receipts, tracked." | — | Bangkok night-market flat-lay: baht notes and street-food receipts, neon pink and green, overhead | built 2026-10-20 6ad6a92db0f1d4658a1f |
-| Oct 26 | 3 | Reel | Trip sharing (Premium) | "Rome with three friends and three different plans? Send one." | v5 c-min | Roman cobbled side street at blue hour, ivy and a parked Vespa, cool blue with warm window glow | queued |
+| Oct 26 | 3 | Reel | Trip sharing (Premium) | "Rome with three friends and three different plans? Send one." | v5 c-min | Roman cobbled side street at blue hour, ivy and a parked Vespa, cool blue with warm window glow | built 2026-10-21 6ad7fbeaf21b007e23dc |
 | Oct 26 | 4 | Carousel | Day-by-day + bookings | "Vienna Christmas markets weekend: what to book before November ends." | — | snowy Ringstrasse with a red tram at dusk, red and gold, telephoto | queued |
 | Nov 2 | 1 | Reel | Day-by-day with maps (road trip) | "Algarve road trip: 6 beaches, 5 days — the route on one map." | v0 c-major | coastal cliff road from above, ochre cliffs, Atlantic teal, late golden light | queued |
 | Nov 2 | 2 | Carousel | Day-by-day plans | "Tokyo, 5 days: what to do each morning." | — | Tokyo backstreet at dawn, vending-machine glow, wet asphalt, muted pastels | queued |
@@ -383,6 +382,8 @@ Append-only. Newest at bottom. Never edit or delete rows.
 
 - 2026-10-15 — Housekeeping: row Oct 16 #1 (carousel "3 days in Lisbon, planned day by day.", post 6ad0ba765a0b80ce0cf5) — the post is published (2026-10-15 12:38 UTC); status normalized from the legacy "scheduled 06:00 UTC …" to `posted 2026-10-15 6ad0ba765a0b80ce0cf5` so the next plan_prune removes it. §7 review not run today (Thursday; the review runs Monday, and there are no unreviewed posts published 7–13 days ago). No §6 row due tonight: the first `queued` row is week of Oct 26 (starts in 11 days, outside the 7-day window).
 | 2026-10-20 | Built §6 Oct 26 #2 "10 days in Thailand. Real receipts, tracked." (carousel, budget tracking) — post `6ad6a92db0f1d4658a1f` | — | BUILT | ready at 2026-10-26T15:00Z. Look: Bangkok night market and lantern-lit khlong, neon pink and green, overhead flat-lays and close-ups, one night series. 7 fresh comfy-gen stills (ts-social-20261020); re-render rounds removed legible signage, a US-dollar note, coin inscriptions, a watermark, plate text and a visible face. Slot Oct 26 15:00Z free because #1 reel `6ad558d0102476c9eb4f` published 2026-10-19 13:35Z (row pruned by plan_prune). Design 20261020-0046 (review round 1 FAIL: image defects + plan/post-id pending, all fixed); Gate 1 PASS. |
+| 2026-10-21 | 9d7e141a9148 "Your trip is 14 open tabs and one very full spreadsheet." (reel, all-in-one) | IG r0/l0/c0/s0/sh0 · FB r—/l—/c0/s—/sh0 (fbLikes/fbSaves absent; metricsUpdatedAt 2026-10-14 12:00Z, $updatedAt 2026-10-18 03:00Z) · Umami 7d ig=3/fb=1 profile taps, 0 site landings, 1 store tap | NO-DATA | Metrics last collected >24h ago; re-run next week, not judged. |
+| 2026-10-21 | Built §6 Oct 26 #3 "Rome with three friends and three different plans? Send one." (reel, trip sharing Premium) — post `6ad7fbeaf21b007e23dc` | — | BUILT | ready at 2026-10-27T15:00Z (Oct 27 is a Tuesday; the auto-observed active day Thursday would be Oct 29 — kept the design's slot, 24h from the Oct 26 15:00Z carousel). Look: Roman cobbled side street at blue hour, ivy and a parked Vespa, cool blue ink with warm window glow, low ground-level framing; editorial reel look (last two reels clean/bold); music v5 c-min. 18 s: footage moment t=41–44.5 s (trip overview dashboard WITH share icon; the designed 24–35 s window turned out to be the packing-list screen at t=24–29, so it could not be met — stated per the design's risk note; the moment is pre-cropped to 9:16 because the reel template center-crops the 1320x2868 footage and would clip the header) + 5 fresh Rome blue-hour shots (ts-social-20261021: 2 new LTX clips, 3 stills; the three-lane fork still failed 3 renders on signage/fork and shipped as a clean lane-to-dome still with Ken Burns after its LTX clip showed a morphing bush). Design 20261021-0046 (review round 1 FAIL: share-icon header cropped + hook contrast; fixed via 9:16 pre-crop, frame 0 + held frames re-verified readable, hook measured 9/10 over scrim); Gate 1 PASS. |
 ## 9. Open questions & watch items
 
 - **Oct 19 #1 claims offline maps** (owner: Robert) — the built reel
