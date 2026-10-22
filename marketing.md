@@ -1,6 +1,6 @@
 # Travel Stories — Marketing Plan (living doc)
 
-Owner: Robert · Maintained by: Hermes (social pipeline agent) · Last updated: 2026-10-22 (nightly run)
+Owner: Robert · Maintained by: Hermes (social pipeline agent) · Last updated: 2026-10-23 (nightly run)
 
 ## 1. What this is & how it's updated
 
@@ -221,8 +221,6 @@ weeks. Hooks never state an unverified date or any statistic.
 
 | Week of | # | Format | Feature / message | Hook (first 1–2 s) | Music | Look / scene (start point; must differ from recent looks) | Status |
 |---|---|---|---|---|---|---|---|
-| Oct 19 | 2 | Carousel | Day-by-day plans | "3 days in Lisbon, planned day by day." | — | — | published 2026-10-15 6acffaab023c7d3cf05f (text-heavy, superseded) |
-| Oct 26 | 4 | Carousel | Day-by-day + bookings | "Vienna Christmas markets weekend: what to book before November ends." | — | snowy Ringstrasse with a red tram at dusk, red and gold, telephoto | built 2026-10-22 6ad946ad7a15ac2da69a |
 | Nov 2 | 1 | Reel | Day-by-day with maps (road trip) | "Algarve road trip: 6 beaches, 5 days — the route on one map." | v0 c-major | coastal cliff road from above, ochre cliffs, Atlantic teal, late golden light | queued |
 | Nov 2 | 2 | Carousel | Day-by-day plans | "Tokyo, 5 days: what to do each morning." | — | Tokyo backstreet at dawn, vending-machine glow, wet asphalt, muted pastels | queued |
 | Nov 2 | 3 | Reel | Budget tracking (your currency) | "Barcelona weekend: see what you've spent, in your currency." | v3 e-min | tapas-bar counter, tiles and copper pans, warm tungsten, macro | queued |
@@ -303,7 +301,7 @@ weeks. Hooks never state an unverified date or any statistic.
 | Feb 22 | 3 | Reel | Offline access | "Easter hike on the Amalfi Coast's Path of the Gods, no signal: the day plan still opens." | v2 g-min | terraced lemon groves on cliffs, hazy spring sun | queued |
 | Feb 22 | 4 | Carousel | Budget tracking | "Spring break in Iceland: the 5-day budget, by category." | — | glacier lagoon icebergs, blue ice, overcast | queued |
 
-Plan totals (by week-of month): 85 posts — Oct 6 (2 built + 4 queued), Nov 24, Dec 17, Jan 20, Feb 18. Reels 48, carousels 37.
+Plan totals (by week-of month): 79 posts, all queued — Nov 24, Dec 17, Jan 20, Feb 18. Reels 45, carousels 34. All 6 Oct rows were built and published; pruned from §6 as they published (last two 2026-10-23).
 
 - Music ids are `music.mjs` variant numbers (0–5). The 2026-10-14 reel used
   v2 g-min and Oct 19 #1 v1 a-major; the rotation above continues in the fixed
@@ -385,6 +383,7 @@ Append-only. Newest at bottom. Never edit or delete rows.
 | 2026-10-22 | Built §6 Oct 26 #4 "Vienna Christmas markets weekend: what to book before November ends." (carousel, day-by-day + bookings) — post `6ad946ad7a15ac2da69a` | — | BUILT | ready at 2026-10-29T15:00Z (Thursday active day + 15:00 UTC active hour; queue had no other upcoming slots). Funnel 7d (Oct 14–21): social traffic zero, google.com top referrer -> product-forward booking angle. Look: Vienna in falling snow at dusk, red tram on the Ringstrasse, red and gold, deep plum sky, telephoto compression, steaming market lights (differs from recent Rome blue-hour, Bangkok neon, Krabi noon, Lisbon teal). 7 fresh comfy-gen stills (ts-social-20261022): 00008 tram, 00002 market huts, 00003 mugs, 00004 palace, 00012 cafe, 00005 hotel window, 00011 backlit tram; 10 renders total — re-render rounds: cafe (00006/00009 had a face-up phone screen -> 00012 with no device) and trams (00001/00010 had legible tram numbers / a face in the window -> 00008/00011 with garbled-illegible signs, no faces). Deck: 9 slides, 7 photos + 2 text (hook slide 4, CTA slide 9). Pipeline note: marketing-post photo slides carry file+prompt only (no overlay text), so the hook rides on the IG caption line 1 over the slide-1 photo. IG caption gained the reader question (brandTone formula + auto-observed top CTA "comment below"). Design 20261022-0035 (review round 1 FAIL: deck order, FB unverified claims, CTA headline word count — all fixed; round 2 PASS); Gate 1 PASS. |
 
 | 2026-10-21 | Built §6 Oct 26 #3 "Rome with three friends and three different plans? Send one." (reel, trip sharing Premium) — post `6ad7fbeaf21b007e23dc` | — | BUILT | ready at 2026-10-27T15:00Z (Oct 27 is a Tuesday; the auto-observed active day Thursday would be Oct 29 — kept the design's slot, 24h from the Oct 26 15:00Z carousel). Look: Roman cobbled side street at blue hour, ivy and a parked Vespa, cool blue ink with warm window glow, low ground-level framing; editorial reel look (last two reels clean/bold); music v5 c-min. 18 s: footage moment t=41–44.5 s (trip overview dashboard WITH share icon; the designed 24–35 s window turned out to be the packing-list screen at t=24–29, so it could not be met — stated per the design's risk note; the moment is pre-cropped to 9:16 because the reel template center-crops the 1320x2868 footage and would clip the header) + 5 fresh Rome blue-hour shots (ts-social-20261021: 2 new LTX clips, 3 stills; the three-lane fork still failed 3 renders on signage/fork and shipped as a clean lane-to-dome still with Ken Burns after its LTX clip showed a morphing bush). Design 20261021-0046 (review round 1 FAIL: share-icon header cropped + hook contrast; fixed via 9:16 pre-crop, frame 0 + held frames re-verified readable, hook measured 9/10 over scrim); Gate 1 PASS. |
+| 2026-10-23 | REVIEW RUN: none due (Friday; §7 runs Mondays — the Mon 2026-10-26 window covers the 9d7e141a9148 NO-DATA re-run + the 2026-10-15 posts 6acffaa9e525281e1a9b / 6acffaab023c7d3cf05f / 6ad0ba765a0b80ce0cf5) | — | NO-DATA | No row due: first queued row Nov 2 #1 (week starts 2026-11-02, 10 days out — outside the 7-day window; the window opens 2026-10-26). Schedule check: no upcoming posts, no failed posts. Housekeeping: Oct 19 #2 status normalized `published` → `posted` (platform: 6acffaab published 2026-10-15T09:16Z, superseded) so plan_prune removes it; plan_prune removed Oct 19 #2 and Oct 26 #4 (6ad946ad published 2026-10-21T23:17Z, ahead of its 2026-10-29T15:00Z slot); Plan totals updated (79 queued: 45 reels, 34 carousels). Note: all Oct 26 posts published Oct 19–21, the evening they were built. |
 ## 9. Open questions & watch items
 
 - **Oct 19 #1 claims offline maps** (owner: Robert) — the built reel
