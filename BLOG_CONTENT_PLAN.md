@@ -67,6 +67,7 @@ Estimates below are *educated guesses* — confirm with a real tool before sched
 | 18 | trip planning timeline (what to do 3/2/1 months out) ✅ | 100–300 | 10–20 | Informational | ☐ |
 | 19 | how much cash to bring on vacation ✅ | 200–500 | 10–20 | Informational | ☐ |
 | 20 | carry on packing list | 1k–5k | 35–45 | Informational (HARD — long-tail angle only) | ☐ |
+| 31 | how to plan a road trip ✅ | 100–500 | 10–25 | Informational (long-tail inside "how to plan a trip") | ☐ |
 
 ### Tier C — Comparison / decision-stage
 
@@ -304,4 +305,4 @@ Tied to existing issues: #14 (blog infra), #15 (this plan + first 6 posts), #17 
 
 ---
 
-*Last updated: 2026-10-16*
+*Last updated: 2026-10-30*
