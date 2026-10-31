@@ -1,6 +1,6 @@
 # Travel Stories — Marketing Plan (living doc)
 
-Owner: Robert · Maintained by: Hermes (social pipeline agent) · Last updated: 2026-10-31 (nightly run)
+Owner: Robert · Maintained by: Hermes (social pipeline agent) · Last updated: 2026-11-01 (nightly run)
 
 ## 1. What this is & how it's updated
 
@@ -398,6 +398,8 @@ Append-only. Newest at bottom. Never edit or delete rows.
 
 
 | 2026-10-31 | REVIEW RUN: none due (Saturday; §7 runs Mondays — the Mon 2026-11-02 window re-runs the 6 NO-DATA posts flagged 2026-10-26) | — | NO-DATA | No row due: first queued row Nov 9 #1 (week starts 2026-11-09, 9 days out — outside the 7-day window; the window opens 2026-11-02). Schedule check: no upcoming posts, no failed posts. plan_prune removed the Nov 2 #5 row (6ae3e787 published 2026-10-30T00:46Z). Funnel 7d (Oct 23–30): social traffic still 0, 3 store taps (navbar-cta=2, sticky-download=1), pageviews 57 (prev 48), visitors 49 (prev 36), top referrer ask.mind-rise-ai.com=1 — the window-opening post (Nov 9 #1, trip sharing) stays product-forward when built. |
+
+| 2026-11-01 | REVIEW RUN: none due (Sunday; §7 runs Mondays — the Mon 2026-11-02 window re-runs the 6 NO-DATA posts flagged 2026-10-26) | — | NO-DATA | No row due: first queued row Nov 9 #1 (week starts 2026-11-09, 8 days out — outside the 7-day window; the window opens 2026-11-02). Schedule check: no upcoming posts, no failed posts. plan_prune: nothing to remove. Funnel 7d (Oct 24–31): social traffic still 0, 4 store taps (navbar-cta=2, sticky-download=2), pageviews 60 (prev 48), visitors 51 (prev 38), top referrer google.com=5 — the window-opening post (Nov 9 #1, trip sharing) stays product-forward when built. |
 
 ## 9. Open questions & watch items
 
