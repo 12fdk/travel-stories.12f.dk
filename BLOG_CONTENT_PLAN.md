@@ -48,7 +48,7 @@ Estimates below are *educated guesses* — confirm with a real tool before sched
 | 4 | wanderlog alternative | 100–400 | 10–20 | Commercial | ☐ |
 | 5 | free travel planner app | 300–700 | 20–30 | Commercial | ☐ |
 | 6 | travel journal app | 500–1.5k | 20–35 | Commercial | ☐ |
-| 7 | trip budget app | 200–500 | 15–25 | Commercial | ☐ |
+| 7 | trip budget app ✅ | 200–500 | 15–25 | Commercial | ☐ |
 | 8 | travel diary app | 200–500 | 15–25 | Commercial | ☐ |
 | 9 | trip organizer app | 100–300 | 10–20 | Commercial | ☐ |
 | 10 | travel scrapbook app | 50–200 | 5–15 | Commercial | ☐ |
