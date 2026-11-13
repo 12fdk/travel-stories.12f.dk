@@ -90,7 +90,7 @@ Tiers A–C cluster around *planning* — the weeks before departure. This tier 
 | 26 | travel journal ideas | 500–1.5k | 25–35 | Informational (Pinterest fuel) | ☐ |
 | 27 | how to organize travel photos | 300–800 | 15–25 | Informational | ☐ |
 | 28 | how to document your travels | 100–300 | 10–20 | Informational | ☐ |
-| 29 | digital travel scrapbook | 100–400 | 10–20 | Informational | ☐ |
+| 29 | digital travel scrapbook ✅ | 100–400 | 10–20 | Informational | ☐ |
 | 30 | post trip checklist | 50–200 | 5–15 | Checklist | ☐ |
 
 ### Tier E — Non-English clusters (Phase 2, after issue #22 hreflang)
@@ -153,7 +153,7 @@ Each post links to 2–3 others (internal linking), includes a contextual CTA to
 | 17 | Listicle | 50 Travel Journal Prompts (For Before, During, and After the Trip) | travel journal prompts | Prompt list + share bait | 1,800 | ☐ |
 | 18 | How-to | How to Organize Travel Photos After a Trip (Before You Forget the Stories) | how to organize travel photos | Practical guide | 1,800 | ☐ |
 | 19 | Narrative | How to Document Your Travels Without It Becoming a Chore | how to document your travels | Personal narrative + method | 1,500 | ☐ |
-| 20 | Guide | The Digital Travel Scrapbook: Keep the Trip, Skip the Glue | digital travel scrapbook | Guide + examples | 1,600 | ☐ |
+| 20 | Guide | The Digital Travel Scrapbook: Keep the Trip, Skip the Glue | digital travel scrapbook | Guide + examples | 1,600 | [x] |
 | 21 | Listicle | 21 Travel Journal Ideas (Formats That Survive Past Day 3) | travel journal ideas | Listicle (Pinterest fuel) | 1,800 | ☐ |
 | 22 | Commercial | Free Travel Planner Apps That Are Actually Free (No Trial Traps) | free travel planner app | Round-up | 2,000 | ☐ |
 | 23 | Comparison | TripIt vs Wanderlog vs Travel Stories: 2026 Comparison | tripit vs wanderlog | Comparison | 2,000 | ☐ |
