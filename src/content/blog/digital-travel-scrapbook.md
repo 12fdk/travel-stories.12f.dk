@@ -11,7 +11,7 @@ tags: ["travel scrapbook", "travel journaling", "after the trip"]
 tldr:
   - "A digital travel scrapbook is the trip's finished record: the keeper photos in day order with a one-line note on each, plus the tickets and plans that explain the trip. It is the layer the camera roll never builds."
   - "The camera roll keeps the photos; the story is what you have to add yourself. The context behind the photos, which street, who was there, why everyone is laughing, fades within days and weeks, and without it the photos stop telling the story."
-  - "Make it in five steps in the week after you land: cull to 5-10% of the photos, arrange by trip and day, caption each keeper, add the mementos, back it up."
+  - "The five steps: capture context during the trip (five minutes a day), then after you land: cull to 5-10%, arrange by trip and day, caption each keeper, add the mementos and back up, and read the finished record once."
   - "The work is a few hours total, spread over the week. Skip it and the photos survive, but the context behind them, names, jokes, and the reason a photo mattered, does not."
   - 'If you planned the trip in an app, the record is partly assembled already: <a href="https://apps.apple.com/app/id6756801168?ct=blog-digital-travel-scrapbook&mt=8">Travel Stories</a> keeps the diary and photos together with the trip, offline, with no account.'
 faq:
@@ -24,7 +24,7 @@ faq:
   - question: "Is a digital travel scrapbook worth the effort?"
     answer: "Yes, if you want to re-read the trip later, and no, if you only care about keeping the photos, because your camera roll already keeps them. The effort is a few hours spread over the week after the trip. The main thing you lose by skipping it is the context: the names, the jokes, and the reason a photo mattered. A curated scrapbook with 30-40 captioned photos beats a perfect album of 900 that never gets made."
   - question: "What is a simple travel memory you still think about years later?"
-    answer: "The memories that tend to survive are the small, specific ones rather than the landmarks: a meal the group argued about, a local's odd sentence, a taxi driver's advice that worked, the exact light on the last morning. That is why a scrapbook should keep the small moments and not just the postcard shots. Write one line about the small moments while the trip is fresh, and a year later the scrapbook remembers what you cannot."
+    answer: "The memories that tend to survive are the small, specific ones rather than the landmarks: a meal the group argued about, a local's odd sentence, a taxi driver's advice that worked, and the exact light on the last morning. That is why a scrapbook should keep the small moments and not just the postcard shots. Write one line about the small moments while the trip is fresh, and a year later the scrapbook remembers what you cannot."
 relatedSlugs: ["how-to-organize-travel-photos", "how-to-keep-a-travel-journal", "post-trip-checklist"]
 draft: false
 ---
@@ -40,7 +40,7 @@ The point is that the trip stays readable later: something you'll open in Octobe
 Three things the camera roll cannot do, all of them about context:
 
 - **It has no trip order.** Your camera roll is one date-sorted stream where every trip's photos sit side by side. A trip's story needs its own sequence, day one to day ten, and the date order of a camera roll gives you that only when one trip fills the whole period.
-- **A photo without its context stops telling a story.** The photo of the door is funny for a reason you already cannot recall. Forgetting runs steepest in the days and weeks right after an event: the fine details, names, jokes, and smells go first, and a photo whose context is gone becomes a nice image of a place you cannot quite explain.
+- **A photo without its context stops telling a story.** The photo of the door is funny for a reason you already cannot recall. Forgetting is steepest in the days and weeks right after an event: the fine details, names, jokes, and smells go first, and a photo whose context is gone becomes a nice image of a place you cannot quite explain.
 - **It has no culling.** A one-week trip easily produces 500 or more photos on a phone. Without a decision about which ones tell the story, the trip becomes a folder you scroll past for ten minutes and then give up on.
 
 None of this means the camera roll is useless. It does the storage job well. The scrapbook is the layer on top of it, and that layer never builds itself.
@@ -75,7 +75,7 @@ This is the step everyone skips and the step that matters most. One line per kee
 
 ### Step 5: Add the mementos, back up, and re-read
 
-Drop the tickets and the day notes into the album, confirm the album is backed up, then read the whole thing start to finish. If a photo doesn't make sense on its own, that's the missing caption, so write the line. If a day feels empty, that's where the small moment went, and a line about it fills the gap. This closing pass is the last item in our [post trip checklist](/blog/post-trip-checklist/), and it's the one that decides whether the record holds up a year later.
+Drop the tickets and the day notes into the album, confirm the album is backed up, then read it through once. If a photo doesn't make sense on its own, that's the missing caption, so write the line. If a day feels empty, that's where the small moment went, and a line about it fills the gap. This closing pass is the last item in our [post trip checklist](/blog/post-trip-checklist/), and it's the one that decides whether the record holds up a year later.
 
 ## Which format to keep it in
 
