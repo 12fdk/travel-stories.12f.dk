@@ -76,7 +76,7 @@ Estimates below are *educated guesses* — confirm with a real tool before sched
 |---|---|---|---|---|---|
 | 21 | notion travel planner template | 300–800 | 15–25 | Comparison (template seekers → app converts) | ☐ |
 | 22 | tripit vs wanderlog ✅ | 100–300 | 10–20 | Comparison | ☐ |
-| 23 | spreadsheet vs app for trip planning | 30–100 | 5–15 | Comparison | ☐ |
+| 23 | spreadsheet vs app for trip planning ✅ | 30–100 | 5–15 | Comparison | ☐ |
 | 26 | wanderlog pro cost ✅ (added from GSC: ~7.2k imp/90d on the query) | — | — | Competitor pricing (decision-stage) | ☐ |
 
 ### Tier D — During & after the trip (the memory cluster — our differentiator)
@@ -157,7 +157,7 @@ Each post links to 2–3 others (internal linking), includes a contextual CTA to
 | 21 | Listicle | 21 Travel Journal Ideas (Formats That Survive Past Day 3) | travel journal ideas | Listicle (Pinterest fuel) | 1,800 | ☐ |
 | 22 | Commercial | Free Travel Planner Apps That Are Actually Free (No Trial Traps) | free travel planner app | Round-up | 2,000 | ☐ |
 | 23 | Comparison | TripIt vs Wanderlog vs Travel Stories: 2026 Comparison | tripit vs wanderlog | Comparison | 2,000 | ☐ |
-| 24 | Comparison | Why a Spreadsheet Stops Working Halfway Through Trip Planning | spreadsheet vs app for trip planning | Story + comparison | 1,500 | ☐ |
+| 24 | Comparison | Why a Spreadsheet Stops Working Halfway Through Trip Planning | spreadsheet vs app for trip planning | Story + comparison | 1,500 | [x] |
 | 25 | Checklist | The Post-Trip Checklist: 12 Things to Do the Week You Get Home | post trip checklist | Checklist | 1,400 | ☐ |
 
 **Priority order (if writing fewer than all ten):**
